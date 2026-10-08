@@ -1,0 +1,59 @@
+name: Testes
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  sqlite:
+    runs-on: ubuntu-latest
+    name: PHP 8.3 · SQLite
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: dom, curl, gd, mbstring, zip, pdo, sqlite, pdo_sqlite, fileinfo, intl
+          coverage: none
+      - run: composer install --prefer-dist --no-interaction --no-progress
+      - run: cp .env.example .env && php artisan key:generate
+      - run: php artisan test
+
+  mariadb:
+    runs-on: ubuntu-latest
+    name: PHP 8.3 · MariaDB 10.11
+    services:
+      mariadb:
+        image: mariadb:10.11
+        env:
+          MARIADB_DATABASE: portfolio_test
+          MARIADB_USER: portfolio
+          MARIADB_PASSWORD: ci-somente-teste
+          MARIADB_ROOT_PASSWORD: ci-somente-teste
+        ports:
+          - 3306:3306
+        options: --health-cmd="healthcheck.sh --connect --innodb_initialized" --health-interval=5s --health-timeout=5s --health-retries=20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: dom, curl, gd, mbstring, zip, pdo, pdo_mysql, fileinfo, intl
+          coverage: none
+      - run: composer install --prefer-dist --no-interaction --no-progress
+      - run: cp .env.example .env && php artisan key:generate
+      - run: php artisan test
+        env:
+          DB_CONNECTION: mariadb
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: portfolio_test
+          DB_USERNAME: portfolio
+          DB_PASSWORD: ci-somente-teste
