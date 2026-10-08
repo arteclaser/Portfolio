@@ -27,6 +27,11 @@ class DemoContent
     /** @return array<string, string> e-mail => senha gerada para os usuários de demonstração */
     public function seed(Portfolio $portfolio, User $master): array
     {
+        return \App\Support\Tenant::run($portfolio, fn () => $this->seedInTenant($portfolio, $master));
+    }
+
+    private function seedInTenant(Portfolio $portfolio, User $master): array
+    {
         $portfolio->is_demo = true;
         $portfolio->save();
 
@@ -64,7 +69,7 @@ class DemoContent
         ];
 
         foreach ($items as $i => [$title, $page, $related, $summary, $type, $status, $featured]) {
-            if (Action::where('slug', Slug::make($title))->exists()) {
+            if (Action::where('portfolio_id', $portfolio->id)->where('slug', Slug::make($title))->exists()) {
                 continue;
             }
             $action = $this->workflow->create($portfolio, $master, ['title' => $title, 'primary_page_id' => $page->id, 'summary' => $summary]);
@@ -118,7 +123,7 @@ class DemoContent
             }
             $password = Str::password(16, symbols: false);
             $user = new User;
-            $user->forceFill(['name' => $name, 'email' => $email, 'password' => $password, 'role' => $role, 'is_active' => true, 'password_set_at' => now()])->save();
+            $user->forceFill(['portfolio_id' => $portfolio->id, 'name' => $name, 'email' => $email, 'password' => $password, 'role' => $role, 'is_active' => true, 'password_set_at' => now()])->save();
             $user->pages()->sync($pages);
             $credentials[$email] = $password;
         }

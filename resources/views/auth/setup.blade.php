@@ -11,13 +11,15 @@
         <legend>Portfólio</legend>
         <x-field name="portfolio_name" label="Nome do portfólio" :value="old('portfolio_name', 'Secretaria de Desenvolvimento Econômico, Inovação e Turismo de Capinzal')" required />
         <x-field name="short_name" label="Nome curto do cabeçalho" :value="old('short_name', 'Capinzal')" help="Aparece em destaque no topo, por exemplo: CAPINZAL." />
+        <x-field name="slug" label="Endereço do portfólio" :value="old('slug', 'capinzal')" help="Usado em mostraqui.net/capinzal (ou capinzal.mostraqui.net). Letras minúsculas, números e hífens." />
         <div class="field field--check">
             <input type="checkbox" id="f-create_areas" name="create_areas" value="1" @checked(old('create_areas', true))>
             <label for="f-create_areas">Criar as áreas iniciais (Desenvolvimento Econômico, Inovação e Turismo). Podem ser alteradas depois.</label>
         </div>
     </fieldset>
     <fieldset class="fieldset">
-        <legend>Primeiro Administrador Master</legend>
+        <legend>Administrador da plataforma</legend>
+        <p class="fieldset__intro">Cria portfólios e atua como Master em qualquer um deles.</p>
         <x-field name="name" label="Nome" autocomplete="name" required />
         <x-field name="email" label="E-mail" type="email" autocomplete="username" required />
         <x-field name="password" label="Senha" type="password" autocomplete="new-password" required help="Mínimo de 10 caracteres, com letras e números." />

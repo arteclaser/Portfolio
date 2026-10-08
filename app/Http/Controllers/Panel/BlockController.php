@@ -123,7 +123,7 @@ class BlockController extends PanelController
         $data = $request->validate([
             'title' => ['nullable', 'string', 'max:255'],
             'subtitle' => ['nullable', 'string', 'max:500'],
-            'media_id' => ['nullable', 'integer', Rule::exists('media', 'id')],
+            'media_id' => ['nullable', 'integer', \App\Support\TenantRule::exists('media')],
             'upload' => ['nullable', 'file'],
         ]);
         if ($request->hasFile('upload')) {
@@ -138,7 +138,7 @@ class BlockController extends PanelController
     {
         $data = $request->validate([
             'media_ids' => ['nullable', 'array', 'max:60'],
-            'media_ids.*' => ['integer', Rule::exists('media', 'id')],
+            'media_ids.*' => ['integer', \App\Support\TenantRule::exists('media')],
             'uploads' => ['nullable', 'array', 'max:20'],
             'uploads.*' => ['file'],
         ]);
@@ -158,7 +158,7 @@ class BlockController extends PanelController
             'items.*.title' => ['nullable', 'string', 'max:500'],
             'items.*.source' => ['nullable', 'string', 'max:255'],
             'items.*.description' => ['nullable', 'string', 'max:1000'],
-            'items.*.media_id' => ['nullable', 'integer', Rule::exists('media', 'id')],
+            'items.*.media_id' => ['nullable', 'integer', \App\Support\TenantRule::exists('media')],
         ], [], ['items.*.url' => 'endereço'])['items'] ?? [];
         $items = [];
         foreach ($rows as $row) {
@@ -182,7 +182,7 @@ class BlockController extends PanelController
             'items.*.title' => ['nullable', 'string', 'max:255'],
             'items.*.description' => ['nullable', 'string', 'max:500'],
             'items.*.url' => ['nullable', 'url:http,https', 'max:2048'],
-            'items.*.media_id' => ['nullable', 'integer', Rule::exists('media', 'id')],
+            'items.*.media_id' => ['nullable', 'integer', \App\Support\TenantRule::exists('media')],
         ], [], ['items.*.url' => 'endereço', 'items.*.title' => 'título'])['items'] ?? [];
         $items = [];
         foreach ($rows as $i => $row) {

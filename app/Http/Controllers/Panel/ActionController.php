@@ -251,8 +251,8 @@ class ActionController extends PanelController
             'description' => ['nullable', 'string', 'max:30000'],
             'primary_page_id' => ['required', 'integer'],
             'related_page_ids' => ['nullable', 'array', 'max:50'],
-            'related_page_ids.*' => ['integer', Rule::exists('pages', 'id')],
-            'program_page_id' => ['nullable', 'integer', Rule::exists('pages', 'id')],
+            'related_page_ids.*' => ['integer', \App\Support\TenantRule::exists('pages')],
+            'program_page_id' => ['nullable', 'integer', \App\Support\TenantRule::exists('pages')],
             'starts_on' => ['nullable', 'date'],
             'ends_on' => ['nullable', 'date', 'after_or_equal:starts_on'],
             'location' => ['nullable', 'string', 'max:255'],
@@ -262,7 +262,7 @@ class ActionController extends PanelController
             'team.*.selected' => ['nullable', 'boolean'],
             'team.*.role' => ['nullable', 'string', 'max:120'],
             'partner_ids' => ['nullable', 'array', 'max:100'],
-            'partner_ids.*' => ['integer', Rule::exists('partners', 'id')],
+            'partner_ids.*' => ['integer', \App\Support\TenantRule::exists('partners')],
             'objectives' => ['nullable', 'string', 'max:10000'],
             'results' => ['nullable', 'string', 'max:20000'],
             'indicators' => ['nullable', 'array', 'max:30'],
@@ -298,10 +298,11 @@ class ActionController extends PanelController
             'starts_on' => 'data de início', 'ends_on' => 'data de término', 'slug' => 'endereço da página',
         ]);
 
-        // Equipe: só os integrantes marcados.
+        // Equipe: só os integrantes marcados, e somente deste portfólio.
         $team = [];
+        $validMembers = TeamMember::query()->pluck('id')->all();
         foreach ((array) $request->input('team', []) as $id => $row) {
-            if (! empty($row['selected'])) {
+            if (! empty($row['selected']) && in_array((int) $id, $validMembers, true)) {
                 $team[] = ['id' => (int) $id, 'role' => $row['role'] ?? null];
             }
         }

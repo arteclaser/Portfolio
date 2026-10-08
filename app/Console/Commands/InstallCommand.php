@@ -5,40 +5,50 @@ namespace App\Console\Commands;
 use App\Models\User;
 use App\Services\Installer;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Password as PasswordRule;
 
 /**
- * Procedimento seguro do primeiro acesso: nenhum usuário ou senha padrão existe
- * no código. A senha é digitada de forma oculta ou definida pelo próprio Master
- * por meio de um link de convite de uso único.
+ * Primeira instalação: cria o administrador da plataforma (sem senha padrão no
+ * código: digitada de forma oculta ou definida por convite) e, opcionalmente, o
+ * primeiro portfólio.
  */
 class InstallCommand extends Command
 {
     protected $signature = 'mostraqui:instalar
-        {--portfolio= : Nome do portfólio}
+        {--portfolio= : Nome do primeiro portfólio (vazio = não criar agora)}
         {--curto= : Nome curto do cabeçalho (ex.: Capinzal)}
-        {--nome= : Nome do primeiro Master}
-        {--email= : E-mail do primeiro Master}
+        {--endereco= : Endereço do portfólio (ex.: capinzal)}
+        {--nome= : Nome do administrador da plataforma}
+        {--email= : E-mail do administrador da plataforma}
         {--convite : Gerar link de convite em vez de digitar a senha}
         {--sem-areas : Não criar as áreas iniciais}';
 
-    protected $description = 'Cria o portfólio e o primeiro Administrador Master.';
+    protected $description = 'Cria o administrador da plataforma e, se informado, o primeiro portfólio.';
 
     public function handle(Installer $installer): int
     {
-        if (User::query()->where('role', User::MASTER)->exists()) {
-            $this->error('Já existe um Administrador Master. Use mostraqui:criar-master para adicionar outro.');
+        if (User::query()->where('is_platform_admin', true)->exists()) {
+            $this->error('A plataforma já está instalada. Use mostraqui:novo-portfolio ou mostraqui:admin-plataforma.');
 
             return self::FAILURE;
         }
 
-        $portfolioName = $this->option('portfolio') ?: $this->ask('Nome do portfólio', 'Secretaria de Desenvolvimento Econômico, Inovação e Turismo de Capinzal');
-        $short = $this->option('curto') ?: $this->ask('Nome curto do cabeçalho', 'Capinzal');
-        $portfolio = $installer->ensurePortfolio($portfolioName, $short, ! $this->option('sem-areas'));
-        $this->info('Portfólio: '.$portfolio->name);
+        $name = $this->option('portfolio');
+        if ($name === null && $this->input->isInteractive()) {
+            $name = $this->ask('Nome do primeiro portfólio (deixe em branco para criar depois)', 'Secretaria de Desenvolvimento Econômico, Inovação e Turismo de Capinzal');
+        }
+        if ($name) {
+            $short = $this->option('curto') ?: ($this->input->isInteractive() ? $this->ask('Nome curto do cabeçalho', 'Capinzal') : null);
+            $slug = $this->option('endereco') ?: ($this->input->isInteractive() ? $this->ask('Endereço (ex.: capinzal)', \App\Support\PortfolioSlug::suggest($short ?: $name)) : null);
+            try {
+                $portfolio = $installer->ensurePortfolio($name, $short, ! $this->option('sem-areas'), false, $slug);
+            } catch (\InvalidArgumentException $e) {
+                $this->error($e->getMessage());
 
-        return CreateMasterCommand::createInteractively($this, $installer);
+                return self::FAILURE;
+            }
+            $this->info('Portfólio: '.$portfolio->name.' → '.$portfolio->publicUrl());
+        }
+
+        return CreatePlatformAdminCommand::createInteractively($this, $installer);
     }
 }

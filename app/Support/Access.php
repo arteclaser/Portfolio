@@ -39,11 +39,11 @@ class Access
         if (! $user->is_active) {
             return false;
         }
+        if ($pageId === null || ! $this->tree->has($pageId)) {
+            return false; // Página inexistente ou de outro portfólio.
+        }
         if ($user->isMaster()) {
             return true;
-        }
-        if ($pageId === null) {
-            return false;
         }
 
         return in_array($pageId, $this->allowedPageIds($user), true);
@@ -64,7 +64,7 @@ class Access
 
     public function canAccessAction(User $user, Action $action): bool
     {
-        if (! $user->is_active) {
+        if (! $user->is_active || ! $action->belongsToCurrentPortfolio()) {
             return false;
         }
         if ($user->isMaster()) {

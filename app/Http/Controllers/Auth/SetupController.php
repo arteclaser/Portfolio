@@ -42,6 +42,7 @@ class SetupController extends Controller
             'setup_token' => ['required', 'string'],
             'portfolio_name' => ['required', 'string', 'max:255'],
             'short_name' => ['nullable', 'string', 'max:60'],
+            'slug' => ['nullable', 'string', 'max:40'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
             'password' => ['required', 'confirmed', PasswordRule::defaults()],
@@ -53,8 +54,12 @@ class SetupController extends Controller
         // Cria ou atualiza as tabelas: permite instalar sem acesso ao terminal.
         Artisan::call('migrate', ['--force' => true]);
 
-        $installer->ensurePortfolio($data['portfolio_name'], $data['short_name'] ?? null, $request->boolean('create_areas'));
-        $user = $installer->createMaster($data['name'], $data['email'], $data['password']);
+        try {
+            $installer->ensurePortfolio($data['portfolio_name'], $data['short_name'] ?? null, $request->boolean('create_areas'), false, $data['slug'] ?? null);
+        } catch (\InvalidArgumentException $e) {
+            throw ValidationException::withMessages(['slug' => $e->getMessage()]);
+        }
+        $user = $installer->createPlatformAdmin($data['name'], $data['email'], $data['password']);
 
         Auth::login($user);
         $request->session()->regenerate();

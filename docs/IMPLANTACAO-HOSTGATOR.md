@@ -75,9 +75,11 @@ Em `~/mostraqui-app/`, copie `.env.example` para `.env` e preencha:
 
 Proteja o arquivo: permissão **600** ou **640**.
 
-## 5. Criar as tabelas e o primeiro Administrador Master
+## 5. Criar as tabelas, a administração da plataforma e o primeiro portfólio
 
-Não existe usuário nem senha padrão no sistema. Escolha **um** dos caminhos:
+Não existe usuário nem senha padrão no sistema. A instalação cria a conta de **administração da
+plataforma** (quem cria e gerencia os portfólios) e, se você quiser, o primeiro portfólio (por
+exemplo, Capinzal em `mostraqui.net/capinzal`). Escolha **um** dos caminhos:
 
 ### 5A. Com Terminal ou SSH (recomendado)
 
@@ -85,17 +87,26 @@ Não existe usuário nem senha padrão no sistema. Escolha **um** dos caminhos:
 cd ~/mostraqui-app
 php artisan migrate --force
 php artisan mostraqui:instalar
-# Pergunta nome do portfólio, nome e e-mail do Master; a senha é digitada sem aparecer na tela.
+# Pergunta o nome, o nome curto e o endereço do primeiro portfólio (ex.: capinzal),
+# e o nome e o e-mail da administração da plataforma; a senha é digitada sem aparecer na tela.
 # Para gerar um link de convite em vez de digitar a senha: php artisan mostraqui:instalar --convite
 ```
 
 ### 5B. Sem terminal (pelo navegador)
 
 1. Defina `SETUP_TOKEN` no `.env`.
-2. Acesse `https://mostraqui.net/instalar`, informe o código, os dados do portfólio e do Master.
-   O instalador cria as tabelas, o portfólio, as áreas iniciais e o Master.
+2. Acesse `https://mostraqui.net/instalar` e informe o código, os dados do primeiro portfólio
+   (nome, nome curto e endereço) e os da administração da plataforma. O instalador cria as
+   tabelas, o portfólio, as áreas iniciais e a conta.
 3. **Apague a linha `SETUP_TOKEN` do `.env`.** O painel avisa enquanto ela existir. O endereço
    `/instalar` deixa de funcionar assim que existe um usuário.
+
+### Novos portfólios
+
+Depois da instalação, crie os outros portfólios em **Painel → Plataforma → Portfólios → Novo
+portfólio** (ou com `php artisan mostraqui:novo-portfolio`). Cada um fica no ar na hora, em
+`mostraqui.net/endereço`, sem nenhuma configuração no cPanel. Para usar `endereço.mostraqui.net`,
+veja **[MULTIPORTFOLIO-E-SUBDOMINIOS.md](MULTIPORTFOLIO-E-SUBDOMINIOS.md)**.
 
 ## 6. Limites de envio de fotos
 
@@ -138,6 +149,7 @@ sistema roda o mesmo backup às 03:00.
 
 - [ ] `https://mostraqui.net` abre com cadeado (HTTPS) e sem aviso de erro.
 - [ ] `https://mostraqui.net/.env` responde 403 ou 404.
+- [ ] `https://mostraqui.net` mostra a página da plataforma, e `https://mostraqui.net/capinzal`, o portfólio.
 - [ ] Login em `/entrar` funciona, e o painel não mostra avisos de configuração pendentes.
 - [ ] Em Usuários, convide um Editor: o e-mail chega (ou copie o link exibido).
 - [ ] Crie uma ação de teste, envie uma foto, publique, confira no site e arquive.

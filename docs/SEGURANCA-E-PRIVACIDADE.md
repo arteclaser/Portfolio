@@ -16,6 +16,17 @@ Resumo das proteções implementadas, organizado pelos requisitos do documento d
 - Desativar um usuário encerra o acesso na requisição seguinte e preserva autoria e histórico.
 - Registro de atividades: quem fez o quê, quando e de qual IP.
 
+## Isolamento entre portfólios
+
+- O portfólio da requisição é definido **antes** da resolução dos parâmetros das rotas: no site,
+  pelo endereço; no painel, pela conta (ou pela escolha da administração da plataforma).
+- Um escopo automático filtra por portfólio todas as consultas de páginas, ações, integrantes,
+  parceiros, mídias, campos e registros de atividade. Ações, mídias ou usuários de outro portfólio
+  respondem 404, mesmo que alguém digite o número no endereço.
+- As validações de formulário aceitam só referências do próprio portfólio, e as permissões
+  conferem o portfólio uma segunda vez.
+- Portfólio desativado: o site responde 404 e a equipe é desconectada ao tentar usar o painel.
+
 ## Conteúdo não publicado
 
 - As consultas públicas passam por um único serviço (`PublicActions`), que só lê versões aprovadas

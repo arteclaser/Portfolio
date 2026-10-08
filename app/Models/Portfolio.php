@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Support\Tenant;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
@@ -21,7 +23,7 @@ class Portfolio extends Model
     protected $fillable = [
         'name', 'slug', 'short_name', 'tagline', 'subtitle', 'hero_kicker', 'hero_title',
         'hero_highlight', 'hero_description', 'about', 'accent_color', 'contact_email',
-        'footer_note', 'settings', 'is_demo',
+        'footer_note', 'settings', 'is_demo', 'is_active', 'is_listed', 'created_by',
     ];
 
     protected function casts(): array
@@ -29,27 +31,38 @@ class Portfolio extends Model
         return [
             'settings' => 'array',
             'is_demo' => 'boolean',
+            'is_active' => 'boolean',
+            'is_listed' => 'boolean',
         ];
     }
 
-    private static ?Portfolio $current = null;
-
     /**
-     * A primeira versão atende um portfólio por instalação; o modelo de dados
-     * já separa tudo por portfolio_id para permitir outros portfólios depois.
+     * Portfólio da requisição (definido pelo endereço no site público e pela conta no
+     * painel). No terminal e nos testes, sem portfólio definido, usa o primeiro.
      */
     public static function current(): ?Portfolio
     {
-        if (static::$current === null || ! static::$current->exists) {
-            static::$current = static::query()->orderBy('id')->first();
+        if ($tenant = Tenant::get()) {
+            return $tenant;
         }
 
-        return static::$current;
+        return app()->runningInConsole() ? static::query()->orderBy('id')->first() : null;
     }
 
     public static function forgetCurrent(): void
     {
-        static::$current = null;
+        Tenant::forget();
+    }
+
+    public function scopeActive(Builder $query): Builder
+    {
+        return $query->where('is_active', true);
+    }
+
+    /** Endereço público do portfólio, conforme o modo configurado (caminho ou subdomínio). */
+    public function publicUrl(): string
+    {
+        return route('home', ['portfolio' => $this->slug]);
     }
 
     public function setting(string $key, mixed $default = null): mixed

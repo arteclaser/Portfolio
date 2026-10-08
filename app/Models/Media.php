@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\BelongsToPortfolio;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Media extends Model
 {
+    use BelongsToPortfolio;
+
     protected $table = 'media';
 
     /** Larguras máximas geradas para telas diferentes (sem ampliar nem deformar). */

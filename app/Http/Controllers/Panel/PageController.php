@@ -204,7 +204,7 @@ class PageController extends PanelController
             'menu_title' => ['nullable', 'string', 'max:80'],
             'slug' => ['nullable', 'string', 'max:120', 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/'],
             'kind' => ['required', Rule::in(array_keys(Page::KINDS))],
-            'parent_id' => ['nullable', 'integer', Rule::exists('pages', 'id')],
+            'parent_id' => ['nullable', 'integer', \App\Support\TenantRule::exists('pages')],
             'accent_color' => ['nullable', 'regex:/^#[0-9A-Fa-f]{6}$/'],
             'position' => ['nullable', 'integer', 'between:0,9999'],
             'show_in_menu' => ['nullable', 'boolean'],

@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Action;
+use App\Support\PortfolioSlug;
+use App\Support\Tenant;
 use App\Models\User;
 use App\Services\MediaVisibility;
 use App\Support\Access;
@@ -32,10 +34,15 @@ class AppServiceProvider extends ServiceProvider
         Carbon::setLocale('pt_BR');
         Paginator::defaultView('partials.pagination');
 
+        Route::pattern('portfolio', PortfolioSlug::PATTERN);
         Route::bind('trashedAction', fn ($value) => Action::onlyTrashed()->findOrFail((int) $value));
+        // Usuários de outro portfólio não são encontrados pelo painel.
+        Route::bind('user', fn ($value) => User::query()->whereKey((int) $value)
+            ->when(Tenant::id(), fn ($q, $id) => $q->where('portfolio_id', $id))->firstOrFail());
 
         Password::defaults(fn () => Password::min(10)->letters()->numbers());
 
+        Gate::define('manage-platform', fn (User $user) => $user->is_active && $user->isPlatformAdmin());
         Gate::define('manage-users', fn (User $user) => $user->is_active && $user->isMaster());
         Gate::define('manage-settings', fn (User $user) => $user->is_active && $user->isMaster());
         Gate::define('view-activity', fn (User $user) => $user->is_active && $user->isMaster());

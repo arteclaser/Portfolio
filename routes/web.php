@@ -4,6 +4,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\SetupController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\Panel\PlatformPortfolioController;
+use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\Panel\ActionController;
 use App\Http\Controllers\Panel\ActionLinkController;
 use App\Http\Controllers\Panel\ActionMediaController;
@@ -19,6 +21,15 @@ use App\Http\Controllers\Panel\SettingsController;
 use App\Http\Controllers\Panel\TeamController;
 use App\Http\Controllers\Panel\UserController;
 use Illuminate\Support\Facades\Route;
+
+$central = Route::middleware([]);
+if (config('portfolio.routing') === 'subdomain') {
+    // No modo subdomínio, painel e acesso ficam só no domínio principal.
+    $central->domain(config('portfolio.base_domain'));
+}
+
+$central->group(function () {
+Route::get('/', [PlatformController::class, 'home'])->name('platform.home');
 
 // Primeiro acesso: cria o portfólio e o primeiro Master (exige SETUP_TOKEN e nenhum usuário).
 Route::get('/instalar', [SetupController::class, 'show'])->name('setup');
@@ -37,7 +48,15 @@ Route::middleware('guest')->group(function () {
 
 Route::post('/sair', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
 
-Route::prefix('painel')->name('panel.')->middleware(['auth', 'active', 'installed', 'panel'])->group(function () {
+Route::prefix('painel')->name('panel.')->middleware(['auth', 'active', 'panel.tenant', 'panel'])->group(function () {
+    // Plataforma: portfólios (somente administração da plataforma)
+    Route::get('/plataforma/portfolios', [PlatformPortfolioController::class, 'index'])->name('platform.index');
+    Route::get('/plataforma/portfolios/novo', [PlatformPortfolioController::class, 'create'])->name('platform.create');
+    Route::post('/plataforma/portfolios', [PlatformPortfolioController::class, 'store'])->name('platform.store');
+    Route::get('/plataforma/portfolios/{portfolioId}', [PlatformPortfolioController::class, 'edit'])->name('platform.edit')->whereNumber('portfolioId');
+    Route::put('/plataforma/portfolios/{portfolioId}', [PlatformPortfolioController::class, 'update'])->name('platform.update')->whereNumber('portfolioId');
+    Route::post('/plataforma/portfolios/{portfolioId}/gerenciar', [PlatformPortfolioController::class, 'manage'])->name('platform.manage')->whereNumber('portfolioId');
+
     Route::get('/', DashboardController::class)->name('dashboard');
 
     // Mídia privada (rascunhos e prévias), sempre com autorização.
@@ -146,4 +165,9 @@ Route::prefix('painel')->name('panel.')->middleware(['auth', 'active', 'installe
     Route::get('/configuracoes', [SettingsController::class, 'edit'])->name('settings.edit');
     Route::put('/configuracoes', [SettingsController::class, 'update'])->name('settings.update');
     Route::get('/atividades', ActivityController::class)->name('activity.index');
+});
+
+if (config('portfolio.routing') === 'subdomain') {
+    Route::get('/{portfolio}/{rest?}', [PlatformController::class, 'redirectToSubdomain'])->where('rest', '.*')->name('platform.redirect');
+}
 });

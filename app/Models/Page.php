@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\BelongsToPortfolio;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,6 +11,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Page extends Model
 {
+    use BelongsToPortfolio;
+
     public const KINDS = [
         'area' => 'Área de atuação',
         'programa' => 'Programa',
@@ -33,10 +36,6 @@ class Page extends Model
         ];
     }
 
-    public function portfolio(): BelongsTo
-    {
-        return $this->belongsTo(Portfolio::class);
-    }
 
     public function parent(): BelongsTo
     {

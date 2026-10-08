@@ -135,9 +135,13 @@ instalação segura e dados de demonstração isolados.
    `preview_message`, e o `SafeFetcher` já faz consultas seguras. Falta a rotina agendada e o aviso
    no painel.
 
-**Fase 3 — a decidir com a Secretaria:** vários portfólios no mesmo domínio (por exemplo,
-`capinzal.mostraqui.net`), autenticação em dois fatores e integração com a política oficial de
-privacidade do município.
+**Vários portfólios — entregue:** plataforma com criação automática de portfólios, endereço por
+caminho (`mostraqui.net/capinzal`, padrão) ou por subdomínio (`capinzal.mostraqui.net`, após
+configuração única de DNS e SSL curinga), isolamento por portfólio e administração da plataforma.
+Ver `docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md`.
+
+**Fase 3 — a decidir:** autenticação em dois fatores, conta única em vários portfólios e integração
+com a política oficial de privacidade de cada órgão.
 
 ## 8. Pendências e riscos
 

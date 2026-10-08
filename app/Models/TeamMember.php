@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\BelongsToPortfolio;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TeamMember extends Model
 {
+    use BelongsToPortfolio;
+
     protected $fillable = [
         'portfolio_id', 'user_id', 'page_id', 'name', 'role_title', 'function', 'photo_media_id',
         'bio', 'contact_email', 'contact_phone', 'contact_is_public', 'started_on', 'ended_on',

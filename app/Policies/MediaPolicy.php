@@ -20,7 +20,7 @@ class MediaPolicy
     /** Ver um arquivo privado no painel. */
     public function view(User $user, Media $media): bool
     {
-        if (! $user->is_active) {
+        if (! $user->is_active || ! $media->belongsToCurrentPortfolio()) {
             return false;
         }
         if ($user->isMaster() || $user->isEditor() || (int) $media->uploaded_by === $user->id) {
@@ -41,7 +41,7 @@ class MediaPolicy
 
     public function update(User $user, Media $media): bool
     {
-        return $user->is_active && ($user->isMaster() || $user->isEditor() || (int) $media->uploaded_by === $user->id);
+        return $user->is_active && $media->belongsToCurrentPortfolio() && ($user->isMaster() || $user->isEditor() || (int) $media->uploaded_by === $user->id);
     }
 
     public function delete(User $user, Media $media): bool

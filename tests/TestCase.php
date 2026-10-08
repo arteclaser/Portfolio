@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Services\ActionWorkflow;
 use App\Services\PagePublisher;
 use App\Support\Slug;
+use App\Support\Tenant;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,21 +21,43 @@ abstract class TestCase extends BaseTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        Portfolio::forgetCurrent();
+        Tenant::forget();
         Storage::fake('local');
     }
 
-    protected function makePortfolio(array $settings = []): Portfolio
+    protected function tearDown(): void
     {
-        $this->portfolio = Portfolio::create([
-            'name' => 'Portfólio de Teste',
-            'slug' => 'teste',
-            'short_name' => 'Teste',
+        Tenant::forget();
+        parent::tearDown();
+    }
+
+    protected function makePortfolio(array $settings = [], string $slug = 'capinzal', bool $activate = true): Portfolio
+    {
+        $portfolio = Portfolio::create([
+            'name' => 'Portfólio '.ucfirst($slug),
+            'slug' => $slug,
+            'short_name' => ucfirst($slug),
             'settings' => array_merge(Portfolio::DEFAULT_SETTINGS, $settings),
         ]);
-        Portfolio::forgetCurrent();
+        if ($activate) {
+            $this->usePortfolio($portfolio);
+        }
 
-        return $this->portfolio;
+        return $portfolio;
+    }
+
+    /** Define o portfólio do teste (como faria o middleware numa requisição). */
+    protected function usePortfolio(Portfolio $portfolio): void
+    {
+        $this->portfolio = $portfolio;
+        Tenant::set($portfolio);
+        URL::defaults(['portfolio' => $portfolio->slug]);
+    }
+
+    /** Endereço público dentro do portfólio atual (modo caminho). */
+    protected function pub(string $path = ''): string
+    {
+        return '/'.$this->portfolio->slug.($path === '' ? '' : '/'.ltrim($path, '/'));
     }
 
     protected function makePage(string $title, ?Page $parent = null, bool $publish = true): Page
@@ -56,7 +80,7 @@ abstract class TestCase extends BaseTestCase
     /** @param  list<Page>  $pages */
     protected function makeUser(string $role, array $pages = [], array $attributes = []): User
     {
-        $user = User::factory()->create(['role' => $role] + $attributes);
+        $user = User::factory()->create(['role' => $role, 'portfolio_id' => $this->portfolio->id] + $attributes);
         $user->pages()->sync(array_map(fn (Page $p) => $p->id, $pages));
 
         return $user;

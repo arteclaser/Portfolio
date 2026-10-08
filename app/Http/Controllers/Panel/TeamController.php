@@ -90,7 +90,7 @@ class TeamController extends PanelController
             'member' => $member,
             'areaOptions' => $this->pageOptions($this->allowedPages(), $user->isMaster() ? 'Sem área específica' : null),
             'userOptions' => $user->isMaster()
-                ? ['' => 'Sem conta de acesso'] + User::orderBy('name')->pluck('name', 'id')->all()
+                ? ['' => 'Sem conta de acesso'] + User::where('portfolio_id', \App\Support\Tenant::id())->orderBy('name')->pluck('name', 'id')->all()
                 : null,
         ];
     }
@@ -102,7 +102,7 @@ class TeamController extends PanelController
             'name' => ['required', 'string', 'max:255'],
             'role_title' => ['nullable', 'string', 'max:255'],
             'function' => ['nullable', 'string', 'max:255'],
-            'page_id' => [$user->isMaster() ? 'nullable' : 'required', 'integer', Rule::exists('pages', 'id')],
+            'page_id' => [$user->isMaster() ? 'nullable' : 'required', 'integer', \App\Support\TenantRule::exists('pages')],
             'bio' => ['nullable', 'string', 'max:2000'],
             'contact_email' => ['nullable', 'email', 'max:255'],
             'contact_phone' => ['nullable', 'string', 'max:40'],
@@ -111,7 +111,7 @@ class TeamController extends PanelController
             'ended_on' => ['nullable', 'date', 'after_or_equal:started_on'],
             'is_public' => ['nullable', 'boolean'],
             'position' => ['nullable', 'integer', 'between:0,9999'],
-            'user_id' => ['nullable', 'integer', Rule::exists('users', 'id')],
+            'user_id' => ['nullable', 'integer', \App\Support\TenantRule::exists('users')],
             'photo' => ['nullable', 'file'],
             'remove_photo' => ['nullable', 'boolean'],
         ], ['ended_on.after_or_equal' => 'A saída deve ser igual ou posterior à entrada.'], ['name' => 'nome', 'page_id' => 'área']);

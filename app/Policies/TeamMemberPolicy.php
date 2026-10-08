@@ -27,7 +27,7 @@ class TeamMemberPolicy
 
     public function update(User $user, TeamMember $member): bool
     {
-        if (! $this->manager($user)) {
+        if (! $this->manager($user) || ! $member->belongsToCurrentPortfolio()) {
             return false;
         }
 

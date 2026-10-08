@@ -17,7 +17,7 @@ class PagePolicy
 
     public function view(User $user, Page $page): bool
     {
-        return $this->viewAny($user) && $this->access->canAccessPage($user, $page->id);
+        return $this->viewAny($user) && $page->belongsToCurrentPortfolio() && $this->access->canAccessPage($user, $page->id);
     }
 
     /** Estrutura: criar, mover, endereço, campos, responsáveis, arquivar. */
@@ -28,7 +28,7 @@ class PagePolicy
 
     public function manageStructure(User $user, Page $page): bool
     {
-        return $user->is_active && $user->isMaster();
+        return $user->is_active && $user->isMaster() && $page->belongsToCurrentPortfolio();
     }
 
     /** Conteúdo: blocos, descrição, capa, prévia e publicação. */

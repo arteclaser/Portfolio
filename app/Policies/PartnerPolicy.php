@@ -19,7 +19,7 @@ class PartnerPolicy
 
     public function update(User $user, Partner $partner): bool
     {
-        return $this->viewAny($user);
+        return $this->viewAny($user) && $partner->belongsToCurrentPortfolio();
     }
 
     public function delete(User $user, Partner $partner): bool

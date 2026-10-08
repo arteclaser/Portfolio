@@ -29,6 +29,13 @@ class PageTree
         }
     }
 
+    public function has(int $id): bool
+    {
+        $this->load();
+
+        return array_key_exists($id, $this->parents);
+    }
+
     public function flush(): void
     {
         $this->children = null;

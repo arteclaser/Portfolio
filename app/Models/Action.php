@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\BelongsToPortfolio;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Action extends Model
 {
-    use SoftDeletes;
+    use BelongsToPortfolio, SoftDeletes;
 
     public const WORKING_STATES = [
         'draft' => 'Rascunho',
@@ -31,10 +32,6 @@ class Action extends Model
         ];
     }
 
-    public function portfolio(): BelongsTo
-    {
-        return $this->belongsTo(Portfolio::class);
-    }
 
     public function versions(): HasMany
     {

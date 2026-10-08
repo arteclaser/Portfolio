@@ -31,6 +31,16 @@ class CustomField extends Model
         ];
     }
 
+    protected static function booted(): void
+    {
+        // Campos pertencem a páginas: só os das páginas do portfólio atual.
+        static::addGlobalScope('portfolio', function (Builder $query) {
+            if ($id = \App\Support\Tenant::id()) {
+                $query->whereIn($query->getModel()->qualifyColumn('page_id'), fn ($q) => $q->select('id')->from('pages')->where('portfolio_id', $id));
+            }
+        });
+    }
+
     public function page(): BelongsTo
     {
         return $this->belongsTo(Page::class);

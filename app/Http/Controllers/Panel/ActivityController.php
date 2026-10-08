@@ -23,7 +23,7 @@ class ActivityController extends PanelController
 
         return view('panel.activity', [
             'logs' => $query->paginate(50)->withQueryString(),
-            'users' => User::orderBy('name')->pluck('name', 'id'),
+            'users' => User::where('portfolio_id', \App\Support\Tenant::id())->orderBy('name')->pluck('name', 'id'),
             'filters' => $filters,
         ]);
     }

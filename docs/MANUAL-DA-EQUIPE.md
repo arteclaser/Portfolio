@@ -1,6 +1,7 @@
 # Manual da equipe
 
-Acesse **mostraqui.net/entrar** (botão "Acesso da equipe" no topo do site).
+Acesse **mostraqui.net/entrar** (botão "Acesso da equipe" no topo do site). O mesmo endereço serve
+a todos os portfólios: depois de entrar, o painel mostra só o portfólio da sua conta.
 
 ## Primeiro acesso
 
@@ -88,3 +89,14 @@ mostrando a versão aprovada até a nova aprovação. Para desistir, use **Desca
 **Usuários e permissões → Convidar usuário:** nome, e-mail, perfil e áreas. O sistema envia o
 convite por e-mail ou mostra o link para você copiar. Desativar um usuário bloqueia o acesso na hora
 e mantém a autoria e o histórico.
+
+## Administração da plataforma
+
+Quem administra a plataforma vê o grupo **Plataforma → Portfólios** no menu:
+
+- **Novo portfólio:** nome, nome curto, endereço (ex.: `capinzal`), áreas iniciais e, se quiser, o
+  Master do portfólio, que recebe um convite. O portfólio fica no ar assim que é salvo.
+- **Gerenciar:** troca o portfólio exibido no painel (o topo mostra "Gerenciando: …").
+- **Editar:** nome, endereço, *Ativo* (desmarcar tira o site do ar e bloqueia a equipe daquele
+  portfólio) e *Listado* (aparecer ou não na página inicial da plataforma).
+

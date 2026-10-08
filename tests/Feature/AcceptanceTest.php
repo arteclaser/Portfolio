@@ -117,7 +117,7 @@ class AcceptanceTest extends TestCase
         $workflow->submit($action->fresh(), $collab);
 
         $draftSlug = $action->fresh()->workingVersion->slug;
-        $this->get('/acoes/'.$draftSlug)->assertNotFound();
+        $this->get($this->pub('acoes/'.$draftSlug))->assertNotFound();
         $this->get(route('actions.index'))->assertDontSee('Oficina de Empreendedorismo');
 
         // Editor de outra área não pode publicar.
@@ -129,7 +129,7 @@ class AcceptanceTest extends TestCase
         $this->assertNotNull($action->published_version_id);
         $this->assertSame($editor->id, $action->publishedVersion->reviewer_id);
 
-        $this->get('/acoes/'.$action->slug)->assertOk()->assertSee('Oficina de Empreendedorismo');
+        $this->get($this->pub('acoes/'.$action->slug))->assertOk()->assertSee('Oficina de Empreendedorismo');
         $this->get(route('actions.index'))->assertSee('Oficina de Empreendedorismo');
     }
 
@@ -144,10 +144,10 @@ class AcceptanceTest extends TestCase
             'title' => 'Título em revisão', 'summary' => 'Resumo novo', 'slug' => $action->slug,
         ]))->assertRedirect();
 
-        $this->get('/acoes/'.$action->slug)->assertOk()->assertSee('Título aprovado')->assertDontSee('Título em revisão');
+        $this->get($this->pub('acoes/'.$action->slug))->assertOk()->assertSee('Título aprovado')->assertDontSee('Título em revisão');
 
         $this->actingAs($editor)->post(route('panel.actions.publish', $action))->assertRedirect();
-        $this->get('/acoes/'.$action->fresh()->slug)->assertOk()->assertSee('Título em revisão');
+        $this->get($this->pub('acoes/'.$action->fresh()->slug))->assertOk()->assertSee('Título em revisão');
 
         // O histórico guarda as duas versões, com autor e revisor.
         $this->assertSame(2, $action->versions()->count());
@@ -200,7 +200,7 @@ class AcceptanceTest extends TestCase
         $this->assertNotNull($link->fresh()->image_media_id);
 
         $this->actingAs($editor)->post(route('panel.actions.publish', $action))->assertRedirect();
-        $html = $this->get('/acoes/'.$action->fresh()->slug)->assertOk()->getContent();
+        $html = $this->get($this->pub('acoes/'.$action->fresh()->slug))->assertOk()->getContent();
         $this->assertStringContainsString('Reportagem sobre a feira', $html);
         $this->assertStringContainsString('href="'.$url.'"', $html);
         $this->assertStringContainsString($url, strip_tags($html), 'O endereço original fica visível.');

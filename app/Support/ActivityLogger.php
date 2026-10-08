@@ -11,6 +11,7 @@ class ActivityLogger
     public function log(?User $user, string $event, ?Model $subject = null, ?string $description = null, array $properties = []): ActivityLog
     {
         return ActivityLog::create([
+            'portfolio_id' => Tenant::id() ?? ($subject?->portfolio_id ?? null),
             'user_id' => $user?->id,
             'event' => $event,
             'subject_type' => $subject ? class_basename($subject) : null,

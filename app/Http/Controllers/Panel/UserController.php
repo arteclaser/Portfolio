@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Notifications\InviteNotification;
 use App\Support\Access;
 use App\Support\ActivityLogger;
+use App\Support\Tenant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Password;
@@ -23,7 +24,8 @@ class UserController extends PanelController
     {
         Gate::authorize('manage-users');
 
-        return view('panel.users.index', ['users' => User::with('pages')->orderByDesc('is_active')->orderBy('name')->get()]);
+        return view('panel.users.index', ['users' => User::with('pages')->where('portfolio_id', Tenant::id())
+            ->orderByDesc('is_active')->orderBy('name')->get()]);
     }
 
     public function create()
@@ -39,6 +41,7 @@ class UserController extends PanelController
         $data = $this->validated($request, null);
         $user = new User;
         $user->forceFill([
+            'portfolio_id' => Tenant::id(),
             'name' => $data['name'],
             'email' => $data['email'],
             'role' => $data['role'],
@@ -146,7 +149,7 @@ class UserController extends PanelController
             'email' => ['required', 'email', 'max:255', Rule::unique('users', 'email')->ignore($user?->id)],
             'role' => ['required', Rule::in(array_keys(User::ROLES))],
             'page_ids' => ['nullable', 'array'],
-            'page_ids.*' => ['integer', Rule::exists('pages', 'id')],
+            'page_ids.*' => ['integer', \App\Support\TenantRule::exists('pages')],
             'can_manage_team' => ['nullable', 'boolean'],
             'can_archive' => ['nullable', 'boolean'],
         ], [], ['name' => 'nome', 'email' => 'e-mail', 'role' => 'perfil', 'page_ids' => 'áreas']);
@@ -169,6 +172,6 @@ class UserController extends PanelController
 
     private function activeMasters(): int
     {
-        return User::where('role', User::MASTER)->where('is_active', true)->count();
+        return User::where('portfolio_id', Tenant::id())->where('role', User::MASTER)->where('is_active', true)->count();
     }
 }

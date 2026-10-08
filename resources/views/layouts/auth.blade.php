@@ -15,8 +15,8 @@
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 <header class="site-header">
     <div class="container site-header__inner">
-        <a class="brand" href="{{ $portfolio ? route('home') : url('/') }}">
-            <span class="brand__name">{{ $portfolio?->short_name ?: ($portfolio?->name ?? config('app.name')) }}</span>
+        <a class="brand" href="{{ route('platform.home') }}">
+            <span class="brand__name">{{ $portfolio?->short_name ?: ($portfolio?->name ?? config('portfolio.platform_name')) }}</span>
             @if ($portfolio?->tagline)<span class="brand__divider" aria-hidden="true"></span><span class="brand__tagline"><strong>{{ $portfolio->tagline }}</strong>{{ $portfolio->subtitle }}</span>@endif
         </a>
     </div>

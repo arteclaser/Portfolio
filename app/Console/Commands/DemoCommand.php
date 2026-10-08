@@ -9,7 +9,9 @@ use Illuminate\Console\Command;
 
 class DemoCommand extends Command
 {
-    protected $signature = 'mostraqui:demo {--forcar : Permite em APP_ENV=production (o site ficará marcado como demonstração)}';
+    protected $signature = 'mostraqui:demo
+        {--portfolio= : Endereço do portfólio que receberá a demonstração (padrão: o primeiro)}
+        {--forcar : Permite em APP_ENV=production (o portfólio ficará marcado como demonstração)}';
 
     protected $description = 'Cria conteúdo de demonstração e marca o ambiente como demonstração.';
 
@@ -20,8 +22,11 @@ class DemoCommand extends Command
 
             return self::FAILURE;
         }
-        $portfolio = Portfolio::current();
-        $master = User::where('role', User::MASTER)->where('is_active', true)->orderBy('id')->first();
+        $portfolio = $this->option('portfolio')
+            ? Portfolio::where('slug', $this->option('portfolio'))->first()
+            : Portfolio::query()->orderBy('id')->first();
+        $master = User::where('is_active', true)->where(fn ($q) => $q->where('is_platform_admin', true)
+            ->orWhere(fn ($q2) => $q2->where('role', User::MASTER)->where('portfolio_id', $portfolio?->id)))->orderByDesc('is_platform_admin')->orderBy('id')->first();
         if (! $portfolio || ! $master) {
             $this->error('Execute primeiro: php artisan mostraqui:instalar');
 

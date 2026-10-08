@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -37,11 +38,17 @@ class User extends Authenticatable
             'is_active' => 'boolean',
             'can_manage_team' => 'boolean',
             'can_archive' => 'boolean',
+            'is_platform_admin' => 'boolean',
             'invited_at' => 'datetime',
             'password_set_at' => 'datetime',
             'last_login_at' => 'datetime',
             'deactivated_at' => 'datetime',
         ];
+    }
+
+    public function portfolio(): BelongsTo
+    {
+        return $this->belongsTo(Portfolio::class);
     }
 
     public function pages(): BelongsToMany
@@ -54,9 +61,15 @@ class User extends Authenticatable
         return $this->hasOne(TeamMember::class);
     }
 
+    /** Master do próprio portfólio; administradores da plataforma atuam como Master em qualquer um. */
     public function isMaster(): bool
     {
-        return $this->role === self::MASTER;
+        return $this->role === self::MASTER || $this->is_platform_admin;
+    }
+
+    public function isPlatformAdmin(): bool
+    {
+        return (bool) $this->is_platform_admin;
     }
 
     public function isEditor(): bool
@@ -71,7 +84,7 @@ class User extends Authenticatable
 
     public function roleLabel(): string
     {
-        return self::ROLES[$this->role] ?? $this->role;
+        return $this->is_platform_admin ? 'Administração da plataforma' : (self::ROLES[$this->role] ?? $this->role);
     }
 
     public function sendPasswordResetNotification($token): void

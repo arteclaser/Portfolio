@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\BelongsToPortfolio;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Partner extends Model
 {
+    use BelongsToPortfolio;
+
     protected $fillable = ['portfolio_id', 'name', 'url', 'logo_media_id', 'description', 'is_public', 'position'];
 
     protected function casts(): array

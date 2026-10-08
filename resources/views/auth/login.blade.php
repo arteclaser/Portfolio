@@ -15,5 +15,5 @@
     </div>
     <button type="submit" class="btn btn--block">Entrar</button>
 </form>
-<p class="auth-links"><a href="{{ route('password.request') }}">Esqueci minha senha</a> · <a href="{{ route('home') }}">Voltar ao portfólio</a></p>
+<p class="auth-links"><a href="{{ route('password.request') }}">Esqueci minha senha</a> · <a href="{{ route('platform.home') }}">Voltar ao início</a></p>
 @endsection

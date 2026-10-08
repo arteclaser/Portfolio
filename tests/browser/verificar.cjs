@@ -4,6 +4,7 @@
  * Requisitos: Node 18+, playwright e axe-core instalados (npm i -D playwright axe-core).
  * Uso:
  *   BASE_URL=http://127.0.0.1:8000 PAINEL_EMAIL=... PAINEL_SENHA=... node tests/browser/verificar.cjs
+ *   (SITE_URL=http://127.0.0.1:8000/capinzal define o portfólio; sem ele, usa o primeiro listado na plataforma)
  * Requer conteúdo publicado com galeria (ex.: php artisan mostraqui:demo em ambiente de teste).
  */
 const { chromium } = require('playwright');
@@ -25,17 +26,27 @@ async function axe(page, label) {
 
 (async () => {
   const browser = await chromium.launch();
+  let SITE = process.env.SITE_URL;
+  if (!SITE) {
+    const html = await (await fetch(BASE + '/')).text();
+    const href = (html.match(/class="card__title"><a href="([^"]+)"/) || [])[1];
+    if (!href) { console.error('Nenhum portfólio listado em ' + BASE); process.exit(1); }
+    SITE = href.startsWith('http') ? href : BASE + href;
+  }
+  console.log('Portfólio verificado: ' + SITE);
 
   console.log('Celular (390 × 844) e tema escuro');
   for (const scheme of ['light', 'dark']) {
     const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: scheme, isMobile: true, hasTouch: true, bypassCSP: true });
     const page = await ctx.newPage();
-    const html = await (await page.goto(BASE + '/acoes')).text();
+    const html = await (await page.goto(SITE + '/acoes')).text();
     const slug = (html.match(/\/acoes\/([a-z0-9-]+)"/) || [])[1];
-    for (const path of ['/', '/acoes', '/areas', '/equipe', slug ? '/acoes/' + slug : null].filter(Boolean)) {
-      await page.goto(BASE + path, { waitUntil: 'networkidle' });
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await axe(page, `página da plataforma (${scheme}, celular)`);
+    for (const path of ['', '/acoes', '/areas', '/equipe', '/acessibilidade', slug ? '/acoes/' + slug : null].filter(s => s !== null)) {
+      await page.goto(SITE + path, { waitUntil: 'networkidle' });
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
-      ok(overflow <= 0, `${scheme}: sem rolagem horizontal em ${path}`);
+      ok(overflow <= 0, `${scheme}: sem rolagem horizontal em ${path || '/'}`);
       // Corpo de texto: o tamanho base e os parágrafos de leitura (rótulos e legendas podem ser menores).
       const sizes = await page.evaluate(() => [document.body, ...document.querySelectorAll('.prose p, .lead, .hero__lead')].map(el => parseFloat(getComputedStyle(el).fontSize)));
       ok(Math.min(...sizes) >= 16, `${scheme}: corpo de texto ≥ 16 px em ${path} (mín. ${Math.min(...sizes)}px)`);
@@ -47,7 +58,7 @@ async function axe(page, label) {
   console.log('Teclado');
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, bypassCSP: true });
   const page = await ctx.newPage();
-  await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+  await page.goto(SITE, { waitUntil: 'networkidle' });
   await page.keyboard.press('Tab');
   ok(await page.evaluate(() => document.activeElement.classList.contains('skip-link')), 'primeiro Tab leva ao link "Pular para o conteúdo"');
   const outline = await page.evaluate(() => getComputedStyle(document.activeElement).outlineStyle);
@@ -60,11 +71,11 @@ async function axe(page, label) {
   ok(page.url().includes('/acoes?q=a'), 'busca enviada com Enter');
 
   // Galeria: abrir, navegar com setas, fechar com Esc e devolver o foco
-  const actionsHtml = await (await page.goto(BASE + '/acoes')).text();
+  const actionsHtml = await (await page.goto(SITE + '/acoes')).text();
   const slugs = [...actionsHtml.matchAll(/\/acoes\/([a-z0-9-]+)"/g)].map(m => m[1]);
   let tested = false;
   for (const s of slugs) {
-    await page.goto(BASE + '/acoes/' + s, { waitUntil: 'networkidle' });
+    await page.goto(SITE + '/acoes/' + s, { waitUntil: 'networkidle' });
     if (await page.locator('.gallery__btn').count() < 2) continue;
     await axe(page, '/acoes/' + s + ' (computador)');
     const first = page.locator('.gallery__btn').first();
@@ -95,7 +106,7 @@ async function axe(page, label) {
     await p.fill('#f-password', process.env.PAINEL_SENHA);
     await Promise.all([p.waitForURL(/\/painel$/), p.keyboard.press('Enter')]);
     ok(p.url().endsWith('/painel'), 'login pelo teclado (Enter)');
-    for (const path of ['/painel', '/painel/acoes', '/painel/acoes/1', '/painel/acoes/1/fotos', '/painel/acoes/1/revisao', '/painel/paginas', '/painel/usuarios']) {
+    for (const path of ['/painel', '/painel/acoes', '/painel/acoes/1', '/painel/acoes/1/fotos', '/painel/acoes/1/revisao', '/painel/paginas', '/painel/usuarios', '/painel/plataforma/portfolios', '/painel/plataforma/portfolios/novo']) {
       await p.goto(BASE + path, { waitUntil: 'networkidle' });
       const overflow = await p.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(overflow <= 0, `painel sem rolagem horizontal em ${path}`);
