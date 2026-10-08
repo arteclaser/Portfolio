@@ -25,7 +25,9 @@
   tentativas de login, desativação de usuários, arquivos privados, validação de envios, proteção
   contra SSRF, sanitização e CSP.
 - **Operação:** instalação por terminal ou navegador, backup e restauração completos, pacote para
-  cPanel e demonstração isolada.
+  cPanel, demonstração isolada e **implantação automática GitHub → HostGator** por SSH/rsync
+  (testes antes do envio, modo de manutenção, `.env` e `APP_KEY` criados na primeira vez, migrações
+  e verificação final).
 
 ## Testado
 
@@ -37,6 +39,7 @@
 | `tests/browser/verificar.cjs` (Playwright + axe-core 4.10) | 68 verificações: celular, teclado, tema escuro, painel e telas da plataforma, sem violações WCAG A/AA detectadas |
 | Ensaio da implantação: pacotes do `scripts/empacotar.sh`, estrutura `mostraqui-app/` + `public_html/`, MariaDB vazio, instalação por `/instalar` sem terminal | aprovado (tabelas, Master, áreas iniciais, `/instalar` desativado em seguida) |
 | Backup e restauração no MariaDB | aprovado (acentuação e dados preservados) |
+| Ensaio da implantação automática (`deploy/implantar.sh`) contra um servidor SSH local na porta 2222, com a estrutura do cPanel | aprovado: chave com senha, primeira execução sem `.env`, criação do `.env`, migrações no MariaDB, preservação de `.env`/banco/fotos/logs/`.well-known`, remoção de arquivos obsoletos do código, retorno automático da manutenção quando o envio falha e bloqueio de caminhos inválidos |
 | Prévia de links contra sites reais (W3C, YouTube, Instagram) e recusa de endereços locais | aprovado (YouTube: título e miniatura via oEmbed; W3C: prévia parcial; Instagram: modo manual; `localhost` e porta 8000 recusados) |
 
 ## Depende de configuração na hospedagem
@@ -73,5 +76,7 @@ Estes recursos **não estão implementados** e não devem ser apresentados como 
   com uma publicação real neste ambiente. Se a publicação não carregar, o visitante vê uma mensagem
   e o link para abrir no Instagram.
 - **Envio de e-mail por SMTP:** testado apenas com o modo `log` e com o envio simulado dos testes.
+- **Implantação automática na HostGator real:** depende da liberação do SSH pelo suporte e dos
+  segredos no GitHub; o fluxo foi ensaiado contra um servidor SSH local, não contra a HostGator.
 - **Modo subdomínio na hospedagem real:** testado automaticamente com domínios de teste; depende do
   subdomínio curinga e do certificado curinga na HostGator, ainda não configurados.

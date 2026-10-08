@@ -6,6 +6,11 @@ domínio `mostraqui.net` (servidores de nomes `ns304/ns305.hostgator.com.br`, ve
 (Terminal, SSH, Cron) depende do plano contratado. Em caso de dúvida, confirme com o suporte da
 hospedagem.
 
+> **Recomendado:** configure a **implantação automática pelo GitHub**
+> ([IMPLANTACAO-AUTOMATICA.md](IMPLANTACAO-AUTOMATICA.md)). Ela substitui os passos 1, 2, 4 e 5A
+> deste guia: envia os arquivos, cria o `.env` e atualiza o banco a cada aprovação no branch `main`.
+> Os passos abaixo continuam válidos para quem preferir publicar manualmente.
+
 > Este procedimento foi ensaiado localmente com a mesma estrutura de pastas do cPanel, MariaDB 10.11
 > e PHP 8.3: instalação pelo navegador, login, áreas iniciais, backup e restauração.
 
@@ -126,8 +131,9 @@ A tela de Configurações mostra o limite efetivo do servidor.
 ## 7. HTTPS
 
 1. Ative o certificado (cPanel → SSL/TLS Status).
-2. No `public_html/.htaccess`, descomente as duas linhas de "Força HTTPS".
-3. Mantenha `SESSION_SECURE_COOKIE=true` no `.env`.
+2. No `.env`, defina `FORCE_HTTPS=true` (o cookie de sessão passa a ser seguro automaticamente). O
+   redirecionamento para HTTPS fica na aplicação, então a implantação automática não o desfaz.
+   Antes do certificado, mantenha `FORCE_HTTPS=false`, ou o acesso ao painel não funciona.
 
 ## 8. Tarefas agendadas (backup diário)
 
@@ -159,8 +165,9 @@ sistema roda o mesmo backup às 03:00.
 
 1. Gere novos pacotes (`./scripts/empacotar.sh`).
 2. Faça um backup.
-3. Substitua `~/mostraqui-app` **preservando** `.env` e a pasta `storage/`. Substitua `~/public_html`
-   **preservando** o `.htaccess`, caso tenha ativado o HTTPS nele.
+3. Substitua `~/mostraqui-app` **preservando** `.env` e a pasta `storage/`, e substitua os arquivos
+   de `~/public_html`. Com a implantação automática (`docs/IMPLANTACAO-AUTOMATICA.md`), isso é feito
+   pelo GitHub.
 4. Rode `php artisan migrate --force` (pelo Terminal ou pelo Cron uma única vez) e
    `php artisan optimize:clear`.
 

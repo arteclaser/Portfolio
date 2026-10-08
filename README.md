@@ -75,7 +75,8 @@ BASE_URL=http://127.0.0.1:8000 node tests/browser/verificar.cjs   # celular, tec
 | Documento | Conteúdo |
 | --- | --- |
 | [docs/PLANO.md](docs/PLANO.md) | Decisões, modelo de dados, permissões, fluxo editorial, fases e pendências |
-| [docs/IMPLANTACAO-HOSTGATOR.md](docs/IMPLANTACAO-HOSTGATOR.md) | Passo a passo de instalação no cPanel (com ou sem terminal) |
+| [docs/IMPLANTACAO-AUTOMATICA.md](docs/IMPLANTACAO-AUTOMATICA.md) | **Implantação automática GitHub → HostGator** (SSH), passo a passo |
+| [docs/IMPLANTACAO-HOSTGATOR.md](docs/IMPLANTACAO-HOSTGATOR.md) | Passo a passo de instalação manual no cPanel (com ou sem terminal) |
 | [docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md](docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md) | Vários portfólios: caminho ou subdomínio, como ativar subdomínios e mensagem para o suporte |
 | [docs/MANUAL-DA-EQUIPE.md](docs/MANUAL-DA-EQUIPE.md) | Como usar o painel |
 | [docs/BACKUP-E-RESTAURACAO.md](docs/BACKUP-E-RESTAURACAO.md) | Cópias de segurança e restauração |

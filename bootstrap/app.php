@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\EnsureActiveUser;
 use App\Http\Middleware\EnsurePortfolioInstalled;
+use App\Http\Middleware\ForceHttps;
 use App\Http\Middleware\PanelContext;
 use App\Http\Middleware\PublicContext;
 use App\Http\Middleware\ResolvePublicTenant;
@@ -31,6 +32,7 @@ return Application::configure(basePath: dirname(__DIR__))
         },
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->prepend(ForceHttps::class);
         $middleware->append(SecurityHeaders::class);
         $middleware->group('public', [
             PublicContext::class,

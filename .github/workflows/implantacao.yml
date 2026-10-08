@@ -1,0 +1,78 @@
+# Implantação automática na HostGator (cPanel) a cada atualização do branch "main".
+# Passo a passo de configuração: docs/IMPLANTACAO-AUTOMATICA.md
+name: Implantação na HostGator
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Uma implantação por vez; uma nova espera a anterior terminar.
+concurrency:
+  group: implantacao-producao
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  testes:
+    name: Testes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: dom, curl, gd, mbstring, zip, pdo, sqlite, pdo_sqlite, fileinfo, intl
+          coverage: none
+      - run: composer install --prefer-dist --no-interaction --no-progress
+      - run: cp .env.example .env && php artisan key:generate
+      - run: php artisan test
+
+  implantar:
+    name: Enviar para a HostGator
+    needs: testes
+    runs-on: ubuntu-latest
+    environment:
+      name: producao
+      url: ${{ vars.SITE_URL || 'https://mostraqui.net' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: dom, curl, gd, mbstring, zip, fileinfo, intl
+          coverage: none
+
+      - name: Instalar dependências de produção
+        run: composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-progress
+
+      - name: Enviar por SSH e atualizar o banco
+        env:
+          SSH_HOST: ${{ secrets.HOSTGATOR_SSH_HOST }}
+          SSH_USER: ${{ secrets.HOSTGATOR_SSH_USER }}
+          SSH_KEY: ${{ secrets.HOSTGATOR_SSH_KEY }}
+          SSH_PASSPHRASE: ${{ secrets.HOSTGATOR_SSH_PASSPHRASE }}
+          SSH_KNOWN_HOSTS: ${{ secrets.HOSTGATOR_KNOWN_HOSTS }}
+          SSH_PORT: ${{ vars.SSH_PORT || '2222' }}
+          APP_DIR: ${{ vars.APP_DIR || 'mostraqui-app' }}
+          PUBLIC_DIR: ${{ vars.PUBLIC_DIR || 'public_html' }}
+          PHP_BIN: ${{ vars.PHP_BIN || 'php' }}
+        run: bash deploy/implantar.sh
+
+      - name: Conferir se o site responde
+        if: ${{ vars.SITE_URL != '' }}
+        run: |
+          for i in 1 2 3 4 5; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "${{ vars.SITE_URL }}/up" || true)
+            [ "$code" = "200" ] && { echo "Site no ar (HTTP 200)."; exit 0; }
+            sleep 5
+          done
+          echo "::error::O site não respondeu com HTTP 200 em ${{ vars.SITE_URL }}/up (último código: $code)."
+          exit 1

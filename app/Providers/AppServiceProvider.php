@@ -32,6 +32,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Carbon::setLocale('pt_BR');
+        if (config('portfolio.force_https') && ! $this->app->runningUnitTests()) {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
         Paginator::defaultView('partials.pagination');
 
         Route::pattern('portfolio', PortfolioSlug::PATTERN);

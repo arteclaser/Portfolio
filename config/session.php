@@ -169,7 +169,8 @@ return [
     |
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE'),
+    // Por padrão acompanha FORCE_HTTPS: cookie seguro só quando o site já está em HTTPS.
+    'secure' => env('SESSION_SECURE_COOKIE', (bool) env('FORCE_HTTPS', false)),
 
     /*
     |--------------------------------------------------------------------------

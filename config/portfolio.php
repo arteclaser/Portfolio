@@ -4,6 +4,9 @@ return [
     // Incrementar ao alterar CSS/JS para invalidar o cache dos navegadores.
     'asset_version' => '2026.10.7',
 
+    // Redireciona todo acesso para HTTPS (ative depois de instalar o certificado SSL).
+    'force_https' => (bool) env('FORCE_HTTPS', false),
+
     // Nome da plataforma (página inicial de mostraqui.net e tela de acesso).
     'platform_name' => env('PLATFORM_NAME', 'Mostraqui'),
     'platform_tagline' => env('PLATFORM_TAGLINE', 'Portfólios institucionais de ações públicas'),
