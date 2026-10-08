@@ -65,7 +65,7 @@ php artisan serve               # http://localhost:8000 (plataforma) e http://lo
 ## Testes
 
 ```bash
-php artisan test                              # 36 testes (aceite, segurança, integridade e vários portfólios)
+php artisan test                              # 54 testes (aceite, segurança, integridade, vários portfólios e unitários)
 # Contra MySQL/MariaDB: DB_CONNECTION=mariadb DB_DATABASE=... DB_USERNAME=... DB_PASSWORD=... php artisan test
 BASE_URL=http://127.0.0.1:8000 node tests/browser/verificar.cjs   # celular, teclado e axe-core (exige playwright e axe-core)
 ```

@@ -33,8 +33,9 @@
 
 | Verificação | Resultado (08/10/2026) |
 | --- | --- |
-| `php artisan test` em SQLite | 36 testes, 360 verificações, todos aprovados |
-| `php artisan test` em MariaDB 10.11 (mesmo motor da hospedagem) | 36 testes aprovados |
+| `php artisan test` em SQLite | 54 testes (36 de funcionalidade e 18 unitários), 384 verificações, todos aprovados |
+| `php artisan test` em MariaDB 10.11 (mesmo motor da hospedagem) | 54 testes aprovados |
+| GitHub Actions, fluxo *Testes* (SQLite e MariaDB 10.11 nos servidores do GitHub) | aprovado na execução nº 4 (commit `7938f99`). As três execuções anteriores falharam porque a pasta `tests/Unit` estava vazia e o Git não versiona pastas vazias; isso foi corrigido |
 | Isolamento entre portfólios (`MultiPortfolioTest`) e modo subdomínio (`SubdomainModeTest`) | aprovados |
 | `tests/browser/verificar.cjs` (Playwright + axe-core 4.10) | 68 verificações: celular, teclado, tema escuro, painel e telas da plataforma, sem violações WCAG A/AA detectadas |
 | Ensaio da implantação: pacotes do `scripts/empacotar.sh`, estrutura `mostraqui-app/` + `public_html/`, MariaDB vazio, instalação por `/instalar` sem terminal | aprovado (tabelas, Master, áreas iniciais, `/instalar` desativado em seguida) |
