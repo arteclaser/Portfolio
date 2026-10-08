@@ -20,16 +20,20 @@ use App\Http\Controllers\Panel\PartnerController;
 use App\Http\Controllers\Panel\SettingsController;
 use App\Http\Controllers\Panel\TeamController;
 use App\Http\Controllers\Panel\UserController;
+use App\Support\Routing;
 use Illuminate\Support\Facades\Route;
 
 $central = Route::middleware([]);
-if (config('portfolio.routing') === 'subdomain') {
+if (Routing::subdomain()) {
     // No modo subdomínio, painel e acesso ficam só no domínio principal.
     $central->domain(config('portfolio.base_domain'));
 }
 
 $central->group(function () {
-Route::get('/', [PlatformController::class, 'home'])->name('platform.home');
+if (! Routing::single()) {
+    // Com vários portfólios, a raiz do domínio lista os portfólios. No modo único, ela é o próprio portfólio.
+    Route::get('/', [PlatformController::class, 'home'])->name('platform.home');
+}
 
 // Primeiro acesso: cria o portfólio e o primeiro Master (exige SETUP_TOKEN e nenhum usuário).
 Route::get('/instalar', [SetupController::class, 'show'])->name('setup');
@@ -167,7 +171,12 @@ Route::prefix('painel')->name('panel.')->middleware(['auth', 'active', 'panel.te
     Route::get('/atividades', ActivityController::class)->name('activity.index');
 });
 
-if (config('portfolio.routing') === 'subdomain') {
+if (! Routing::single()) {
+    Route::get('/{legacy}/{rest?}', [PlatformController::class, 'redirectFromSingle'])
+        ->where('legacy', 'acoes|areas|p|equipe|acessibilidade|privacidade|midia')->where('rest', '.*')->name('platform.legacy');
+}
+
+if (Routing::subdomain()) {
     Route::get('/{portfolio}/{rest?}', [PlatformController::class, 'redirectToSubdomain'])->where('rest', '.*')->name('platform.redirect');
 }
 });

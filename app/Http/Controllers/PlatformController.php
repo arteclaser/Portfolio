@@ -23,6 +23,18 @@ class PlatformController extends Controller
         return view('platform.home', ['portfolios' => $portfolios]);
     }
 
+    /**
+     * Endereços do modo portfólio único (mostraqui.net/acoes/...) continuam válidos depois da
+     * mudança para vários portfólios: seguem (301) para o portfólio que era exibido no domínio.
+     */
+    public function redirectFromSingle()
+    {
+        $portfolio = Portfolio::single() ?? abort(404);
+        $query = request()->getQueryString();
+
+        return redirect()->away(rtrim($portfolio->publicUrl(), '/').'/'.request()->path().($query ? '?'.$query : ''), 301);
+    }
+
     /** Modo subdomínio: endereços antigos /capinzal/... seguem para capinzal.mostraqui.net/... */
     public function redirectToSubdomain(string $portfolio, ?string $rest = null)
     {

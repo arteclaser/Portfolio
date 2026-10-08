@@ -1,7 +1,7 @@
 # Manual da equipe
 
-Acesse **mostraqui.net/entrar** (botão "Acesso da equipe" no topo do site). O mesmo endereço serve
-a todos os portfólios: depois de entrar, o painel mostra só o portfólio da sua conta.
+Acesse **mostraqui.net/entrar** (botão "Acesso da equipe" no topo do site). Depois de entrar, o
+painel mostra o portfólio de Capinzal.
 
 ## Primeiro acesso
 
@@ -90,9 +90,11 @@ mostrando a versão aprovada até a nova aprovação. Para desistir, use **Desca
 convite por e-mail ou mostra o link para você copiar. Desativar um usuário bloqueia o acesso na hora
 e mantém a autoria e o histórico.
 
-## Administração da plataforma
+## Administração da plataforma (só com vários portfólios)
 
-Quem administra a plataforma vê o grupo **Plataforma → Portfólios** no menu:
+No modo atual (portfólio único), a conta de administração atua como Master de Capinzal e este grupo
+não aparece. Se vários portfólios forem ativados (`docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md`), quem
+administra a plataforma passa a ver o grupo **Plataforma → Portfólios** no menu:
 
 - **Novo portfólio:** nome, nome curto, endereço (ex.: `capinzal`), áreas iniciais e, se quiser, o
   Master do portfólio, que recebe um convite. O portfólio fica no ar assim que é salvo.

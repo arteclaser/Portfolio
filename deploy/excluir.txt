@@ -1,0 +1,30 @@
+# O que a implantação nunca envia para a pasta do código (caminhos a partir da raiz do projeto).
+# O conteúdo de public/ vai separado para public_html. Arquivos do servidor (.env, storage/)
+# nunca são enviados nem apagados: a implantação só apaga o que ela mesma enviou antes.
+/.git/
+/.github/
+/.env
+/.env.backup
+/.env.production
+/.implantacao/
+/storage/
+/public/
+/tests/
+/docs/
+/deploy/
+/dist/
+/node_modules/
+/bootstrap/cache/*.php
+/database/*.sqlite
+/database/*.sqlite-*
+/.phpunit.cache/
+/.phpunit.result.cache
+/.editorconfig
+/.gitattributes
+/.gitignore
+/phpunit.xml
+# Testes, documentação de desenvolvimento e metadados de Git dos pacotes de terceiros.
+/vendor/**/.git/
+/vendor/**/.github/
+/vendor/*/*/tests/
+/vendor/*/*/Tests/

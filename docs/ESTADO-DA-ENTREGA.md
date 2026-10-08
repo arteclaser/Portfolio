@@ -2,12 +2,12 @@
 
 ## Funcionando
 
-- **Vários portfólios na mesma instalação**: a administração da plataforma cria portfólios pelo
-  painel ou pelo terminal, e cada um fica no ar na hora em `mostraqui.net/endereço` (padrão) ou
-  `endereço.mostraqui.net` (modo subdomínio, após configuração única). Dados, usuários, arquivos e
-  registros ficam isolados por portfólio; há página inicial da plataforma com os portfólios
-  listados; desativação e ocultação de portfólios; e redirecionamento 301 dos endereços antigos ao
-  migrar para subdomínios.
+- **Portfólio de Capinzal direto em `mostraqui.net`** (modo portfólio único, padrão). Antes da
+  instalação, o domínio mostra "instalação pendente".
+- **Preparado para vários portfólios** (ativável no `.env`, não ativo): por caminho
+  (`mostraqui.net/endereço`) ou subdomínio (`endereço.mostraqui.net`), com criação pelo painel,
+  isolamento de dados, usuários e arquivos por portfólio, e redirecionamento 301 dos endereços já
+  divulgados ao mudar de modo.
 - **Portfólio público** (sem cadastro e sem cookies): página inicial editorial com destaque principal
   e dois secundários, filtros por área e galeria de ações; busca e filtros por área, período, tipo e
   situação; página própria de cada ação, com capa, contexto, descrição, equipe, galeria ampliável,
@@ -24,23 +24,24 @@
 - **Segurança:** permissões por perfil e área no servidor, convites, recuperação de senha, limite de
   tentativas de login, desativação de usuários, arquivos privados, validação de envios, proteção
   contra SSRF, sanitização e CSP.
-- **Operação:** instalação por terminal ou navegador, backup e restauração completos, pacote para
-  cPanel, demonstração isolada e **implantação automática GitHub → HostGator** por SSH/rsync
-  (testes antes do envio, modo de manutenção, `.env` e `APP_KEY` criados na primeira vez, migrações
-  e verificação final).
+- **Operação:** instalação pelo navegador (ou terminal), backup e restauração completos, pacote
+  para cPanel, demonstração isolada e **implantação automática GitHub → HostGator por FTP com
+  criptografia, sem SSH**. Ela roda os testes antes do envio, envia só o que mudou, usa modo de
+  manutenção, cria `.env` e `APP_KEY` na primeira vez, roda as migrações por um código de uso único,
+  se recupera de falhas e faz a verificação final.
 
 ## Testado
 
 | Verificação | Resultado (08/10/2026) |
 | --- | --- |
-| `php artisan test` em SQLite | 54 testes (36 de funcionalidade e 18 unitários), 384 verificações, todos aprovados |
-| `php artisan test` em MariaDB 10.11 (mesmo motor da hospedagem) | 54 testes aprovados |
+| `php artisan test` em SQLite | 62 testes (44 de funcionalidade e 18 unitários), 456 verificações, todos aprovados |
+| `php artisan test` em MariaDB 10.11 (mesmo motor da hospedagem) | 62 testes aprovados |
 | GitHub Actions, fluxo *Testes* (SQLite e MariaDB 10.11 nos servidores do GitHub) | aprovado na execução nº 4 (commit `7938f99`). As três execuções anteriores falharam porque a pasta `tests/Unit` estava vazia e o Git não versiona pastas vazias; isso foi corrigido |
 | Isolamento entre portfólios (`MultiPortfolioTest`) e modo subdomínio (`SubdomainModeTest`) | aprovados |
-| `tests/browser/verificar.cjs` (Playwright + axe-core 4.10) | 68 verificações: celular, teclado, tema escuro, painel e telas da plataforma, sem violações WCAG A/AA detectadas |
+| `tests/browser/verificar.cjs` (Playwright + axe-core 4.10), modo portfólio único | 62 verificações: celular, teclado, tema escuro e painel, sem violações WCAG A/AA detectadas (no modo com vários portfólios, a versão anterior também verificou as telas da plataforma: 68 verificações) |
 | Ensaio da implantação: pacotes do `scripts/empacotar.sh`, estrutura `mostraqui-app/` + `public_html/`, MariaDB vazio, instalação por `/instalar` sem terminal | aprovado (tabelas, Master, áreas iniciais, `/instalar` desativado em seguida) |
 | Backup e restauração no MariaDB | aprovado (acentuação e dados preservados) |
-| Ensaio da implantação automática (`deploy/implantar.sh`) contra um servidor SSH local na porta 2222, com a estrutura do cPanel | aprovado: chave com senha, primeira execução sem `.env`, criação do `.env`, migrações no MariaDB, preservação de `.env`/banco/fotos/logs/`.well-known`, remoção de arquivos obsoletos do código, retorno automático da manutenção quando o envio falha e bloqueio de caminhos inválidos |
+| Ensaio da implantação automática por FTP (`deploy/implantar-ftp.sh`) contra Pure-FTPd local com TLS obrigatório e a estrutura do cPanel | aprovado: 8.833 arquivos na primeira vez, `.env` criado (600, APP_KEY nova), migrações no MariaDB, instalação por `/instalar`, reenvio só do que mudou, remoção só do que saiu do sistema, preservação de `.env`/fotos/`.well-known`/arquivos alheios, recuperação após falha no meio do envio, recusa de FTP sem criptografia e mensagens para senha, certificado, `SITE_URL` e pasta errados (detalhes em `docs/IMPLANTACAO-AUTOMATICA.md`) |
 | Prévia de links contra sites reais (W3C, YouTube, Instagram) e recusa de endereços locais | aprovado (YouTube: título e miniatura via oEmbed; W3C: prévia parcial; Instagram: modo manual; `localhost` e porta 8000 recusados) |
 
 ## Depende de configuração na hospedagem
@@ -49,11 +50,12 @@
 | --- | --- | --- |
 | PHP 8.3+ | MultiPHP Manager | o sistema não roda |
 | E-mail (convites e recuperação) | `MAIL_*` no `.env` (conta SMTP do domínio) | o Master copia o link de convite exibido no painel; a recuperação de senha por e-mail não funciona |
-| HTTPS | certificado SSL no cPanel + linhas no `.htaccess` | navegadores marcam o site como inseguro |
+| HTTPS | certificado SSL no cPanel + `FORCE_HTTPS=true` no `.env` | navegadores marcam o site como inseguro |
+| Implantação automática | conta FTP, segredos e variável `SITE_URL` no GitHub, branch `main` (`docs/IMPLANTACAO-AUTOMATICA.md`) | publicação manual pelo Gerenciador de arquivos |
 | Backup diário | Cron (`docs/IMPLANTACAO-HOSTGATOR.md`, passo 8) | backups só quando executados manualmente |
 | Limites de envio | `.user.ini` ou MultiPHP INI Editor | o PHP pode recusar fotos acima de 2 MB (padrão comum do PHP) |
 | Prévia de links | saída HTTPS liberada no servidor (padrão em hospedagens) | links entram no modo manual |
-| Subdomínios por portfólio | subdomínio `*` + DNS curinga + SSL curinga (`docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md`) | os portfólios funcionam por caminho (`mostraqui.net/capinzal`) |
+| Vários portfólios por subdomínio (futuro) | subdomínio `*` + DNS curinga + SSL curinga (`docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md`) | vários portfólios só por caminho (`mostraqui.net/capinzal`); hoje o modo é portfólio único |
 
 ## Não disponível nesta versão
 
@@ -77,7 +79,9 @@ Estes recursos **não estão implementados** e não devem ser apresentados como 
   com uma publicação real neste ambiente. Se a publicação não carregar, o visitante vê uma mensagem
   e o link para abrir no Instagram.
 - **Envio de e-mail por SMTP:** testado apenas com o modo `log` e com o envio simulado dos testes.
-- **Implantação automática na HostGator real:** depende da liberação do SSH pelo suporte e dos
-  segredos no GitHub; o fluxo foi ensaiado contra um servidor SSH local, não contra a HostGator.
+- **Implantação automática na HostGator real:** depende da conta FTP e dos segredos no GitHub; o
+  fluxo foi ensaiado contra um servidor FTPS local, não contra a HostGator. Pontos a confirmar na
+  primeira execução: se a conta FTP adicional aceita TLS e enxerga a pasta pessoal (há alternativa
+  com a conta principal) e o tempo real da primeira transferência.
 - **Modo subdomínio na hospedagem real:** testado automaticamente com domínios de teste; depende do
   subdomínio curinga e do certificado curinga na HostGator, ainda não configurados.

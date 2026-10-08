@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Action;
+use App\Support\Routing;
 use App\Support\PortfolioSlug;
 use App\Support\Tenant;
 use App\Models\User;
@@ -45,7 +46,8 @@ class AppServiceProvider extends ServiceProvider
 
         Password::defaults(fn () => Password::min(10)->letters()->numbers());
 
-        Gate::define('manage-platform', fn (User $user) => $user->is_active && $user->isPlatformAdmin());
+        // No modo portfólio único, não há gestão de vários portfólios no painel.
+        Gate::define('manage-platform', fn (User $user) => $user->is_active && $user->isPlatformAdmin() && ! Routing::single());
         Gate::define('manage-users', fn (User $user) => $user->is_active && $user->isMaster());
         Gate::define('manage-settings', fn (User $user) => $user->is_active && $user->isMaster());
         Gate::define('view-activity', fn (User $user) => $user->is_active && $user->isMaster());
@@ -58,5 +60,6 @@ class AppServiceProvider extends ServiceProvider
         RateLimiter::for('link-preview', fn (Request $request) => Limit::perMinute(20)->by($request->user()?->id ?: $request->ip()));
         RateLimiter::for('uploads', fn (Request $request) => Limit::perMinute(60)->by($request->user()?->id ?: $request->ip()));
         RateLimiter::for('setup', fn (Request $request) => Limit::perMinute(5)->by($request->ip()));
+        RateLimiter::for('implantacao', fn (Request $request) => Limit::perMinute(10)->by($request->ip()));
     }
 }

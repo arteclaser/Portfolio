@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DeployController;
 use App\Http\Middleware\EnsureActiveUser;
 use App\Http\Middleware\EnsurePortfolioInstalled;
 use App\Http\Middleware\ForceHttps;
@@ -8,6 +9,7 @@ use App\Http\Middleware\PublicContext;
 use App\Http\Middleware\ResolvePublicTenant;
 use App\Http\Middleware\SetPanelTenant;
 use App\Http\Middleware\SecurityHeaders;
+use App\Support\Routing;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -21,11 +23,15 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
         then: function () {
-            // Portfólios públicos, sem sessão e sem cookies: mostraqui.net/{portfolio} ou {portfolio}.mostraqui.net
+            // Conclusão da implantação por FTP (sem sessão e sem CSRF; exige o código de uso único).
+            Route::post('/_implantacao/finalizar', DeployController::class)->middleware('throttle:implantacao')->name('deploy.finish');
+
+            // Site público, sem sessão e sem cookies: mostraqui.net (portfólio único),
+            // mostraqui.net/{portfolio} ou {portfolio}.mostraqui.net
             $group = Route::middleware('public');
-            if (config('portfolio.routing') === 'subdomain') {
+            if (Routing::subdomain()) {
                 $group->domain('{portfolio}.'.config('portfolio.base_domain'));
-            } else {
+            } elseif (! Routing::single()) {
                 $group->prefix('{portfolio}');
             }
             $group->group(base_path('routes/public.php'));
@@ -33,6 +39,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->prepend(ForceHttps::class);
+        // A conclusão da implantação precisa responder com o site em manutenção.
+        $middleware->preventRequestsDuringMaintenance(except: ['_implantacao/*']);
         $middleware->append(SecurityHeaders::class);
         $middleware->group('public', [
             PublicContext::class,

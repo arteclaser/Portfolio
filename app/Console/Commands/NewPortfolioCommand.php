@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Portfolio;
 use App\Services\Installer;
+use App\Support\Routing;
 use Illuminate\Console\Command;
 use InvalidArgumentException;
 
@@ -28,7 +30,12 @@ class NewPortfolioCommand extends Command
             return self::FAILURE;
         }
         $this->info('Portfólio criado: '.$portfolio->name);
-        $this->line('Endereço público: '.$portfolio->publicUrl());
+        if (Routing::single() && Portfolio::single()?->id !== $portfolio->id) {
+            $this->warn('Modo portfólio único (PORTFOLIO_ROUTING=single): o site continua mostrando "'.Portfolio::single()?->name.'". '
+                .'Para publicar este portfólio, use PORTFOLIO_ROUTING=path (endereço /'.$portfolio->slug.') no arquivo .env.');
+        } else {
+            $this->line('Endereço público: '.$portfolio->publicUrl());
+        }
 
         if ($email = $this->option('master-email')) {
             $user = $installer->createMaster($portfolio, $this->option('master-nome') ?: $email, $email);

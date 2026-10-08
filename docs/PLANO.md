@@ -27,10 +27,13 @@ registra o que foi decidido, por quê e o que fica para depois.
 - **Arquivos sempre em disco privado** (`storage/app/private`). Um controlador entrega a mídia:
   a rota pública só serve arquivos em uso por conteúdo publicado, e a rota do painel exige
   autorização.
-- **Pacote pronto para cPanel** (`scripts/empacotar.sh`): o código fica fora de `public_html` e
-  apenas `public/` vai para a pasta pública. O `index.php` localiza o código automaticamente.
-- **Modelo já separado por `portfolio_id`.** A primeira versão atende um portfólio por instalação, e
-  os dados estão prontos para outros portfólios no mesmo domínio (ver seção 8).
+- **Código fora de `public_html`:** apenas `public/` vai para a pasta pública, e o `index.php`
+  localiza o código automaticamente. A publicação é automática pelo GitHub, por FTP com
+  criptografia, sem SSH (`docs/IMPLANTACAO-AUTOMATICA.md`). Há também um pacote para envio manual
+  (`scripts/empacotar.sh`).
+- **Portfólio único no domínio, modelo pronto para vários.** Capinzal abre direto em
+  `mostraqui.net` (`PORTFOLIO_ROUTING=single`). Os dados já são separados por `portfolio_id`, e
+  outros portfólios podem ser ativados depois por caminho ou subdomínio (ver seção 7).
 
 ## 3. Modelo de dados
 
@@ -135,10 +138,15 @@ instalação segura e dados de demonstração isolados.
    `preview_message`, e o `SafeFetcher` já faz consultas seguras. Falta a rotina agendada e o aviso
    no painel.
 
-**Vários portfólios — entregue:** plataforma com criação automática de portfólios, endereço por
-caminho (`mostraqui.net/capinzal`, padrão) ou por subdomínio (`capinzal.mostraqui.net`, após
-configuração única de DNS e SSL curinga), isolamento por portfólio e administração da plataforma.
-Ver `docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md`.
+**Endereços e vários portfólios — entregue:** o padrão é o portfólio único (Capinzal em
+`mostraqui.net`). A mesma instalação já suporta vários portfólios isolados, com criação automática
+pelo painel, por caminho (`mostraqui.net/capinzal`) ou por subdomínio (`capinzal.mostraqui.net`,
+após configuração única de DNS e SSL curinga). A troca é feita no `.env`, e os endereços já
+divulgados redirecionam (301). Ver `docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md`.
+
+**Implantação automática — entregue:** GitHub Actions → FTPS (sem SSH), com envio só do que mudou,
+manutenção durante o envio, atualização do banco por um código de uso único e recuperação em caso
+de falha. Ensaiada localmente; ainda não executada contra a HostGator real.
 
 **Fase 3 — a decidir:** autenticação em dois fatores, conta única em vários portfólios e integração
 com a política oficial de privacidade de cada órgão.

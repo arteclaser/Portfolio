@@ -1,32 +1,37 @@
-# Vários portfólios: endereço por caminho ou por subdomínio
+# Endereço do portfólio: único, por caminho ou por subdomínio
 
-A plataforma mostraqui.net hospeda **vários portfólios na mesma instalação**. Cada portfólio tem o
-próprio endereço, equipe, áreas, ações e arquivos, todos isolados dos demais. Há dois formatos de
-endereço, e o sistema funciona com qualquer um deles:
+> **Configuração atual: portfólio único.** O domínio `mostraqui.net` mostra só o portfólio de
+> Capinzal (`PORTFOLIO_ROUTING=single`, o padrão). O painel não exibe a gestão de vários
+> portfólios, e nada precisa ser configurado na hospedagem. Este guia só é necessário se, no futuro,
+> a mesma instalação passar a atender outros órgãos ou municípios.
 
-| | **Por caminho** — `mostraqui.net/capinzal` | **Por subdomínio** — `capinzal.mostraqui.net` |
-| --- | --- | --- |
-| Criação de novos portfólios | Automática, pelo painel | Automática, pelo painel (depois da configuração única) |
-| Configuração na hospedagem | Nenhuma | Uma única vez: subdomínio curinga `*`, DNS curinga e certificado SSL curinga |
-| Certificado HTTPS | O mesmo do domínio (SSL gratuito da hospedagem) | Precisa cobrir `*.mostraqui.net` (ver seção 3) |
-| Custo adicional | Nenhum | Possivelmente o certificado Wildcard (ver seção 3) |
-| Identidade de cada portfólio | Boa | Mais forte (parece um site próprio) |
-| Mudar depois | Sim: os endereços antigos redirecionam (301) para os subdomínios | — |
+O sistema está preparado para hospedar **vários portfólios na mesma instalação**. Cada um tem
+equipe, áreas, ações e arquivos próprios, isolados dos demais. Há três formatos de endereço, e a
+troca entre eles é uma linha no `.env`:
+
+| | **Único** — `mostraqui.net` | **Por caminho** — `mostraqui.net/capinzal` | **Por subdomínio** — `capinzal.mostraqui.net` |
+| --- | --- | --- | --- |
+| `PORTFOLIO_ROUTING` | `single` (atual) | `path` | `subdomain` |
+| Quantos portfólios aparecem no site | Um (`PORTFOLIO_SINGLE` ou o primeiro criado) | Todos, criados pelo painel | Todos, criados pelo painel |
+| Configuração na hospedagem | Nenhuma | Nenhuma | Uma única vez: subdomínio curinga `*`, DNS curinga e certificado SSL curinga |
+| Certificado HTTPS | O do domínio (SSL gratuito da hospedagem) | O do domínio | Precisa cobrir `*.mostraqui.net` (ver seção 3) |
+| Custo adicional | Nenhum | Nenhum | Possivelmente o certificado Wildcard (ver seção 3) |
+| Endereços já divulgados ao mudar | — | `mostraqui.net/acoes/...` redireciona (301) para `mostraqui.net/capinzal/acoes/...` | `mostraqui.net/acoes/...` e `mostraqui.net/capinzal/...` redirecionam (301) para `capinzal.mostraqui.net/...` |
 
 ## 1. Recomendação
 
-1. **Começar agora por caminho** (`mostraqui.net/capinzal`). É o padrão do sistema, funciona no
-   plano atual sem configurar nada e é 100% automático: cada portfólio criado no painel já está no
-   ar no instante em que é salvo.
-2. **Migrar para subdomínios quando o SSL curinga estiver resolvido.** A troca é uma linha no `.env`.
-   Os links antigos (`mostraqui.net/capinzal/...`) passam a redirecionar permanentemente para
-   `capinzal.mostraqui.net/...`, sem quebrar nada que já tenha sido divulgado.
+1. **Agora: portfólio único.** Capinzal em `mostraqui.net`, sem nenhuma configuração extra.
+2. **Se surgir outro órgão:** no `~/mostraqui-app/.env`, mude para `PORTFOLIO_ROUTING=path` (e
+   `PORTFOLIO_SINGLE=capinzal`, para que os endereços antigos sigam para Capinzal). A raiz
+   `mostraqui.net` passa a listar os portfólios, Capinzal vai para `mostraqui.net/capinzal` e o
+   painel ganha **Plataforma → Portfólios**. Cada portfólio criado ali fica no ar na hora.
+3. **Subdomínios (`capinzal.mostraqui.net`) só depois de resolver o SSL curinga** (seção 3).
 
 O que **não** é viável é criar um subdomínio no cPanel para cada portfólio, à mão. Por isso o
 sistema nunca depende disso: no modo subdomínio, uma única regra curinga (`*`) atende a todos os
 portfólios, atuais e futuros.
 
-## 2. Como criar um portfólio (automático)
+## 2. Como criar um portfólio (modos `path` e `subdomain`)
 
 Quem administra a plataforma entra em **Painel → Plataforma → Portfólios → Novo portfólio** e
 preenche:
@@ -95,21 +100,24 @@ No arquivo `~/mostraqui-app/.env`:
 
 ```
 PORTFOLIO_ROUTING=subdomain
+PORTFOLIO_SINGLE=capinzal
 PORTFOLIO_BASE_DOMAIN=mostraqui.net
 APP_URL=https://mostraqui.net
 ```
 
-Se o cache de configuração tiver sido gerado (`php artisan config:cache`), limpe-o com
-`php artisan config:clear`, pelo Terminal ou por um Cron que rode uma vez. A partir daí:
+A mudança vale na hora (o sistema não usa cache de configuração; a implantação automática ainda
+limpa os caches a cada envio). A partir daí:
 
 - `capinzal.mostraqui.net` abre o portfólio de Capinzal, e cada novo portfólio criado no painel já
   abre no seu subdomínio, sem nenhum passo adicional;
 - `mostraqui.net` mostra a página da plataforma, e o painel e o acesso da equipe ficam em
   `mostraqui.net/painel` e `mostraqui.net/entrar`;
-- `mostraqui.net/capinzal/...` redireciona (301) para `capinzal.mostraqui.net/...`;
+- `mostraqui.net/capinzal/...` e os endereços do tempo do portfólio único (`mostraqui.net/acoes/...`)
+  redirecionam (301) para `capinzal.mostraqui.net/...`;
 - `www.mostraqui.net` redireciona para `mostraqui.net`.
 
-Para voltar ao modo caminho, basta `PORTFOLIO_ROUTING=path`.
+Para voltar ao modo caminho, basta `PORTFOLIO_ROUTING=path`; para voltar ao portfólio único,
+`PORTFOLIO_ROUTING=single`.
 
 ## 4. Mensagem pronta para o suporte da HostGator
 
@@ -124,8 +132,7 @@ Copie e cole no chat ou em um chamado:
 >    registro DNS A `*` no Zone Editor?
 > 3. O **SSL gratuito (AutoSSL/Let's Encrypt)** do meu plano cobre `*.mostraqui.net`? Se não cobrir,
 >    qual é o procedimento e o valor atual do **SSL Wildcard**?
-> 4. Meu plano tem **acesso SSH** ou o **Terminal** do cPanel?
-> 5. Posso agendar **tarefas Cron** diárias com o PHP 8.3? Qual é o caminho do executável do PHP 8.3?
+> 4. Posso agendar **tarefas Cron** diárias com o PHP 8.3? Qual é o caminho do executável do PHP 8.3?
 >
 > Obrigado!
 

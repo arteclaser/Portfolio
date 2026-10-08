@@ -4,41 +4,25 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Env;
+use Tests\Concerns\UsesRoutingMode;
 use Tests\TestCase;
 
-/**
- * Modo subdomínio (PORTFOLIO_ROUTING=subdomain): capinzal.mostraqui.test.
- * As rotas são registradas na criação da aplicação, por isso o ambiente é
- * definido antes do setUp.
- */
+/** Modo subdomínio (PORTFOLIO_ROUTING=subdomain): capinzal.mostraqui.test. */
 class SubdomainModeTest extends TestCase
 {
     use RefreshDatabase;
+    use UsesRoutingMode { setUp as routingSetUp; }
 
-    private const ENV = ['PORTFOLIO_ROUTING' => 'subdomain', 'PORTFOLIO_BASE_DOMAIN' => 'mostraqui.test', 'APP_URL' => 'http://mostraqui.test'];
+    protected function routingEnv(): array
+    {
+        return ['PORTFOLIO_ROUTING' => 'subdomain', 'PORTFOLIO_BASE_DOMAIN' => 'mostraqui.test', 'APP_URL' => 'http://mostraqui.test'];
+    }
 
     protected function setUp(): void
     {
-        foreach (self::ENV as $key => $value) {
-            putenv("{$key}={$value}");
-            $_ENV[$key] = $_SERVER[$key] = $value;
-        }
-        // O leitor do .env é compartilhado entre testes: recomeça para respeitar os valores acima.
-        Env::enablePutenv();
-        parent::setUp();
+        $this->routingSetUp();
         $this->makePortfolio([], 'capinzal');
         $this->makePage('Turismo');
-    }
-
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-        foreach (array_keys(self::ENV) as $key) {
-            putenv($key);
-            unset($_ENV[$key], $_SERVER[$key]);
-        }
-        Env::enablePutenv();
     }
 
     public function test_each_portfolio_answers_on_its_own_subdomain(): void
@@ -69,5 +53,7 @@ class SubdomainModeTest extends TestCase
             ->assertStatus(301)->assertRedirect('http://capinzal.mostraqui.test/acoes?q=feira');
         $this->get('http://mostraqui.test/nao-existe/acoes')->assertNotFound();
         $this->get('http://www.mostraqui.test/')->assertStatus(301)->assertRedirect('http://mostraqui.test/');
+        // Endereços do tempo do portfólio único (mostraqui.test/acoes/...) também seguem para o subdomínio.
+        $this->get('http://mostraqui.test/acoes/feira')->assertStatus(301)->assertRedirect('http://capinzal.mostraqui.test/acoes/feira');
     }
 }

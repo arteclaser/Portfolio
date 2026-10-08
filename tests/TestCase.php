@@ -8,6 +8,7 @@ use App\Models\Portfolio;
 use App\Models\User;
 use App\Services\ActionWorkflow;
 use App\Services\PagePublisher;
+use App\Support\Routing;
 use App\Support\Slug;
 use App\Support\Tenant;
 use Illuminate\Support\Facades\URL;
@@ -54,10 +55,12 @@ abstract class TestCase extends BaseTestCase
         URL::defaults(['portfolio' => $portfolio->slug]);
     }
 
-    /** Endereço público dentro do portfólio atual (modo caminho). */
+    /** Endereço público dentro do portfólio atual (modo único: /acoes; modo caminho: /capinzal/acoes). */
     protected function pub(string $path = ''): string
     {
-        return '/'.$this->portfolio->slug.($path === '' ? '' : '/'.ltrim($path, '/'));
+        $prefix = Routing::single() ? '' : '/'.$this->portfolio->slug;
+
+        return ($prefix.($path === '' ? '' : '/'.ltrim($path, '/'))) ?: '/';
     }
 
     protected function makePage(string $title, ?Page $parent = null, bool $publish = true): Page

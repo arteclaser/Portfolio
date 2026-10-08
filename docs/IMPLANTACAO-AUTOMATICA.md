@@ -1,68 +1,58 @@
-# Implantação automática: GitHub → HostGator
+# Implantação automática: GitHub → HostGator (por FTP, sem SSH)
 
 Depois desta configuração, **toda alteração aprovada no branch `main` vai sozinha para o site**. O
-GitHub roda os testes, prepara os arquivos, envia para a HostGator por conexão criptografada (SSH),
-atualiza o banco de dados e confere se o site respondeu. Não é preciso usar FTP nem o Gerenciador de
-arquivos a cada atualização.
+GitHub roda os testes, envia os arquivos para a HostGator por **FTP com criptografia (FTPS)**,
+atualiza o banco de dados e confere se o site respondeu. Não é preciso pedir SSH ao suporte nem usar
+o Gerenciador de arquivos a cada atualização.
 
 ```
-Você aprova a mudança (main) ─► GitHub testa ─► envia por SSH ─► atualiza o banco ─► site atualizado
+Você aprova a mudança (main) ─► GitHub testa ─► envia por FTPS ─► atualiza o banco ─► site atualizado
                                    │ falhou?                 │ falhou?
                                    └─ nada é enviado          └─ o site sai da manutenção e você é avisado
 ```
 
-**Por que SSH e não FTP:** segundo a base de conhecimento da HostGator, o FTP com criptografia
-(FTPS) só está disponível em servidores dedicados e VPS. Na hospedagem compartilhada, o FTP comum
-envia a senha sem proteção. O SSH, na porta 2222, é criptografado, usa uma chave em vez de senha e
-permite rodar as atualizações do banco.
-
-O que a implantação **nunca apaga nem substitui** no servidor: o arquivo `.env`, a pasta `storage/`
+**O que a implantação nunca apaga nem substitui no servidor:** o arquivo `.env`, a pasta `storage/`
 (fotos, documentos, backups, sessões), o banco de dados e os arquivos que já existiam em
-`public_html` (como a pasta `.well-known` do SSL). Isso foi verificado em um ensaio local com a
-mesma estrutura de pastas do cPanel.
+`public_html` (como a pasta `.well-known` do SSL). Ela guarda no servidor uma lista dos arquivos
+que enviou e só apaga arquivos dessa lista que deixaram de existir no sistema. Isso foi verificado em
+um ensaio local com a mesma estrutura de pastas do cPanel (ver *Como foi testado*).
 
 ---
 
-## Parte 1 — Pedir a liberação do SSH (uma vez)
+## Parte 1 — Anotar o endereço do servidor de FTP (uma vez)
 
-Na hospedagem compartilhada da HostGator, o SSH precisa ser liberado pelo suporte. Abra o chat ou
-um chamado e envie:
+1. No cPanel, procure **Contas FTP**.
+2. Na lista de contas, clique em **Configurar cliente FTP** na conta principal.
+3. Anote o valor do campo **"FTP & porta FTPS explícita (Servidor - Host)"**. Em geral, é o nome do
+   servidor, no formato `br123.hostgator.com.br`. **Prefira esse nome** ao IP ou a
+   `ftp.mostraqui.net`, porque o certificado de segurança do FTP costuma ser emitido para o nome do
+   servidor, e a implantação confere esse certificado.
 
-> Olá! Peço a **liberação do acesso SSH** na minha hospedagem do domínio **mostraqui.net**. Vou usar o
-> SSH (porta 2222) com chave para publicar atualizações do site a partir do GitHub. Aproveito para
-> confirmar: (1) o PHP 8.3 está disponível no MultiPHP Manager? (2) Qual é o caminho do executável do
-> PHP 8.3 na linha de comando? (3) O `rsync` está disponível no servidor? Obrigado!
+## Parte 2 — Criar uma conta FTP só para a implantação (uma vez)
 
-Guarde a resposta sobre o **caminho do PHP 8.3**: ela será usada na Parte 4.
+Uma conta própria pode ser excluída a qualquer momento sem mexer na senha do cPanel.
 
-## Parte 2 — Criar a chave de implantação no cPanel (uma vez)
+1. Em **Contas FTP → Adicionar conta FTP**, preencha:
+   - *Login:* `implantacao` (o usuário completo será `implantacao@mostraqui.net`);
+   - *Senha:* use o **Gerador de senha** e **anote a senha**;
+   - *Diretório:* apague o texto sugerido e digite apenas **`/`** (a pasta pessoal inteira). A
+     implantação precisa enxergar `public_html` e a pasta do código, que fica fora dela;
+   - *Cota:* **Ilimitado**.
+2. Clique em **Criar conta de FTP**. Segundo a HostGator, a conta não pode ser editada depois. Se
+   algo ficar errado, exclua e crie de novo.
 
-1. No cPanel, procure **Acesso SSH** e clique em **Gerenciar chaves SSH**.
-2. Clique em **Gerar uma nova chave**:
-   - *Nome da chave:* `github-implantacao`
-   - *Senha da chave:* crie uma senha forte e **anote-a**
-   - *Tipo:* RSA, *Tamanho:* 4096 (ou o maior disponível)
-3. Volte à lista. Em **Chaves públicas**, na linha `github-implantacao`, clique em **Gerenciar** e
-   depois em **Autorizar**.
-4. Em **Chaves privadas**, na linha `github-implantacao`, clique em **Exibir/Baixar** e copie
-   **todo** o texto, das linhas `-----BEGIN ...` até `-----END ...`.
-5. Anote também:
-   - o **usuário do cPanel** (aparece no canto do cPanel ou em Portal do Cliente → Hospedagens →
-     Gerenciar);
-   - o **endereço do servidor**: o IP compartilhado mostrado no cPanel (em *Informações gerais*). Em
-     08/10/2026, `mostraqui.net` apontava para `108.167.169.58`; prefira o valor que o cPanel mostrar.
+> **Se a conta adicional não funcionar** (o GitHub mostra "A conta FTP não enxerga a pasta
+> 'public_html'" ou recusa o acesso com criptografia), use a **conta FTP principal**: usuário e
+> senha do cPanel. A HostGator informa que o FTP com TLS funciona com as credenciais do cPanel. A
+> desvantagem é que a senha guardada no GitHub também abre o cPanel. Nesse caso, use uma senha forte
+> e exclusiva e troque-a se houver qualquer suspeita.
 
-> Se o cPanel não oferecer a chave privada para copiar, gere a chave no seu computador. No Windows
-> 10/11, abra o PowerShell e rode `ssh-keygen -t ed25519 -f github-implantacao`. Depois importe o
-> arquivo `github-implantacao.pub` em *Gerenciar chaves SSH → Importar chave* e autorize-o. O conteúdo
-> do arquivo `github-implantacao` (sem `.pub`) é a chave privada.
-
-## Parte 3 — Banco de dados (uma vez)
+## Parte 3 — Banco de dados e PHP (uma vez)
 
 1. cPanel → **Bancos de dados MySQL**: crie um banco (ex.: `conta_portfolio`) e um usuário com senha
-   forte e adicione o usuário ao banco com **todos os privilégios**. Anote os três dados (o cPanel
+   forte, e adicione o usuário ao banco com **todos os privilégios**. Anote os três dados (o cPanel
    acrescenta o prefixo da conta aos nomes).
-2. cPanel → **MultiPHP Manager**: selecione **PHP 8.3** para `mostraqui.net`.
+2. cPanel → **MultiPHP Manager**: selecione **PHP 8.3** (ou superior) para `mostraqui.net`.
 
 O arquivo `.env` (configurações e senhas do servidor) é criado **automaticamente** na primeira
 implantação. Você só vai editá-lo na Parte 5.
@@ -75,19 +65,19 @@ No repositório, abra **Settings → Secrets and variables → Actions**.
 
 | Nome | Valor |
 | --- | --- |
-| `HOSTGATOR_SSH_HOST` | Endereço do servidor (Parte 2, item 5) |
-| `HOSTGATOR_SSH_USER` | Usuário do cPanel |
-| `HOSTGATOR_SSH_KEY` | Texto completo da chave privada (Parte 2, item 4) |
-| `HOSTGATOR_SSH_PASSPHRASE` | Senha da chave (Parte 2, item 2) |
-| `HOSTGATOR_KNOWN_HOSTS` | Deixe para depois da primeira implantação (Parte 6) |
+| `FTP_SERVIDOR` | Endereço anotado na Parte 1 (ex.: `br123.hostgator.com.br`) |
+| `FTP_USUARIO` | `implantacao@mostraqui.net` (ou o usuário do cPanel, se usar a conta principal) |
+| `FTP_SENHA` | Senha da conta FTP |
 
 **Aba "Variables" → "New repository variable"** (configurações visíveis, sem senhas):
 
 | Nome | Valor | Quando usar |
 | --- | --- | --- |
-| `PHP_BIN` | Caminho do PHP 8.3 informado pelo suporte (ex.: `/opt/cpanel/ea-php83/root/usr/bin/php`) | Se o PHP padrão do terminal não for o 8.3. A implantação avisa se for o caso |
-| `SITE_URL` | `https://mostraqui.net` (ou `http://` antes do SSL) | Para conferir, ao final, se o site respondeu |
-| `SSH_PORT` | `2222` | Só se o suporte informar outra porta |
+| `SITE_URL` | `http://mostraqui.net` (troque para `https://` quando o SSL estiver ativo) | **Obrigatória** |
+| `FTP_CONFERIR_CERTIFICADO` | `nao` | Só se aparecer erro de certificado mesmo usando o nome do servidor. A conexão continua criptografada |
+| `FTP_CRIPTOGRAFIA` | `desligada` | **Evite.** Só se o servidor recusar FTPS: a senha passaria sem proteção |
+| `FTP_PORTA` | `21` | Só se o cPanel mostrar outra porta |
+| `FTP_CONEXOES` | `4` (de 1 a 6) | Arquivos enviados ao mesmo tempo. A HostGator aceita até 8 conexões por conta |
 | `APP_DIR` / `PUBLIC_DIR` | `mostraqui-app` / `public_html` | Só se quiser outras pastas |
 
 ## Parte 5 — Primeira implantação
@@ -102,40 +92,30 @@ O repositório ainda não tem o branch `main`, que é o branch de produção:
    criação do `main`, clique em **Run workflow**, escolha o branch `main` e confirme. Use esse mesmo
    botão sempre que quiser repetir a implantação.
 
-Na primeira execução, o servidor recebe os arquivos e cria o `.env`. O GitHub mostra um aviso
-amarelo pedindo para editá-lo:
+A primeira execução envia todos os arquivos, cerca de 8.800, e por isso demora mais. As seguintes
+enviam só o que mudou. Ao final, o GitHub mostra um aviso amarelo pedindo para editar o `.env`:
 
 4. cPanel → **Gerenciador de arquivos** → pasta pessoal → `mostraqui-app` → ative **Configurações →
    Mostrar arquivos ocultos** → clique com o botão direito em `.env` → **Editar**. Preencha:
    - `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`: os dados da Parte 3;
-   - `APP_URL`: `https://mostraqui.net` (ou `http://` se o SSL ainda não estiver ativo);
+   - `APP_URL`: `http://mostraqui.net` (ou `https://` se o SSL já estiver ativo);
    - `SETUP_TOKEN`: um código longo inventado por você (ex.: 30 letras e números);
    - `MAIL_*`: os dados da conta de e-mail, se já existir (opcional);
    - não altere `APP_KEY`, que já foi gerada.
-5. Rode a implantação de novo (**Actions → Run workflow**). Agora as tabelas são criadas.
-6. Acesse `https://mostraqui.net/instalar`, informe o `SETUP_TOKEN` e os dados do primeiro portfólio
-   e da administração da plataforma. Depois, **apague a linha `SETUP_TOKEN`** do `.env`.
-7. Quando o certificado SSL estiver ativo, mude `FORCE_HTTPS=false` para `FORCE_HTTPS=true` no `.env`.
+5. Rode a implantação de novo (**Actions → Run workflow**). Agora as tabelas do banco são criadas.
+6. Acesse `http://mostraqui.net/instalar`, informe o `SETUP_TOKEN` e os dados do portfólio de
+   Capinzal e da administração. Depois, **apague a linha `SETUP_TOKEN`** do `.env`.
+7. O site de Capinzal passa a abrir direto em **mostraqui.net**.
+8. Quando o certificado SSL estiver ativo, no `.env` mude `FORCE_HTTPS=false` para
+   `FORCE_HTTPS=true` e `APP_URL` para `https://mostraqui.net`. No GitHub, mude a variável
+   `SITE_URL` para `https://mostraqui.net`.
 
-## Parte 6 — Fixar a identidade do servidor (recomendado)
-
-Na primeira execução, o registro da implantação mostra uma linha parecida com:
-
-```
-[108.167.169.58]:2222 ssh-rsa AAAAB3NzaC1yc2E...
-```
-
-Copie essa linha inteira para o segredo **`HOSTGATOR_KNOWN_HOSTS`**. Assim, o GitHub só envia
-arquivos para esse servidor, o que protege contra desvio da conexão. Enquanto o segredo não existir,
-cada implantação mostra um aviso.
-
-## Parte 7 — No dia a dia
+## Parte 6 — No dia a dia
 
 - **Publicar uma atualização:** aprove (faça o *merge* de) um *pull request* no `main`. Em poucos
-  minutos o site está atualizado. Durante o envio, o site mostra uma página de manutenção por alguns
-  segundos.
+  minutos o site está atualizado. Durante o envio, o site mostra uma página de manutenção.
 - **Acompanhar:** aba **Actions**. Verde ✔ = no ar; vermelho ✗ = algo falhou. Clique para ver o
-  motivo; o site não fica fora do ar por causa da falha.
+  motivo. Se o envio falhar, o site sai da manutenção sozinho; rode de novo para completar.
 - **Desfazer:** no *pull request* já aprovado, clique em **Revert** e aprove o novo *pull request*. O
   código anterior volta ao ar. Alterações já feitas no banco de dados não são desfeitas
   automaticamente. As atualizações de banco feitas até agora só acrescentam tabelas e colunas.
@@ -146,35 +126,70 @@ cada implantação mostra um aviso.
 
 | Mensagem na aba Actions | O que fazer |
 | --- | --- |
-| `Falta o segredo HOSTGATOR_...` | Cadastre o segredo indicado (Parte 4) |
-| `não respondeu. O SSH está liberado na hospedagem?` / `Connection refused` / `timed out` | Confirme com o suporte se o SSH foi liberado e se a porta é 2222 |
-| `Permission denied (publickey)` | A chave não foi **autorizada** no cPanel (Parte 2, item 3), ou o usuário está errado |
-| `Não foi possível abrir a chave SSH com a senha informada` | Confira `HOSTGATOR_SSH_PASSPHRASE` |
-| `O PHP do servidor é 8.x... exige 8.3` / `PHP não encontrado` | Selecione PHP 8.3 no MultiPHP Manager e cadastre a variável `PHP_BIN` |
-| `Host key verification failed` | O servidor mudou de identidade (ex.: migração de servidor pela HostGator). Confirme com o suporte e atualize `HOSTGATOR_KNOWN_HOSTS` |
-| `As migrações do banco falharam` | Confira `DB_*` no `.env` (Parte 5, item 4) |
+| `Falta o segredo FTP_...` / `Falta a variável SITE_URL` | Cadastre o item indicado (Parte 4) |
+| `Usuário ou senha do FTP recusados` | Confira `FTP_USUARIO` (a conta adicional inclui `@mostraqui.net`) e `FTP_SENHA` |
+| `O certificado do servidor não corresponde a FTP_SERVIDOR` | Use em `FTP_SERVIDOR` o nome do servidor da Parte 1. Se persistir, cadastre `FTP_CONFERIR_CERTIFICADO=nao` |
+| `O servidor não aceitou FTP com criptografia` | Confirme com o suporte se o FTPS (FTP sobre TLS explícito) está ativo na conta |
+| `A conta FTP não enxerga a pasta 'public_html'` | Recrie a conta FTP com o diretório `/` ou use a conta principal (Parte 2) |
+| `O site não reconheceu a implantação (HTTP 404)` | `SITE_URL` deve ser o endereço deste site, e `APP_DIR` a pasta do código (`mostraqui-app`) |
+| `O site redirecionou a conclusão (HTTP 301)` | O HTTPS já está ativo: mude `SITE_URL` para `https://` |
+| `O servidor respondeu HTTP 500` com "Composer detected issues in your platform" | O PHP do domínio não é o 8.3: ajuste no MultiPHP Manager (Parte 3) |
+| `Não foi possível conectar ao banco de dados` | Confira `DB_*` no `.env` (Parte 5, item 4) |
+| `421 Too many connections` | Feche programas de FTP abertos (como o FileZilla) ou cadastre `FTP_CONEXOES=2` |
 | `O site não respondeu com HTTP 200` | Veja `~/mostraqui-app/storage/logs/` no Gerenciador de arquivos |
-| `O servidor não tem rsync` | Peça ao suporte |
 
 ## Segurança
 
-- A chave privada fica só nos *Secrets* do GitHub, criptografada. Para cortar o acesso a qualquer
-  momento, desautorize ou exclua a chave em cPanel → Acesso SSH.
-- O `.env` nunca é enviado pelo GitHub, nunca é apagado e fica com permissão 600.
+- **Criptografia obrigatória:** por padrão, a implantação só se conecta com FTPS e confere o
+  certificado do servidor. Senha e arquivos não trafegam abertos.
+- **A senha do FTP fica só nos *Secrets* do GitHub**, criptografada, e o GitHub a oculta nos
+  registros. Para cortar o acesso, exclua a conta FTP no cPanel.
+- **Código de uso único:** para atualizar o banco sem terminal, o GitHub sorteia um código a cada
+  implantação. Por FTP, envia ao servidor só o *hash* desse código, fora da pasta pública. Depois
+  chama `/_implantacao/finalizar` e apaga o código ao terminar. Sem um código válido, esse endereço
+  responde "não encontrado", e um código esquecido perde a validade em uma hora. Antes do SSL, o
+  código passa sem criptografia na chamada ao site, mas só vale durante aquela implantação.
+- O `.env` nunca é enviado pelo GitHub, nunca é apagado e é criado com permissão 600.
 - O código fica fora da pasta pública (`~/mostraqui-app`). O script recusa configurações que o
   colocariam dentro de `public_html` ou que usem caminhos suspeitos.
 - Só alterações no `main` são implantadas, e só depois de todos os testes passarem.
 
+## Como foi testado
+
+O fluxo completo foi ensaiado contra um servidor Pure-FTPd local com TLS obrigatório, um certificado
+próprio, a mesma estrutura de pastas do cPanel, MariaDB 10.11 e PHP 8.3, com o site rodando com o
+usuário da conta. Resultados:
+
+- primeira implantação com 8.833 arquivos em 136 s, sem a latência da internet;
+- criação do `.env` (permissão 600, APP_KEY nova) e pedido de configuração;
+- segunda implantação com as 5 atualizações do banco;
+- instalação por `/instalar`, com Capinzal na raiz do domínio;
+- implantação sem mudanças em 3 s;
+- envio só dos arquivos alterados e remoção só dos arquivos retirados do sistema;
+- preservação de `.env`, fotos em `storage/`, `.well-known` e arquivos alheios em `public_html`;
+- falha no meio do envio: o site saiu da manutenção, o código de uso único foi apagado e a execução
+  seguinte completou o envio;
+- recusa de FTP sem criptografia;
+- mensagens claras para senha errada, certificado que não confere, `SITE_URL` errada, conta FTP
+  restrita a `public_html` e caminhos inválidos.
+
+O fluxo **ainda não rodou contra a HostGator real**. A primeira execução no GitHub é o teste
+definitivo. Envios pela internet são mais lentos que o ensaio local, então a primeira implantação
+pode levar dezenas de minutos (o limite configurado é de 3 horas).
+
 ## Arquivos envolvidos
 
 - `.github/workflows/implantacao.yml`: o fluxo do GitHub (testes → envio);
-- `deploy/implantar.sh`: o envio por SSH/rsync (pode ser executado de qualquer computador com as
+- `deploy/implantar-ftp.sh`: o envio por FTPS (pode ser executado de qualquer computador com as
   mesmas variáveis);
-- `deploy/remoto-preparar.sh`, `deploy/remoto-finalizar.sh`, `deploy/remoto-liberar.sh`: o que roda
-  no servidor (conferência do PHP, manutenção, `.env`, migrações);
-- `deploy/rsync-excluir.txt`: o que nunca é enviado nem apagado.
+- `deploy/excluir.txt`: o que nunca é enviado;
+- `app/Services/DeployFinisher.php` e `app/Http/Controllers/DeployController.php`: a conclusão no
+  servidor (`.env`, banco, caches, fim da manutenção);
+- `tests/Feature/DeployEndpointTest.php`: testes dessa conclusão.
 
 ## Fontes
 
-- HostGator: [SSH em hospedagem compartilhada (porta 2222, liberação pelo suporte)](https://suporte.hostgator.com.br/hc/pt-br/articles/30814927583379-Como-habilitar-o-acesso-SSH-no-plano-de-hospedagem), [gerar chaves SSH no cPanel](https://suporte.hostgator.com.br/hc/pt-br/articles/30819530838291-Como-gerar-chaves-de-acesso-SSH-no-cPanel), [portas liberadas](https://suporte.hostgator.com.br/hc/pt-br/articles/30812710494739-Quais-portas-s%C3%A3o-liberadas-por-padr%C3%A3o-nos-servidores-na-HostGator-Brasil) e [FTPS apenas em dedicados e VPS](https://www.hostgator.com/help/article/how-do-i-start-using-ssl-with-ftp).
-- GitHub Actions: segredos e variáveis em *Settings → Secrets and variables → Actions*.
+- HostGator Brasil: [dados de acesso do FTP (porta 21, campo "FTP & porta FTPS explícita")](https://suporte.hostgator.com.br/hc/pt-br/articles/30811387611795-Quais-s%C3%A3o-os-dados-de-acesso-do-FTP-na-HostGator), [como criar uma conta FTP no cPanel](https://suporte.hostgator.com.br/hc/pt-br/articles/30808120096403-Como-criar-uma-conta-FTP-no-cPanel), [como configurar o FileZilla (modo passivo; limite de 8 conexões simultâneas por cPanel e erro 421)](https://suporte.hostgator.com.br/hc/pt-br/articles/30814022785427-Como-configurar-o-FileZilla).
+- HostGator: [Secure FTP, SFTP and FTPS](https://www.hostgator.com/help/article/secure-ftp-sftp-and-ftps), que informa FTP sobre TLS explícito, na porta 21 e com as credenciais do cPanel, em todos os servidores, exceto os planos Optimize WordPress.
+- Diretório `/` para acesso à pasta pessoal: a página da HostGator não menciona essa opção. Ela aparece em guias de outros provedores com cPanel, por exemplo [Z.com](https://web.z.com/us/support/web-hosting/how-to-create-delete-an-ftp-account-in-cpanel/). Por isso a implantação confere a pasta e orienta o uso da conta principal.
+- lftp (cliente FTP do Ubuntu): [manual](https://lftp.yar.ru/lftp-man.html).

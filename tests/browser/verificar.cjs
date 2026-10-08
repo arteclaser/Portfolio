@@ -4,7 +4,8 @@
  * Requisitos: Node 18+, playwright e axe-core instalados (npm i -D playwright axe-core).
  * Uso:
  *   BASE_URL=http://127.0.0.1:8000 PAINEL_EMAIL=... PAINEL_SENHA=... node tests/browser/verificar.cjs
- *   (SITE_URL=http://127.0.0.1:8000/capinzal define o portfólio; sem ele, usa o primeiro listado na plataforma)
+ *   No modo portfólio único (padrão), o portfólio é o próprio BASE_URL. Com vários portfólios,
+ *   SITE_URL=http://127.0.0.1:8000/capinzal define o portfólio; sem ele, usa o primeiro listado na plataforma.
  * Requer conteúdo publicado com galeria (ex.: php artisan mostraqui:demo em ambiente de teste).
  */
 const { chromium } = require('playwright');
@@ -26,14 +27,16 @@ async function axe(page, label) {
 
 (async () => {
   const browser = await chromium.launch();
+  // A raiz mostra a lista de portfólios (vários portfólios) ou o próprio portfólio (modo único).
+  const rootHtml = await (await fetch(BASE + '/')).text();
+  const listed = (rootHtml.match(/class="card__title"><a href="([^"]+)"/) || [])[1];
+  const multi = (await fetch(BASE + '/acoes')).status === 404;
   let SITE = process.env.SITE_URL;
   if (!SITE) {
-    const html = await (await fetch(BASE + '/')).text();
-    const href = (html.match(/class="card__title"><a href="([^"]+)"/) || [])[1];
-    if (!href) { console.error('Nenhum portfólio listado em ' + BASE); process.exit(1); }
-    SITE = href.startsWith('http') ? href : BASE + href;
+    if (multi && !listed) { console.error('Nenhum portfólio listado em ' + BASE); process.exit(1); }
+    SITE = multi ? (listed.startsWith('http') ? listed : BASE + listed) : BASE;
   }
-  console.log('Portfólio verificado: ' + SITE);
+  console.log('Portfólio verificado: ' + SITE + (multi ? ' (vários portfólios)' : ' (portfólio único)'));
 
   console.log('Celular (390 × 844) e tema escuro');
   for (const scheme of ['light', 'dark']) {
@@ -41,8 +44,10 @@ async function axe(page, label) {
     const page = await ctx.newPage();
     const html = await (await page.goto(SITE + '/acoes')).text();
     const slug = (html.match(/\/acoes\/([a-z0-9-]+)"/) || [])[1];
-    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
-    await axe(page, `página da plataforma (${scheme}, celular)`);
+    if (multi) {
+      await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+      await axe(page, `página da plataforma (${scheme}, celular)`);
+    }
     for (const path of ['', '/acoes', '/areas', '/equipe', '/acessibilidade', slug ? '/acoes/' + slug : null].filter(s => s !== null)) {
       await page.goto(SITE + path, { waitUntil: 'networkidle' });
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
@@ -106,7 +111,9 @@ async function axe(page, label) {
     await p.fill('#f-password', process.env.PAINEL_SENHA);
     await Promise.all([p.waitForURL(/\/painel$/), p.keyboard.press('Enter')]);
     ok(p.url().endsWith('/painel'), 'login pelo teclado (Enter)');
-    for (const path of ['/painel', '/painel/acoes', '/painel/acoes/1', '/painel/acoes/1/fotos', '/painel/acoes/1/revisao', '/painel/paginas', '/painel/usuarios', '/painel/plataforma/portfolios', '/painel/plataforma/portfolios/novo']) {
+    const panelPaths = ['/painel', '/painel/acoes', '/painel/acoes/1', '/painel/acoes/1/fotos', '/painel/acoes/1/revisao', '/painel/paginas', '/painel/usuarios'];
+    if (multi) panelPaths.push('/painel/plataforma/portfolios', '/painel/plataforma/portfolios/novo');
+    for (const path of panelPaths) {
       await p.goto(BASE + path, { waitUntil: 'networkidle' });
       const overflow = await p.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       ok(overflow <= 0, `painel sem rolagem horizontal em ${path}`);

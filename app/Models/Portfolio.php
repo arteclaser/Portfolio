@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\Routing;
 use App\Support\Tenant;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -49,6 +50,18 @@ class Portfolio extends Model
         return app()->runningInConsole() ? static::query()->orderBy('id')->first() : null;
     }
 
+    /**
+     * Modo portfólio único: o portfólio que o domínio mostra (PORTFOLIO_SINGLE ou,
+     * se não definido, o primeiro portfólio ativo).
+     */
+    public static function single(): ?Portfolio
+    {
+        $query = static::query()->active();
+        $slug = (string) config('portfolio.single');
+
+        return $slug !== '' ? $query->where('slug', $slug)->first() : $query->orderBy('id')->first();
+    }
+
     public static function forgetCurrent(): void
     {
         Tenant::forget();
@@ -59,10 +72,10 @@ class Portfolio extends Model
         return $query->where('is_active', true);
     }
 
-    /** Endereço público do portfólio, conforme o modo configurado (caminho ou subdomínio). */
+    /** Endereço público do portfólio, conforme o modo configurado (único, caminho ou subdomínio). */
     public function publicUrl(): string
     {
-        return route('home', ['portfolio' => $this->slug]);
+        return Routing::single() ? route('home') : route('home', ['portfolio' => $this->slug]);
     }
 
     public function setting(string $key, mixed $default = null): mixed

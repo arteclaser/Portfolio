@@ -1,10 +1,9 @@
 # Portfólios institucionais — mostraqui.net
 
-Plataforma de portfólios institucionais para o domínio **mostraqui.net**. Cada órgão tem o próprio
-portfólio público, consultável sem cadastro e no estilo de revista institucional, em
-`mostraqui.net/capinzal` ou `capinzal.mostraqui.net`, além de um painel com autenticação para a
-equipe manter o conteúdo sem editar código. O primeiro portfólio é o da **Secretaria de
-Desenvolvimento Econômico, Inovação e Turismo de Capinzal**.
+Portfólio institucional da **Secretaria de Desenvolvimento Econômico, Inovação e Turismo de
+Capinzal**, publicado direto em **mostraqui.net**. O site público é consultável sem cadastro e tem
+estilo de revista institucional. Um painel com autenticação permite à equipe manter o conteúdo sem
+editar código.
 
 ![Página inicial](docs/img/inicio-computador.jpg)
 
@@ -13,9 +12,12 @@ Desenvolvimento Econômico, Inovação e Turismo de Capinzal**.
 
 ## Principais recursos
 
-- **Vários portfólios:** criados pelo painel (Plataforma → Portfólios) e no ar na hora; dados
-  isolados entre portfólios; endereço por caminho (padrão, sem configurar a hospedagem) ou por
-  subdomínio (uma configuração única). Ver [docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md](docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md).
+- **Portfólio único no domínio:** Capinzal em `mostraqui.net` (padrão). Se outros órgãos forem
+  atendidos no futuro, a mesma instalação hospeda vários portfólios isolados, por caminho
+  (`mostraqui.net/capinzal`) ou subdomínio, com a troca de uma linha no `.env` e sem quebrar os
+  endereços já divulgados. Ver [docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md](docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md).
+- **Implantação automática por FTP:** cada aprovação no branch `main` é testada e enviada à
+  HostGator por FTPS, sem SSH, e o banco é atualizado sozinho. Ver [docs/IMPLANTACAO-AUTOMATICA.md](docs/IMPLANTACAO-AUTOMATICA.md).
 - **Público:** destaque principal e secundários, filtros por área, busca por nome, área, período,
   tipo e situação, página própria de cada ação com galeria acessível, vídeos e reportagens, equipe,
   parceiros, resultados documentados, tema escuro e compartilhamento com título, resumo e capa.
@@ -44,28 +46,29 @@ cp .env.example .env            # ajuste: APP_ENV=local, APP_DEBUG=true, APP_URL
 php artisan key:generate
 touch database/database.sqlite  # se usar SQLite
 php artisan migrate
-php artisan mostraqui:instalar  # administração da plataforma + primeiro portfólio (senha digitada de forma oculta)
+php artisan mostraqui:instalar  # portfólio de Capinzal + conta de administração (senha digitada de forma oculta)
 php artisan mostraqui:demo      # opcional: conteúdo de demonstração (recusado em produção)
-php artisan serve               # http://localhost:8000 (plataforma) e http://localhost:8000/capinzal (portfólio)
+php artisan serve               # http://localhost:8000 (portfólio) e http://localhost:8000/painel
 ```
 
 ## Comandos
 
 | Comando | Para quê |
 | --- | --- |
-| `php artisan mostraqui:instalar [--convite]` | Primeira instalação: administração da plataforma e primeiro portfólio |
-| `php artisan mostraqui:novo-portfolio "Nome" --endereco=x [--master-email=...]` | Novo portfólio, no ar na hora, com convite do Master |
+| `php artisan mostraqui:instalar [--convite]` | Primeira instalação: portfólio e conta de administração |
+| `php artisan mostraqui:novo-portfolio "Nome" --endereco=x [--master-email=...]` | Novo portfólio (aparece no site nos modos `path` e `subdomain`), com convite do Master |
 | `php artisan mostraqui:criar-master ENDERECO` | Outro Administrador Master de um portfólio (convite) |
 | `php artisan mostraqui:admin-plataforma [--convite]` | Outra conta de administração da plataforma |
 | `php artisan mostraqui:backup [--manter=14]` | Cópia completa (banco + arquivos) em `storage/app/backups` |
 | `php artisan mostraqui:restaurar ARQUIVO.zip` | Restaura uma cópia (substitui os dados atuais) |
 | `php artisan mostraqui:demo [--portfolio=x]` | Conteúdo de demonstração, só fora de produção |
-| `./scripts/empacotar.sh` | Gera os pacotes para enviar ao cPanel |
+| `./scripts/empacotar.sh` | Gera os pacotes para enviar ao cPanel à mão |
+| `bash deploy/implantar-ftp.sh` | Implantação por FTPS (usada pelo GitHub Actions; variáveis em `docs/IMPLANTACAO-AUTOMATICA.md`) |
 
 ## Testes
 
 ```bash
-php artisan test                              # 54 testes (aceite, segurança, integridade, vários portfólios e unitários)
+php artisan test                              # 62 testes (aceite, segurança, integridade, implantação, modos de endereço e unitários)
 # Contra MySQL/MariaDB: DB_CONNECTION=mariadb DB_DATABASE=... DB_USERNAME=... DB_PASSWORD=... php artisan test
 BASE_URL=http://127.0.0.1:8000 node tests/browser/verificar.cjs   # celular, teclado e axe-core (exige playwright e axe-core)
 ```
@@ -75,9 +78,9 @@ BASE_URL=http://127.0.0.1:8000 node tests/browser/verificar.cjs   # celular, tec
 | Documento | Conteúdo |
 | --- | --- |
 | [docs/PLANO.md](docs/PLANO.md) | Decisões, modelo de dados, permissões, fluxo editorial, fases e pendências |
-| [docs/IMPLANTACAO-AUTOMATICA.md](docs/IMPLANTACAO-AUTOMATICA.md) | **Implantação automática GitHub → HostGator** (SSH), passo a passo |
-| [docs/IMPLANTACAO-HOSTGATOR.md](docs/IMPLANTACAO-HOSTGATOR.md) | Passo a passo de instalação manual no cPanel (com ou sem terminal) |
-| [docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md](docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md) | Vários portfólios: caminho ou subdomínio, como ativar subdomínios e mensagem para o suporte |
+| [docs/IMPLANTACAO-AUTOMATICA.md](docs/IMPLANTACAO-AUTOMATICA.md) | **Implantação automática GitHub → HostGator** por FTP com criptografia (sem SSH), passo a passo |
+| [docs/IMPLANTACAO-HOSTGATOR.md](docs/IMPLANTACAO-HOSTGATOR.md) | Passo a passo de instalação manual no cPanel, sem terminal |
+| [docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md](docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md) | Portfólio único (atual), por caminho ou por subdomínio: como mudar no futuro |
 | [docs/MANUAL-DA-EQUIPE.md](docs/MANUAL-DA-EQUIPE.md) | Como usar o painel |
 | [docs/BACKUP-E-RESTAURACAO.md](docs/BACKUP-E-RESTAURACAO.md) | Cópias de segurança e restauração |
 | [docs/SEGURANCA-E-PRIVACIDADE.md](docs/SEGURANCA-E-PRIVACIDADE.md) | Proteções, LGPD e credenciais necessárias |

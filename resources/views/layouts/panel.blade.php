@@ -67,7 +67,7 @@
         <header class="panel-top">
             <button type="button" class="btn btn--secondary btn--small panel-menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="menu-painel">Menu</button>
             @if ($portfolio)
-                <span>@if ($user->isPlatformAdmin())Gerenciando: <strong>{{ $portfolio->short_name ?: $portfolio->name }}</strong> · @endif<a href="{{ route('home') }}">Ver o portfólio público</a></span>
+                <span>@can('manage-platform')Gerenciando: <strong>{{ $portfolio->short_name ?: $portfolio->name }}</strong> · @endcan<a href="{{ route('home') }}">Ver o portfólio público</a></span>
             @else
                 <span></span>
             @endif

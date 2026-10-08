@@ -2,7 +2,7 @@
 @section('title', $portfolio->exists ? $portfolio->name : 'Novo portfólio')
 @section('content')
 @php
-    $mode = config('portfolio.routing');
+    $mode = \App\Support\Routing::mode();
     $base = config('portfolio.base_domain');
     $example = $mode === 'subdomain' ? '<strong>endereço</strong>.'.$base : $base.'/<strong>endereço</strong>';
 @endphp

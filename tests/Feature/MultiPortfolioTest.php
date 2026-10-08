@@ -14,12 +14,19 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\InviteNotification;
+use Tests\Concerns\UsesRoutingMode;
 use Tests\TestCase;
 
-/** Vários portfólios na mesma instalação: isolamento total e criação automática. */
+/** Vários portfólios na mesma instalação (modo caminho): isolamento total e criação automática. */
 class MultiPortfolioTest extends TestCase
 {
     use RefreshDatabase;
+    use UsesRoutingMode { setUp as routingSetUp; }
+
+    protected function routingEnv(): array
+    {
+        return ['PORTFOLIO_ROUTING' => 'path'];
+    }
 
     private Portfolio $a;
 
@@ -35,7 +42,7 @@ class MultiPortfolioTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
+        $this->routingSetUp();
         $this->b = $this->makePortfolio([], 'outra-cidade');
         $this->pageB = $this->makePage('Turismo');
         $this->masterB = $this->makeUser(User::MASTER);
@@ -174,5 +181,14 @@ class MultiPortfolioTest extends TestCase
             ->assertSuccessful();
         $this->assertTrue(Portfolio::where('slug', 'cultura')->exists());
         $this->artisan('mostraqui:novo-portfolio', ['nome' => 'Repetido', '--endereco' => 'cultura'])->assertFailed();
+    }
+
+    public function test_addresses_from_single_portfolio_mode_keep_working(): void
+    {
+        config(['portfolio.single' => 'capinzal']);
+        $this->get('/acoes/feira?ano=2026')->assertStatus(301)->assertRedirect(url('/capinzal/acoes/feira?ano=2026'));
+        $this->get('/p/turismo')->assertStatus(301)->assertRedirect(url('/capinzal/p/turismo'));
+        $this->get('/equipe')->assertStatus(301)->assertRedirect(url('/capinzal/equipe'));
+        $this->get('/capinzal/acoes')->assertOk();
     }
 }

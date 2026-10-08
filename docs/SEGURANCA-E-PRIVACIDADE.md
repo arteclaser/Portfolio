@@ -94,6 +94,19 @@ autorizados" (art. 46) e limita o tratamento "ao mínimo necessário" (art. 6º,
 | Banco de dados | `.env` | Usuário com acesso só ao banco do portfólio |
 | SMTP (e-mail) | `.env` | Conta de envio do domínio |
 | `SETUP_TOKEN` | `.env` | Temporário: apague após instalar |
+| Conta FTP da implantação | *Secrets* do GitHub (`FTP_SERVIDOR`, `FTP_USUARIO`, `FTP_SENHA`) | Conta exclusiva; exclua-a no cPanel para cortar o acesso |
+
+## Implantação automática
+
+- O envio usa FTP com criptografia obrigatória (FTPS explícito) e confere o certificado do servidor.
+  Desligar essas proteções exige configuração explícita e gera aviso em cada execução.
+- O banco é atualizado sem terminal por `POST /_implantacao/finalizar`, que só responde com um
+  código de uso único. A cada implantação o GitHub sorteia 256 bits e envia ao servidor só o
+  *hash* SHA-256, fora da pasta pública. A comparação é feita em tempo constante, há limite de
+  10 tentativas por minuto, o código é apagado ao final e perde a validade em uma hora. Sem
+  código válido, a rota responde 404.
+- A implantação só apaga arquivos que ela mesma enviou (lista guardada no servidor), nunca `.env`,
+  `storage/` ou `.well-known`, e se recusa a continuar se essa lista pedir caminhos protegidos.
 
 Não há chaves de API obrigatórias. A prévia do YouTube usa o oEmbed público, e o Instagram não exige
 token para a incorporação usada.

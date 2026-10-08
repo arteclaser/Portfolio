@@ -11,7 +11,11 @@
         <legend>Portfólio</legend>
         <x-field name="portfolio_name" label="Nome do portfólio" :value="old('portfolio_name', 'Secretaria de Desenvolvimento Econômico, Inovação e Turismo de Capinzal')" required />
         <x-field name="short_name" label="Nome curto do cabeçalho" :value="old('short_name', 'Capinzal')" help="Aparece em destaque no topo, por exemplo: CAPINZAL." />
-        <x-field name="slug" label="Endereço do portfólio" :value="old('slug', 'capinzal')" help="Usado em mostraqui.net/capinzal (ou capinzal.mostraqui.net). Letras minúsculas, números e hífens." />
+        @if (\App\Support\Routing::single())
+            <x-field name="slug" label="Identificador do portfólio" :value="old('slug', 'capinzal')" help="Nome interno, usado nos backups e numa futura ampliação para vários portfólios. O site fica no próprio domínio. Letras minúsculas, números e hífens." />
+        @else
+            <x-field name="slug" label="Endereço do portfólio" :value="old('slug', 'capinzal')" help="Usado em mostraqui.net/capinzal (ou capinzal.mostraqui.net). Letras minúsculas, números e hífens." />
+        @endif
         <div class="field field--check">
             <input type="checkbox" id="f-create_areas" name="create_areas" value="1" @checked(old('create_areas', true))>
             <label for="f-create_areas">Criar as áreas iniciais (Desenvolvimento Econômico, Inovação e Turismo). Podem ser alteradas depois.</label>
@@ -19,7 +23,7 @@
     </fieldset>
     <fieldset class="fieldset">
         <legend>Administrador da plataforma</legend>
-        <p class="fieldset__intro">Cria portfólios e atua como Master em qualquer um deles.</p>
+        <p class="fieldset__intro">@if (\App\Support\Routing::single())Administra o portfólio com todos os poderes de Master.@else Cria portfólios e atua como Master em qualquer um deles.@endif</p>
         <x-field name="name" label="Nome" autocomplete="name" required />
         <x-field name="email" label="E-mail" type="email" autocomplete="username" required />
         <x-field name="password" label="Senha" type="password" autocomplete="new-password" required help="Mínimo de 10 caracteres, com letras e números." />

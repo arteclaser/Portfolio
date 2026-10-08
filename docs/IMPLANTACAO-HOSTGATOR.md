@@ -1,15 +1,15 @@
 # Implantação em mostraqui.net (HostGator, cPanel)
 
-Guia passo a passo para publicar o portfólio em hospedagem compartilhada com cPanel, como a do
-domínio `mostraqui.net` (servidores de nomes `ns304/ns305.hostgator.com.br`, verificados em
-08/10/2026). Os nomes dos menus seguem o cPanel padrão; a disponibilidade de cada recurso
-(Terminal, SSH, Cron) depende do plano contratado. Em caso de dúvida, confirme com o suporte da
-hospedagem.
+Guia passo a passo para publicar o portfólio de Capinzal em hospedagem compartilhada com cPanel,
+como a do domínio `mostraqui.net` (servidores de nomes `ns304/ns305.hostgator.com.br`, verificados
+em 08/10/2026). O portfólio abre **direto em `mostraqui.net`** (modo portfólio único,
+`PORTFOLIO_ROUTING=single`). Os nomes dos menus seguem o cPanel padrão. Este guia **não depende de
+SSH**; o Terminal só aparece como alternativa, para quem tiver.
 
-> **Recomendado:** configure a **implantação automática pelo GitHub**
-> ([IMPLANTACAO-AUTOMATICA.md](IMPLANTACAO-AUTOMATICA.md)). Ela substitui os passos 1, 2, 4 e 5A
-> deste guia: envia os arquivos, cria o `.env` e atualiza o banco a cada aprovação no branch `main`.
-> Os passos abaixo continuam válidos para quem preferir publicar manualmente.
+> **Recomendado:** configure a **implantação automática pelo GitHub, por FTP**
+> ([IMPLANTACAO-AUTOMATICA.md](IMPLANTACAO-AUTOMATICA.md)). Ela substitui os passos 1, 2 e 10
+> deste guia e cria o `.env` do passo 4: envia os arquivos e atualiza o banco a cada aprovação no
+> branch `main`. Os passos abaixo continuam válidos para quem preferir publicar manualmente.
 
 > Este procedimento foi ensaiado localmente com a mesma estrutura de pastas do cPanel, MariaDB 10.11
 > e PHP 8.3: instalação pelo navegador, login, áreas iniciais, backup e restauração.
@@ -82,11 +82,11 @@ Proteja o arquivo: permissão **600** ou **640**.
 
 ## 5. Criar as tabelas, a administração da plataforma e o primeiro portfólio
 
-Não existe usuário nem senha padrão no sistema. A instalação cria a conta de **administração da
-plataforma** (quem cria e gerencia os portfólios) e, se você quiser, o primeiro portfólio (por
-exemplo, Capinzal em `mostraqui.net/capinzal`). Escolha **um** dos caminhos:
+Não existe usuário nem senha padrão no sistema. A instalação cria o portfólio de Capinzal, que abre
+direto em `mostraqui.net`, e a conta de **administração**, com todos os poderes de Master. Sem SSH,
+use o caminho **5B**.
 
-### 5A. Com Terminal ou SSH (recomendado)
+### 5A. Com Terminal (só se o SSH estiver liberado)
 
 ```bash
 cd ~/mostraqui-app
@@ -97,7 +97,7 @@ php artisan mostraqui:instalar
 # Para gerar um link de convite em vez de digitar a senha: php artisan mostraqui:instalar --convite
 ```
 
-### 5B. Sem terminal (pelo navegador)
+### 5B. Sem terminal, pelo navegador (caminho usado nesta hospedagem)
 
 1. Defina `SETUP_TOKEN` no `.env`.
 2. Acesse `https://mostraqui.net/instalar` e informe o código, os dados do primeiro portfólio
@@ -106,12 +106,12 @@ php artisan mostraqui:instalar
 3. **Apague a linha `SETUP_TOKEN` do `.env`.** O painel avisa enquanto ela existir. O endereço
    `/instalar` deixa de funcionar assim que existe um usuário.
 
-### Novos portfólios
+### Outros portfólios no futuro
 
-Depois da instalação, crie os outros portfólios em **Painel → Plataforma → Portfólios → Novo
-portfólio** (ou com `php artisan mostraqui:novo-portfolio`). Cada um fica no ar na hora, em
-`mostraqui.net/endereço`, sem nenhuma configuração no cPanel. Para usar `endereço.mostraqui.net`,
-veja **[MULTIPORTFOLIO-E-SUBDOMINIOS.md](MULTIPORTFOLIO-E-SUBDOMINIOS.md)**.
+Nesta configuração, o domínio mostra apenas o portfólio de Capinzal e o painel não exibe a gestão
+de vários portfólios. O sistema já está preparado para hospedar outros órgãos depois
+(`mostraqui.net/outro-orgao` ou `outro-orgao.mostraqui.net`) com a troca de uma linha no `.env`.
+Veja **[MULTIPORTFOLIO-E-SUBDOMINIOS.md](MULTIPORTFOLIO-E-SUBDOMINIOS.md)**.
 
 ## 6. Limites de envio de fotos
 
@@ -137,7 +137,12 @@ A tela de Configurações mostra o limite efetivo do servidor.
 
 ## 8. Tarefas agendadas (backup diário)
 
-cPanel → **Trabalhos Cron** → adicione uma tarefa diária, por exemplo às 03:00:
+As tarefas Cron são cadastradas pelo próprio cPanel, sem terminal. A HostGator descreve o menu
+**Tarefas Cron** para hospedagem compartilhada, com intervalo mínimo de 15 minutos
+([blog da HostGator](https://www.hostgator.com.br/blog/cron-job-guia-completo-para-automatizar-tarefas/)).
+Se o menu não aparecer no seu cPanel, confirme com o suporte.
+
+cPanel → **Tarefas Cron** → adicione uma tarefa diária, por exemplo às 03:00:
 
 ```
 0 3 * * * cd /home/SUA_CONTA/mostraqui-app && /usr/local/bin/php artisan mostraqui:backup --manter=14 >> /dev/null 2>&1
@@ -145,8 +150,9 @@ cPanel → **Trabalhos Cron** → adicione uma tarefa diária, por exemplo às 0
 
 Ela gera uma cópia completa (banco + arquivos) em `~/mostraqui-app/storage/app/backups/` e mantém as
 14 mais recentes. Se `/usr/local/bin/php` não for o PHP 8.3, use o caminho do MultiPHP (em cPanel
-com EasyApache 4, geralmente `/opt/cpanel/ea-php83/root/usr/bin/php`). Confira com `php -v` no
-Terminal ou com o suporte.
+com EasyApache 4, geralmente `/opt/cpanel/ea-php83/root/usr/bin/php`). Confirme o caminho com o
+suporte. Depois da primeira execução, o arquivo aparece em `storage/app/backups/` no Gerenciador de
+arquivos; se não aparecer, o e-mail do Cron (sem o `>> /dev/null 2>&1`) mostra o erro.
 
 Alternativa: agendar `php artisan schedule:run` de hora em hora (`0 * * * *`). O agendador do
 sistema roda o mesmo backup às 03:00.
@@ -155,7 +161,7 @@ sistema roda o mesmo backup às 03:00.
 
 - [ ] `https://mostraqui.net` abre com cadeado (HTTPS) e sem aviso de erro.
 - [ ] `https://mostraqui.net/.env` responde 403 ou 404.
-- [ ] `https://mostraqui.net` mostra a página da plataforma, e `https://mostraqui.net/capinzal`, o portfólio.
+- [ ] `https://mostraqui.net` mostra o portfólio de Capinzal.
 - [ ] Login em `/entrar` funciona, e o painel não mostra avisos de configuração pendentes.
 - [ ] Em Usuários, convide um Editor: o e-mail chega (ou copie o link exibido).
 - [ ] Crie uma ação de teste, envie uma foto, publique, confira no site e arquive.
@@ -163,13 +169,15 @@ sistema roda o mesmo backup às 03:00.
 
 ## 10. Atualizações futuras
 
-1. Gere novos pacotes (`./scripts/empacotar.sh`).
-2. Faça um backup.
-3. Substitua `~/mostraqui-app` **preservando** `.env` e a pasta `storage/`, e substitua os arquivos
-   de `~/public_html`. Com a implantação automática (`docs/IMPLANTACAO-AUTOMATICA.md`), isso é feito
-   pelo GitHub.
-4. Rode `php artisan migrate --force` (pelo Terminal ou pelo Cron uma única vez) e
-   `php artisan optimize:clear`.
+Com a implantação automática ([IMPLANTACAO-AUTOMATICA.md](IMPLANTACAO-AUTOMATICA.md)), basta aprovar
+a mudança no branch `main`: o GitHub envia os arquivos e atualiza o banco. Para atualizar à mão:
+
+1. Faça um backup.
+2. Gere novos pacotes (`./scripts/empacotar.sh`) e substitua `~/mostraqui-app` **preservando**
+   `.env` e a pasta `storage/`. Depois substitua os arquivos de `~/public_html`.
+3. Sem terminal, rode uma única vez pelo Cron
+   `cd /home/SUA_CONTA/mostraqui-app && php artisan migrate --force && php artisan optimize:clear`
+   e apague a tarefa em seguida.
 
 ## Ambiente de demonstração
 

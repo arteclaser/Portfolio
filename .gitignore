@@ -28,3 +28,4 @@ Thumbs.db
 /dist
 /storage/app/backups/*
 !/storage/app/backups/.gitignore
+/.implantacao/

@@ -1,4 +1,5 @@
-# Implantação automática na HostGator (cPanel) a cada atualização do branch "main".
+# Implantação automática na HostGator (cPanel) a cada atualização do branch "main",
+# por FTP com criptografia (FTPS), sem precisar de SSH.
 # Passo a passo de configuração: docs/IMPLANTACAO-AUTOMATICA.md
 name: Implantação na HostGator
 
@@ -36,6 +37,8 @@ jobs:
     name: Enviar para a HostGator
     needs: testes
     runs-on: ubuntu-latest
+    # A primeira implantação envia todos os arquivos e pode demorar; as seguintes enviam só o que mudou.
+    timeout-minutes: 180
     environment:
       name: producao
       url: ${{ vars.SITE_URL || 'https://mostraqui.net' }}
@@ -53,26 +56,31 @@ jobs:
       - name: Instalar dependências de produção
         run: composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-progress
 
-      - name: Enviar por SSH e atualizar o banco
+      - name: Instalar o cliente FTP (lftp, do Ubuntu)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      - name: Enviar por FTP e atualizar o banco
         env:
-          SSH_HOST: ${{ secrets.HOSTGATOR_SSH_HOST }}
-          SSH_USER: ${{ secrets.HOSTGATOR_SSH_USER }}
-          SSH_KEY: ${{ secrets.HOSTGATOR_SSH_KEY }}
-          SSH_PASSPHRASE: ${{ secrets.HOSTGATOR_SSH_PASSPHRASE }}
-          SSH_KNOWN_HOSTS: ${{ secrets.HOSTGATOR_KNOWN_HOSTS }}
-          SSH_PORT: ${{ vars.SSH_PORT || '2222' }}
+          FTP_SERVIDOR: ${{ secrets.FTP_SERVIDOR }}
+          FTP_USUARIO: ${{ secrets.FTP_USUARIO }}
+          FTP_SENHA: ${{ secrets.FTP_SENHA }}
+          SITE_URL: ${{ vars.SITE_URL }}
+          FTP_PORTA: ${{ vars.FTP_PORTA || '21' }}
+          FTP_CRIPTOGRAFIA: ${{ vars.FTP_CRIPTOGRAFIA || 'obrigatoria' }}
+          FTP_CONFERIR_CERTIFICADO: ${{ vars.FTP_CONFERIR_CERTIFICADO || 'sim' }}
+          FTP_CONEXOES: ${{ vars.FTP_CONEXOES || '4' }}
           APP_DIR: ${{ vars.APP_DIR || 'mostraqui-app' }}
           PUBLIC_DIR: ${{ vars.PUBLIC_DIR || 'public_html' }}
-          PHP_BIN: ${{ vars.PHP_BIN || 'php' }}
-        run: bash deploy/implantar.sh
+        run: bash deploy/implantar-ftp.sh
 
       - name: Conferir se o site responde
-        if: ${{ vars.SITE_URL != '' }}
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
         run: |
           for i in 1 2 3 4 5; do
-            code=$(curl -s -o /dev/null -w '%{http_code}' "${{ vars.SITE_URL }}/up" || true)
+            code=$(curl -s -o /dev/null -w '%{http_code}' "${SITE_URL%/}/up" || true)
             [ "$code" = "200" ] && { echo "Site no ar (HTTP 200)."; exit 0; }
             sleep 5
           done
-          echo "::error::O site não respondeu com HTTP 200 em ${{ vars.SITE_URL }}/up (último código: $code)."
+          echo "::error::O site não respondeu com HTTP 200 em ${SITE_URL%/}/up (último código: $code)."
           exit 1
