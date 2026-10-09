@@ -44,10 +44,16 @@ Uma conta própria pode ser excluída a qualquer momento sem mexer na senha do c
 1. Em **Contas FTP → Adicionar conta FTP**, preencha:
    - *Login:* `implantacao` (o usuário completo será `implantacao@mostraqui.net`);
    - *Senha:* use o **Gerador de senha** e **anote a senha**;
-   - *Diretório:* o cPanel preenche sozinho algo como `public_html/mostraqui.net/implantacao`.
-     **Apague tudo e digite apenas `/`** (a pasta pessoal inteira). A implantação precisa enxergar a
-     pasta do site e a pasta do código, que fica fora dela. Com o diretório padrão, a conta só
-     enxerga uma pasta vazia e a implantação para;
+   - *Diretório:* o cPanel preenche sozinho algo como `public_html/mostraqui.net/implantacao`, uma
+     pasta vazia que não serve. Use uma das duas opções:
+     - **a pasta do domínio** (a *Raiz do documento* de `mostraqui.net`, em cPanel → Domínios;
+       configuração atual desta hospedagem). Tudo vai para essa pasta: o site e, numa subpasta
+       `mostraqui-app`, o código. A subpasta é bloqueada para a internet por três barreiras (regras
+       no `.htaccess` da pasta e um `.htaccess` próprio). A cada implantação, o GitHub confere pelo
+       próprio site que ela responde 403. Se não responder, a implantação para **antes** de o `.env`
+       existir ou ser usado;
+     - **`/`** (a pasta pessoal inteira). Nesse caso, o código fica fora da pasta pública
+       (`~/mostraqui-app`), que é a organização mais conservadora;
    - *Cota:* **Ilimitado**.
 2. Clique em **Criar conta de FTP**. Segundo a HostGator, a conta não pode ser editada depois. Se
    algo ficar errado, exclua e crie de novo.
@@ -168,8 +174,10 @@ enviam só o que mudou. Ao final, o GitHub mostra um aviso amarelo pedindo para 
   responde "não encontrado", e um código esquecido perde a validade em uma hora. Antes do SSL, o
   código passa sem criptografia na chamada ao site, mas só vale durante aquela implantação.
 - O `.env` nunca é enviado pelo GitHub, nunca é apagado e é criado com permissão 600.
-- O código fica fora da pasta pública (`~/mostraqui-app`). O script recusa configurações que o
-  colocariam dentro de `public_html` ou da pasta pública, e caminhos suspeitos.
+- Com a conta FTP na pasta pessoal, o código fica fora da pasta pública (`~/mostraqui-app`). Com a
+  conta FTP na pasta do domínio, ele fica na subpasta `mostraqui-app`, bloqueada e conferida pela
+  internet a cada implantação. O `.env` também é bloqueado pela regra que barra arquivos ocultos.
+  O script recusa caminhos suspeitos e nunca põe o código dentro do `public_html` de outro site.
 - Nunca escreve na pasta de outro site da conta (ver o início deste guia).
 - Só alterações no `main` são implantadas, e só depois de todos os testes passarem.
 
@@ -196,7 +204,11 @@ usuário da conta. Resultados:
   certa foi descoberta sozinha, o `index.php` passou a apontar para `../mostraqui-app` ou
   `../../mostraqui-app`, e os arquivos do WordPress ficaram idênticos (conferidos por *hash*);
 - recusa de escrever no `public_html` com WordPress, sem criar nada no servidor, e recusa quando a
-  pasta pública muda entre implantações.
+  pasta pública muda entre implantações;
+- conta FTP presa à pasta do domínio, num **Apache 2.4 real** com `.htaccess` ativo: código em
+  `mostraqui-app` com `composer.json`, `artisan`, `vendor/`, `.env` e `storage/` respondendo 403;
+  site, painel, `/instalar` e migrações funcionando. Num Apache que ignora `.htaccess`, a
+  implantação parou na conferência (HTTP 200) sem criar o `.env`.
 
 **Na HostGator real (09/10/2026):** as duas primeiras execuções pararam na conexão, antes de
 enviar qualquer arquivo. O servidor aceitou FTP com criptografia, mas o certificado

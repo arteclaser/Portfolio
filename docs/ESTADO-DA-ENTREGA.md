@@ -91,6 +91,8 @@ Estes recursos **não estão implementados** e não devem ser apresentados como 
   escrever na pasta de outro site; ambos os casos foram ensaiados com um WordPress simulado. Ela
   também passou a conferir o certificado do FTP como `*.hostgator.com.br` ao conectar pelo endereço
   cadastrado, sem exigir o nome `brNNN` do servidor (ensaiado: aceita o certificado esperado e
-  recusa certificado de outro domínio).
+  recusa certificado de outro domínio). Com a conta FTP presa à pasta do domínio, o código passou
+  a ir para uma subpasta bloqueada, conferida pela internet antes de o `.env` existir (ensaiado num
+  Apache 2.4 real, inclusive o caso em que o `.htaccess` é ignorado e a implantação para).
 - **Modo subdomínio na hospedagem real:** testado automaticamente com domínios de teste; depende do
   subdomínio curinga e do certificado curinga na HostGator, ainda não configurados.

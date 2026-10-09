@@ -15,7 +15,10 @@
 #  0. descobre a pasta pública do site (a "raiz do documento" de SITE_URL): envia um arquivo de
 #     teste para as pastas prováveis e confere qual delas o site devolve. Em contas com mais de um
 #     domínio, a pasta public_html costuma ser de outro site, e nunca é usada por engano; na
-#     primeira vez, a implantação também se recusa a escrever numa pasta que já tem outro site;
+#     primeira vez, a implantação também se recusa a escrever numa pasta que já tem outro site.
+#     Pasta única: se a conta FTP começa direto na pasta do domínio, o código vai para uma
+#     subpasta (APP_DIR) bloqueada para a internet, e o bloqueio é conferido pelo próprio site
+#     antes de o .env existir;
 #  1. monta o pacote (código → APP_DIR; public/ → PUBLIC_DIR) e um manifesto com o hash de
 #     cada arquivo;
 #  2. compara com o manifesto da implantação anterior, guardado no servidor, e envia só o que
@@ -184,18 +187,20 @@ if ! lftp_comandos "cls -1" > "$TRABALHO/raiz.txt" 2> "$TRABALHO/conexao.err"; t
   grep -qi "530" "$TRABALHO/conexao.err" && [ "$SSL_FORCE" = no ] && dica="$dica Com FTP_CRIPTOGRAFIA=desligada, o servidor também pode estar recusando o acesso sem criptografia."
   erro "Não foi possível conectar ao FTP. $dica"
 fi
-if ! grep -qxE 'public_html/?' "$TRABALHO/raiz.txt"; then
-  # (|| true: com "set -o pipefail", um grep sem resultado encerraria o script sem mensagem)
-  vista=$(sed -E 's#/$##' "$TRABALHO/raiz.txt" | grep -vxE '\.|\.\.' | head -15 | tr '\n' ' ' || true)
-  erro "A conta FTP não começa na pasta pessoal da hospedagem: ela não enxerga 'public_html'. O que ela vê: ${vista:-(pasta vazia)}. O cPanel cria contas FTP presas a uma subpasta (padrão: public_html/dominio/conta). Exclua a conta em cPanel → Contas FTP e crie de novo com o diretório '/' (pode repetir o mesmo usuário e senha), ou use a conta FTP principal (usuário e senha do cPanel)."
-fi
-echo "Conectado. Pasta inicial com: $(tr '\n' ' ' < "$TRABALHO/raiz.txt" | cut -c1-200)"
+# (|| true: com "set -o pipefail", um grep sem resultado encerraria o script sem mensagem)
+vista=$(sed -E 's#/$##' "$TRABALHO/raiz.txt" | grep -vxE '\.|\.\.' | head -15 | tr '\n' ' ' || true)
+PASTA_PESSOAL=1
+grep -qxE 'public_html/?' "$TRABALHO/raiz.txt" || PASTA_PESSOAL=0
+echo "Conectado. A conta FTP vê: ${vista:-(pasta vazia)}"
 
 # ---------------------------------------------------------------- 1b. pasta pública do site
 etapa "Descobrindo a pasta pública de $SITE_URL"
 HOST="${SITE_URL#*://}"; HOST="${HOST%%:*}"; HOST="${HOST#www.}"
 if [ -n "$PUBLIC_DIR" ]; then
   candidatas=("$PUBLIC_DIR")
+elif [ "$PASTA_PESSOAL" = 0 ]; then
+  # A conta FTP não vê a pasta pessoal: ela pode começar direto na pasta do domínio.
+  candidatas=(".")
 else
   # Domínio adicional (pasta própria) primeiro; public_html só se for o domínio principal da conta.
   candidatas=("$HOST" "public_html/$HOST" "${HOST%%.*}" "public_html/${HOST%%.*}" "public_html")
@@ -212,8 +217,19 @@ for pasta in "${candidatas[@]}"; do
   fi
   echo "  $pasta: não é a pasta de $SITE_URL"
 done
+if [ -z "$PUBLIC_DIR" ] && [ "$PASTA_PESSOAL" = 0 ]; then
+  erro "A conta FTP não começa na pasta pessoal nem na pasta pública de $SITE_URL (ela vê: ${vista:-pasta vazia}). Em cPanel → Contas FTP, crie a conta com o diretório igual à 'Raiz do documento' de $HOST (cPanel → Domínios) ou com o diretório '/'."
+fi
 [ -n "$PUBLIC_DIR" ] || erro "Não encontrei a pasta pública de $SITE_URL (testadas: ${candidatas[*]}). Veja em cPanel → Domínios a 'Raiz do documento' de $HOST e cadastre-a na variável PUBLIC_DIR (sem /home/usuario/, por exemplo: $HOST)."
 validar_pastas
+
+# Pasta única: o código fica numa subpasta da pasta pública, bloqueada para a internet.
+PASTA_UNICA=0
+if [ "$PUBLIC_DIR" = "." ]; then
+  PASTA_UNICA=1
+  [[ "$APP_DIR" =~ ^[A-Za-z0-9_-][A-Za-z0-9._-]*$ ]] || erro "Na pasta única, APP_DIR precisa ser um nome simples de pasta (ex.: mostraqui-app)."
+  echo "A conta FTP começa na pasta do domínio: o código vai para '$APP_DIR', bloqueada para a internet (conferido antes de criar o .env)."
+fi
 
 # ---------------------------------------------------------------- 2. pacote e manifesto
 etapa "Montando o pacote"
@@ -222,7 +238,27 @@ mkdir -p "$PACOTE/app" "$PACOTE/public"
 rsync -a --copy-links --exclude-from=deploy/excluir.txt ./ "$PACOTE/app/"
 rsync -a --copy-links ./public/ "$PACOTE/public/"
 # O index.php aponta para a pasta do código a partir da pasta pública (ex.: ../mostraqui-app).
-relativo="$(printf '../%.0s' $(seq 1 "$(awk -F/ '{print NF}' <<< "$PUBLIC_DIR")"))$APP_DIR"
+if [ "$PASTA_UNICA" = 1 ]; then
+  relativo="$APP_DIR"
+  app_regex="${APP_DIR//./\\.}"
+  # Duas barreiras independentes no .htaccess da pasta pública (mod_rewrite e mod_alias)...
+  sed -i "s#^\(    RewriteEngine On\)\$#\1\n\n    \# Pasta do código (pasta única): nunca acessível pela internet.\n    RewriteRule ^$app_regex(/|\$) - [F,L]#" "$PACOTE/public/.htaccess"
+  grep -qF "RewriteRule ^$app_regex(/|\$) - [F,L]" "$PACOTE/public/.htaccess" || erro "Não foi possível incluir o bloqueio da pasta do código no .htaccess."
+  printf '\n# Pasta do código (pasta única): bloqueio também sem mod_rewrite.\nRedirectMatch 403 ^/%s(/|$)\n' "$app_regex" >> "$PACOTE/public/.htaccess"
+  # ...e uma terceira dentro da própria pasta do código.
+  cat > "$PACOTE/app/.htaccess" <<'HTACCESS'
+# Pasta do código do portfólio: nunca acessível pela internet.
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+</IfModule>
+HTACCESS
+else
+  relativo="$(printf '../%.0s' $(seq 1 "$(awk -F/ '{print NF}' <<< "$PUBLIC_DIR")"))$APP_DIR"
+fi
 sed -i "s#^\$appPath = .*#\$appPath = __DIR__.'/$relativo';#" "$PACOTE/public/index.php"
 grep -qF "\$appPath = __DIR__.'/$relativo';" "$PACOTE/public/index.php" || erro "Não foi possível ajustar o caminho do código no index.php."
 echo "Pasta pública: $PUBLIC_DIR · código: $APP_DIR (o index.php procura $relativo)"
@@ -304,6 +340,19 @@ printf '%s\n' "$PUBLIC_DIR" > "$TRABALHO/pasta-publica.txt"
 inicio=$(date +%s)
 lftp_executar "$TRABALHO/envio.lftp" || erro "O envio por FTP falhou (veja a mensagem acima). O site sai da manutenção; rode a implantação de novo para completar o envio."
 echo "Envio concluído em $(( $(date +%s) - inicio )) s."
+
+# ---------------------------------------------------------------- 4b. pasta única: bloqueio conferido
+if [ "$PASTA_UNICA" = 1 ]; then
+  etapa "Conferindo pela internet que a pasta do código está bloqueada"
+  for caminho in "$APP_DIR/composer.json" "$APP_DIR/artisan" "$APP_DIR/vendor/autoload.php" "$APP_DIR/.env.example" "$APP_DIR/.implantacao/manifesto.txt"; do
+    codigo=$(curl -s -o /dev/null --max-time 20 -w '%{http_code}' "$SITE_URL/$caminho" || true)
+    echo "  /$caminho → HTTP $codigo"
+    case "$codigo" in
+      403|404) ;;
+      *) erro "A pasta do código ficou acessível pela internet ou não pôde ser conferida (/$caminho respondeu HTTP $codigo; o esperado é 403). A implantação foi interrompida antes de criar ou usar o .env. Confira se a hospedagem aplica os arquivos .htaccess; se já existir um .env de implantações anteriores, troque as senhas dele." ;;
+    esac
+  done
+fi
 
 # ---------------------------------------------------------------- 5. conclusão no servidor
 etapa "Atualizando o banco e liberando o site"
