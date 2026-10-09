@@ -38,7 +38,8 @@ class DeployEndpointTest extends TestCase
 
     private function finish(?string $token = null)
     {
-        return $this->postJson('/_implantacao/finalizar', [], ['X-Implantacao-Token' => $token ?? $this->token]);
+        // Como o script envia: formulário com o código no corpo.
+        return $this->post('/_implantacao/finalizar', ['codigo' => $token ?? $this->token], ['Accept' => 'application/json']);
     }
 
     public function test_route_does_not_exist_without_a_valid_single_use_code(): void
@@ -46,6 +47,8 @@ class DeployEndpointTest extends TestCase
         $this->finish(bin2hex(random_bytes(32)))->assertNotFound();
         $this->finish('curto')->assertNotFound();
         $this->postJson('/_implantacao/finalizar')->assertNotFound();
+        // O cabeçalho continua aceito.
+        $this->postJson('/_implantacao/finalizar', [], ['X-Implantacao-Token' => bin2hex(random_bytes(32))])->assertNotFound();
         $this->get('/_implantacao/finalizar')->assertStatus(405);
 
         // Código esquecido no servidor perde a validade em uma hora.

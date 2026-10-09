@@ -158,6 +158,7 @@ enviam só o que mudou. Ao final, o GitHub mostra um aviso amarelo pedindo para 
 | `O site redirecionou a conclusão (HTTP 301)` | O HTTPS já está ativo: mude `SITE_URL` para `https://` |
 | `O servidor respondeu HTTP 500` com "Composer detected issues in your platform" | O PHP do domínio não é o 8.3: ajuste no MultiPHP Manager (Parte 3) |
 | `Não foi possível conectar ao banco de dados` | Confira `DB_*` no `.env` (Parte 5, item 4) |
+| `O firewall da hospedagem (ModSecurity) bloqueou a conclusão (HTTP 406)` | Os arquivos já foram enviados. Rode de novo; se persistir, em cPanel → **ModSecurity** desative a proteção só para `mostraqui.net` e rode outra vez |
 | `421 Too many connections` | Feche programas de FTP abertos (como o FileZilla) ou cadastre `FTP_CONEXOES=2` |
 | `O site não respondeu com HTTP 200` | Veja `~/mostraqui-app/storage/logs/` no Gerenciador de arquivos |
 
@@ -210,7 +211,12 @@ usuário da conta. Resultados:
   site, painel, `/instalar` e migrações funcionando. Num Apache que ignora `.htaccess`, a
   implantação parou na conferência (HTTP 200) sem criar o `.env`.
 
-**Na HostGator real (09/10/2026):** as duas primeiras execuções pararam na conexão, antes de
+**Primeiro envio completo na HostGator (09/10/2026):** 7.065 arquivos em 54 minutos, com a pasta
+do código conferida pela internet (403 em todos os caminhos). A conclusão foi recusada pelo
+firewall da hospedagem (ModSecurity, HTTP 406) porque a chamada era um POST sem corpo. Ela passou a
+ser um formulário comum, com o código de uso único no corpo.
+
+**Na HostGator real (09/10/2026, antes):** as duas primeiras execuções pararam na conexão, antes de
 enviar qualquer arquivo. O servidor aceitou FTP com criptografia, mas o certificado
 (`*.hostgator.com.br`) não correspondia ao valor de `FTP_SERVIDOR`. Nessa investigação apareceu que
 o domínio principal da conta é arteclaser.com.br, o que motivou a descoberta automática da pasta

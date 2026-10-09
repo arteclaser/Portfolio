@@ -11,8 +11,10 @@ class DeployController extends Controller
 {
     public function __invoke(Request $request, DeployFinisher $finisher): JsonResponse
     {
-        // Sem código válido, a rota se comporta como inexistente.
-        abort_unless($finisher->tokenMatches((string) $request->header('X-Implantacao-Token')), 404);
+        // O código vai no corpo do formulário (firewalls como o ModSecurity recusam POST sem corpo);
+        // o cabeçalho continua aceito. Sem código válido, a rota se comporta como inexistente.
+        $token = (string) ($request->input('codigo') ?: $request->header('X-Implantacao-Token'));
+        abort_unless($finisher->tokenMatches($token), 404);
 
         $result = $finisher->finish();
 

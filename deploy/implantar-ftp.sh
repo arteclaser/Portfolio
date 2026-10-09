@@ -361,9 +361,11 @@ printf '%s\n' "$(printf '%s' "$CODIGO" | sha256sum | cut -c1-64)" > "$TRABALHO/t
 CODIGO_ENVIADO=1
 lftp_comandos "put \"$TRABALHO/token.sha256\" -o \"$APP_DIR/.implantacao/token.sha256\"" >/dev/null
 
-http=$(curl -sS --max-time 300 -o "$TRABALHO/resposta.json" -w '%{http_code}' -X POST \
-  -H "X-Implantacao-Token: $CODIGO" -H 'Accept: application/json' \
-  "$SITE_URL/_implantacao/finalizar") || http=000
+# Formulário comum (com corpo e tamanho declarados) e identificação de navegador: o firewall da
+# HostGator (ModSecurity) recusa POST sem corpo com HTTP 406.
+http=$(curl -sS --max-time 300 -o "$TRABALHO/resposta.json" -w '%{http_code}' \
+  -A 'Mozilla/5.0 (compatible; MostraquiImplantacao/1.0)' -H 'Accept: application/json' \
+  --data-urlencode "codigo=$CODIGO" "$SITE_URL/_implantacao/finalizar") || http=000
 
 mensagens() {
   php -r '$d = json_decode((string) file_get_contents($argv[1]), true);
@@ -378,6 +380,8 @@ case "$http" in
   200) mensagens; CONCLUIDO=1; echo "Implantação concluída." ;;
   202) mensagens; CONCLUIDO=1
        aviso "Arquivos enviados, mas falta configurar o servidor: $(php -r '$d=json_decode((string) file_get_contents($argv[1]), true); echo implode(" ", $d["mensagens"] ?? []);' "$TRABALHO/resposta.json" 2>/dev/null)" ;;
+  406|418|429)
+       mensagens; erro "O firewall da hospedagem (ModSecurity) bloqueou a conclusão (HTTP $http). Os arquivos já foram enviados. Rode a implantação de novo; se persistir, em cPanel → ModSecurity desative a proteção só para $HOST e rode outra vez." ;;
   301|302|307|308)
        erro "O site redirecionou a conclusão (HTTP $http). Se o HTTPS já está ativo (FORCE_HTTPS=true), mude a variável SITE_URL para https://." ;;
   404) erro "O site não reconheceu a implantação (HTTP 404). Confira se SITE_URL é o endereço deste site e se APP_DIR é a pasta do código." ;;
