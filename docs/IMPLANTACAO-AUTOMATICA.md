@@ -44,8 +44,10 @@ Uma conta própria pode ser excluída a qualquer momento sem mexer na senha do c
 1. Em **Contas FTP → Adicionar conta FTP**, preencha:
    - *Login:* `implantacao` (o usuário completo será `implantacao@mostraqui.net`);
    - *Senha:* use o **Gerador de senha** e **anote a senha**;
-   - *Diretório:* apague o texto sugerido e digite apenas **`/`** (a pasta pessoal inteira). A
-     implantação precisa enxergar `public_html` e a pasta do código, que fica fora dela;
+   - *Diretório:* o cPanel preenche sozinho algo como `public_html/mostraqui.net/implantacao`.
+     **Apague tudo e digite apenas `/`** (a pasta pessoal inteira). A implantação precisa enxergar a
+     pasta do site e a pasta do código, que fica fora dela. Com o diretório padrão, a conta só
+     enxerga uma pasta vazia e a implantação para;
    - *Cota:* **Ilimitado**.
 2. Clique em **Criar conta de FTP**. Segundo a HostGator, a conta não pode ser editada depois. Se
    algo ficar errado, exclua e crie de novo.
@@ -142,7 +144,7 @@ enviam só o que mudou. Ao final, o GitHub mostra um aviso amarelo pedindo para 
 | `Usuário ou senha do FTP recusados` | Confira `FTP_USUARIO` (a conta adicional inclui `@mostraqui.net`) e `FTP_SENHA` |
 | `O certificado do servidor não é um certificado válido de *.hostgator.com.br` | O servidor apresentou outro certificado (o nome aparece na mensagem). Confira se `FTP_SERVIDOR` aponta para a HostGator; se a hospedagem mudou de certificado, ajuste `FTP_DOMINIO_CERTIFICADO` |
 | `O servidor não aceitou FTP com criptografia` | Confirme com o suporte se o FTPS (FTP sobre TLS explícito) está ativo na conta |
-| `A conta FTP não enxerga a pasta 'public_html'` | Recrie a conta FTP com o diretório `/` ou use a conta principal (Parte 2) |
+| `A conta FTP não começa na pasta pessoal da hospedagem` | O cPanel preenche o diretório com `public_html/dominio/conta`. Exclua a conta FTP e crie de novo com o diretório `/` (pode repetir usuário e senha), ou use a conta principal (Parte 2) |
 | `Não encontrei a pasta pública de ...` | Veja em cPanel → Domínios a *Raiz do documento* de `mostraqui.net` e cadastre a variável `PUBLIC_DIR` (ex.: `mostraqui.net`). Confira também se o domínio já abre (mesmo com erro 403) |
 | `A pasta pública '...' já tem outro site` | A implantação não substitui sites existentes. Confira se a pasta é mesmo a de `mostraqui.net`; nunca apague o `public_html` do arteclaser.com.br |
 | `A pasta pública mudou de ... para ...` | A raiz do documento do domínio mudou no cPanel, ou `PUBLIC_DIR` foi alterada. Confira antes de continuar |

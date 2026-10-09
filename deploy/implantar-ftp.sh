@@ -184,8 +184,10 @@ if ! lftp_comandos "cls -1" > "$TRABALHO/raiz.txt" 2> "$TRABALHO/conexao.err"; t
   grep -qi "530" "$TRABALHO/conexao.err" && [ "$SSL_FORCE" = no ] && dica="$dica Com FTP_CRIPTOGRAFIA=desligada, o servidor também pode estar recusando o acesso sem criptografia."
   erro "Não foi possível conectar ao FTP. $dica"
 fi
-grep -qxE 'public_html/?' "$TRABALHO/raiz.txt" \
-  || erro "A conta FTP não enxerga a pasta 'public_html' no início. Crie a conta FTP com o diretório '/' (pasta pessoal inteira) ou use a conta FTP principal do cPanel."
+if ! grep -qxE 'public_html/?' "$TRABALHO/raiz.txt"; then
+  vista=$(sed -E 's#/$##' "$TRABALHO/raiz.txt" | grep -vxE '\.|\.\.' | head -15 | tr '\n' ' ')
+  erro "A conta FTP não começa na pasta pessoal da hospedagem: ela não enxerga 'public_html'. O que ela vê: ${vista:-(pasta vazia)}. O cPanel cria contas FTP presas a uma subpasta (padrão: public_html/dominio/conta). Exclua a conta em cPanel → Contas FTP e crie de novo com o diretório '/' (pode repetir o mesmo usuário e senha), ou use a conta FTP principal (usuário e senha do cPanel)."
+fi
 echo "Conectado. Pasta inicial com: $(tr '\n' ' ' < "$TRABALHO/raiz.txt" | cut -c1-200)"
 
 # ---------------------------------------------------------------- 1b. pasta pública do site
