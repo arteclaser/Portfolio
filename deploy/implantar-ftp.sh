@@ -153,7 +153,7 @@ if [ "$VERIFICAR" = yes ] && [ -n "$FTP_DOMINIO_CERTIFICADO" ]; then
   case "$FTP_SERVIDOR" in
     *."$FTP_DOMINIO_CERTIFICADO") ;; # o nome já é coberto pelo certificado
     *)
-      ip=$(getent ahostsv4 "$FTP_SERVIDOR" 2>/dev/null | awk 'NR==1 {print $1}')
+      ip=$(getent ahostsv4 "$FTP_SERVIDOR" 2>/dev/null | awk 'NR==1 {print $1}' || true)
       [ -n "$ip" ] || erro "Não foi possível encontrar o endereço de FTP_SERVIDOR. Confira o valor do segredo."
       # Nome de uso único dentro do domínio do certificado, apontado para o IP do servidor.
       NOME_HOSTS="implantacao-$(openssl rand -hex 4).$FTP_DOMINIO_CERTIFICADO"
@@ -174,7 +174,7 @@ if ! lftp_comandos "cls -1" > "$TRABALHO/raiz.txt" 2> "$TRABALHO/conexao.err"; t
     # Mostra em nome de quem o certificado foi emitido, para indicar o valor correto.
     nomes=$(timeout 20 openssl s_client -connect "$FTP_SERVIDOR:$FTP_PORTA" -starttls ftp -servername "$FTP_SERVIDOR" </dev/null 2>/dev/null \
       | openssl x509 -noout -subject -ext subjectAltName 2>/dev/null \
-      | grep -oE '(CN ?= ?|DNS:)[^,/ ]+' | sed -E 's/^(CN ?= ?|DNS:)//' | sort -u | tr '\n' ' ')
+      | grep -oE '(CN ?= ?|DNS:)[^,/ ]+' | sed -E 's/^(CN ?= ?|DNS:)//' | sort -u | tr '\n' ' ' || true)
     [ -n "$nomes" ] && dica="$dica O certificado apresentado foi emitido para: ${nomes% }. Cadastre esse nome em FTP_SERVIDOR (se começar com *., troque o * pelo nome do servidor, como br123) ou o domínio dele na variável FTP_DOMINIO_CERTIFICADO."
     [ -n "$NOME_HOSTS" ] && dica="O certificado do servidor não é um certificado válido de *.$FTP_DOMINIO_CERTIFICADO. Por segurança, a conexão foi recusada. Emitido para: ${nomes% }."
 
@@ -185,7 +185,8 @@ if ! lftp_comandos "cls -1" > "$TRABALHO/raiz.txt" 2> "$TRABALHO/conexao.err"; t
   erro "Não foi possível conectar ao FTP. $dica"
 fi
 if ! grep -qxE 'public_html/?' "$TRABALHO/raiz.txt"; then
-  vista=$(sed -E 's#/$##' "$TRABALHO/raiz.txt" | grep -vxE '\.|\.\.' | head -15 | tr '\n' ' ')
+  # (|| true: com "set -o pipefail", um grep sem resultado encerraria o script sem mensagem)
+  vista=$(sed -E 's#/$##' "$TRABALHO/raiz.txt" | grep -vxE '\.|\.\.' | head -15 | tr '\n' ' ' || true)
   erro "A conta FTP não começa na pasta pessoal da hospedagem: ela não enxerga 'public_html'. O que ela vê: ${vista:-(pasta vazia)}. O cPanel cria contas FTP presas a uma subpasta (padrão: public_html/dominio/conta). Exclua a conta em cPanel → Contas FTP e crie de novo com o diretório '/' (pode repetir o mesmo usuário e senha), ou use a conta FTP principal (usuário e senha do cPanel)."
 fi
 echo "Conectado. Pasta inicial com: $(tr '\n' ' ' < "$TRABALHO/raiz.txt" | cut -c1-200)"
