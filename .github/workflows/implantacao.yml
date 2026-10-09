@@ -68,6 +68,8 @@ jobs:
           FTP_PORTA: ${{ vars.FTP_PORTA || '21' }}
           FTP_CRIPTOGRAFIA: ${{ vars.FTP_CRIPTOGRAFIA || 'obrigatoria' }}
           FTP_CONFERIR_CERTIFICADO: ${{ vars.FTP_CONFERIR_CERTIFICADO || 'sim' }}
+          # O FTP da HostGator apresenta o certificado *.hostgator.com.br (conferido em 09/10/2026).
+          FTP_DOMINIO_CERTIFICADO: ${{ vars.FTP_DOMINIO_CERTIFICADO || 'hostgator.com.br' }}
           FTP_CONEXOES: ${{ vars.FTP_CONEXOES || '4' }}
           APP_DIR: ${{ vars.APP_DIR || 'mostraqui-app' }}
           # Vazio: a implantação descobre sozinha a pasta pública de SITE_URL.

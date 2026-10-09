@@ -8,6 +8,7 @@
 # Obrigatórias: FTP_SERVIDOR, FTP_USUARIO, FTP_SENHA, SITE_URL
 # Opcionais:    FTP_PORTA (21), FTP_CRIPTOGRAFIA (obrigatoria | desligada),
 #               FTP_CONFERIR_CERTIFICADO (sim | nao), FTP_CONEXOES (4),
+#               FTP_DOMINIO_CERTIFICADO (ex.: hostgator.com.br; ver abaixo),
 #               APP_DIR (mostraqui-app), PUBLIC_DIR (vazio = descobrir sozinho)
 #
 # Como funciona:
@@ -37,6 +38,11 @@ FTP_CONEXOES="${FTP_CONEXOES:-4}"
 APP_DIR="${APP_DIR:-mostraqui-app}"
 PUBLIC_DIR="${PUBLIC_DIR:-}"
 LIMITE_EXCLUSOES="${LIMITE_EXCLUSOES:-5000}"
+# Domínio do certificado do FTP. Na HostGator, o FTP apresenta um certificado *.hostgator.com.br,
+# que não corresponde a ftp.seudominio nem ao IP. Com esta opção, a conexão vai ao endereço de
+# FTP_SERVIDOR, mas o certificado é conferido como *.FTP_DOMINIO_CERTIFICADO (cadeia e nome),
+# como faz o "--connect-to" do curl. Um servidor falso não teria um certificado válido para ele.
+FTP_DOMINIO_CERTIFICADO="${FTP_DOMINIO_CERTIFICADO:-}"
 
 [ -n "${FTP_SERVIDOR:-}" ] || erro "Falta o segredo FTP_SERVIDOR (Settings → Secrets and variables → Actions)."
 [ -n "${FTP_USUARIO:-}" ] || erro "Falta o segredo FTP_USUARIO."
@@ -50,6 +56,7 @@ SITE_URL="${SITE_URL%/}"
 [[ "$FTP_PORTA" =~ ^[0-9]{1,5}$ ]] || erro "FTP_PORTA inválida."
 [[ "$FTP_CONEXOES" =~ ^[1-6]$ ]] || erro "FTP_CONEXOES deve ser de 1 a 6 (a HostGator aceita até 8 conexões simultâneas por conta)."
 [[ "$SITE_URL" =~ ^https?://[A-Za-z0-9.-]+(:[0-9]+)?$ ]] || erro "SITE_URL inválida: use só o endereço do site, como https://mostraqui.net."
+[[ -z "$FTP_DOMINIO_CERTIFICADO" || "$FTP_DOMINIO_CERTIFICADO" =~ ^[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+$ ]] || erro "FTP_DOMINIO_CERTIFICADO inválido (ex.: hostgator.com.br)."
 case "$FTP_CRIPTOGRAFIA" in
   obrigatoria) SSL_ALLOW=yes; SSL_FORCE=yes ;;
   desligada)
@@ -88,6 +95,8 @@ done
 [ -f artisan ] && [ -f vendor/autoload.php ] || erro "Rode a partir da raiz do projeto, depois de 'composer install --no-dev'."
 
 TRABALHO="$(mktemp -d)"
+CONEXAO="$FTP_SERVIDOR"
+NOME_HOSTS=""
 EM_MANUTENCAO=0
 CODIGO_ENVIADO=0
 CONCLUIDO=0
@@ -110,7 +119,7 @@ set ftp:ssl-protect-list $SSL_FORCE
 set ssl:verify-certificate $VERIFICAR
 set xfer:use-temp-file yes
 set xfer:clobber yes
-open --env-password -u "$FTP_USUARIO" -p $FTP_PORTA $FTP_SERVIDOR
+open --env-password -u "$FTP_USUARIO" -p $FTP_PORTA $CONEXAO
 EOF
     cat "$1"
   } > "$TRABALHO/sessao.lftp"
@@ -130,6 +139,9 @@ finalizar() {
     fi
     lftp_comandos "${comandos[@]}" >/dev/null 2>&1 || aviso "Não foi possível limpar os arquivos temporários da implantação no servidor."
   fi
+  if [ -n "$NOME_HOSTS" ]; then
+    if [ -w /etc/hosts ]; then sed -i "/ $NOME_HOSTS\$/d" /etc/hosts; else sudo -n sed -i "/ $NOME_HOSTS\$/d" /etc/hosts 2>/dev/null; fi
+  fi
   rm -rf "$TRABALHO"
   exit "$status"
 }
@@ -137,6 +149,23 @@ trap finalizar EXIT
 
 # ---------------------------------------------------------------- 1. conexão
 etapa "Conectando a $FTP_SERVIDOR:$FTP_PORTA (criptografia: $FTP_CRIPTOGRAFIA)"
+if [ "$VERIFICAR" = yes ] && [ -n "$FTP_DOMINIO_CERTIFICADO" ]; then
+  case "$FTP_SERVIDOR" in
+    *."$FTP_DOMINIO_CERTIFICADO") ;; # o nome já é coberto pelo certificado
+    *)
+      ip=$(getent ahostsv4 "$FTP_SERVIDOR" 2>/dev/null | awk 'NR==1 {print $1}')
+      [ -n "$ip" ] || erro "Não foi possível encontrar o endereço de FTP_SERVIDOR. Confira o valor do segredo."
+      # Nome de uso único dentro do domínio do certificado, apontado para o IP do servidor.
+      NOME_HOSTS="implantacao-$(openssl rand -hex 4).$FTP_DOMINIO_CERTIFICADO"
+      if [ -w /etc/hosts ]; then echo "$ip $NOME_HOSTS" >> /etc/hosts
+      elif sudo -n true 2>/dev/null; then echo "$ip $NOME_HOSTS" | sudo tee -a /etc/hosts >/dev/null
+      else erro "Para conferir o certificado como *.$FTP_DOMINIO_CERTIFICADO é preciso poder editar /etc/hosts. Use em FTP_SERVIDOR o nome do servidor (ex.: br123.$FTP_DOMINIO_CERTIFICADO)."
+      fi
+      CONEXAO="$NOME_HOSTS"
+      echo "O certificado do FTP será conferido como *.$FTP_DOMINIO_CERTIFICADO."
+      ;;
+  esac
+fi
 if ! lftp_comandos "cls -1" > "$TRABALHO/raiz.txt" 2> "$TRABALHO/conexao.err"; then
   cat "$TRABALHO/conexao.err" >&2
   dica="Confira FTP_SERVIDOR, FTP_USUARIO e FTP_SENHA."
@@ -146,7 +175,9 @@ if ! lftp_comandos "cls -1" > "$TRABALHO/raiz.txt" 2> "$TRABALHO/conexao.err"; t
     nomes=$(timeout 20 openssl s_client -connect "$FTP_SERVIDOR:$FTP_PORTA" -starttls ftp -servername "$FTP_SERVIDOR" </dev/null 2>/dev/null \
       | openssl x509 -noout -subject -ext subjectAltName 2>/dev/null \
       | grep -oE '(CN ?= ?|DNS:)[^,/ ]+' | sed -E 's/^(CN ?= ?|DNS:)//' | sort -u | tr '\n' ' ')
-    [ -n "$nomes" ] && dica="$dica O certificado apresentado foi emitido para: ${nomes% }. Cadastre esse nome em FTP_SERVIDOR (se começar com *., troque o * pelo nome do servidor, como br123)."
+    [ -n "$nomes" ] && dica="$dica O certificado apresentado foi emitido para: ${nomes% }. Cadastre esse nome em FTP_SERVIDOR (se começar com *., troque o * pelo nome do servidor, como br123) ou o domínio dele na variável FTP_DOMINIO_CERTIFICADO."
+    [ -n "$NOME_HOSTS" ] && dica="O certificado do servidor não é um certificado válido de *.$FTP_DOMINIO_CERTIFICADO. Por segurança, a conexão foi recusada. Emitido para: ${nomes% }."
+
   fi
   grep -qi "ssl\|tls\|auth" "$TRABALHO/conexao.err" && ! grep -qi "certificate" "$TRABALHO/conexao.err" && dica="O servidor não aceitou FTP com criptografia (FTPS). Confirme com o suporte da HostGator."
   grep -qi "login incorrect\|530" "$TRABALHO/conexao.err" && dica="Usuário ou senha do FTP recusados. Confira FTP_USUARIO (com @dominio, se for conta adicional) e FTP_SENHA."
@@ -164,7 +195,7 @@ if [ -n "$PUBLIC_DIR" ]; then
   candidatas=("$PUBLIC_DIR")
 else
   # Domínio adicional (pasta própria) primeiro; public_html só se for o domínio principal da conta.
-  candidatas=("$HOST" "public_html/$HOST" "public_html")
+  candidatas=("$HOST" "public_html/$HOST" "${HOST%%.*}" "public_html/${HOST%%.*}" "public_html")
 fi
 SONDA="mostraqui-sonda-$(openssl rand -hex 12).txt"
 openssl rand -hex 24 > "$TRABALHO/sonda.txt"

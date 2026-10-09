@@ -27,20 +27,15 @@ Além disso, ela **se recusa a escrever** numa pasta que já tenha outro site (W
 
 ---
 
-## Parte 1 — Anotar o nome do servidor (uma vez)
+## Parte 1 — Endereço do servidor de FTP (uma vez)
 
-A implantação confere o certificado de segurança do FTP. Na HostGator, ele foi emitido para
-**`*.hostgator.com.br`** (conferido na primeira execução, em 09/10/2026). Por isso, `FTP_SERVIDOR`
-precisa ser o **nome completo do servidor da hospedagem**, no formato `br123.hostgator.com.br`, e
-**não** `mostraqui.net`, `ftp.mostraqui.net`, `arteclaser.com.br` ou o IP. Para encontrar esse
-nome:
-
-- no cPanel, no quadro **Informações gerais** (lateral direita), em *Nome do servidor*; ou
-- no endereço do próprio cPanel, na barra do navegador (`https://br123.hostgator.com.br:2083`); ou
-- no Portal do Cliente da HostGator, nos dados da hospedagem.
-
-Se tiver dúvida, cadastre qualquer endereço e rode a implantação: quando o nome não confere, a
-mensagem de erro do GitHub mostra **para qual nome o certificado foi emitido**.
+Em `FTP_SERVIDOR` vale qualquer endereço que leve ao seu servidor: `ftp.mostraqui.net`, o nome do
+servidor (`br123.hostgator.com.br`) ou o IP. O certificado de segurança do FTP da HostGator é
+emitido para **`*.hostgator.com.br`** (conferido na primeira execução, em 09/10/2026), e não para
+`ftp.mostraqui.net`. Por isso, a implantação conecta ao endereço cadastrado e confere o certificado
+como `*.hostgator.com.br`: a cadeia de certificação e o nome. É o mesmo princípio do `--connect-to`
+do curl. Um servidor falso não teria um certificado válido para esse nome, e a conexão seria
+recusada. Esse domínio fica na variável `FTP_DOMINIO_CERTIFICADO` (padrão: `hostgator.com.br`).
 
 ## Parte 2 — Criar uma conta FTP só para a implantação (uma vez)
 
@@ -80,7 +75,7 @@ No repositório, abra **Settings → Secrets and variables → Actions**.
 
 | Nome | Valor |
 | --- | --- |
-| `FTP_SERVIDOR` | Nome do servidor anotado na Parte 1 (ex.: `br123.hostgator.com.br`) |
+| `FTP_SERVIDOR` | `ftp.mostraqui.net` (ou o nome do servidor, ex.: `br123.hostgator.com.br`) |
 | `FTP_USUARIO` | `implantacao@mostraqui.net` (ou o usuário do cPanel, se usar a conta principal) |
 | `FTP_SENHA` | Senha da conta FTP |
 
@@ -89,7 +84,8 @@ No repositório, abra **Settings → Secrets and variables → Actions**.
 | Nome | Valor | Quando usar |
 | --- | --- | --- |
 | `SITE_URL` | `http://mostraqui.net` (troque para `https://` quando o SSL estiver ativo) | **Obrigatória** |
-| `FTP_CONFERIR_CERTIFICADO` | `nao` | Só se aparecer erro de certificado mesmo usando o nome do servidor. A conexão continua criptografada |
+| `FTP_DOMINIO_CERTIFICADO` | `hostgator.com.br` (padrão) | Só se a hospedagem usar certificado de outro domínio. A mensagem de erro mostra o nome do certificado |
+| `FTP_CONFERIR_CERTIFICADO` | `nao` | Último recurso, se não houver certificado utilizável. A conexão continua criptografada, mas a identidade do servidor não é conferida |
 | `FTP_CRIPTOGRAFIA` | `desligada` | **Evite.** Só se o servidor recusar FTPS: a senha passaria sem proteção |
 | `FTP_PORTA` | `21` | Só se o cPanel mostrar outra porta |
 | `FTP_CONEXOES` | `4` (de 1 a 6) | Arquivos enviados ao mesmo tempo. A HostGator aceita até 8 conexões por conta |
@@ -144,7 +140,7 @@ enviam só o que mudou. Ao final, o GitHub mostra um aviso amarelo pedindo para 
 | --- | --- |
 | `Falta o segredo FTP_...` / `Falta a variável SITE_URL` | Cadastre o item indicado (Parte 4) |
 | `Usuário ou senha do FTP recusados` | Confira `FTP_USUARIO` (a conta adicional inclui `@mostraqui.net`) e `FTP_SENHA` |
-| `O certificado do servidor não corresponde a FTP_SERVIDOR` | A mensagem mostra o nome do certificado: cadastre-o em `FTP_SERVIDOR` (Parte 1). Se não houver nome utilizável, cadastre `FTP_CONFERIR_CERTIFICADO=nao` |
+| `O certificado do servidor não é um certificado válido de *.hostgator.com.br` | O servidor apresentou outro certificado (o nome aparece na mensagem). Confira se `FTP_SERVIDOR` aponta para a HostGator; se a hospedagem mudou de certificado, ajuste `FTP_DOMINIO_CERTIFICADO` |
 | `O servidor não aceitou FTP com criptografia` | Confirme com o suporte se o FTPS (FTP sobre TLS explícito) está ativo na conta |
 | `A conta FTP não enxerga a pasta 'public_html'` | Recrie a conta FTP com o diretório `/` ou use a conta principal (Parte 2) |
 | `Não encontrei a pasta pública de ...` | Veja em cPanel → Domínios a *Raiz do documento* de `mostraqui.net` e cadastre a variável `PUBLIC_DIR` (ex.: `mostraqui.net`). Confira também se o domínio já abre (mesmo com erro 403) |
@@ -160,7 +156,8 @@ enviam só o que mudou. Ao final, o GitHub mostra um aviso amarelo pedindo para 
 ## Segurança
 
 - **Criptografia obrigatória:** por padrão, a implantação só se conecta com FTPS e confere o
-  certificado do servidor. Senha e arquivos não trafegam abertos.
+  certificado do servidor (cadeia e nome `*.hostgator.com.br`). Senha e arquivos não trafegam
+  abertos.
 - **A senha do FTP fica só nos *Secrets* do GitHub**, criptografada, e o GitHub a oculta nos
   registros. Para cortar o acesso, exclua a conta FTP no cPanel.
 - **Código de uso único:** para atualizar o banco sem terminal, o GitHub sorteia um código a cada

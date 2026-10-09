@@ -88,6 +88,9 @@ Estes recursos **não estão implementados** e não devem ser apresentados como 
   erro passou a mostrar o nome do certificado (`*.hostgator.com.br`). A investigação mostrou que o
   domínio principal da conta é arteclaser.com.br (WordPress em `public_html`). Por isso, a
   implantação passou a descobrir sozinha a pasta pública de `mostraqui.net` e a se recusar a
-  escrever na pasta de outro site; ambos os casos foram ensaiados com um WordPress simulado.
+  escrever na pasta de outro site; ambos os casos foram ensaiados com um WordPress simulado. Ela
+  também passou a conferir o certificado do FTP como `*.hostgator.com.br` ao conectar pelo endereço
+  cadastrado, sem exigir o nome `brNNN` do servidor (ensaiado: aceita o certificado esperado e
+  recusa certificado de outro domínio).
 - **Modo subdomínio na hospedagem real:** testado automaticamente com domínios de teste; depende do
   subdomínio curinga e do certificado curinga na HostGator, ainda não configurados.
