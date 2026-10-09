@@ -128,7 +128,14 @@ etapa "Conectando a $FTP_SERVIDOR:$FTP_PORTA (criptografia: $FTP_CRIPTOGRAFIA)"
 if ! lftp_comandos "cls -1" > "$TRABALHO/raiz.txt" 2> "$TRABALHO/conexao.err"; then
   cat "$TRABALHO/conexao.err" >&2
   dica="Confira FTP_SERVIDOR, FTP_USUARIO e FTP_SENHA."
-  grep -qi "certificate\|certificado" "$TRABALHO/conexao.err" && dica="O certificado do servidor não corresponde a FTP_SERVIDOR. Use o nome do servidor mostrado no cPanel (Contas FTP → Configurar cliente FTP), como br123.hostgator.com.br."
+  if grep -qi "certificate\|certificado" "$TRABALHO/conexao.err"; then
+    dica="O certificado do servidor não corresponde a FTP_SERVIDOR. Use em FTP_SERVIDOR o nome do servidor da hospedagem (cPanel → Informações gerais, ou o endereço do próprio cPanel), como br123.hostgator.com.br."
+    # Mostra em nome de quem o certificado foi emitido, para indicar o valor correto.
+    nomes=$(timeout 20 openssl s_client -connect "$FTP_SERVIDOR:$FTP_PORTA" -starttls ftp -servername "$FTP_SERVIDOR" </dev/null 2>/dev/null \
+      | openssl x509 -noout -subject -ext subjectAltName 2>/dev/null \
+      | grep -oE '(CN ?= ?|DNS:)[^,/ ]+' | sed -E 's/^(CN ?= ?|DNS:)//' | sort -u | tr '\n' ' ')
+    [ -n "$nomes" ] && dica="$dica O certificado apresentado foi emitido para: ${nomes% }. Cadastre esse nome em FTP_SERVIDOR (se começar com *., troque o * pelo nome do servidor, como br123)."
+  fi
   grep -qi "ssl\|tls\|auth" "$TRABALHO/conexao.err" && ! grep -qi "certificate" "$TRABALHO/conexao.err" && dica="O servidor não aceitou FTP com criptografia (FTPS). Confirme com o suporte da HostGator."
   grep -qi "login incorrect\|530" "$TRABALHO/conexao.err" && dica="Usuário ou senha do FTP recusados. Confira FTP_USUARIO (com @dominio, se for conta adicional) e FTP_SENHA."
   grep -qi "530" "$TRABALHO/conexao.err" && [ "$SSL_FORCE" = no ] && dica="$dica Com FTP_CRIPTOGRAFIA=desligada, o servidor também pode estar recusando o acesso sem criptografia."

@@ -19,14 +19,18 @@ um ensaio local com a mesma estrutura de pastas do cPanel (ver *Como foi testado
 
 ---
 
-## Parte 1 — Anotar o endereço do servidor de FTP (uma vez)
+## Parte 1 — Anotar o nome do servidor (uma vez)
 
-1. No cPanel, procure **Contas FTP**.
-2. Na lista de contas, clique em **Configurar cliente FTP** na conta principal.
-3. Anote o valor do campo **"FTP & porta FTPS explícita (Servidor - Host)"**. Em geral, é o nome do
-   servidor, no formato `br123.hostgator.com.br`. **Prefira esse nome** ao IP ou a
-   `ftp.mostraqui.net`, porque o certificado de segurança do FTP costuma ser emitido para o nome do
-   servidor, e a implantação confere esse certificado.
+A implantação confere o certificado de segurança do FTP. Esse certificado é emitido para o **nome
+do servidor da hospedagem**, no formato `br123.hostgator.com.br`, e **não** para `mostraqui.net`,
+`ftp.mostraqui.net` ou o IP. Para encontrar esse nome:
+
+- no cPanel, no quadro **Informações gerais** (lateral direita), em *Nome do servidor*; ou
+- no endereço do próprio cPanel, na barra do navegador (`https://br123.hostgator.com.br:2083`); ou
+- no Portal do Cliente da HostGator, nos dados da hospedagem.
+
+Se tiver dúvida, cadastre qualquer endereço e rode a implantação: quando o nome não confere, a
+mensagem de erro do GitHub mostra **para qual nome o certificado foi emitido**.
 
 ## Parte 2 — Criar uma conta FTP só para a implantação (uma vez)
 
@@ -65,7 +69,7 @@ No repositório, abra **Settings → Secrets and variables → Actions**.
 
 | Nome | Valor |
 | --- | --- |
-| `FTP_SERVIDOR` | Endereço anotado na Parte 1 (ex.: `br123.hostgator.com.br`) |
+| `FTP_SERVIDOR` | Nome do servidor anotado na Parte 1 (ex.: `br123.hostgator.com.br`) |
 | `FTP_USUARIO` | `implantacao@mostraqui.net` (ou o usuário do cPanel, se usar a conta principal) |
 | `FTP_SENHA` | Senha da conta FTP |
 
@@ -128,7 +132,7 @@ enviam só o que mudou. Ao final, o GitHub mostra um aviso amarelo pedindo para 
 | --- | --- |
 | `Falta o segredo FTP_...` / `Falta a variável SITE_URL` | Cadastre o item indicado (Parte 4) |
 | `Usuário ou senha do FTP recusados` | Confira `FTP_USUARIO` (a conta adicional inclui `@mostraqui.net`) e `FTP_SENHA` |
-| `O certificado do servidor não corresponde a FTP_SERVIDOR` | Use em `FTP_SERVIDOR` o nome do servidor da Parte 1. Se persistir, cadastre `FTP_CONFERIR_CERTIFICADO=nao` |
+| `O certificado do servidor não corresponde a FTP_SERVIDOR` | A mensagem mostra o nome do certificado: cadastre-o em `FTP_SERVIDOR` (Parte 1). Se não houver nome utilizável, cadastre `FTP_CONFERIR_CERTIFICADO=nao` |
 | `O servidor não aceitou FTP com criptografia` | Confirme com o suporte se o FTPS (FTP sobre TLS explícito) está ativo na conta |
 | `A conta FTP não enxerga a pasta 'public_html'` | Recrie a conta FTP com o diretório `/` ou use a conta principal (Parte 2) |
 | `O site não reconheceu a implantação (HTTP 404)` | `SITE_URL` deve ser o endereço deste site, e `APP_DIR` a pasta do código (`mostraqui-app`) |

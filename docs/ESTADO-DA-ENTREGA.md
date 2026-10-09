@@ -82,6 +82,9 @@ Estes recursos **não estão implementados** e não devem ser apresentados como 
 - **Implantação automática na HostGator real:** depende da conta FTP e dos segredos no GitHub; o
   fluxo foi ensaiado contra um servidor FTPS local, não contra a HostGator. Pontos a confirmar na
   primeira execução: se a conta FTP adicional aceita TLS e enxerga a pasta pessoal (há alternativa
-  com a conta principal) e o tempo real da primeira transferência.
+  com a conta principal) e o tempo real da primeira transferência. Primeira execução real
+  (09/10/2026): os testes passaram e o servidor da HostGator aceitou FTP com criptografia (FTPS), mas
+  o certificado apresentado não correspondia ao endereço cadastrado em `FTP_SERVIDOR`. A mensagem de
+  erro passou a mostrar o nome do certificado, para indicar o valor correto.
 - **Modo subdomínio na hospedagem real:** testado automaticamente com domínios de teste; depende do
   subdomínio curinga e do certificado curinga na HostGator, ainda não configurados.
