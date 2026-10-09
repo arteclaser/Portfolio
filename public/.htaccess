@@ -1,3 +1,6 @@
+# O sistema começa sempre pelo index.php (um index.html esquecido na pasta não tem prioridade).
+DirectoryIndex index.php
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes

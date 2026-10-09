@@ -12,18 +12,28 @@ Você aprova a mudança (main) ─► GitHub testa ─► envia por FTPS ─► 
 ```
 
 **O que a implantação nunca apaga nem substitui no servidor:** o arquivo `.env`, a pasta `storage/`
-(fotos, documentos, backups, sessões), o banco de dados e os arquivos que já existiam em
-`public_html` (como a pasta `.well-known` do SSL). Ela guarda no servidor uma lista dos arquivos
-que enviou e só apaga arquivos dessa lista que deixaram de existir no sistema. Isso foi verificado em
+(fotos, documentos, backups, sessões), o banco de dados e os arquivos que já existiam na pasta
+pública (como a pasta `.well-known` do SSL). Ela guarda no servidor uma lista dos arquivos que
+enviou e só apaga arquivos dessa lista que deixaram de existir no sistema. Isso foi verificado em
 um ensaio local com a mesma estrutura de pastas do cPanel (ver *Como foi testado*).
+
+**Outros sites da mesma conta ficam protegidos.** Nesta hospedagem, o domínio principal da conta é
+**arteclaser.com.br** (site WordPress), e a pasta `public_html` é dele. `mostraqui.net` é um
+domínio adicional, com pasta própria. A implantação **descobre sozinha** a pasta de
+`mostraqui.net`: envia um arquivo de teste às pastas prováveis (`mostraqui.net`,
+`public_html/mostraqui.net` e `public_html`), confere qual delas o site devolve e apaga o arquivo.
+Além disso, ela **se recusa a escrever** numa pasta que já tenha outro site (WordPress ou outro
+`index.php`) e para se a pasta pública mudar entre uma implantação e outra.
 
 ---
 
 ## Parte 1 — Anotar o nome do servidor (uma vez)
 
-A implantação confere o certificado de segurança do FTP. Esse certificado é emitido para o **nome
-do servidor da hospedagem**, no formato `br123.hostgator.com.br`, e **não** para `mostraqui.net`,
-`ftp.mostraqui.net` ou o IP. Para encontrar esse nome:
+A implantação confere o certificado de segurança do FTP. Na HostGator, ele foi emitido para
+**`*.hostgator.com.br`** (conferido na primeira execução, em 09/10/2026). Por isso, `FTP_SERVIDOR`
+precisa ser o **nome completo do servidor da hospedagem**, no formato `br123.hostgator.com.br`, e
+**não** `mostraqui.net`, `ftp.mostraqui.net`, `arteclaser.com.br` ou o IP. Para encontrar esse
+nome:
 
 - no cPanel, no quadro **Informações gerais** (lateral direita), em *Nome do servidor*; ou
 - no endereço do próprio cPanel, na barra do navegador (`https://br123.hostgator.com.br:2083`); ou
@@ -56,7 +66,8 @@ Uma conta própria pode ser excluída a qualquer momento sem mexer na senha do c
 1. cPanel → **Bancos de dados MySQL**: crie um banco (ex.: `conta_portfolio`) e um usuário com senha
    forte, e adicione o usuário ao banco com **todos os privilégios**. Anote os três dados (o cPanel
    acrescenta o prefixo da conta aos nomes).
-2. cPanel → **MultiPHP Manager**: selecione **PHP 8.3** (ou superior) para `mostraqui.net`.
+2. cPanel → **MultiPHP Manager**: marque **somente** `mostraqui.net` e selecione **PHP 8.3** (ou
+   superior). Não mude a versão do `arteclaser.com.br`: o WordPress continua com a versão atual.
 
 O arquivo `.env` (configurações e senhas do servidor) é criado **automaticamente** na primeira
 implantação. Você só vai editá-lo na Parte 5.
@@ -82,7 +93,8 @@ No repositório, abra **Settings → Secrets and variables → Actions**.
 | `FTP_CRIPTOGRAFIA` | `desligada` | **Evite.** Só se o servidor recusar FTPS: a senha passaria sem proteção |
 | `FTP_PORTA` | `21` | Só se o cPanel mostrar outra porta |
 | `FTP_CONEXOES` | `4` (de 1 a 6) | Arquivos enviados ao mesmo tempo. A HostGator aceita até 8 conexões por conta |
-| `APP_DIR` / `PUBLIC_DIR` | `mostraqui-app` / `public_html` | Só se quiser outras pastas |
+| `PUBLIC_DIR` | Pasta pública de `mostraqui.net` (ex.: `mostraqui.net`) | Só se a descoberta automática não encontrar a pasta. Valor em cPanel → **Domínios** → *Raiz do documento*, sem `/home/usuario/` |
+| `APP_DIR` | `mostraqui-app` | Só se quiser outra pasta para o código (nunca dentro de `public_html`) |
 
 ## Parte 5 — Primeira implantação
 
@@ -135,6 +147,9 @@ enviam só o que mudou. Ao final, o GitHub mostra um aviso amarelo pedindo para 
 | `O certificado do servidor não corresponde a FTP_SERVIDOR` | A mensagem mostra o nome do certificado: cadastre-o em `FTP_SERVIDOR` (Parte 1). Se não houver nome utilizável, cadastre `FTP_CONFERIR_CERTIFICADO=nao` |
 | `O servidor não aceitou FTP com criptografia` | Confirme com o suporte se o FTPS (FTP sobre TLS explícito) está ativo na conta |
 | `A conta FTP não enxerga a pasta 'public_html'` | Recrie a conta FTP com o diretório `/` ou use a conta principal (Parte 2) |
+| `Não encontrei a pasta pública de ...` | Veja em cPanel → Domínios a *Raiz do documento* de `mostraqui.net` e cadastre a variável `PUBLIC_DIR` (ex.: `mostraqui.net`). Confira também se o domínio já abre (mesmo com erro 403) |
+| `A pasta pública '...' já tem outro site` | A implantação não substitui sites existentes. Confira se a pasta é mesmo a de `mostraqui.net`; nunca apague o `public_html` do arteclaser.com.br |
+| `A pasta pública mudou de ... para ...` | A raiz do documento do domínio mudou no cPanel, ou `PUBLIC_DIR` foi alterada. Confira antes de continuar |
 | `O site não reconheceu a implantação (HTTP 404)` | `SITE_URL` deve ser o endereço deste site, e `APP_DIR` a pasta do código (`mostraqui-app`) |
 | `O site redirecionou a conclusão (HTTP 301)` | O HTTPS já está ativo: mude `SITE_URL` para `https://` |
 | `O servidor respondeu HTTP 500` com "Composer detected issues in your platform" | O PHP do domínio não é o 8.3: ajuste no MultiPHP Manager (Parte 3) |
@@ -155,7 +170,8 @@ enviam só o que mudou. Ao final, o GitHub mostra um aviso amarelo pedindo para 
   código passa sem criptografia na chamada ao site, mas só vale durante aquela implantação.
 - O `.env` nunca é enviado pelo GitHub, nunca é apagado e é criado com permissão 600.
 - O código fica fora da pasta pública (`~/mostraqui-app`). O script recusa configurações que o
-  colocariam dentro de `public_html` ou que usem caminhos suspeitos.
+  colocariam dentro de `public_html` ou da pasta pública, e caminhos suspeitos.
+- Nunca escreve na pasta de outro site da conta (ver o início deste guia).
 - Só alterações no `main` são implantadas, e só depois de todos os testes passarem.
 
 ## Como foi testado
@@ -174,11 +190,20 @@ usuário da conta. Resultados:
 - falha no meio do envio: o site saiu da manutenção, o código de uso único foi apagado e a execução
   seguinte completou o envio;
 - recusa de FTP sem criptografia;
-- mensagens claras para senha errada, certificado que não confere, `SITE_URL` errada, conta FTP
-  restrita a `public_html` e caminhos inválidos.
+- mensagens claras para senha errada, certificado que não confere (com o nome do certificado),
+  `SITE_URL` errada, conta FTP restrita a `public_html` e caminhos inválidos;
+- conta com um WordPress no `public_html` (como arteclaser.com.br) e o domínio adicional em pasta
+  própria (`~/mostraqui.net`) ou dentro de `public_html` (`~/public_html/mostraqui.net`): a pasta
+  certa foi descoberta sozinha, o `index.php` passou a apontar para `../mostraqui-app` ou
+  `../../mostraqui-app`, e os arquivos do WordPress ficaram idênticos (conferidos por *hash*);
+- recusa de escrever no `public_html` com WordPress, sem criar nada no servidor, e recusa quando a
+  pasta pública muda entre implantações.
 
-O fluxo **ainda não rodou contra a HostGator real**. A primeira execução no GitHub é o teste
-definitivo. Envios pela internet são mais lentos que o ensaio local, então a primeira implantação
+**Na HostGator real (09/10/2026):** as duas primeiras execuções pararam na conexão, antes de
+enviar qualquer arquivo. O servidor aceitou FTP com criptografia, mas o certificado
+(`*.hostgator.com.br`) não correspondia ao valor de `FTP_SERVIDOR`. Nessa investigação apareceu que
+o domínio principal da conta é arteclaser.com.br, o que motivou a descoberta automática da pasta
+pública e a proteção contra a substituição de outros sites. Envios pela internet são mais lentos que o ensaio local, então a primeira implantação
 pode levar dezenas de minutos (o limite configurado é de 3 horas).
 
 ## Arquivos envolvidos

@@ -85,6 +85,9 @@ Estes recursos **não estão implementados** e não devem ser apresentados como 
   com a conta principal) e o tempo real da primeira transferência. Primeira execução real
   (09/10/2026): os testes passaram e o servidor da HostGator aceitou FTP com criptografia (FTPS), mas
   o certificado apresentado não correspondia ao endereço cadastrado em `FTP_SERVIDOR`. A mensagem de
-  erro passou a mostrar o nome do certificado, para indicar o valor correto.
+  erro passou a mostrar o nome do certificado (`*.hostgator.com.br`). A investigação mostrou que o
+  domínio principal da conta é arteclaser.com.br (WordPress em `public_html`). Por isso, a
+  implantação passou a descobrir sozinha a pasta pública de `mostraqui.net` e a se recusar a
+  escrever na pasta de outro site; ambos os casos foram ensaiados com um WordPress simulado.
 - **Modo subdomínio na hospedagem real:** testado automaticamente com domínios de teste; depende do
   subdomínio curinga e do certificado curinga na HostGator, ainda não configurados.

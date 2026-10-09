@@ -39,6 +39,13 @@ Isso gera:
 
 ## 2. Enviar os arquivos
 
+> **Atenção, nesta hospedagem:** o domínio principal da conta é **arteclaser.com.br**, e o
+> `public_html` é a pasta do site WordPress dele. **Não extraia nada no `public_html`.** O
+> `mostraqui.net` é um domínio adicional: veja em cPanel → **Domínios** a *Raiz do documento* dele
+> (por exemplo, `~/mostraqui.net`) e use essa pasta onde este guia diz `public_html`. Se a pasta for
+> `~/public_html/mostraqui.net`, edite no `index.php` a linha `$appPath` para
+> `__DIR__.'/../../mostraqui-app'`. A implantação automática faz esses ajustes sozinha.
+
 1. cPanel → **Gerenciador de arquivos**. Na pasta pessoal (acima de `public_html`), envie
    `mostraqui-app.zip` e extraia. O resultado deve ser `~/mostraqui-app/`.
 2. Faça uma cópia de segurança do que já existir em `~/public_html` e envie e extraia

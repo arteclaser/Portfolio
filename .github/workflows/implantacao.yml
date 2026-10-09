@@ -70,7 +70,8 @@ jobs:
           FTP_CONFERIR_CERTIFICADO: ${{ vars.FTP_CONFERIR_CERTIFICADO || 'sim' }}
           FTP_CONEXOES: ${{ vars.FTP_CONEXOES || '4' }}
           APP_DIR: ${{ vars.APP_DIR || 'mostraqui-app' }}
-          PUBLIC_DIR: ${{ vars.PUBLIC_DIR || 'public_html' }}
+          # Vazio: a implantação descobre sozinha a pasta pública de SITE_URL.
+          PUBLIC_DIR: ${{ vars.PUBLIC_DIR }}
         run: bash deploy/implantar-ftp.sh
 
       - name: Conferir se o site responde

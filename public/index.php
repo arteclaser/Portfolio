@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 define('LARAVEL_START', microtime(true));
 
 // Localiza o código da aplicação. Em desenvolvimento ele fica logo acima de public/.
-// Na hospedagem compartilhada (cPanel), o conteúdo de public/ vai para public_html/
-// e o restante para ~/mostraqui-app, fora da pasta pública.
-$base = is_file(__DIR__.'/../vendor/autoload.php') ? __DIR__.'/..' : __DIR__.'/../mostraqui-app';
+// Na hospedagem compartilhada (cPanel), o conteúdo de public/ vai para a pasta pública do
+// domínio e o restante para ~/mostraqui-app, fora dela. A implantação automática ajusta a
+// linha abaixo conforme a pasta pública (ex.: ../mostraqui-app ou ../../mostraqui-app).
+$appPath = __DIR__.'/../mostraqui-app';
+$base = is_file(__DIR__.'/../vendor/autoload.php') ? __DIR__.'/..' : $appPath;
 
 if (file_exists($maintenance = $base.'/storage/framework/maintenance.php')) {
     require $maintenance;
