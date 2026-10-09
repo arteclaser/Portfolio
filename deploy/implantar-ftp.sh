@@ -97,6 +97,16 @@ for programa in lftp rsync curl openssl sha256sum; do
 done
 [ -f artisan ] && [ -f vendor/autoload.php ] || erro "Rode a partir da raiz do projeto, depois de 'composer install --no-dev'."
 
+# Com FORCE_HTTPS=true, o site redireciona http → https. Se o destino for o mesmo endereço em
+# https, passa a usá-lo (a conclusão é um POST, que não segue redirecionamentos).
+if [[ "$SITE_URL" == http://* ]]; then
+  destino=$(curl -s -o /dev/null --max-time 20 -w '%{redirect_url}' "$SITE_URL/up" || true)
+  if [ "$destino" = "https://${SITE_URL#http://}/up" ]; then
+    SITE_URL="https://${SITE_URL#http://}"
+    echo "O site redireciona para HTTPS: usando $SITE_URL (atualize a variável SITE_URL quando puder)."
+  fi
+fi
+
 TRABALHO="$(mktemp -d)"
 CONEXAO="$FTP_SERVIDOR"
 NOME_HOSTS=""

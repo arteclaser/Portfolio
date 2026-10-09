@@ -81,7 +81,7 @@ jobs:
           SITE_URL: ${{ vars.SITE_URL }}
         run: |
           for i in 1 2 3 4 5; do
-            code=$(curl -s -o /dev/null -w '%{http_code}' "${SITE_URL%/}/up" || true)
+            code=$(curl -sL -o /dev/null -w '%{http_code}' "${SITE_URL%/}/up" || true)
             [ "$code" = "200" ] && { echo "Site no ar (HTTP 200)."; exit 0; }
             sleep 5
           done
