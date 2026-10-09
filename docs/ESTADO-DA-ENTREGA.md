@@ -82,8 +82,9 @@ Estes recursos **não estão implementados** e não devem ser apresentados como 
 - **Implantação automática na HostGator real — funcionando (09/10/2026, execução nº 9):** FTPS com
   certificado `*.hostgator.com.br` conferido, conta FTP na pasta do domínio, código em
   `mostraqui-app` bloqueado (403 conferido pela internet), `.env` criado no servidor com APP_KEY
-  nova, PHP 8.3.35, `/up` respondendo 200 e reenvio só do que mudou (2 arquivos em 20 s). Falta a
-  configuração do banco no `.env` e a instalação por `/instalar`.
+  nova, PHP 8.3.35, `/up` respondendo 200 e reenvio só do que mudou (2 arquivos em 20 s). Na
+  execução nº 11, com o banco configurado no `.env` e HTTPS obrigatório, as 5 atualizações do banco
+  foram aplicadas no MySQL da HostGator e `/instalar` ficou disponível.
 - **Histórico da implantação na HostGator:** depende da conta FTP e dos segredos no GitHub; o
   fluxo foi ensaiado contra um servidor FTPS local, não contra a HostGator. Pontos a confirmar na
   primeira execução: se a conta FTP adicional aceita TLS e enxerga a pasta pessoal (há alternativa
