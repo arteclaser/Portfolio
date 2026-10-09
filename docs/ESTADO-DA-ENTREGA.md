@@ -79,7 +79,12 @@ Estes recursos **não estão implementados** e não devem ser apresentados como 
   com uma publicação real neste ambiente. Se a publicação não carregar, o visitante vê uma mensagem
   e o link para abrir no Instagram.
 - **Envio de e-mail por SMTP:** testado apenas com o modo `log` e com o envio simulado dos testes.
-- **Implantação automática na HostGator real:** depende da conta FTP e dos segredos no GitHub; o
+- **Implantação automática na HostGator real — funcionando (09/10/2026, execução nº 9):** FTPS com
+  certificado `*.hostgator.com.br` conferido, conta FTP na pasta do domínio, código em
+  `mostraqui-app` bloqueado (403 conferido pela internet), `.env` criado no servidor com APP_KEY
+  nova, PHP 8.3.35, `/up` respondendo 200 e reenvio só do que mudou (2 arquivos em 20 s). Falta a
+  configuração do banco no `.env` e a instalação por `/instalar`.
+- **Histórico da implantação na HostGator:** depende da conta FTP e dos segredos no GitHub; o
   fluxo foi ensaiado contra um servidor FTPS local, não contra a HostGator. Pontos a confirmar na
   primeira execução: se a conta FTP adicional aceita TLS e enxerga a pasta pessoal (há alternativa
   com a conta principal) e o tempo real da primeira transferência. Primeira execução real
