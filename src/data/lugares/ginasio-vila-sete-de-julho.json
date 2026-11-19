@@ -1,0 +1,47 @@
+{
+  "id": "ginasio-vila-sete-de-julho",
+  "nome": "Ginásio da Vila Sete de Julho",
+  "outrosNomes": [
+    "Ginásio da Vila 7 de Julho",
+    "Ginásio Municipal Vila 7 de Julho"
+  ],
+  "categoria": "natureza",
+  "tipo": "Ginásio de esportes",
+  "destaque": 1,
+  "resumo": "Ginásio de esportes da Vila Sete de Julho, revitalizado em 2025 e usado em torneios de futsal.",
+  "descricao": [
+    "Ginásio de esportes na Vila Sete de Julho. Segundo a Rádio Capinzal, pertence à Escola Municipal Bernardo Moro Sobrinho e foi revitalizado em 2025.",
+    "Em 11 de abril de 2026, foi o local da II Copa Verão de Futsal, de categorias de base."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Vila Sete de Julho",
+  "coordenadas": [
+    -51.60902,
+    -27.3609
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "Posição do ginásio mapeado no OpenStreetMap.",
+  "osm": "way/546659036",
+  "aviso": "O ginásio pertence a uma escola municipal: o uso fora de eventos não está confirmado.",
+  "fontes": [
+    {
+      "titulo": "Rádio Capinzal – Futsal Cristo Operário celebra 42 anos da Vila Sete de Julho com campeonato (07/07/2025)",
+      "url": "https://www.capinzalfm.com.br/noticia/campeonato-de-futsal-celebra-42-anos-da-vila-sete-de-julho-em-capinzal",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – II Copa Verão de Futsal movimenta categorias de base em Capinzal (09/04/2026)",
+      "url": "https://capinzalfm.com.br/noticia/ii-copa-verao-de-futsal-movimenta-categorias-de-base-em-capinzal-neste-sabado",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Ginásio Municipal Vila 7 de Julho",
+      "url": "https://www.openstreetmap.org/way/546659036",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

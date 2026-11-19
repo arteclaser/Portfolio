@@ -1,0 +1,45 @@
+{
+  "id": "alo-pizza-delivery",
+  "nome": "Alô Pizza Delivery",
+  "categoria": "sabores",
+  "tipo": "Pizzaria (entrega)",
+  "destaque": 1,
+  "resumo": "Pizzaria de entrega em Ouro, cidade vizinha, do outro lado do Rio do Peixe.",
+  "descricao": [
+    "Pizzaria de entrega na Rua Felipe Schmidt, em Ouro. Integrava o Núcleo de Gastronomia da ACIRP em 2017 e participou do Passaporte Gastronômico de 2023.",
+    "A avaliação mais recente na plataforma cardapio.menu é de fevereiro de 2023; não encontramos registro de 2025 ou 2026."
+  ],
+  "municipio": "Ouro",
+  "endereco": "Rua Felipe Schmidt, 1632 – Ouro",
+  "coordenadas": [
+    -51.61419,
+    -27.34064
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição publicada na ficha da plataforma cardapio.menu, a cerca de 15 metros da rua no mapa. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99901-0960"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "cardapio.menu – Alô Pizza Delivery",
+      "url": "https://cardapio.menu/restaurants/ouro-1/alo-pizza-delivery-2",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – Lançamento: Passaporte Gastronômico (07/06/2023)",
+      "url": "https://www.acirp.org.br/novidade.php?id=237&url=lancamento-passaporte-gastronomico-",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – Integração entre Núcleo de Gastronomia de Capinzal e Curitibanos (01/09/2017)",
+      "url": "https://www.acirp.org.br/novidade.php?id=52&url=integracao-entre-nucleo-de-gastronomia-de-capinzal-e-curitibanos-",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

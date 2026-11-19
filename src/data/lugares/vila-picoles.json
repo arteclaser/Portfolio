@@ -1,0 +1,40 @@
+{
+  "id": "vila-picoles",
+  "nome": "Vila Picolés e Sorvetes",
+  "categoria": "sabores",
+  "tipo": "Sorveteria",
+  "destaque": 1,
+  "resumo": "Sorveteria com picolés e sorvetes para levar, na Rua Lourenço Coas Netto.",
+  "descricao": [
+    "Sorveteria com venda de picolés e sorvetes para levar, listada na Rua Lourenço Coas Netto, sem número nas fontes.",
+    "Em junho de 2026, a empresa inscreveu equipe no Campeonato Empresarial de Capinzal, segundo a Rádio Capinzal."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Rua Lourenço Coas Netto (sem número nas fontes)",
+  "coordenadas": [
+    -51.58533,
+    -27.38521
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição publicada na ficha da plataforma cardapio.menu, a cerca de 10 metros da rua no mapa. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99805-2524"
+  },
+  "situacao": "confirmado",
+  "evidencia": "empresa inscrita no Campeonato Empresarial de junho de 2026",
+  "fontes": [
+    {
+      "titulo": "cardapio.menu – Vila Picolés e Sorvetes",
+      "url": "https://cardapio.menu/restaurants/capinzal/vila-picoles-e-sorvetes",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – 55 empresas confirmam presença no Empresarial 2026 (03/06/2026)",
+      "url": "https://capinzalfm.com.br/noticia/capinzal-vive-clima-de-competicao-55-empresas-confirmam-presenca-no-empresarial-2026",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

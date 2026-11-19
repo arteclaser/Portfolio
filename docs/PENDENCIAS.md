@@ -20,40 +20,96 @@ Constam em duas ou mais fontes, mas sem registro público de 2025 ou 2026. Basta
 | Dall'i Trattoria | Rua Carmelo Zocolli, 85 (Calçadão) – Centro | (49) 99914-7064 |
 | Padaria Novo Sabor | Acesso Cidade Alta, 1298 | (49) 3555-4680 |
 | Panificadora Tradicional | Rua Dona Linda Santos, 177 | (49) 3555-5602 |
+| Hotel Antares | Avenida XV de Novembro, 485 ou 491 – Centro | (49) 3555-4044 |
+| Pesque e Pague Cascata (antigo Parizzotto) | Acesso Capinzal–Zortéa, antes do Recanto dos Pássaros | (49) 99930-3728 (de 2022) |
+| Disk Pizza Sabor do Sul | Rua Anselmo Toaldo, 62, sala 2 | (49) 99822-4202 |
+| Pastelão e Cia | Av. José Leonardo Santos, entre 1716 e 1896 | fontes divergem |
+| Panificadora Zeni | Centro (posição do OpenStreetMap) | (49) 3555-1999 |
+| Alô Pizza Delivery (Ouro) | Rua Felipe Schmidt, 1632 | (49) 99901-0960 |
+| Kami Sushi Delivery (Ouro) | Rua Felipe Schmidt, 1788 | (49) 99974-7800 |
 
 Perguntas úteis: está aberto? Qual é o nome em uso? Horário? O número do imóvel confere?
 
 ## 2. Lugares que ficaram de fora, e por quê
 
+O segundo levantamento (19/11/2026) procurou pesque-pagues, espaços de lazer e restaurantes. Entraram
+16 lugares; os abaixo ficaram de fora porque falta fonte, endereço ou confirmação.
+
+### Pesque-pagues
+
+Nenhum pesque-pague de Capinzal tem registro público de funcionamento em 2025 ou 2026. O Pesque e Pague
+Cascata entrou no guia como "a confirmar" (reportagem de dezembro de 2022). Os outros nomes encontrados:
+
+| Lugar | O que as fontes dizem | O que falta |
+| --- | --- | --- |
+| Pesque Bar | Rod. SC-303, km 12 (Plano de Cultura, 2021, que o classifica só como "bar") | Segunda fonte; confirmar se é pesque-pague |
+| Pesque e Pague Fontana | Fazenda Santo Antônio (O Tempo, 2016) | Registro recente e localização |
+| Pesque e Pague da Família Basei | Linha Gramado (O Tempo, 2006) | Registro recente e localização |
+| Recanto Caxambu (Empresa Velha) | Só cadastro de CNPJ, não aberto | Qualquer fonte aberta |
+
+### Lazer
+
 | Lugar | Motivo |
 | --- | --- |
-| Hotel Antares (Av. XV de Novembro, 491) | Uma listagem não conferida indica "fechado"; sem registro recente |
-| Hotel Pousada Vale das Águas | Só plataformas de reserva, endereço sem número |
-| Via Vêneto Pizzaria | Mesmo número da Dall'i Trattoria (Rua Carmelo Zocolli, 85); não se sabe se coexistem |
-| Restaurante Fino Grill | No mesmo endereço e telefone aparece "Restaurante Ionara"; nome atual incerto |
-| Bar e Restaurante Bier Platz | A Rua João Siviero não foi localizada no mapa; sem registro recente |
-| Cozinha da Sil – Restaurante e Café | Aberto em 2025 (notícia), mas o endereço não tem número (Av. José Leonardo Santos, Vila 7 de Julho) |
-| Vila Picolés e Sorvetes | Endereço sem número (Rua Lourenço Coas Neto) |
-| Padaria Pão Doce e Padaria Doce Pecado | Em atividade em 2026 (notícia), mas com endereços conflitantes |
-| Restaurante e Casa Colonial Caminho da Mesa | Citado no curso de turismo de 2026; endereço não confirmado |
-| Pastelão e Cia, Top Grill, Mr. Burguer, Das Antigas Bar | Fonte única ou endereço incompleto |
-| Feira livre (Feira dos Agricultores) | Existe (notícias de 2026), mas nenhuma fonte informa local e horário |
-| Capela São Cristóvão | Sede de festa tradicional (62ª edição em 2026); endereço não consta nas fontes |
-| Capela São Leopoldo Mandic, igrejas do Bairro Santa Maria e de Linha Gramado | Fonte única; posição não confirmada |
+| Estádio Municipal São Cristóvão | Em uso em 2026 (notícias), mas nenhuma fonte dá rua ou posição |
+| Estádio da Baixada Rubra / Campo Arabutã | O jornal o situa em Ouro; o ponto do OpenStreetMap precisa ser conferido |
+| SER BRF | Clube de associados; endereço de fonte única e de forma estranha ("Distr. Barro Preto, 7") |
+| CTG Rancho de Boiadeiro | Endereço de 2021 (Rua Cleto Toaldo, 140) pode ser só o de contato; local dos rodeios não informado |
+| CTG Estância da Querência | Sem sede localizada; o rodeio de 2026 foi no Parque de Exposições |
+| CTG Ermelinda Thomazoni | Fonte única, de 2021 |
+| Praça da Vila Sete de Julho, academias ao ar livre e parquinhos de bairro | As notícias oficiais não abriram (erro 403) ou trazem só o bairro |
+| Clube e ginásio de Barro Preto | Só constam no OpenStreetMap |
+| Cancha do Cassino (Linha Gramado) | Sede de torneio de bocha em 11/2026; a fonte não diz que tipo de lugar é |
 | Sítio Costenaro (Vila Anchieta) | Sediou o encerramento do curso de turismo; não há fonte de que receba visitantes |
 | Cavernas do Avaí (Ricardópolis), Morro do Filipini | Menções isoladas na imprensa, sem informação de acesso |
 
-Também não encontramos fonte verificável para cascatas, mirantes, trilhas, balneários, pesque-pagues,
-campings rurais, vinícolas ou propriedades com visitação regular. Se existirem, entram com a indicação
-de quem conhece o local e uma fonte (pode ser a própria Secretaria).
+Não encontramos fonte verificável para camping, balneário ou parque aquático em Capinzal, chácaras de
+eventos, trilhas, cascatas ou mirantes.
+
+### Onde comer e onde ficar
+
+| Lugar | Motivo |
+| --- | --- |
+| Padaria Super Pão (Cidade Alta) | Ativa em 10/2026 (notícia), mas sem rua e número |
+| Zeni Aroma e Sabores | Ativo em 2026 (notícias), sem endereço; não se sabe se é a Panificadora Zeni |
+| Padaria Doce Pecado / Padaria e Confeitaria Vargas | Mesmo telefone nas duas; Av. José Leonardo Santos, 1855, no nome "Vargas". Equivalência não confirmada |
+| Bar e Restaurante Bier Platz | Endereços conflitantes (Rua Ernesto Hachmann, 585, ou Rua João Siviero, 8); último registro de 2023 |
+| Via Vêneto Pizzaria | Mesmo número da Dall'i Trattoria (Rua Carmelo Zocolli, 85); não se sabe se coexistem |
+| Restaurante Fino Grill | No mesmo endereço e telefone aparece "Restaurante Ionara"; nome atual incerto |
+| Ice Café Sorveteria e Cafeteria | Aberto em 2019 na Av. XV de Novembro, sem número e sem registro recente |
+| Cozinha da Sil – Restaurante e Café | Aberto em 2025 (notícia), mas o endereço não tem número (Av. José Leonardo Santos, Vila 7 de Julho) |
+| Padaria Pão Doce, Padaria Vetori, Restaurante Amigão, NRK, Confraria 33 | Fonte única ou sem endereço |
+| Top Grill, Mr. Burguer, Das Antigas Bar, Huhupa Pizzaria | Fonte única ou endereço incompleto |
+| Em Ouro: Don Andrade, Dogão do Alemão, Boteco Central, Flor de Sal e Café, Big Burger | Só uma plataforma como fonte |
+| Hotel Pousada Vale das Águas | Só plataformas de reserva, endereço sem número |
+| Feira livre (Feira dos Agricultores) | Existe (notícias de 2026), mas nenhuma fonte informa local e horário |
+
+### Igrejas e capelas
+
+| Lugar | Motivo |
+| --- | --- |
+| Capela São Cristóvão | Sede de festa tradicional (62ª edição em 2026); endereço não consta nas fontes |
+| Capela São Leopoldo Mandic, igrejas do Bairro Santa Maria e de Linha Gramado | Fonte única; posição não confirmada |
+
+### Perguntas para quem conhece a cidade
+
+1. Quais pesque-pagues funcionam hoje, e onde ficam?
+2. O Pesque e Pague Cascata e o Hotel Pousada Vale das Águas são vizinhos ou o mesmo lugar?
+3. A Padaria Doce Pecado é a "Padaria e Confeitaria Vargas" (Av. José Leonardo Santos, 1855)?
+4. O "Zeni Aroma e Sabores" é a Panificadora Zeni? Qual é o endereço?
+5. Bier Platz: Rua Ernesto Hachmann, 585, ou Rua João Siviero, 8? Continua aberto?
+6. Onde fica o Estádio Municipal São Cristóvão?
+7. Onde ficam as dependências da SER BRF?
+8. O Hotel Antares está aberto? O número é 485 ou 491?
+9. O Clube da Colina recebe não sócios? O que oferece?
 
 ## 3. Páginas oficiais a reabrir no navegador
 
 Os sites da Prefeitura e do Portal Municipal de Turismo recusam leitura automática. Vale conferir à mão
 se há atrativos listados só ali:
 
-- `turismo.capinzal.sc.gov.br`: "Lugares", "Turismo Religioso", "Passeios e Aventura", "Lazer e
-  Entretenimento", "Roteiros Municipais", "Roteiros Intermunicipais", "Lendas e Curiosidades";
+- `turismo.capinzal.sc.gov.br`: "Espaços de Lazer" (`/category/espacos-de-lazer/`), "Lugares",
+  "Turismo Religioso", "Passeios e Aventura", "Lazer e Entretenimento", "Roteiros Municipais", "Roteiros Intermunicipais", "Lendas e Curiosidades";
 - `capinzal.sc.gov.br`: página do Museu Histórico Vitor Almeida (horário atual), página da Biblioteca
   e notícias sobre a Praça Pedro Lélis da Rocha e a limpeza da caixa d'água da ferrovia;
 - Cadastur (cadastro federal de prestadores de turismo): nenhum cadastro foi consultado.

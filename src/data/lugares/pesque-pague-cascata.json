@@ -1,0 +1,46 @@
+{
+  "id": "pesque-pague-cascata",
+  "nome": "Pesque e Pague Cascata",
+  "outrosNomes": [
+    "Restaurante e Lanchonete Cascata",
+    "Pesque e Pague Parizzotto",
+    "Pesque-pague Cascata"
+  ],
+  "categoria": "natureza",
+  "tipo": "Pesque-pague e restaurante",
+  "destaque": 1,
+  "resumo": "Pesque-pague com restaurante e lanchonete no acesso a Zortéa. O registro mais recente que encontramos é de dezembro de 2022.",
+  "descricao": [
+    "Pesque-pague com restaurante e lanchonete, apresentado pelo jornal O Tempo em dezembro de 2022 como instalado no antigo Pesque e Pague Parizzotto, no acesso de Capinzal a Zortéa, antes do loteamento Recanto dos Pássaros.",
+    "Na época, o jornal informou serviço de almoço e porções e atendimento das 9h às 22h. Não encontramos registro de 2025 ou 2026 que confirme o funcionamento, o horário ou o telefone."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Acesso a Zortéa",
+  "endereco": "Acesso Capinzal–Zortéa, antes do loteamento Recanto dos Pássaros",
+  "coordenadas": [
+    -51.57382,
+    -27.39433
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição aproximada: ponto da rodovia mais próximo do loteamento Recanto dos Pássaros, que o jornal usa como referência. O local exato não foi encontrado em mapa; pode haver diferença de até 1 km.",
+  "contato": {
+    "telefone": "(49) 99930-3728"
+  },
+  "situacao": "a-confirmar",
+  "aviso": "A posição no mapa é aproximada: peça a localização por telefone antes de sair.",
+  "fontes": [
+    {
+      "titulo": "O Tempo – Agora sim, Capinzal tem o Restaurante e Lanchonete Cascata (13/12/2022)",
+      "url": "https://otempodefato.com.br/geral/agora-sim-capinzal-tem-o-restaurante-e-lanchonete-cascata.359138",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "O Tempo – Ligeirinho (15/12/2022)",
+      "url": "https://otempodefato.com.br/geral/ligeirinho.368627",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

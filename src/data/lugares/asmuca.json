@@ -1,0 +1,54 @@
+{
+  "id": "asmuca",
+  "nome": "ASMUCA – Associação dos Servidores Públicos Municipais de Capinzal",
+  "nomeCurto": "ASMUCA",
+  "outrosNomes": [
+    "Asmuca"
+  ],
+  "categoria": "natureza",
+  "tipo": "Sede de associação",
+  "destaque": 1,
+  "resumo": "Sede social dos servidores municipais, com campo de futebol, quiosque e churrasqueiras, de uso dos associados.",
+  "descricao": [
+    "Sede social da associação dos servidores públicos municipais, no Loteamento Colina. O Plano Municipal de Cultura (2021) lista campo de futebol, quiosque e churrasqueiras e informa que o uso é de associados.",
+    "Em 2026, a sede recebeu confraternizações de outros grupos, como o Arraiá do Master Futebol Capinzal, em julho, e um encontro de ex-colegas de trabalho, em agosto."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Loteamento Colina",
+  "endereco": "Rua João Tonini, 150 – Loteamento Colina",
+  "coordenadas": [
+    -51.59825,
+    -27.36354
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "Posição da área da associação mapeada no OpenStreetMap.",
+  "osm": "way/546849055",
+  "aviso": "Espaço de associados: não é aberto ao público em geral.",
+  "fontes": [
+    {
+      "titulo": "Prefeitura de Capinzal – Lei 3.426/2021, Plano Municipal de Cultura (PDF)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – Encontro de colegas e ex-colegas do SIF da MBRF chega à 7ª edição (15/08/2026)",
+      "url": "https://capinzalfm.com.br/noticia/encontro-de-colegas-e-ex-colegas-do-sif-da-mbrf-chega-a-7a-edicao-e-celebra-amizades-construidas-ao-longo-de-decadas",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "O Tempo – Master Futebol Capinzal (22/07/2026)",
+      "url": "https://otempodefato.com.br/geral/master-futebol-capinzal.15479418",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – ASMUCA",
+      "url": "https://www.openstreetmap.org/way/546849055",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

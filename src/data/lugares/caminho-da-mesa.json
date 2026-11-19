@@ -1,0 +1,55 @@
+{
+  "id": "caminho-da-mesa",
+  "nome": "Restaurante Caminho da Mesa",
+  "outrosNomes": [
+    "Casa Colonial Caminho da Mesa",
+    "Restaurante e Casa Colonial Caminho da Mesa"
+  ],
+  "categoria": "sabores",
+  "tipo": "Restaurante e casa colonial",
+  "destaque": 2,
+  "resumo": "Restaurante e casa colonial na comunidade de Linha Gramado, às margens da SC-150, no interior de Capinzal.",
+  "descricao": [
+    "Restaurante na comunidade de Linha Gramado, às margens da SC-150. No cadastro do Plano Municipal de Cultura (2021), aparece como casa colonial, com feiras e almoços.",
+    "Em abril de 2026, recebeu parte de um curso de turismo rural que começou no Museu Jandir Coronetti, segundo a Rádio Capinzal."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Linha Gramado",
+  "endereco": "SC-150 – Linha Gramado",
+  "coordenadas": [
+    -51.64287,
+    -27.431
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição aproximada: ponto da SC-150 na comunidade de Linha Gramado. As fontes não trazem o quilômetro; pode haver diferença de cerca de 1 km.",
+  "situacao": "confirmado",
+  "evidencia": "notícia de abril de 2026",
+  "aviso": "Não encontramos telefone nem horário em fonte aberta. Como fica no interior, confirme antes de ir.",
+  "fontes": [
+    {
+      "titulo": "Rádio Capinzal – Curso de turismo fortalece empreendedorismo e valoriza potencial rural em Capinzal (08/04/2026)",
+      "url": "https://capinzalfm.com.br/noticia/curso-de-turismo-fortalece-empreendedorismo-e-valoriza-potencial-rural-em-capinzal",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – Capinzal sedia reunião microrregional do PT (30/03/2025)",
+      "url": "https://www.capinzalfm.com.br/noticia/capinzal-sedia-reuniao-microrregional-do-pt",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – Veículo sai da pista na SC 150, no interior de Capinzal (02/09/2023)",
+      "url": "https://www.capinzalfm.com.br/noticia/veiculo-sai-da-pista-atinge-escavadeira-hidraulica-e-dois-ficam-feridos-na-sc-150-no-interior-de-capinzal",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Capinzal – Lei 3.426/2021, Plano Municipal de Cultura (PDF)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}
