@@ -1,0 +1,74 @@
+{
+  "id": "parque-de-exposicoes",
+  "nome": "Parque de Exposições Domingos Pellizzaro",
+  "nomeCurto": "Parque de Exposições",
+  "outrosNomes": [
+    "Centro Cultural Domingos Pellizzaro",
+    "Parque Cultural Domingos Pellizzaro"
+  ],
+  "categoria": "natureza",
+  "tipo": "Parque de eventos",
+  "destaque": 2,
+  "resumo": "Parque de eventos no interior, palco de rodeios, da Festa do Agricultor e de provas esportivas.",
+  "descricao": [
+    "O parque fica na comunidade de Engenho Novo, na rodovia para Piratuba. Tem pistas de motocross, de ciclismo e para competições off-road, segundo o portal municipal de turismo.",
+    "Em 2026, recebeu o 42º Rodeio Interestadual do CTG Estância da Querência (30 de janeiro a 1º de fevereiro), a 20ª Festa do Agricultor (4 e 5 de julho) e o 1º Desafio das Araucárias, prova de ciclismo com mais de 230 participantes (18 de outubro), cujo percurso leve contorna a lagoa do parque. Etapas do Kerbfest também acontecem aqui.",
+    "O parque foi palco da feira Expovale, que teve a última edição em 2019; a de 2023 foi cancelada. Em vistoria de agosto de 2026, a Prefeitura constatou estruturas danificadas, que precisam de revitalização antes de uma futura Expo Capinzal."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Engenho Novo",
+  "endereco": "Comunidade de Engenho Novo, na rodovia para Piratuba",
+  "coordenadas": [
+    -51.62512,
+    -27.40736
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (nó 8467139884, “Parque de Exposições”).",
+  "osm": "node/8467139884",
+  "aviso": "Não há indicação de que o parque fique aberto à visitação fora de eventos. Os textos oficiais de turismo situam o parque “na SC-303”, denominação antiga da rodovia.",
+  "fontes": [
+    {
+      "titulo": "Lei nº 3.426, de 18 de novembro de 2021 – Plano Municipal de Cultura de Capinzal (com mapeamento cultural anexo)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Dicas sobre turismo / O que fazer – Portal Municipal de Turismo de Capinzal",
+      "url": "https://turismo.capinzal.sc.gov.br/o-que-fazer/",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Prefeitura realiza vistoria prévia no Centro Cultural Domingos Pellizzaro para planejar a futura Expo Capinzal\"",
+      "url": "https://capinzalfm.com.br/noticia/prefeitura-realiza-vistoria-previa-no-centro-cultural-domingos-pellizzaro-para-planejar-a-futura-expo-capinzal",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Com mais de 230 ciclistas, Capinzal recebe a 1ª edição do Desafio das Araucárias\"",
+      "url": "https://capinzalfm.com.br/noticia/com-mais-de-230-ciclistas-capinzal-recebe-a-1a-edicao-do-desafio-das-araucarias",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Capinzal – programação das festividades dos 77 anos do Município",
+      "url": "https://capinzal.sc.gov.br/prefeitura-de-capinzal-divulga-programacao-das-festividades-dos-77-anos-do-municipio/",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Capinzal – “Expovale 2023 foi cancelada: entenda os motivos”",
+      "url": "https://capinzal.sc.gov.br/expovale-2023-foi-cancelada-entenda-os-motivos/",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Parque de Exposições",
+      "url": "https://www.openstreetmap.org/node/8467139884",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

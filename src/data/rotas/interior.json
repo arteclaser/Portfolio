@@ -1,0 +1,37 @@
+{
+  "id": "interior",
+  "ordem": 3,
+  "nome": "Interior: de Engenho Novo a Barro Branco",
+  "nomeCurto": "Interior",
+  "resumo": "De carro pelo interior do município: parque de exposições, igrejas de comunidade e um museu particular da imigração italiana.",
+  "descricao": [
+    "Este percurso sai do centro e segue para o sul do município, passando pelas comunidades de Engenho Novo, Empresa Velha e Barro Branco. São lugares simples, ligados à vida rural e à memória das famílias que colonizaram a região.",
+    "A oferta de turismo rural de Capinzal está em estruturação: em 2026, a Epagri e a Prefeitura realizaram um curso de turismo para produtores e empreendedores. Por isso, este roteiro reúne apenas os pontos com fonte pública e deve crescer com o tempo."
+  ],
+  "modo": "carro",
+  "cor": "#7A3EA3",
+  "corEscuro": "#C9A2EE",
+  "circular": false,
+  "paradas": [
+    {
+      "lugar": "praca-pedro-lelis-da-rocha",
+      "nota": "Saída do centro."
+    },
+    {
+      "lugar": "parque-de-exposicoes",
+      "nota": "Aberto em dias de evento."
+    },
+    {
+      "lugar": "igreja-engenho-novo"
+    },
+    {
+      "lugar": "museu-coronetti",
+      "nota": "Posição aproximada; combine a visita antes."
+    },
+    {
+      "lugar": "igreja-barro-branco",
+      "nota": "Fim do percurso; a volta é pelo mesmo caminho."
+    }
+  ],
+  "aviso": "Roteiro sugerido por este guia, não é um roteiro oficial. Os lugares do interior não têm horário de visita publicado, e parte do trajeto pode ser em estrada sem pavimento: informe-se antes de ir."
+}

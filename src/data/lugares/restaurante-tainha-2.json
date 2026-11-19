@@ -1,0 +1,38 @@
+{
+  "id": "restaurante-tainha-2",
+  "nome": "Restaurante Tainha 2",
+  "categoria": "sabores",
+  "tipo": "Restaurante",
+  "destaque": 1,
+  "resumo": "Segunda unidade do Restaurante Tainha, anexa a um posto de combustíveis, aberta em maio de 2026.",
+  "descricao": [
+    "Segunda unidade do Restaurante Tainha, anexa ao Posto Novo Horizonte, inaugurada em 16 de maio de 2026 com buffet e churrasco."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Loteamento Novo Horizonte",
+  "endereco": "Anexo ao Posto Novo Horizonte – Loteamento Novo Horizonte",
+  "coordenadas": [
+    -51.5731,
+    -27.4033
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do Posto Novo Horizonte no OpenStreetMap (nó 4645921817); o restaurante fica anexo ao posto.",
+  "situacao": "confirmado",
+  "evidencia": "inauguração noticiada em maio de 2026",
+  "aviso": "Informação de uma única fonte (jornal local), sem telefone nem horário.",
+  "fontes": [
+    {
+      "titulo": "O Tempo – Inaugurado o Restaurante Tainha 2 no Loteamento Novo Horizonte (18/05/2026)",
+      "url": "https://otempodefato.com.br/geral/inaugurado-o-restaurante-tainha-2-no-loteamento-novo-horizonte-em-capinzal.15472569",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Posto Novo Horizonte",
+      "url": "https://www.openstreetmap.org/node/4645921817",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

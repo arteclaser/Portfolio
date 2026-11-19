@@ -1,0 +1,29 @@
+---
+import { miolo } from '../lib/icones';
+
+interface Props {
+  nome: string;
+  tamanho?: number;
+  class?: string;
+  /** Texto alternativo. Sem ele, o ícone é decorativo e fica oculto dos leitores de tela. */
+  rotulo?: string;
+}
+const { nome, tamanho = 20, class: classe, rotulo } = Astro.props;
+const dentro = await miolo(nome);
+---
+<svg
+  class:list={['icone', classe]}
+  width={tamanho}
+  height={tamanho}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden={rotulo ? undefined : 'true'}
+  role={rotulo ? 'img' : undefined}
+  aria-label={rotulo}
+  focusable="false"
+  set:html={dentro}
+/>

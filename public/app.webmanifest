@@ -1,0 +1,23 @@
+{
+  "name": "Mostraqui Capinzal",
+  "short_name": "Mostraqui",
+  "description": "Mapa turístico de Capinzal (SC): lugares, roteiros e mapa que funciona sem internet.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FAF7F0",
+  "theme_color": "#0F6B5C",
+  "categories": ["travel", "navigation"],
+  "icons": [
+    { "src": "/icones/icone-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icones/icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icones/icone-mascara-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Roteiros", "url": "/rotas/", "icons": [{ "src": "/icones/icone-192.png", "sizes": "192x192" }] },
+    { "name": "Todos os lugares", "url": "/lugares/", "icons": [{ "src": "/icones/icone-192.png", "sizes": "192x192" }] }
+  ]
+}

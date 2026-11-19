@@ -1,0 +1,18 @@
+---
+import '../styles/conteudo.css';
+import Icone from '../components/Icone.astro';
+import Base from '../layouts/Base.astro';
+---
+<Base titulo="Sem internet" semIndice>
+  <div class="estreito">
+    <header class="cabeca-pagina">
+      <p class="sobrelinha"><Icone nome="wifi-off" tamanho={16} />Sem conexão</p>
+      <h1>Esta página ainda não foi guardada no aparelho</h1>
+      <p>Você está sem internet e esta página não foi aberta antes. O mapa e as páginas já visitadas continuam disponíveis.</p>
+    </header>
+    <p style="display:flex;flex-wrap:wrap;gap:10px">
+      <a class="botao" href="/"><Icone nome="map" tamanho={18} />Abrir o mapa</a>
+      <a class="botao botao--claro" href="/lugares/">Ver os lugares</a>
+    </p>
+  </div>
+</Base>

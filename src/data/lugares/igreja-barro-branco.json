@@ -1,0 +1,41 @@
+{
+  "id": "igreja-barro-branco",
+  "nome": "Igreja da comunidade de Barro Branco",
+  "nomeCurto": "Igreja de Barro Branco",
+  "outrosNomes": [
+    "Capela de São Francisco"
+  ],
+  "categoria": "fe",
+  "tipo": "Igreja de comunidade",
+  "destaque": 1,
+  "resumo": "Igreja da comunidade rural de Barro Branco, no sul do município, dedicada a São Francisco de Assis.",
+  "descricao": [
+    "O Plano Municipal de Cultura lista a igreja da comunidade de Barro Branco com São Francisco de Assis como padroeiro. No OpenStreetMap, a capela aparece como Capela de São Francisco."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Barro Branco",
+  "endereco": "Comunidade de Barro Branco, interior de Capinzal",
+  "coordenadas": [
+    -51.65918,
+    -27.49905
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (nó 8627136076, “Capela de São Francisco”).",
+  "osm": "node/8627136076",
+  "aviso": "Não encontramos horários de celebração nem de visita.",
+  "fontes": [
+    {
+      "titulo": "Lei nº 3.426, de 18 de novembro de 2021 – Plano Municipal de Cultura de Capinzal (com mapeamento cultural anexo)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Capela de São Francisco (Barro Branco)",
+      "url": "https://www.openstreetmap.org/node/8627136076",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

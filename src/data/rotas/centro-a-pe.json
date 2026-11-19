@@ -1,0 +1,45 @@
+{
+  "id": "centro-a-pe",
+  "ordem": 1,
+  "nome": "Centro histórico a pé",
+  "nomeCurto": "Centro a pé",
+  "resumo": "Da praça central à Igreja Matriz, passando pela antiga estação, pela Ponte Pênsil e pela beira do Rio do Peixe.",
+  "descricao": [
+    "Uma volta a pé pelo centro de Capinzal que reúne os lugares mais citados pelas fontes oficiais: a praça central com o Monumento do Agricultor, a antiga estação da ferrovia, a Ponte Pênsil, a Área de Lazer à beira do Rio do Peixe, a Igreja Matriz e o Museu Histórico.",
+    "O trecho final sobe até a parte alta do centro, onde ficam a igreja e o museu. O perfil de altitude abaixo mostra onde está a subida."
+  ],
+  "modo": "a-pe",
+  "cor": "#C2410C",
+  "corEscuro": "#FF9A62",
+  "circular": true,
+  "paradas": [
+    {
+      "lugar": "praca-pedro-lelis-da-rocha",
+      "nota": "Ponto de partida, ao lado da rodoviária."
+    },
+    {
+      "lugar": "estacao-ferroviaria",
+      "nota": "Parada para ver a estação e a caixa d’água por fora."
+    },
+    {
+      "lugar": "centro-educacional-celso-farina"
+    },
+    {
+      "lugar": "ponte-pensil",
+      "nota": "Confirme se a travessia está liberada."
+    },
+    {
+      "lugar": "area-de-lazer",
+      "nota": "Pista de caminhada à beira do rio."
+    },
+    {
+      "lugar": "igreja-matriz",
+      "nota": "Fica na parte alta: é o trecho de subida."
+    },
+    {
+      "lugar": "museu-vitor-almeida",
+      "nota": "Aberto em dias úteis; confirme o horário."
+    }
+  ],
+  "aviso": "Roteiro sugerido por este guia, não é um roteiro oficial do município. O museu abre de segunda a sexta (horário de 2021, a confirmar)."
+}

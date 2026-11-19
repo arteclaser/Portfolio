@@ -1,0 +1,39 @@
+{
+  "id": "corujao-lanches",
+  "nome": "Corujão Lanches",
+  "categoria": "sabores",
+  "tipo": "Lanchonete",
+  "destaque": 1,
+  "resumo": "Lanchonete na Avenida XV de Novembro, com lanches, pizzas e entrega.",
+  "descricao": [
+    "Lanchonete na Avenida XV de Novembro, listada com lanches e pizzas e serviço de entrega."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Avenida XV de Novembro, 695 – Centro",
+  "coordenadas": [
+    -51.60852,
+    -27.34713
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição estimada pela numeração da via; pode haver diferença de cerca de 100 metros.",
+  "contato": {
+    "telefone": "(49) 3555-3537"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "cardapio.menu – Corujão Lanches",
+      "url": "https://cardapio.menu/restaurants/capinzal/corujao-lanches-7",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Apontador – Bares e Restaurantes em Capinzal",
+      "url": "https://www.apontador.com.br/em/capinzal-sc/bares-e-restaurantes",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

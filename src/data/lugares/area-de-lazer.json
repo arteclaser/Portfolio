@@ -1,0 +1,64 @@
+{
+  "id": "area-de-lazer",
+  "nome": "Área de Lazer Dr. Arnaldo Favorito",
+  "nomeCurto": "Área de Lazer",
+  "categoria": "natureza",
+  "tipo": "Parque à beira do rio",
+  "destaque": 3,
+  "resumo": "Principal espaço público de lazer de Capinzal, às margens do Rio do Peixe, reaberto em janeiro de 2026 depois de uma revitalização.",
+  "descricao": [
+    "Às margens do Rio do Peixe, a área de lazer tem pista de caminhada e ciclismo, quadras e campos esportivos, churrasqueiras e academia ao ar livre. O espaço coberto Multiuso Arlindo Bertola e o CTG Sinuelo do Vale ficam no mesmo conjunto.",
+    "O local passou por uma revitalização de R$ 2,55 milhões, iniciada em julho de 2024. A conclusão foi anunciada em 31 de dezembro de 2025, com reabertura total a partir de 5 de janeiro de 2026.",
+    "É aqui que acontece a festa de aniversário do município."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Ernesto Hachmann, 452 – Centro",
+  "coordenadas": [
+    -51.61764,
+    -27.34631
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (via 133195037).",
+  "osm": "way/133195037",
+  "aviso": "O portal de turismo cita área para camping, mas a informação é anterior à reforma e não foi confirmada depois dela.",
+  "fontes": [
+    {
+      "titulo": "Dicas sobre turismo / O que fazer – Portal Municipal de Turismo de Capinzal",
+      "url": "https://turismo.capinzal.sc.gov.br/o-que-fazer/",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Lei nº 3.426, de 18 de novembro de 2021 – Plano Municipal de Cultura de Capinzal (com mapeamento cultural anexo)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Obras de revitalização da Área de Lazer de Capinzal já estão 25% concluídas\"",
+      "url": "https://capinzalfm.com.br/noticia/obras-de-revitalizacao-da-area-de-lazer-de-capinzal-ja-estao-25-concluidas",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Secretário anuncia conclusão da revitalização da Área de Lazer de Capinzal, reconhece demandas pendentes e confirma vigilante\"",
+      "url": "https://www.capinzalfm.com.br/noticia/secretario-anuncia-conclusao-da-revitalizacao-da-area-de-lazer-reconhece-demandas-pendentes-e-confirma-vigilante",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Capinzal celebra 77 anos com festa nesta segunda-feira (16) na Área de Lazer\"",
+      "url": "https://capinzalfm.com.br/noticia/capinzal-celebra-77-anos-com-festa-nesta-segunda-feira-16-na-area-de-lazer",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Área de Lazer Doutor Arnaldo Favorito",
+      "url": "https://www.openstreetmap.org/way/133195037",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

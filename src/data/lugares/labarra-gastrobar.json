@@ -1,0 +1,53 @@
+{
+  "id": "labarra-gastrobar",
+  "nome": "Labarra Gastrobar",
+  "categoria": "sabores",
+  "tipo": "Gastrobar",
+  "destaque": 2,
+  "resumo": "Gastrobar com refeições e bebidas à noite, que também recebe eventos.",
+  "descricao": [
+    "Gastrobar que serve refeições e bebidas à noite e recebe eventos. Em novembro de 2025, sediou a eleição da diretoria da associação empresarial (ACIRP)."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Rua Aníbal Ferro, 360",
+  "coordenadas": [
+    -51.60456,
+    -27.34788
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição aproximada: a rua foi localizada, o número do imóvel não.",
+  "contato": {
+    "telefone": "(49) 99910-9298",
+    "site": "https://linktr.ee/labarra.gastrobar"
+  },
+  "situacao": "confirmado",
+  "evidencia": "notícia de novembro de 2025",
+  "aviso": "As fontes divergem sobre o horário.",
+  "fontes": [
+    {
+      "titulo": "Rádio Capinzal – Daniele Lanhi é eleita presidente da ACIRP para o biênio 2026/2027 (12/11/2025)",
+      "url": "https://www.capinzalfm.com.br/noticia/daniele-lanhi-e-eleita-presidente-da-acirp-para-o-bienio-2026-2027",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Linktree – Labarra Gastrobar",
+      "url": "https://linktr.ee/labarra.gastrobar",
+      "tipo": "proprio",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "cardapio.menu – Labarra Gastrobar",
+      "url": "https://cardapio.menu/restaurants/capinzal/labarra-gastrobar",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – lista de associados (página 5)",
+      "url": "https://www.acirp.org.br/associados.php?pagina=5",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

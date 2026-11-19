@@ -1,0 +1,37 @@
+{
+  "id": "duas-pontes",
+  "ordem": 2,
+  "nome": "Volta das duas pontes",
+  "nomeCurto": "Duas pontes",
+  "resumo": "Caminhada curta que cruza o Rio do Peixe duas vezes: vai a Ouro pela Ponte Irineu Bornhausen e volta pela Ponte Pênsil.",
+  "descricao": [
+    "Capinzal e Ouro são separadas pelo Rio do Peixe e ligadas, no centro, por duas pontes. Esta volta sai da praça central, atravessa para Ouro pela Ponte Irineu Bornhausen, passa pela Praça Pio XII e retorna pela Ponte Pênsil, que hoje é só de pedestres.",
+    "É um bom jeito de ver o rio e de entender por que as fontes tratam as duas cidades como vizinhas tão próximas: Ouro foi distrito de Capinzal até 1963."
+  ],
+  "modo": "a-pe",
+  "cor": "#1D64A8",
+  "corEscuro": "#7DB9F2",
+  "circular": true,
+  "paradas": [
+    {
+      "lugar": "praca-pedro-lelis-da-rocha",
+      "nota": "Ponto de partida."
+    },
+    {
+      "lugar": "ponte-irineu-bornhausen",
+      "nota": "Travessia pela passarela de pedestres."
+    },
+    {
+      "lugar": "praca-pio-xii-ouro",
+      "nota": "Já em Ouro. Praça em obras."
+    },
+    {
+      "lugar": "ponte-pensil",
+      "nota": "Volta para Capinzal pela ponte histórica."
+    },
+    {
+      "lugar": "estacao-ferroviaria"
+    }
+  ],
+  "aviso": "Roteiro sugerido por este guia, não é um roteiro oficial. Em outubro de 2026 o acesso à Ponte Pênsil pelo lado de Ouro estava parcialmente interditado por obras: confirme antes de sair."
+}

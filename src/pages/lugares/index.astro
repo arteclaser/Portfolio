@@ -1,0 +1,52 @@
+---
+import '../../styles/conteudo.css';
+import CartaoLugar from '../../components/CartaoLugar.astro';
+import Icone from '../../components/Icone.astro';
+import { categorias } from '../../data/categorias';
+import { lugares } from '../../lib/dados';
+import Base from '../../layouts/Base.astro';
+
+const grupos = categorias.map((categoria) => ({ categoria, itens: lugares.filter((l) => l.categoria === categoria.id) })).filter((g) => g.itens.length);
+const aConfirmar = lugares.filter((l) => l.situacao === 'a-confirmar').length;
+---
+<Base titulo="Lugares" descricao={`${lugares.length} lugares para visitar, comer e se hospedar em Capinzal (SC), com endereço e fontes.`} atual="lugares">
+  <div class="conteiner">
+    <header class="cabeca-pagina">
+      <p class="sobrelinha"><Icone nome="map-pin" tamanho={16} />Lugares</p>
+      <h1>Todos os lugares do guia</h1>
+      <p>
+        São {lugares.length} lugares, cada um com página própria, endereço e as fontes de onde saiu cada informação.
+        Esta lista traz o mesmo conteúdo do <a href="/">mapa interativo</a>.
+      </p>
+      <nav class="pular-secoes" aria-label="Ir para a categoria">
+        {grupos.map(({ categoria, itens }) => (
+          <a class:list={['chip', `cat-${categoria.id}`]} href={`#${categoria.id}`}>
+            <Icone nome={categoria.icone} tamanho={17} />{categoria.nome}<span class="chip__n">{itens.length}</span>
+          </a>
+        ))}
+      </nav>
+    </header>
+
+    {grupos.map(({ categoria, itens }) => (
+      <section class:list={['secao', `cat-${categoria.id}`]} id={categoria.id} aria-labelledby={`t-${categoria.id}`}>
+        <div class="secao__cabeca">
+          <h2 id={`t-${categoria.id}`}>{categoria.nome}</h2>
+          <p>{categoria.descricao}</p>
+        </div>
+        <ul class="grade-cartoes" role="list">
+          {itens.map((lugar) => <CartaoLugar lugar={lugar} nota={lugar.situacao === 'a-confirmar' ? 'Funcionamento a confirmar' : undefined} />)}
+        </ul>
+      </section>
+    ))}
+
+    {aConfirmar > 0 && (
+      <div class="aviso aviso--neutro secao" role="note">
+        <Icone nome="info" />
+        <p>
+          {aConfirmar} estabelecimentos aparecem como “funcionamento a confirmar”: constam em mais de uma fonte, mas sem registro público
+          de 2025 ou 2026 em atividade. <a href="/sobre/#dados">Veja o critério usado</a>.
+        </p>
+      </div>
+    )}
+  </div>
+</Base>

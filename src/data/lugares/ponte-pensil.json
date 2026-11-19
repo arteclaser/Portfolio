@@ -1,0 +1,95 @@
+{
+  "id": "ponte-pensil",
+  "nome": "Ponte Pênsil Padre Mathias Michelizza",
+  "nomeCurto": "Ponte Pênsil",
+  "categoria": "historia",
+  "tipo": "Ponte pênsil histórica",
+  "destaque": 3,
+  "resumo": "Travessia de pedestres sobre o Rio do Peixe, entre Capinzal e Ouro, declarada patrimônio histórico pelo município e pelo Estado.",
+  "descricao": [
+    "A ponte pênsil liga a Rua Ernesto Hachmann, em Capinzal, à Rua Governador Jorge Lacerda, em Ouro, por cima do Rio do Peixe. No início passavam carros; hoje a travessia é só de pedestres. O vão central livre tem 84,5 metros, segundo o portal municipal de turismo.",
+    "A história da ponte acompanha as cheias do rio. A primeira, de madeira, foi destruída pela enchente de 1939. A segunda, com pilares de concreto, foi reinaugurada em 1945 e destruída pela enchente de 1983 e por um vendaval em 1984. A ponte atual é de 1985 e passou por uma grande reforma em 2018.",
+    "As fontes não concordam sobre o ano da primeira ponte. Os textos oficiais de turismo citam 1932; a imprensa local, um artigo da Unoesc e a Prefeitura de Ouro indicam construção entre 1933 e 1934, com inauguração em 1934.",
+    "É patrimônio histórico de Capinzal (Lei municipal 3.225/2016) e de Santa Catarina (Lei estadual 17.155/2017)."
+  ],
+  "municipio": "Capinzal e Ouro",
+  "localidade": "Centro",
+  "endereco": "Entre a Rua Ernesto Hachmann (Capinzal) e a Rua Governador Jorge Lacerda (Ouro)",
+  "coordenadas": [
+    -51.61602,
+    -27.34296
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (via 546636154), coerente com as coordenadas publicadas pela Prefeitura de Ouro.",
+  "osm": "way/546636154",
+  "aviso": "Em 22 de outubro de 2026, a Prefeitura de Ouro informou interdição parcial do acesso pelo lado de Ouro, por causa das obras da Rua Coberta na Praça Pio XII. Confirme se a travessia está liberada.",
+  "fontes": [
+    {
+      "titulo": "Dicas sobre turismo / O que fazer – Portal Municipal de Turismo de Capinzal",
+      "url": "https://turismo.capinzal.sc.gov.br/o-que-fazer/",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Lei nº 3.426, de 18 de novembro de 2021 – Plano Municipal de Cultura de Capinzal (com mapeamento cultural anexo)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ALESC – Lei nº 17.155, de 5 de junho de 2017 (declara a Ponte Pênsil Padre Mathias Michelizza patrimônio histórico, artístico e cultural do Estado)",
+      "url": "https://leis.alesc.sc.gov.br/ato-normativo/52775",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Ouro – \"Levantamento de Obras de Arte Especiais (OAE) no Município de Ouro\"",
+      "url": "https://ouro.sc.gov.br/uploads/sites/376/2023/07/Levantamento_de_Pontes_Municipio_de_Ouro-1.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "O Tempo – \"Município de Capinzal 73 anos de emancipação\" (textos de Evani Marichen Lamb Riffel, com base em Vitor Almeida, 2004)",
+      "url": "https://otempodefato.com.br/artigos/municipio_de_capinzal_73_anos_de_emancipacao.284475",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "O Tempo – \"Reunião objetiva o tombamento da Ponte Pênsil Padre Mathias Michellizza\"",
+      "url": "https://otempodefato.com.br/geral/reuniao-objetiva-o-tombamento-da-ponte-pensil-padre-mathias-michellizza.319614",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Ponte Pênsil Padre Mathias Michelizza é declarada patrimônio histórico de Santa Catarina\"",
+      "url": "https://capinzalfm.com.br/noticias/ponte-pensil-padre-mathias-michelizza-e-declarada-patrimonio-historico-de-santa-catarina/4529",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Ponte Pênsil entre Capinzal e Ouro é interditada temporariamente por obras na Praça Pio XII\"",
+      "url": "https://capinzalfm.com.br/noticia/ponte-pensil-entre-capinzal-e-ouro-e-interditada-temporariamente-por-obras-na-praca-pio-xii",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Acesso à Ponte Pênsil tem interdição parcial para obras da Rua Coberta em Ouro\"",
+      "url": "https://capinzalfm.com.br/noticia/acesso-a-ponte-pensil-tem-interdicao-parcial-para-obras-da-rua-coberta-em-ouro",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Formaio, A. L. et al. \"Avaliação das manifestações patológicas da Ponte Pênsil Padre Mathias Michelizza localizada entre os municípios de Capinzal e Ouro, em Santa Catarina\". Conhecimento em Construção (Unoesc), v. 10, p. 53-82, 2023. DOI 10.18593/cc.v10.32658",
+      "url": "https://periodicos.unoesc.edu.br/conhecconstr/article/download/32658/18543/113822",
+      "tipo": "outro",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Ponte Pênsil Padre Mathias Michelizza",
+      "url": "https://www.openstreetmap.org/way/546636154",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

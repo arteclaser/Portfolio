@@ -1,0 +1,44 @@
+{
+  "id": "massa-fina-padaria",
+  "nome": "Massa Fina Padaria e Pizzaria",
+  "categoria": "sabores",
+  "tipo": "Padaria e pizzaria",
+  "destaque": 1,
+  "resumo": "Padaria que também funciona como pizzaria, na Rua Luiz Dorini.",
+  "descricao": [
+    "Padaria que também funciona como pizzaria, na Rua Luiz Dorini."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Rua Luiz Dorini, 15",
+  "coordenadas": [
+    -51.60621,
+    -27.34668
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição estimada pela numeração da via; pode haver diferença de cerca de 100 metros.",
+  "contato": {
+    "telefone": "(49) 3555-6555"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "cardapio.menu – Massa Fina Padaria",
+      "url": "https://cardapio.menu/restaurants/rio-capinzal/massa-fina-padaria",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Restaurant Guru – restaurantes em Capinzal",
+      "url": "https://restaurantguru.com/Capinzal",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – lista de associados (página 6)",
+      "url": "https://www.acirp.org.br/associados.php?pagina=6",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

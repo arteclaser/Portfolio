@@ -1,0 +1,61 @@
+{
+  "id": "praca-pedro-lelis-da-rocha",
+  "nome": "Praça Pedro Lélis da Rocha e Monumento do Agricultor",
+  "nomeCurto": "Praça Pedro Lélis da Rocha",
+  "outrosNomes": [
+    "Praça Central",
+    "Monumento do Agricultor"
+  ],
+  "categoria": "natureza",
+  "tipo": "Praça central",
+  "destaque": 2,
+  "resumo": "Praça central de Capinzal, com concha acústica, parquinho e o Monumento do Agricultor.",
+  "descricao": [
+    "A praça central tem parquinho infantil, concha acústica, bancos e banheiros, segundo o Plano Municipal de Cultura. Recebe eventos como a Feira Literária de Capinzal (FLICAP).",
+    "Aqui fica o Monumento do Agricultor: a escultura de uma família de agricultores, em homenagem ao trabalhador do campo, listada como atrativo pelo portal municipal de turismo.",
+    "As fontes também citam, na mesma praça, um monumento em homenagem aos primeiros imigrantes. Nenhuma delas esclarece se é a mesma obra."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Ernesto Hachmann – Centro, ao lado do terminal rodoviário",
+  "coordenadas": [
+    -51.61275,
+    -27.34288
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (via 546636158).",
+  "osm": "way/546636158",
+  "fontes": [
+    {
+      "titulo": "Dicas sobre turismo / O que fazer – Portal Municipal de Turismo de Capinzal",
+      "url": "https://turismo.capinzal.sc.gov.br/o-que-fazer/",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Lei nº 3.426, de 18 de novembro de 2021 – Plano Municipal de Cultura de Capinzal (com mapeamento cultural anexo)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Epagri – \"Resgatando Histórias da Culinária de Capinzal\" (Boletim Didático 165), 2022",
+      "url": "https://publicacoes.epagri.sc.gov.br/BD/article/download/1586/1457",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "O Tempo – \"É preciso transformar Capinzal num município turístico\"",
+      "url": "https://otempodefato.com.br/geral/e_preciso_transformar_capinzal_num_municipio_turistico.322979",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Praça Pedro Lélis da Rocha",
+      "url": "https://www.openstreetmap.org/way/546636158",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

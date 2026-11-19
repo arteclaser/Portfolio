@@ -1,0 +1,31 @@
+{
+  "origem": "https://build.protomaps.com/20261118.pmtiles",
+  "compilacao": "20261118",
+  "regiao": {
+    "bbox": [
+      -52.05,
+      -27.78,
+      -51.2,
+      -27.08
+    ],
+    "zoom": [
+      6,
+      12
+    ]
+  },
+  "detalhe": {
+    "bbox": [
+      -51.8,
+      -27.57,
+      -51.46,
+      -27.27
+    ],
+    "zoom": [
+      13,
+      15
+    ]
+  },
+  "blocos": 1498,
+  "bytes": 2961311,
+  "licenca": "Dados © colaboradores do OpenStreetMap (ODbL 1.0). Esquema e compilação: Protomaps Basemaps."
+}

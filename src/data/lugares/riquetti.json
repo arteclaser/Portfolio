@@ -1,0 +1,60 @@
+{
+  "id": "riquetti",
+  "nome": "Restaurante e Churrascaria Riquetti",
+  "nomeCurto": "Riquetti",
+  "categoria": "sabores",
+  "tipo": "Churrascaria",
+  "destaque": 2,
+  "resumo": "Restaurante e churrascaria na Avenida XV de Novembro, no centro.",
+  "descricao": [
+    "Restaurante e churrascaria na Avenida XV de Novembro, no centro, classificado nos diretórios como churrascaria de cozinha brasileira. Em novembro de 2026, foi o local de um evento da associação empresarial (ACIRP)."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Avenida XV de Novembro, 84 – Centro",
+  "coordenadas": [
+    -51.61208,
+    -27.34265
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição estimada pela numeração da via; pode haver diferença de cerca de 100 metros.",
+  "contato": {
+    "telefone": "(49) 3555-1159"
+  },
+  "situacao": "confirmado",
+  "evidencia": "notícia de novembro de 2026",
+  "aviso": "O número do imóvel aparece como 84 e como 78 nas fontes.",
+  "fontes": [
+    {
+      "titulo": "Rádio Capinzal – ACIRP realiza transição das coordenações dos sete núcleos empresariais (19/11/2026)",
+      "url": "https://www.capinzalfm.com.br/noticia/acirp-realiza-transicao-das-coordenacoes-dos-sete-nucleos-empresariais-na-proxima-terca-feira",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "cardapio.menu – E Churrascaria Riquetti",
+      "url": "https://cardapio.menu/restaurants/capinzal/e-churrascaria-riquetti",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Apontador – Churrascaria Riquetti",
+      "url": "https://www.apontador.com.br/local/sc/capinzal/churrascarias/B52558DJ/churrascaria_riquetti.html",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Guia Mais – Churrascaria Riquetti",
+      "url": "https://www.guiamais.com.br/capinzal-sc/restaurantes/churrascarias/11684018-2/churrascaria-riquetti",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – lista de associados (página 1)",
+      "url": "https://www.acirp.org.br/associados.php?pagina=1",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

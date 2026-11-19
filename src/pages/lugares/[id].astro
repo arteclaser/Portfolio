@@ -1,0 +1,227 @@
+---
+import '../../styles/conteudo.css';
+import '../../styles/mapa.css';
+import { getImage } from 'astro:assets';
+import CartaoLugar from '../../components/CartaoLugar.astro';
+import Fontes from '../../components/Fontes.astro';
+import Foto from '../../components/Foto.astro';
+import Icone from '../../components/Icone.astro';
+import { categoriaPorId } from '../../data/categorias';
+import { site } from '../../data/site';
+import { dataPorExtenso, imagem, linkGoogleMaps, linkOpenStreetMap, linkWaze, lugares, rotasDoLugar, urlLugar, urlRota, vizinhos } from '../../lib/dados';
+import { formatarDistancia, formatarDuracao } from '../../lib/geo';
+import type { Lugar } from '../../lib/tipos';
+import Base from '../../layouts/Base.astro';
+
+export function getStaticPaths() {
+  return lugares.map((lugar) => ({ params: { id: lugar.id }, props: { lugar } }));
+}
+
+interface Props { lugar: Lugar }
+const { lugar } = Astro.props;
+const categoria = categoriaPorId[lugar.categoria];
+const [capa, ...outras] = lugar.imagens ?? [];
+const perto = vizinhos(lugar, 3);
+const rotas = rotasDoLugar(lugar.id);
+const comercio = lugar.categoria === 'sabores' || lugar.categoria === 'hospedagem';
+const og = capa ? await getImage({ src: imagem(capa.arquivo), width: 1200, height: 630, fit: 'cover', format: 'jpeg', quality: 78 }) : null;
+const telefoneLink = (t: string) => `tel:+55${t.replace(/\D/g, '')}`;
+const rotuloModo = { 'a-pe': 'a pé', carro: 'de carro', bicicleta: 'de bicicleta' } as const;
+
+// Dados estruturados (schema.org): ajudam buscadores a entender o lugar. Só entram fatos com fonte.
+const tipoSchema = { historia: 'TouristAttraction', fe: 'PlaceOfWorship', natureza: 'TouristAttraction', sabores: 'FoodEstablishment', hospedagem: 'LodgingBusiness', apoio: 'CivicStructure' }[lugar.categoria];
+const estruturado = {
+  '@context': 'https://schema.org',
+  '@type': tipoSchema,
+  name: lugar.nome,
+  description: lugar.resumo,
+  url: new URL(urlLugar(lugar.id), site.url).href,
+  address: {
+    '@type': 'PostalAddress',
+    ...(lugar.endereco ? { streetAddress: lugar.endereco } : {}),
+    addressLocality: lugar.municipio.includes('Capinzal') ? 'Capinzal' : lugar.municipio,
+    addressRegion: 'SC',
+    addressCountry: 'BR',
+  },
+  ...(lugar.precisao === 'exata' ? { geo: { '@type': 'GeoCoordinates', latitude: lugar.coordenadas[1], longitude: lugar.coordenadas[0] } } : {}),
+  ...(lugar.contato?.telefone ? { telephone: `+55 ${lugar.contato.telefone}` } : {}),
+  ...(og ? { image: new URL(og.src, site.url).href } : {}),
+};
+---
+<Base titulo={lugar.nome} descricao={lugar.resumo} atual="lugares" tipoOg="place" imagem={og?.src} imagemAlt={capa?.alt}>
+  <script slot="cabeca" type="application/ld+json" set:html={JSON.stringify(estruturado)} />
+
+  <article class:list={['lugar', `cat-${lugar.categoria}`]}>
+    <div class="conteiner">
+      <nav class="trilha" aria-label="Você está em">
+        <ol>
+          <li><a href="/">Mapa</a></li>
+          <li><a href="/lugares/">Lugares</a></li>
+          <li><a href={`/lugares/#${categoria.id}`}>{categoria.nome}</a></li>
+        </ol>
+      </nav>
+
+      <header class="lugar__cabeca">
+        <div class="lugar__selos">
+          <span class="selo"><Icone nome={categoria.icone} tamanho={15} />{lugar.tipo}</span>
+          {lugar.situacao === 'a-confirmar' && <span class="selo selo--alerta"><Icone nome="triangle-alert" tamanho={15} />Funcionamento a confirmar</span>}
+          {lugar.situacao === 'confirmado' && <span class="selo selo--ok"><Icone nome="badge-check" tamanho={15} />Em funcionamento ({lugar.evidencia})</span>}
+          {!lugar.municipio.includes('Capinzal') && <span class="selo selo--alerta"><Icone nome="map-pin" tamanho={15} />Fica em {lugar.municipio}</span>}
+        </div>
+        <h1>{lugar.nome}</h1>
+        <p class="lugar__resumo">{lugar.resumo}</p>
+        <div class="lugar__acoes nao-imprimir">
+          <a class="botao" href={linkGoogleMaps(lugar)} target="_blank" rel="noopener"><Icone nome="navigation" tamanho={18} />Como chegar</a>
+          <a class="botao botao--claro" href={`/?lugar=${lugar.id}`}><Icone nome="map" tamanho={18} />Ver no mapa</a>
+          <button type="button" class="botao botao--claro" data-compartilhar data-titulo={lugar.nome} data-texto={lugar.resumo}>
+            <Icone nome="share-2" tamanho={18} /><span data-rotulo>Compartilhar</span>
+          </button>
+        </div>
+      </header>
+
+      {capa ? (
+        <Foto foto={capa} class="foto--capa" prioridade />
+      ) : (
+        <div class="sem-foto">
+          <div>
+            <Icone nome={categoria.icone} tamanho={44} />
+            <p>Ainda não temos foto de uso livre deste lugar.</p>
+          </div>
+        </div>
+      )}
+
+      <div class="lugar__grade">
+        <div>
+          <div class="prosa">
+            {lugar.descricao.map((paragrafo) => <p>{paragrafo}</p>)}
+          </div>
+
+          {lugar.situacao === 'a-confirmar' && (
+            <div class="aviso" role="note" style="margin-top:20px">
+              <Icone nome="triangle-alert" />
+              <p><strong>Funcionamento a confirmar.</strong> Este lugar consta em mais de uma fonte, mas não encontramos registro público de 2025 ou 2026 que confirme que está aberto. Ligue antes de ir.</p>
+            </div>
+          )}
+          {lugar.aviso && (
+            <div class="aviso" role="note" style="margin-top:14px">
+              <Icone nome="info" />
+              <p>{lugar.aviso}</p>
+            </div>
+          )}
+          {comercio && (
+            <p class="suave" style="margin-top:14px;font-size:.93rem">Horários, cardápios e preços mudam. Este guia não publica avaliações nem recebe pela inclusão de estabelecimentos.</p>
+          )}
+
+          {outras.length > 0 && (
+            <div class="galeria">
+              {outras.map((foto) => <Foto foto={foto} larguras={[480, 800]} tamanhos="(min-width: 900px) 360px, 100vw" />)}
+            </div>
+          )}
+        </div>
+
+        <aside class="lateral" aria-label="Informações práticas">
+          <dl class="ficha">
+            <div class="ficha__item">
+              <Icone nome="map-pin" />
+              <div>
+                <dt>Endereço</dt>
+                <dd>
+                  {lugar.endereco ?? `${lugar.localidade ?? ''}`}
+                  <small>{lugar.municipio.includes('Capinzal') && !lugar.municipio.includes('Ouro') ? 'Capinzal' : lugar.municipio} (SC)</small>
+                </dd>
+              </div>
+            </div>
+            {lugar.horario && (
+              <div class="ficha__item">
+                <Icone nome="clock" />
+                <div><dt>Horário</dt><dd>{lugar.horario}</dd></div>
+              </div>
+            )}
+            {lugar.entrada && (
+              <div class="ficha__item">
+                <Icone nome="ticket" />
+                <div><dt>Entrada</dt><dd>{lugar.entrada}</dd></div>
+              </div>
+            )}
+            {lugar.contato && (
+              <div class="ficha__item">
+                <Icone nome="phone" />
+                <div>
+                  <dt>Contato</dt>
+                  <dd>
+                    {lugar.contato.telefone && <a href={telefoneLink(lugar.contato.telefone)}>{lugar.contato.telefone}</a>}
+                    {lugar.contato.email && <small><a href={`mailto:${lugar.contato.email}`}>{lugar.contato.email}</a></small>}
+                    {lugar.contato.site && <small><a href={lugar.contato.site} target="_blank" rel="noopener">{new URL(lugar.contato.site).hostname.replace(/^www\./, '')}</a></small>}
+                  </dd>
+                </div>
+              </div>
+            )}
+            <div class="ficha__item">
+              <Icone nome="locate-fixed" />
+              <div>
+                <dt>Posição no mapa</dt>
+                <dd>
+                  {lugar.precisao === 'exata' ? 'Ponto mapeado' : 'Aproximada'}
+                  <small>{lugar.origemCoordenadas}</small>
+                </dd>
+              </div>
+            </div>
+          </dl>
+
+          <div
+            class="mapa-mini nao-imprimir"
+            data-mini-mapa
+            data-lon={lugar.coordenadas[0]}
+            data-lat={lugar.coordenadas[1]}
+            data-categoria={lugar.categoria}
+            data-nome={lugar.nomeCurto ?? lugar.nome}
+          >
+            <div class="mapa__tela" role="region" aria-label={`Mapa com a posição de ${lugar.nome}`}></div>
+            <template><Icone nome={categoria.icone} tamanho={17} /></template>
+          </div>
+          <p class="lateral__links nao-imprimir">
+            <a href={linkWaze(lugar)} target="_blank" rel="noopener">Abrir no Waze</a>
+            <a href={linkOpenStreetMap(lugar)} target="_blank" rel="noopener">Ver no OpenStreetMap</a>
+          </p>
+        </aside>
+      </div>
+
+      {rotas.length > 0 && (
+        <section class="secao" aria-labelledby="titulo-rotas">
+          <div class="secao__cabeca"><h2 id="titulo-rotas">Faz parte destes roteiros</h2></div>
+          <div class="grade-rotas">
+            {rotas.map((rota) => (
+              <article class="cartao-rota" style={`--cor-rota:${rota.cor}`}>
+                <div class="cartao-rota__corpo">
+                  <h3><a href={urlRota(rota.id)}>{rota.nome}</a></h3>
+                  <p>{rota.resumo}</p>
+                  <ul class="dados-rota">
+                    <li><Icone nome="route" tamanho={16} />{formatarDistancia(rota.distanciaM)} {rotuloModo[rota.modo]}</li>
+                    <li><Icone nome="clock" tamanho={16} />{formatarDuracao(rota.duracaoS)}</li>
+                    <li><Icone nome="map-pin" tamanho={16} />{rota.paradas.length} paradas</li>
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section class="secao" aria-labelledby="titulo-perto">
+        <div class="secao__cabeca"><h2 id="titulo-perto">Perto daqui</h2><p>Distâncias em linha reta.</p></div>
+        <ul class="grade-cartoes" role="list">
+          {perto.map(({ lugar: outro, metros }) => <CartaoLugar lugar={outro} nota={`a ${formatarDistancia(metros)}`} />)}
+        </ul>
+      </section>
+
+      <div class="secao estreito" style="margin-inline:0">
+        <Fontes fontes={lugar.fontes} titulo="De onde vêm estas informações" />
+        <p class="conferido" style="margin-top:18px"><Icone nome="shield-check" tamanho={18} />Informações conferidas em {dataPorExtenso(lugar.conferidoEm)}.</p>
+      </div>
+    </div>
+  </article>
+
+  <script>
+    import '../../scripts/mapa/mini.ts';
+  </script>
+</Base>

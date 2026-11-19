@@ -1,38 +1,69 @@
-# O sistema começa sempre pelo index.php (um index.html esquecido na pasta não tem prioridade).
-DirectoryIndex index.php
+# Mostraqui Capinzal — regras do servidor (Apache, hospedagem compartilhada).
+# O site é estático: não há PHP nem banco de dados.
+
+DirectoryIndex index.html
+<IfModule mod_negotiation.c>
+    Options -MultiViews -Indexes
+</IfModule>
+ErrorDocument 404 /404.html
+AddDefaultCharset utf-8
 
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
-
     RewriteEngine On
 
-    # Bloqueia arquivos ocultos (.env, .git etc.), caso estejam por engano na pasta pública.
+    # Arquivos e pastas ocultos (.git, .env, .implantacao...) nunca são servidos.
+    # A exceção é .well-known, usada para emitir o certificado de segurança.
     RewriteRule (^|/)\.(?!well-known/) - [F,L]
 
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    # Pasta do aplicativo anterior (Laravel): bloqueada enquanto ainda existir no servidor.
+    RewriteRule ^mostraqui-app(/|$) - [F,L]
 
-    # Handle X-XSRF-Token Header
-    RewriteCond %{HTTP:x-xsrf-token} .
-    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+    # Sempre com conexão segura (https). O modo sem internet e o botão "onde estou" dependem disso.
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+    RewriteCond %{REQUEST_URI} !^/\.well-known/
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
-
-    # Send Requests To Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+    # Endereços do aplicativo anterior levam ao mapa.
+    RewriteRule ^(acoes|areas|equipe|entrar|painel|instalar|acessibilidade|privacidade)(/.*)?$ / [R=302,L]
 </IfModule>
 
+# Segunda barreira para a pasta do aplicativo anterior, mesmo sem mod_rewrite.
+<IfModule mod_alias.c>
+    RedirectMatch 403 ^/mostraqui-app(/|$)
+</IfModule>
+
+# ---------------------------------------------------------------- tipos de arquivo
+<IfModule mod_mime.c>
+    AddType text/javascript .js .mjs
+    AddType application/manifest+json .webmanifest
+    AddType application/geo+json .geojson
+    AddType application/x-protobuf .pbf
+    AddType application/octet-stream .pmtiles
+    AddType image/avif .avif
+    AddType image/webp .webp
+    AddType font/woff2 .woff2
+    AddCharset utf-8 .html .css .js .mjs .json .geojson .webmanifest .svg .xml .txt
+</IfModule>
+
+# ---------------------------------------------------------------- segurança
 <IfModule mod_headers.c>
-    # Fontes e estilos versionados podem ficar em cache por mais tempo.
-    <FilesMatch "\.(woff2|css|js|svg)$">
-        Header set Cache-Control "public, max-age=604800"
-    </FilesMatch>
+    # Só arquivos do próprio site são carregados: nenhum script, fonte ou imagem de terceiros.
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; manifest-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    # A localização só pode ser pedida pelo próprio site (botão "onde estou"); câmera, microfone etc. ficam desligados.
+    Header always set Permissions-Policy "geolocation=(self), camera=(), microphone=(), payment=(), usb=()"
+    Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
+
+    # ------------------------------------------------------------ cache
+    # Páginas e arquivos sem versão no nome: o navegador sempre confere se há novidade.
+    # As pastas /assets/, /mapa/ e /icones/ têm regras próprias (arquivo .htaccess dentro de cada uma).
+    Header set Cache-Control "no-cache"
+</IfModule>
+
+# ---------------------------------------------------------------- compressão
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json application/geo+json application/manifest+json application/xml image/svg+xml text/plain application/x-protobuf
 </IfModule>

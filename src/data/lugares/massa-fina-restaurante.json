@@ -1,0 +1,55 @@
+{
+  "id": "massa-fina-restaurante",
+  "nome": "Massa Fina Restaurante",
+  "outrosNomes": [
+    "Kellma Restaurante"
+  ],
+  "categoria": "sabores",
+  "tipo": "Restaurante de almoço",
+  "destaque": 1,
+  "resumo": "Restaurante de almoço no centro de Capinzal.",
+  "descricao": [
+    "Restaurante de almoço na Rua Dona Maria Angélica Almeida, no centro. No mesmo endereço, as plataformas listam também o nome Kellma, com buffet e sushi; a relação entre os dois nomes não foi confirmada."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Dona Maria Angélica Almeida, 95 – Centro",
+  "coordenadas": [
+    -51.60961,
+    -27.34408
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (nó 5282711289, “Restaurante MassaFina”).",
+  "osm": "node/5282711289",
+  "contato": {
+    "telefone": "(49) 3555-6655"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "cardapio.menu – Massa Fina E Eventos Ii",
+      "url": "https://cardapio.menu/restaurants/capinzal/massa-fina-e-eventos-ii",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "cardapio.menu – Kellma",
+      "url": "https://cardapio.menu/restaurants/capinzal/kellma",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Apontador – Bares e Restaurantes em Capinzal",
+      "url": "https://www.apontador.com.br/em/capinzal-sc/bares-e-restaurantes",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Restaurante MassaFina",
+      "url": "https://www.openstreetmap.org/node/5282711289",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

@@ -1,0 +1,19 @@
+---
+import '../styles/conteudo.css';
+import Icone from '../components/Icone.astro';
+import Base from '../layouts/Base.astro';
+---
+<Base titulo="Página não encontrada" semIndice>
+  <div class="estreito">
+    <header class="cabeca-pagina">
+      <p class="sobrelinha"><Icone nome="signpost" tamanho={16} />Erro 404</p>
+      <h1>Este caminho não leva a lugar nenhum</h1>
+      <p>A página pode ter mudado de endereço ou o link pode estar incompleto.</p>
+    </header>
+    <p style="display:flex;flex-wrap:wrap;gap:10px">
+      <a class="botao" href="/"><Icone nome="map" tamanho={18} />Abrir o mapa</a>
+      <a class="botao botao--claro" href="/lugares/">Ver todos os lugares</a>
+      <a class="botao botao--claro" href="/rotas/">Ver os roteiros</a>
+    </p>
+  </div>
+</Base>

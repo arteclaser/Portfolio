@@ -1,0 +1,44 @@
+{
+  "id": "terminal-rodoviario",
+  "nome": "Terminal Rodoviário de Capinzal",
+  "nomeCurto": "Rodoviária",
+  "categoria": "apoio",
+  "tipo": "Rodoviária",
+  "destaque": 1,
+  "resumo": "Ponto de chegada de quem vem de ônibus, no centro, ao lado da praça central.",
+  "descricao": [
+    "O terminal rodoviário fica na região central de Capinzal, ao lado da Praça Pedro Lélis da Rocha. Não há trem de passageiros para a cidade."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Ernesto Hachmann – Centro, ao lado da Praça Pedro Lélis da Rocha",
+  "coordenadas": [
+    -51.61324,
+    -27.34304
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (via 131354770).",
+  "osm": "way/131354770",
+  "aviso": "Linhas e horários de ônibus não foram verificados. Consulte as empresas de transporte.",
+  "fontes": [
+    {
+      "titulo": "O Tempo – \"É preciso transformar Capinzal num município turístico\"",
+      "url": "https://otempodefato.com.br/geral/e_preciso_transformar_capinzal_num_municipio_turistico.322979",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Wikipédia em português – “Capinzal”",
+      "url": "https://pt.wikipedia.org/wiki/Capinzal",
+      "tipo": "enciclopedia",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Terminal Rodoviário Intermunicipal",
+      "url": "https://www.openstreetmap.org/way/131354770",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

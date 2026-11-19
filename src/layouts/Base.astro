@@ -1,0 +1,160 @@
+---
+import '../styles/base.css';
+import figtree from '@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2?url';
+import bricolage from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url';
+import Icone from '../components/Icone.astro';
+import Simbolo from '../components/Simbolo.astro';
+import { navegacao, site, type PaginaAtual } from '../data/site';
+
+interface Props {
+  titulo?: string;
+  descricao?: string;
+  atual?: PaginaAtual;
+  /** Caminho da imagem de compartilhamento (já otimizada). */
+  imagem?: string;
+  imagemAlt?: string;
+  /** "app": página de mapa em tela cheia, sem cabeçalho nem rodapé de conteúdo. */
+  formato?: 'conteudo' | 'app';
+  tipoOg?: 'website' | 'article' | 'place';
+  semIndice?: boolean;
+}
+
+const {
+  titulo,
+  descricao = site.descricao,
+  atual = null,
+  imagem = '/icones/compartilhar.png',
+  imagemAlt = 'Mostraqui Capinzal: mapa turístico de Capinzal, Santa Catarina.',
+  formato = 'conteudo',
+  tipoOg = 'website',
+  semIndice = false,
+} = Astro.props;
+
+const tituloCompleto = titulo ? `${titulo} · ${site.nome}` : `${site.nome} — ${site.lema}`;
+const canonica = new URL(Astro.url.pathname, site.url).href;
+const imagemAbsoluta = new URL(imagem, site.url).href;
+const abas = navegacao.filter((item) => item.id !== 'sobre');
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={descricao} />
+    {semIndice && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonica} />
+    <meta property="og:site_name" content={site.nome} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content={tipoOg} />
+    <meta property="og:title" content={titulo ?? `${site.nome} — ${site.lema}`} />
+    <meta property="og:description" content={descricao} />
+    <meta property="og:url" content={canonica} />
+    <meta property="og:image" content={imagemAbsoluta} />
+    <meta property="og:image:alt" content={imagemAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#FAF7F0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0E1513" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icones/apple-touch-icon.png" />
+    <link rel="manifest" href="/app.webmanifest" />
+    <link rel="preload" href={figtree} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={bricolage} as="font" type="font/woff2" crossorigin />
+    <script is:inline src="/js/tema.js"></script>
+    <slot name="cabeca" />
+  </head>
+  <body class:list={[`formato-${formato}`]}>
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+    {formato === 'conteudo' && (
+      <header class="topo">
+        <div class="conteiner topo__dentro">
+          <a class="marca" href="/" aria-label={`${site.nome}: voltar ao mapa`}>
+            <Simbolo class="marca__simbolo" />
+            <span class="marca__texto">
+              <span>Mostraqui</span>
+              <span class="marca__sub">Capinzal · SC</span>
+            </span>
+          </a>
+          <nav class="nav" aria-label="Navegação principal">
+            <ul role="list">
+              {navegacao.map((item) => (
+                <li><a href={item.url} aria-current={atual === item.id ? 'page' : undefined}>{item.rotulo}</a></li>
+              ))}
+            </ul>
+          </nav>
+          <div class="topo__acoes">
+            <button type="button" class="botao-icone" data-alternar-tema aria-label="Mudar para o tema escuro">
+              <span data-tema-icone="escuro"><Icone nome="moon" /></span>
+              <span data-tema-icone="claro" hidden><Icone nome="sun" /></span>
+            </button>
+          </div>
+        </div>
+      </header>
+    )}
+
+    <main id="conteudo" tabindex="-1">
+      <slot />
+    </main>
+
+    {formato === 'conteudo' && (
+      <footer class="rodape">
+        <div class="conteiner">
+          <div class="rodape__grade">
+            <div>
+              <a class="marca" href="/">
+                <Simbolo class="marca__simbolo" />
+                <span class="marca__texto">
+                  <span>Mostraqui</span>
+                  <span class="marca__sub">Capinzal · SC</span>
+                </span>
+              </a>
+              <p class="rodape__lema">
+                Mapa turístico de Capinzal, feito com dados abertos e com as fontes citadas em cada página.
+              </p>
+            </div>
+            <div>
+              <h2>Explorar</h2>
+              <ul role="list">
+                <li><a href="/">Mapa interativo</a></li>
+                <li><a href="/rotas/">Roteiros</a></li>
+                <li><a href="/lugares/">Todos os lugares</a></li>
+                <li><a href="/capinzal/">Conheça Capinzal</a></li>
+              </ul>
+            </div>
+            <div>
+              <h2>Sobre</h2>
+              <ul role="list">
+                <li><a href="/sobre/">O projeto</a></li>
+                <li><a href="/sobre/#dados">Dados e fontes</a></li>
+                <li><a href="/sobre/#privacidade">Privacidade</a></li>
+                <li><a href="/sobre/#acessibilidade">Acessibilidade</a></li>
+              </ul>
+            </div>
+          </div>
+          <p class="rodape__nota">
+            Mapa: © colaboradores do <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>.
+            Horários, preços e funcionamento mudam: confirme com o estabelecimento antes de ir.
+          </p>
+        </div>
+      </footer>
+    )}
+
+    <nav class="abas" aria-label="Seções do aplicativo">
+      <ul role="list">
+        {abas.map((item) => (
+          <li>
+            <a href={item.url} aria-current={atual === item.id ? 'page' : undefined}>
+              <span class="abas__icone"><Icone nome={item.icone} tamanho={22} /></span>
+              {item.rotulo}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <script>
+      import '../scripts/comum.ts';
+    </script>
+  </body>
+</html>

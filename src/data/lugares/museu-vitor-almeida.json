@@ -1,0 +1,69 @@
+{
+  "id": "museu-vitor-almeida",
+  "nome": "Museu Histórico Municipal Vitor Almeida",
+  "nomeCurto": "Museu Vitor Almeida",
+  "categoria": "historia",
+  "tipo": "Museu",
+  "destaque": 3,
+  "resumo": "Museu municipal com objetos do cotidiano, peças da antiga Cervejaria Rio Capinzal e da Rádio Sulina, além de exposições temporárias.",
+  "descricao": [
+    "O museu é mantido pela Secretaria Municipal de Educação, Cultura e Esportes e foi reinaugurado em 30 de maio de 2019 no endereço atual, anexo à Casa Paroquial, ao lado da Igreja Matriz. Leva o nome do advogado, escritor e historiador Vitor Almeida (1938–2009), principal doador do acervo.",
+    "Segundo o Plano Municipal de Cultura, o acervo reúne relógios, máquinas de escrever, máquinas fotográficas e armas. Entre as peças que mais chamam a atenção estão uma máquina de fazer cerveja da Cervejaria Rio Capinzal e equipamentos da extinta Rádio Sulina, a primeira de Capinzal e Ouro.",
+    "O museu também recebe exposições temporárias. Em outubro de 2026, abrigou a mostra fotográfica “Olhares de Capinzal”, com entrada gratuita."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Dr. Vilson Bordin, 11, anexo à Casa Paroquial – Centro",
+  "coordenadas": [
+    -51.61272,
+    -27.34474
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição aproximada na Rua Dr. Vilson Bordin, junto à Igreja Matriz: o museu fica anexo à Casa Paroquial.",
+  "horario": "Segunda a sexta, das 7h30 às 11h30 e das 13h às 17h (horário divulgado em 2021)",
+  "entrada": "Gratuita (informação de outubro de 2026)",
+  "contato": {
+    "telefone": "(49) 3555-8779",
+    "email": "cultura@capinzal.sc.gov.br"
+  },
+  "aviso": "O horário é de 2021 e não foi reconfirmado. Ligue antes de ir.",
+  "fontes": [
+    {
+      "titulo": "Lei nº 3.426, de 18 de novembro de 2021 – Plano Municipal de Cultura de Capinzal (com mapeamento cultural anexo)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "O Tempo – \"Ato inaugural em Capinzal:\" (reinauguração do museu)",
+      "url": "https://otempodefato.com.br/geral/ato_inaugural_em_capinzal_.309372",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Exposição Temporária destaca a técnica em pintura Plein Air no Museu Histórico Vitor Almeida\"",
+      "url": "https://capinzalfm.com.br/noticia/exposi-ao-temporaria-destaca-a-t-cnica-em-pintura-plein-air-no-museu-historico-vitor-almeida",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "O Tempo – \"Inicia cronograma de exposições temporárias em Capinzal\"",
+      "url": "https://otempodefato.com.br/artigos/inicia_cronograma_de_exposicoes_temporarias_em_capinzal.288312",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Exposição Olhares de Capinzal alia fotografia e acessibilidade no Museu Histórico Municipal\"",
+      "url": "https://capinzalfm.com.br/noticia/exposicao-fotografica-apresenta-historia-e-identidade-cultural-de-capinzal",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Lista \"Região Museológica: Meio Oeste\" (documento Google Docs; autoria não identificada no próprio documento)",
+      "url": "https://docs.google.com/document/d/1Ci2soNH4pZXwgflQMb4qw_rgjNEEMfNEc3C5AsXQ7a4/export?format=pdf",
+      "tipo": "outro",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

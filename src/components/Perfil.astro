@@ -1,0 +1,46 @@
+---
+// Perfil de altitude de um roteiro: gráfico em SVG montado junto com o site (sem biblioteca de gráficos).
+import { formatarDistancia } from '../lib/geo';
+import type { Rota } from '../lib/tipos';
+
+interface Props { rota: Rota }
+const { rota } = Astro.props;
+
+const L = 600;
+const A = 120;
+const topo = 14;
+const base = A - 26;
+const folga = Math.max(6, (rota.altitudeMax - rota.altitudeMin) * 0.12);
+const eMin = rota.altitudeMin - folga;
+const eMax = rota.altitudeMax + folga;
+const x = (d: number) => (d / rota.distanciaM) * L;
+const y = (e: number) => base - ((e - eMin) / (eMax - eMin)) * (base - topo);
+const f = (n: number) => n.toFixed(1);
+
+const pontos = rota.perfil.map((p) => `${f(x(p.d))},${f(y(p.e))}`);
+const linha = `M${pontos.join('L')}`;
+const area = `${linha}L${L},${base}L0,${base}Z`;
+
+function altitudeEm(d: number) {
+  const i = rota.perfil.findIndex((p) => p.d >= d);
+  if (i <= 0) return rota.perfil[0].e;
+  const a = rota.perfil[i - 1];
+  const b = rota.perfil[i];
+  return a.e + ((b.e - a.e) * (d - a.d)) / Math.max(1, b.d - a.d);
+}
+const paradas = rota.paradasEm.map((d, i) => ({ n: i + 1, x: x(d), y: y(altitudeEm(d)) }));
+const descricao =
+  `Perfil de altitude do roteiro ${rota.nome}: de ${rota.altitudeMin} a ${rota.altitudeMax} metros, ` +
+  `com ${rota.subidaM} metros de subida acumulada em ${formatarDistancia(rota.distanciaM)}.`;
+---
+<figure class="perfil">
+  <svg viewBox={`0 0 ${L} ${A}`} role="img" aria-label={descricao} preserveAspectRatio="none">
+    <path class="area" d={area} />
+    <line class="base" x1="0" y1={base} x2={L} y2={base} />
+    <path class="linha" d={linha} />
+    {paradas.map((p) => <circle class="parada" cx={f(p.x)} cy={f(p.y)} r="4.5" />)}
+  </svg>
+  <figcaption>
+    Altitude de {rota.altitudeMin} a {rota.altitudeMax} m · subida acumulada de {rota.subidaM} m. Os pontos marcam as paradas.
+  </figcaption>
+</figure>

@@ -1,0 +1,70 @@
+{
+  "id": "sense-hotel-premium",
+  "nome": "Sense Hotel Premium",
+  "outrosNomes": [
+    "SH Hotel",
+    "Hotel Baiolim (nome anterior)"
+  ],
+  "categoria": "hospedagem",
+  "tipo": "Hotel",
+  "destaque": 2,
+  "resumo": "Hotel no centro de Capinzal, divulgado com mais de um nome.",
+  "descricao": [
+    "Hotel na Rua Luiz Dorini, no centro. O site próprio informa 54 acomodações, café da manhã em buffet, garagem coberta, sala de eventos e restaurante.",
+    "O mesmo endereço aparece com três nomes: Hotel Baiolim (inauguração noticiada em 2017), SH Hotel (site próprio) e Sense Hotel Premium (plataformas de reserva). Confirme o nome em uso ao reservar."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Luiz Dorini, 90 – Centro",
+  "coordenadas": [
+    -51.60595,
+    -27.34634
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (nó 5282711296, mapeado como “Hotel Baiolin”).",
+  "osm": "node/5282711296",
+  "contato": {
+    "telefone": "(49) 3555-2001",
+    "site": "https://hotelsh.com.br/"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Rádio Capinzal – Novidade - Hotel Baiolim é inaugurado em Capinzal (07/11/2017)",
+      "url": "https://www.capinzalfm.com.br/noticias/novidade---hotel-baiolim-e-inaugurado-em-capinzal/6116",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "SH Hotel – site próprio",
+      "url": "https://hotelsh.com.br/",
+      "tipo": "proprio",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "KAYAK – ficha do hotel (nome Hotel Baiolim / SH Hotel Capinzal Premium)",
+      "url": "https://www.kayak.com.br/Hoteis-Sense-Hotel-Premium-Capinzal.3508778.ksp",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Hotel in Site – hotéis em Capinzal",
+      "url": "https://www.hotelinsite.com.br/cidades.php?id=1188&cid=capinzal-",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Hotel.com.br – hotéis em Capinzal",
+      "url": "https://www.hotel.com.br/hoteis-em-capinzal.html",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Hotel Baiolin",
+      "url": "https://www.openstreetmap.org/node/5282711296",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

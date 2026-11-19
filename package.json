@@ -1,0 +1,28 @@
+{
+  "name": "mostraqui-capinzal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Mapa turístico interativo de Capinzal (SC): lugares, roteiros e mapa que funciona sem internet.",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/pos-build.mjs",
+    "preview": "astro preview",
+    "check": "node scripts/conferir-dados.mjs",
+    "test": "node scripts/conferir-dados.mjs && node --test tests/unit/"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/figtree": "^5.3.0",
+    "@protomaps/basemaps": "^5.7.2",
+    "astro": "^7.4.13",
+    "lucide-static": "^1.76.0",
+    "maplibre-gl": "^6.19.0",
+    "pmtiles": "^4.5.0",
+    "supercluster": "^9.1.0"
+  }
+}

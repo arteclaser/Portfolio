@@ -1,0 +1,42 @@
+{
+  "id": "ginasio-dileto-bertaiolli",
+  "nome": "Ginásio Municipal Dileto Bertaiolli",
+  "nomeCurto": "Ginásio Dileto Bertaiolli",
+  "categoria": "natureza",
+  "tipo": "Ginásio de esportes",
+  "destaque": 1,
+  "resumo": "Ginásio municipal que recebe competições escolares e eventos esportivos.",
+  "descricao": [
+    "O ginásio é ligado à Fundação Municipal de Esportes e aparece no Plano Municipal de Cultura como centro desportivo. Em agosto de 2026, recebeu a abertura dos Jogos Integrados Escolares de Capinzal (JIESC)."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Rua José Cadorin",
+  "coordenadas": [
+    -51.60575,
+    -27.34798
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (via 131342955).",
+  "osm": "way/131342955",
+  "fontes": [
+    {
+      "titulo": "Lei nº 3.426, de 18 de novembro de 2021 – Plano Municipal de Cultura de Capinzal (com mapeamento cultural anexo)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"JIESC 2026 começa nesta quinta-feira com esporte, integração e apresentação dos Ginasloucos em Capinzal\"",
+      "url": "https://capinzalfm.com.br/noticia/jiesc-2026-comeca-nesta-quinta-feira-com-esporte-integracao-e-apresentacao-dos-ginasloucos-em-capinzal",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Ginásio Dileto Bertaiolli",
+      "url": "https://www.openstreetmap.org/way/131342955",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

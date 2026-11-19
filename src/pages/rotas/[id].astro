@@ -1,0 +1,137 @@
+---
+import '../../styles/conteudo.css';
+import '../../styles/mapa.css';
+import CartaoLugar from '../../components/CartaoLugar.astro';
+import Icone from '../../components/Icone.astro';
+import Perfil from '../../components/Perfil.astro';
+import Simbolo from '../../components/Simbolo.astro';
+import { categorias } from '../../data/categorias';
+import { navegacao, site } from '../../data/site';
+import { linkGoogleMapsRota, lugarPorId, rotas, urlRota } from '../../lib/dados';
+import { formatarDistancia, formatarDuracao } from '../../lib/geo';
+import type { Rota } from '../../lib/tipos';
+import Base from '../../layouts/Base.astro';
+
+export function getStaticPaths() {
+  return rotas.map((rota) => ({ params: { id: rota.id }, props: { rota } }));
+}
+
+interface Props { rota: Rota }
+const { rota } = Astro.props;
+const modo = { 'a-pe': { rotulo: 'A pé', icone: 'footprints' }, carro: { rotulo: 'De carro', icone: 'car' }, bicicleta: { rotulo: 'De bicicleta', icone: 'bike' } }[rota.modo];
+const paradas = rota.paradas.map((p, i) => {
+  const lugar = lugarPorId.get(p.lugar)!;
+  const trecho = i > 0 ? rota.trechos[i - 1] : null;
+  return { lugar, nota: p.nota, trecho };
+});
+const volta = rota.circular ? rota.trechos[rota.trechos.length - 1] : null;
+const dados = { id: rota.id, nome: rota.nome, cor: rota.cor, corEscuro: rota.corEscuro, geometria: rota.geometria, url: urlRota(rota.id) };
+---
+<Base titulo={`Roteiro: ${rota.nome}`} descricao={rota.resumo} atual="rotas" formato="app">
+  <div class="app" data-app data-modo="rota" data-visao="mapa" style={`--cor-rota:${rota.cor}`}>
+    <section class="painel" aria-labelledby="titulo-rota">
+      <header class="painel__topo">
+        <a class="marca" href="/" aria-label={`${site.nome}: início`}>
+          <Simbolo class="marca__simbolo" />
+          <span class="marca__texto">
+            <span>Mostraqui</span>
+            <span class="marca__sub">Capinzal · SC</span>
+          </span>
+        </a>
+        <button type="button" class="botao-icone" data-alternar-tema aria-label="Mudar para o tema escuro">
+          <span data-tema-icone="escuro"><Icone nome="moon" /></span>
+          <span data-tema-icone="claro" hidden><Icone nome="sun" /></span>
+        </button>
+      </header>
+      <nav class="painel__nav" aria-label="Navegação principal">
+        <ul role="list">
+          {navegacao.map((item) => (
+            <li><a href={item.url} aria-current={item.id === 'rotas' ? 'page' : undefined}>{item.rotulo}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="painel__rolagem">
+        <div class="rota-resumo">
+          <a class="voltar" href="/rotas/"><Icone nome="chevron-left" tamanho={18} />Todos os roteiros</a>
+          <h1 id="titulo-rota">{rota.nome}</h1>
+          <p>{rota.resumo}</p>
+          <dl class="rota-numeros">
+            <div><dt>{modo.rotulo}</dt><dd>{formatarDistancia(rota.distanciaM)}</dd></div>
+            <div><dt>Tempo</dt><dd>{formatarDuracao(rota.duracaoS)}</dd></div>
+            <div><dt>Subida</dt><dd>{rota.subidaM} m</dd></div>
+          </dl>
+          <div class="rota-acoes">
+            <a class="botao botao--p" href={linkGoogleMapsRota(rota)} target="_blank" rel="noopener"><Icone nome="navigation" tamanho={17} />Abrir no Google Maps</a>
+            <button type="button" class="botao botao--p botao--claro" data-compartilhar data-titulo={`Roteiro: ${rota.nome}`} data-texto={rota.resumo}>
+              <Icone nome="share-2" tamanho={17} /><span data-rotulo>Compartilhar</span>
+            </button>
+          </div>
+          <Perfil rota={rota} />
+        </div>
+
+        <p class="painel__contagem"><span data-contagem>{rota.paradas.length} paradas</span></p>
+
+        <ol class="lista" role="list" data-lista aria-label="Paradas do roteiro, na ordem de visita">
+          {paradas.map(({ lugar, nota, trecho }, i) => (
+            <CartaoLugar
+              lugar={lugar}
+              numero={i + 1}
+              paraMapa
+              nivelTitulo="h2"
+              nota={trecho ? `${formatarDistancia(trecho.distanciaM)} desde a parada anterior` : 'Início'}
+            />
+          ))}
+        </ol>
+
+        <div class="rota-texto">
+          {volta && <p class="suave">Volta ao ponto de partida: {formatarDistancia(volta.distanciaM)}.</p>}
+          <div class="prosa">
+            <h2>Sobre este roteiro</h2>
+            {rota.descricao.map((paragrafo) => <p>{paragrafo}</p>)}
+            {paradas.some((p) => p.nota) && (
+              <>
+                <h2>Dicas por parada</h2>
+                <ol>
+                  {paradas.map(({ lugar, nota }) => <li><strong>{lugar.nomeCurto ?? lugar.nome}.</strong> {nota ?? lugar.resumo}</li>)}
+                </ol>
+              </>
+            )}
+          </div>
+          {rota.aviso && (
+            <div class="aviso" role="note">
+              <Icone nome="info" />
+              <p>{rota.aviso}</p>
+            </div>
+          )}
+          <p class="suave" style="margin-top:14px;font-size:.88rem">
+            Traçado e tempo: {rota.motor}. O tempo não inclui as paradas. <a href="/rotas/#como">Como os roteiros foram traçados</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="mapa mapa--rota" data-estado="carregando">
+      <div class="mapa__tela" id="mapa" role="region" aria-label={`Mapa do roteiro ${rota.nome}. A lista de paradas traz as mesmas informações.`}></div>
+      <div class="mapa__aviso">
+        <span class="mapa__carregando" aria-hidden="true"></span>
+        <p>Carregando o mapa…</p>
+        <noscript><p>O mapa interativo precisa de JavaScript. A lista de paradas funciona sem ele.</p></noscript>
+      </div>
+      <button type="button" class="alternar-visao" data-alternar-visao aria-pressed="false">
+        <span data-icone="lista"><Icone nome="list" tamanho={18} /></span>
+        <span data-icone="mapa" hidden><Icone nome="map" tamanho={18} /></span>
+        <span data-rotulo>Ver em lista</span>
+      </button>
+    </div>
+  </div>
+
+  <template id="icones-do-mapa">
+    {categorias.map((c) => <span data-icone={c.icone}><Icone nome={c.icone} tamanho={17} /></span>)}
+  </template>
+  <script type="application/json" id="dados-rota" set:html={JSON.stringify(dados)} />
+
+  <script>
+    import '../../scripts/mapa/app.ts';
+  </script>
+</Base>
