@@ -9,7 +9,7 @@ const ler = (caminho) => JSON.parse(readFileSync(new URL(caminho, raiz), 'utf8')
 const listar = (pasta) => readdirSync(new URL(pasta, raiz)).filter((f) => f.endsWith('.json'));
 
 const CATEGORIAS = ['historia', 'fe', 'natureza', 'sabores', 'hospedagem', 'apoio'];
-const TIPOS_DE_FONTE = ['oficial', 'imprensa', 'enciclopedia', 'mapa', 'proprio', 'plataforma', 'acervo', 'outro'];
+const TIPOS_DE_FONTE = ['oficial', 'imprensa', 'enciclopedia', 'mapa', 'proprio', 'plataforma', 'base', 'acervo', 'outro'];
 const AREA_DETALHADA = [-51.8, -27.57, -51.46, -27.27]; // onde o mapa tem o detalhe das ruas
 const DATA = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -91,7 +91,9 @@ for (const arquivo of listar('src/data/lugares/')) {
   if (['sabores', 'hospedagem'].includes(l.categoria)) {
     if (!['confirmado', 'a-confirmar'].includes(l.situacao)) erro(onde, 'comércio e hospedagem precisam do campo "situacao" (confirmado ou a-confirmar)');
     if (l.situacao === 'confirmado' && !l.evidencia?.trim()) erro(onde, '"situacao": "confirmado" exige o campo "evidencia"');
-    if (l.situacao === 'a-confirmar' && (l.fontes ?? []).length < 2) erro(onde, 'lugar "a confirmar" precisa constar em pelo menos duas fontes');
+    // "A confirmar": duas fontes, ou uma só quando ela é oficial ou uma base de dados aberta (registro conferível por qualquer pessoa).
+    const fonteUnicaAceita = (l.fontes ?? []).some((f) => f.tipo === 'base' || f.tipo === 'oficial');
+    if (l.situacao === 'a-confirmar' && (l.fontes ?? []).length < 2 && !fonteUnicaAceita) erro(onde, 'lugar "a confirmar" precisa de duas fontes, ou de uma fonte oficial ou base de dados aberta');
     if (l.horario) avisos.push(`${onde}: horário de comércio publicado; confirme que vem de fonte datada`);
   }
 

@@ -1,0 +1,45 @@
+{
+  "id": "tchobar",
+  "nome": "TchôBar",
+  "outrosNomes": [
+    "Tcho",
+    "Tchô Bar"
+  ],
+  "categoria": "sabores",
+  "tipo": "Bar",
+  "destaque": 1,
+  "resumo": "Bar na Rua Ernesto Hachmann, perto da Área de Lazer.",
+  "descricao": [
+    "Bar na Rua Ernesto Hachmann, 585, endereço onde o Plano Municipal de Cultura (2021) situava o Bier Platz. A plataforma cardapio.menu o lista como “Tcho”, com avaliação de dezembro de 2023.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Ernesto Hachmann, 585 – Centro",
+  "coordenadas": [
+    -51.61701,
+    -27.34569
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição publicada na ficha da plataforma cardapio.menu, junto à Rua Ernesto Hachmann. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 98856-6275",
+    "facebook": "https://www.facebook.com/329089643852062"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “TchôBar Bar”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.35201/-51.62093",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "cardapio.menu – Tcho",
+      "url": "https://cardapio.menu/restaurants/capinzal/tcho",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

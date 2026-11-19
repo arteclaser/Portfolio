@@ -1,0 +1,57 @@
+{
+  "id": "estadio-municipal-sao-cristovao",
+  "nome": "Estádio Municipal São Cristóvão",
+  "outrosNomes": [
+    "Campo do São Cristóvão",
+    "Estádio do Bairro São Cristóvão",
+    "Campo de Futebol São Cristóvão"
+  ],
+  "categoria": "natureza",
+  "tipo": "Campo de futebol",
+  "destaque": 1,
+  "resumo": "Campo de futebol municipal do bairro São Cristóvão, palco do evento esportivo dos 77 anos de Capinzal.",
+  "descricao": [
+    "Campo de futebol municipal no bairro São Cristóvão, também chamado de Campo do São Cristóvão. Em 7 de fevereiro de 2026, recebeu o evento esportivo beneficente dos 77 anos do município, com entrada gratuita, segundo a Rádio Capinzal.",
+    "A base aberta Overture Maps o registra na Rua Betino Antunes Corrêa; as notícias não trazem endereço."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "São Cristóvão",
+  "endereco": "Rua Betino Antunes Corrêa – São Cristóvão",
+  "coordenadas": [
+    -51.59562,
+    -27.37379
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Campo de futebol mapeado no OpenStreetMap, a cerca de 90 metros do ponto que a base Overture Maps registra como Campo de Futebol São Cristóvão.",
+  "osm": "way/834176941",
+  "contato": {
+    "facebook": "https://www.facebook.com/192335927805414"
+  },
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Campo de Futebol São Cristóvão”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.37412/-51.59478",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – Esporte e solidariedade entram em campo nas festividades dos 77 anos de Capinzal (16/01/2026)",
+      "url": "https://www.capinzalfm.com.br/noticia/esporte-e-solidariedade-entram-em-campo-nas-festividades-dos-77-anos-de-capinzal",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "O Tempo – Capinzal 77 anos – Uma história feita por nós (27/01/2026)",
+      "url": "https://otempodefato.com.br/geral/capinzal-77-anos-uma-historia-feita-por-nos.15460991",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – campo de futebol no bairro São Cristóvão",
+      "url": "https://www.openstreetmap.org/way/834176941",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

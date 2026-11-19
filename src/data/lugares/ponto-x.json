@@ -1,0 +1,37 @@
+{
+  "id": "ponto-x",
+  "nome": "Lancheria e Pizzaria Ponto X",
+  "outrosNomes": [
+    "Ponto X"
+  ],
+  "categoria": "sabores",
+  "tipo": "Lanchonete e pizzaria",
+  "destaque": 1,
+  "resumo": "Lanchonete e pizzaria no Acesso Cidade Alta.",
+  "descricao": [
+    "Lanchonete e pizzaria no Acesso Cidade Alta.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Acesso Cidade Alta, 2315",
+  "coordenadas": [
+    -51.59805,
+    -27.36789
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 20 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 3555-5148",
+    "facebook": "https://www.facebook.com/278532892311487"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Lancheria e Pizzaria Ponto X”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.36789/-51.59805",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

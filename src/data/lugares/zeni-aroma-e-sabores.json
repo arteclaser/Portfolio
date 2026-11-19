@@ -1,0 +1,49 @@
+{
+  "id": "zeni-aroma-e-sabores",
+  "nome": "Zeni Aroma e Sabores",
+  "categoria": "sabores",
+  "tipo": "Café",
+  "destaque": 1,
+  "resumo": "Café no Centro, citado pelo jornal O Tempo em 2025 e 2026 como ponto de encontro para o café da manhã.",
+  "descricao": [
+    "Café na Rua Dona Linda Santos, no Centro. O jornal O Tempo o apresentou em julho de 2025 como o mais novo empreendimento gastronômico da cidade e, em fevereiro de 2026, como ponto de encontro semanal de um grupo para o café da manhã.",
+    "O telefone do registro é o mesmo da Panificadora Zeni.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Dona Linda Santos, 99 – Centro",
+  "coordenadas": [
+    -51.61075,
+    -27.34348
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 15 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 3555-1999",
+    "facebook": "https://www.facebook.com/1147033648500387"
+  },
+  "situacao": "confirmado",
+  "evidencia": "notícia de fevereiro de 2026",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Zeni Aroma e Sabores”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.34348/-51.61075",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "O Tempo – Reencontro de Barbieri e Enio no Zeni Aroma e Sabores (22/07/2025)",
+      "url": "https://www.otempodefato.com.br/geral/amizade-que-resiste-ao-tempo-reencontro-de-barbieri-e-enio-no-zeni-aroma-e-sabores.15439296",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "O Tempo – Amizade que o tempo não apaga em Capinzal e Ouro (06/02/2026)",
+      "url": "https://otempodefato.com.br/geral/amizade-que-o-tempo-nao-apaga-em-capinzal-e-ouro.15462180",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

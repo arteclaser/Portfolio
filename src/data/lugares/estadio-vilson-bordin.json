@@ -13,9 +13,11 @@
   "descricao": [
     "Estádio da Associação Esportiva Vasco da Gama, clube fundado em 9 de fevereiro de 1955. É conhecido como Campo do Vasco.",
     "Recebeu as finais do Campeonato Municipal de Futebol em setembro de 2025 e foi o local marcado para a decisão de 26 de julho de 2026, segundo a Rádio Capinzal.",
-    "O estádio pertence ao clube, não ao município: fora dos dias de jogo, o acesso depende do clube."
+    "O estádio pertence ao clube, não ao município: fora dos dias de jogo, o acesso depende do clube.",
+    "O endereço é o da Associação Esportiva Vasco da Gama no Plano Municipal de Cultura (2021) e na base aberta Overture Maps."
   ],
   "municipio": "Capinzal",
+  "endereco": "Rua Gracia Gramazio Pereira de Lima, 299",
   "coordenadas": [
     -51.59939,
     -27.34455
@@ -46,6 +48,18 @@
       "titulo": "OpenStreetMap – Estádio Vilson Bordin",
       "url": "https://www.openstreetmap.org/way/546661978",
       "tipo": "mapa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Capinzal – Lei 3.426/2021, Plano Municipal de Cultura (PDF)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Assoc Esportiva Vasco da Gama”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.34476/-51.59882",
+      "tipo": "base",
       "acesso": "2026-11-19"
     }
   ],

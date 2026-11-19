@@ -1,0 +1,34 @@
+{
+  "id": "vasco-lanches",
+  "nome": "Vasco Lanches",
+  "categoria": "sabores",
+  "tipo": "Lanchonete",
+  "destaque": 1,
+  "resumo": "Lanchonete na Rua Gracia Gramazio Pereira de Lima, perto do Estádio Dr. Vilson Bordin.",
+  "descricao": [
+    "Lanchonete na Rua Gracia Gramazio Pereira de Lima, a mesma rua da Associação Esportiva Vasco da Gama.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Rua Gracia Gramazio Pereira de Lima (sem número nas fontes)",
+  "coordenadas": [
+    -51.59877,
+    -27.34488
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 10 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 98865-2999",
+    "facebook": "https://www.facebook.com/1427714870773225"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Vasco Lanches”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.34488/-51.59877",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

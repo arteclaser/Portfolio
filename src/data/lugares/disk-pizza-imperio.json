@@ -1,0 +1,35 @@
+{
+  "id": "disk-pizza-imperio",
+  "nome": "Disk Pizza Império",
+  "categoria": "sabores",
+  "tipo": "Pizzaria (entrega)",
+  "destaque": 1,
+  "resumo": "Pizzaria de entrega no bairro São Cristóvão, com pedidos pela internet.",
+  "descricao": [
+    "Pizzaria de entrega na Rua Valdemar José da Silva, com pedidos pela internet.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Rua Valdemar José da Silva (sem número nas fontes)",
+  "coordenadas": [
+    -51.59371,
+    -27.3779
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 5 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99975-2398",
+    "site": "https://instadelivery.com.br/DiskPizzaImperio",
+    "facebook": "https://www.facebook.com/107657148523198"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Disk pizza imperio”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.3779/-51.59371",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

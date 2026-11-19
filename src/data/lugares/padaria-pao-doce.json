@@ -1,0 +1,43 @@
+{
+  "id": "padaria-pao-doce",
+  "nome": "Padaria e Confeitaria Pão Doce",
+  "outrosNomes": [
+    "Padaria Pão Doce"
+  ],
+  "categoria": "sabores",
+  "tipo": "Padaria e confeitaria",
+  "destaque": 1,
+  "resumo": "Padaria e confeitaria na Avenida Cipriano Rodrigues de Almeida Sobrinho.",
+  "descricao": [
+    "Padaria e confeitaria na Avenida Cipriano Rodrigues de Almeida Sobrinho. Em 2017, integrava o Núcleo de Gastronomia da ACIRP.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Avenida Cipriano Rodrigues de Almeida Sobrinho (sem número nas fontes)",
+  "coordenadas": [
+    -51.59297,
+    -27.38051
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 5 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 3555-4688",
+    "facebook": "https://www.facebook.com/590932411005541"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Padaria e confeitaria Pão Doce”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.38051/-51.59297",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – Integração entre Núcleo de Gastronomia de Capinzal e Curitibanos (01/09/2017)",
+      "url": "https://www.acirp.org.br/novidade.php?id=52&url=integracao-entre-nucleo-de-gastronomia-de-capinzal-e-curitibanos-",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

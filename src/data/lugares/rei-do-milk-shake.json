@@ -1,0 +1,34 @@
+{
+  "id": "rei-do-milk-shake",
+  "nome": "Rei do Milk Shake",
+  "categoria": "sabores",
+  "tipo": "Milk-shakes e sobremesas",
+  "destaque": 1,
+  "resumo": "Loja de milk-shakes na Avenida XV de Novembro, no Centro.",
+  "descricao": [
+    "Loja de milk-shakes na Avenida XV de Novembro, no Centro. O registro não traz telefone.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Avenida XV de Novembro, 150 – Centro",
+  "coordenadas": [
+    -51.61167,
+    -27.34324
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 5 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "facebook": "https://www.facebook.com/266193217279784"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Rei Do Milk Shake Capinzal”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.34324/-51.61167",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

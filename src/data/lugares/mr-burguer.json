@@ -1,0 +1,46 @@
+{
+  "id": "mr-burguer",
+  "nome": "Mr. Burguer",
+  "categoria": "sabores",
+  "tipo": "Hamburgueria",
+  "destaque": 1,
+  "resumo": "Hamburgueria na Rua Presidente Nereu Ramos, listada em três fontes com o mesmo telefone.",
+  "descricao": [
+    "Hamburgueria na Rua Presidente Nereu Ramos. A plataforma cardapio.menu traz o número 186 e uma avaliação de dezembro de 2024; o Restaurant Guru também a lista.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Rua Presidente Nereu Ramos, 186",
+  "coordenadas": [
+    -51.60668,
+    -27.34655
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps, junto à Rua Presidente Nereu Ramos. A plataforma cardapio.menu marca outro ponto da mesma rua, a cerca de 500 metros. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99916-7604",
+    "facebook": "https://www.facebook.com/743694555740845"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Mr.Burguer”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.34655/-51.60668",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "cardapio.menu – Mr. Burguer",
+      "url": "https://cardapio.menu/restaurants/capinzal/mr-burguer-10",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Restaurant Guru – restaurantes em Capinzal (lista de novembro de 2026)",
+      "url": "https://restaurantguru.com/Capinzal",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

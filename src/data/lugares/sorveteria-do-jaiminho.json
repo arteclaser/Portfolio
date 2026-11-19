@@ -1,0 +1,34 @@
+{
+  "id": "sorveteria-do-jaiminho",
+  "nome": "Sorveteria do Jaiminho",
+  "categoria": "sabores",
+  "tipo": "Sorveteria",
+  "destaque": 1,
+  "resumo": "Sorveteria na Avenida José Leonardo Santos.",
+  "descricao": [
+    "Sorveteria na Avenida José Leonardo Santos.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Avenida José Leonardo Santos, 1830",
+  "coordenadas": [
+    -51.60699,
+    -27.35981
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 5 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99921-2216",
+    "facebook": "https://www.facebook.com/1173617615984223"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Sorveteria Do Jaiminho”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.35981/-51.60699",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

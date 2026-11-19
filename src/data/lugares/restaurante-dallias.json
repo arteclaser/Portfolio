@@ -1,0 +1,40 @@
+{
+  "id": "restaurante-dallias",
+  "nome": "Restaurante Dállia's",
+  "categoria": "sabores",
+  "tipo": "Restaurante",
+  "destaque": 1,
+  "resumo": "Restaurante na Rua Presidente Nereu Ramos, também listado no Restaurant Guru.",
+  "descricao": [
+    "Restaurante na Rua Presidente Nereu Ramos. Também consta na lista de Capinzal do Restaurant Guru.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Rua Presidente Nereu Ramos, 634",
+  "coordenadas": [
+    -51.60756,
+    -27.34589
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 10 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99972-0194",
+    "facebook": "https://www.facebook.com/105576082354234"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Restaurante Dállia´s”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.34589/-51.60756",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Restaurant Guru – restaurantes em Capinzal (lista de novembro de 2026)",
+      "url": "https://restaurantguru.com/Capinzal",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

@@ -4,7 +4,7 @@ import type { CategoriaId } from '../data/categorias';
 export interface Fonte {
   titulo: string;
   url: string;
-  tipo: 'oficial' | 'imprensa' | 'enciclopedia' | 'mapa' | 'proprio' | 'plataforma' | 'acervo' | 'outro';
+  tipo: 'oficial' | 'imprensa' | 'enciclopedia' | 'mapa' | 'proprio' | 'plataforma' | 'base' | 'acervo' | 'outro';
   /** Data em que a página foi consultada (AAAA-MM-DD). */
   acesso: string;
 }

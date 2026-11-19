@@ -7,7 +7,7 @@
   ficha do lugar ao clicar e os três roteiros desenhados.
 - **Lista equivalente ao mapa**, com busca que ignora acentos e filtros por categoria. No celular, os
   cartões viram um carrossel sobre o mapa, com a opção "Ver em lista".
-- **49 páginas de lugar**, com descrição, endereço, contato, posição (exata ou aproximada), mapa
+- **85 páginas de lugar**, com descrição, endereço, contato, posição (exata ou aproximada), mapa
   pequeno, links para Google Maps, Waze e OpenStreetMap, lugares próximos, roteiros e fontes.
 - **3 páginas de roteiro**, com traçado pelas ruas, paradas numeradas, distância, tempo, perfil de
   altitude e link para abrir o roteiro no Google Maps.
@@ -20,7 +20,7 @@
 
 | Verificação | Resultado |
 | --- | --- |
-| `npm run conferir` | 49 lugares, 3 roteiros, 144 fontes distintas, 8 fotos com licença registrada, sem erros |
+| `npm run conferir` | 85 lugares, 3 roteiros, 204 fontes distintas, 8 fotos com licença registrada, sem erros |
 | `npm test` | 15 testes unitários aprovados (distâncias, formatação, busca sem acentos, contraste das cores) |
 | `npm run test:navegador` (Playwright + axe-core 4.x, Chromium) | 29 de 29 verificações: computador, celular (Pixel 7), tema escuro, teclado, alvos de toque, axe sem violações WCAG A/AA em todos os tipos de página, nenhum erro de console, nenhum bloqueio de CSP, nenhum pedido a terceiros, modo sem internet |
 | Apache 2.4.58 com o `.htaccess` do projeto | Aprovado (ver [IMPLANTACAO.md](IMPLANTACAO.md)) |
@@ -41,11 +41,11 @@
 
 ## Limitações conhecidas
 
-- **Fotos:** 6 dos 49 lugares têm foto de uso livre (8 fotos do Wikimedia Commons). Os demais mostram um
+- **Fotos:** 6 dos 85 lugares têm foto de uso livre (8 fotos do Wikimedia Commons). Os demais mostram um
   aviso e o link "Fotos no Google Maps". Ver [PENDENCIAS.md](PENDENCIAS.md).
-- **17 lugares "a confirmar"** e 23 posições aproximadas, todas sinalizadas no site.
+- **46 lugares "a confirmar"** e 59 posições aproximadas, todas sinalizadas no site.
 - **Poucos atrativos de natureza e do interior:** não há fonte pública para cascatas, mirantes, trilhas
-  ou propriedades com visitação, e nenhum pesque-pague tem registro de funcionamento em 2025 ou 2026.
+  ou propriedades com visitação. Dos pesque-pagues, só o Recanto Caxambu tem empresa ativa confirmada.
 - **Roteiros não oficiais:** são sugestões do guia; o tempo de carro não considera estradas sem
   pavimento.
 - **Detalhe do mapa:** as ruas aparecem em detalhe em Capinzal, Ouro e arredores; fora dessa área, o

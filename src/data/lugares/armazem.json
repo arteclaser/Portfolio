@@ -19,7 +19,9 @@
   "precisao": "aproximada",
   "origemCoordenadas": "Posição estimada pela numeração da via; pode haver diferença de cerca de 100 metros.",
   "contato": {
-    "site": "https://pedir.delivery/app/lanchonetepizzariaarmazem/menu"
+    "site": "https://pedir.delivery/app/lanchonetepizzariaarmazem/menu",
+    "telefone": "(49) 99830-1682",
+    "facebook": "https://www.facebook.com/1826593204301747"
   },
   "situacao": "confirmado",
   "evidencia": "notícia de julho de 2025",
@@ -46,6 +48,12 @@
       "titulo": "Pizza Perto de Mim – pizza em Capinzal",
       "url": "https://pizzapertodemim.com.br/cidade/pizza-em-capinzal-sc",
       "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Armazém Lanchonete e Pizzaria”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.36371/-51.60102",
+      "tipo": "base",
       "acesso": "2026-11-19"
     }
   ],

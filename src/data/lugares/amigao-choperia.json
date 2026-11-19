@@ -1,0 +1,58 @@
+{
+  "id": "amigao-choperia",
+  "nome": "Amigão Choperia",
+  "outrosNomes": [
+    "Restaurante Amigão",
+    "Posto Amigão"
+  ],
+  "categoria": "sabores",
+  "tipo": "Choperia e restaurante",
+  "destaque": 1,
+  "resumo": "Choperia e restaurante no Acesso Cidade Alta, no mesmo ponto do Posto Amigão.",
+  "descricao": [
+    "Choperia e restaurante no Acesso Cidade Alta, no bairro São Cristóvão. A posição do registro coincide com a do Posto Amigão no OpenStreetMap, e o Restaurant Guru lista o restaurante do posto.",
+    "O Plano Municipal de Cultura (2021) lista um “Restaurante Amigão” na Estrada Cidade Alta, com outro número (2397).",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "São Cristóvão",
+  "endereco": "Acesso Cidade Alta, 5403 – São Cristóvão",
+  "coordenadas": [
+    -51.58074,
+    -27.38286
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook). Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 3555-3867",
+    "facebook": "https://www.facebook.com/112101291474444"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Amigão Choperia”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.38286/-51.58074",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Posto Amigão",
+      "url": "https://www.openstreetmap.org/node/12164602444",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Restaurant Guru – restaurantes em Capinzal (lista de novembro de 2026)",
+      "url": "https://restaurantguru.com/Capinzal",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Capinzal – Lei 3.426/2021, Plano Municipal de Cultura (PDF)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

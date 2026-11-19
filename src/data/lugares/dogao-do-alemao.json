@@ -1,0 +1,40 @@
+{
+  "id": "dogao-do-alemao",
+  "nome": "Dogão do Alemão",
+  "categoria": "sabores",
+  "tipo": "Lanchonete (cachorro-quente)",
+  "destaque": 1,
+  "resumo": "Lanchonete de cachorro-quente em Ouro, cidade vizinha, com avaliação de cliente de janeiro de 2026.",
+  "descricao": [
+    "Lanchonete de cachorro-quente na Rua Felipe Schmidt, em Ouro. A plataforma cardapio.menu traz o mesmo telefone e uma avaliação de cliente de janeiro de 2026.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Ouro",
+  "endereco": "Rua Felipe Schmidt – Ouro",
+  "coordenadas": [
+    -51.60852,
+    -27.33698
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook). Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99996-3786",
+    "facebook": "https://www.facebook.com/309342192761057"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Dogão do Alemão”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.33698/-51.60852",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "cardapio.menu – Dogão do Alemão",
+      "url": "https://cardapio.menu/restaurants/ouro-1/dogao-do-alemao",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

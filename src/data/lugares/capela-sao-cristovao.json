@@ -1,0 +1,51 @@
+{
+  "id": "capela-sao-cristovao",
+  "nome": "Capela São Cristóvão",
+  "categoria": "fe",
+  "tipo": "Capela",
+  "destaque": 2,
+  "resumo": "Capela do bairro São Cristóvão, sede da tradicional Festa de São Cristóvão, com procissão motorizada.",
+  "descricao": [
+    "Capela católica do bairro São Cristóvão, sede da Festa de São Cristóvão, que chegou à 62ª edição em julho de 2026. A festa tem procissão motorizada, que termina na capela com a bênção dos veículos.",
+    "A Rádio Capinzal a descreve como um dos eventos religiosos mais tradicionais de Capinzal e região. O endereço e a posição vêm da base aberta Overture Maps e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "São Cristóvão",
+  "endereco": "Rua Donival Rosa dos Santos – São Cristóvão",
+  "coordenadas": [
+    -51.59491,
+    -27.37284
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 5 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "facebook": "https://www.facebook.com/150176141518256"
+  },
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Capela São Cristóvão”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.37284/-51.59491",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – Capela São Cristóvão conclui tríduo e se prepara para a 62ª Festa do Padroeiro",
+      "url": "https://capinzalfm.com.br/noticia/capela-sao-cristovao-conclui-triduo-e-se-prepara-para-a-62a-festa-do-padroeiro",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – Capinzal celebra neste domingo a 61ª Festa em honra a São Cristóvão",
+      "url": "https://www.capinzalfm.com.br/noticia/capinzal-celebra-neste-domingo-a-61a-festa-em-honra-a-sao-cristovao",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Capinzal – Lei 3.426/2021, Plano Municipal de Cultura (PDF)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

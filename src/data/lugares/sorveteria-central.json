@@ -1,0 +1,35 @@
+{
+  "id": "sorveteria-central",
+  "nome": "Sorveteria Central",
+  "categoria": "sabores",
+  "tipo": "Sorveteria",
+  "destaque": 1,
+  "resumo": "Sorveteria no Centro, na Rua Ernesto Hachmann.",
+  "descricao": [
+    "Sorveteria no Centro, na Rua Ernesto Hachmann.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Ernesto Hachmann, 236 – Centro",
+  "coordenadas": [
+    -51.61325,
+    -27.34268
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 10 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 3555-2626",
+    "facebook": "https://www.facebook.com/109763383715099"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Sorveteria Central”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.34268/-51.61325",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

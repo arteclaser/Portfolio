@@ -12,13 +12,15 @@
   "localidade": "Barro Preto",
   "endereco": "Comunidade de Barro Preto, interior de Capinzal",
   "coordenadas": [
-    -51.6592,
-    -27.46583
+    -51.6448,
+    -27.44809
   ],
   "precisao": "aproximada",
-  "origemCoordenadas": "Posição aproximada: as fontes informam apenas a comunidade (Barro Preto). O ponto marca o centro da comunidade.",
+  "origemCoordenadas": "Posição do registro na base aberta Overture Maps (origem: página do glamping no Facebook), na região de Barro Preto. Não foi conferida no local.",
   "contato": {
-    "site": "https://natiz.com.br/experiencia/american-bus-glamping/"
+    "site": "https://natiz.com.br/experiencia/american-bus-glamping/",
+    "telefone": "(49) 99984-7369",
+    "facebook": "https://www.facebook.com/112272228472340"
   },
   "situacao": "confirmado",
   "evidencia": "artigo de outubro de 2025",
@@ -40,6 +42,12 @@
       "titulo": "Natíz – American Bus Glamping",
       "url": "https://natiz.com.br/experiencia/american-bus-glamping/",
       "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “American Bus Glamping”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.44809/-51.6448",
+      "tipo": "base",
       "acesso": "2026-11-19"
     }
   ],

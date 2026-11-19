@@ -1,0 +1,35 @@
+{
+  "id": "food-truck-chapa-quente",
+  "nome": "Food Truck Chapa Quente",
+  "categoria": "sabores",
+  "tipo": "Food truck",
+  "destaque": 1,
+  "resumo": "Food truck de lanches na Avenida XV de Novembro.",
+  "descricao": [
+    "Food truck de lanches na Avenida XV de Novembro.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Avenida XV de Novembro, 400 – Centro",
+  "coordenadas": [
+    -51.61022,
+    -27.34511
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 5 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99995-1316",
+    "facebook": "https://www.facebook.com/108338100633451"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Food Truck Chapa Quente”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.34511/-51.61022",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

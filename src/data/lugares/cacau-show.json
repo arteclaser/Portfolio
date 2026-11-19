@@ -1,0 +1,35 @@
+{
+  "id": "cacau-show",
+  "nome": "Cacau Show",
+  "categoria": "sabores",
+  "tipo": "Loja de chocolates",
+  "destaque": 1,
+  "resumo": "Loja de chocolates da rede Cacau Show na Avenida XV de Novembro, no Centro.",
+  "descricao": [
+    "Loja de chocolates da rede Cacau Show na Avenida XV de Novembro, no Centro.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Avenida XV de Novembro, 77 – Centro",
+  "coordenadas": [
+    -51.61206,
+    -27.34264
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 5 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 3555-3289",
+    "facebook": "https://www.facebook.com/1260582994050176"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Cacau Show - Chocolates”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.34264/-51.61206",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

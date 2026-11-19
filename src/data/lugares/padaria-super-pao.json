@@ -1,0 +1,46 @@
+{
+  "id": "padaria-super-pao",
+  "nome": "Padaria Super Pão",
+  "outrosNomes": [
+    "Panificadora Super Pão",
+    "Super Pão"
+  ],
+  "categoria": "sabores",
+  "tipo": "Padaria",
+  "destaque": 1,
+  "resumo": "Padaria na Cidade Alta, no bairro São Cristóvão, que promoveu um espeto corrido em outubro de 2026.",
+  "descricao": [
+    "Padaria na Cidade Alta, no bairro São Cristóvão. Em 24 de outubro de 2026, promoveu o 2º Espeto Corrido, com pizza e pastel, segundo o jornal O Tempo.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "São Cristóvão",
+  "endereco": "Cidade Alta – São Cristóvão (sem rua nas fontes)",
+  "coordenadas": [
+    -51.58388,
+    -27.38032
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), na Cidade Alta. O endereço do registro é inconsistente e não foi usado. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 3555-5971",
+    "facebook": "https://www.facebook.com/1187992961218330"
+  },
+  "situacao": "confirmado",
+  "evidencia": "evento noticiado em outubro de 2026",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Panificadora Super Pão”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.38032/-51.58388",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "O Tempo – Super Pão realiza 2º Espeto Corrido na Cidade Alta (29/10/2026)",
+      "url": "https://otempodefato.com.br/geral/super-pao-realiza-2o-espeto-corrido-na-cidade-alta.15487973",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

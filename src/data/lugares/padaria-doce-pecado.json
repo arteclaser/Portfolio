@@ -1,0 +1,54 @@
+{
+  "id": "padaria-doce-pecado",
+  "nome": "Padaria Doce Pecado",
+  "categoria": "sabores",
+  "tipo": "Padaria",
+  "destaque": 1,
+  "resumo": "Padaria na Avenida José Leonardo Santos, com equipe no Campeonato Empresarial de 2026.",
+  "descricao": [
+    "Padaria na Avenida José Leonardo Santos, associada à ACIRP. Em junho de 2026, inscreveu equipe no Campeonato Empresarial de Capinzal, segundo a Rádio Capinzal.",
+    "O Plano Municipal de Cultura (2021) lista, com o mesmo telefone, a “Padaria e Confeitaria Vargas” no número 1855 da avenida. Nenhuma fonte diz que os dois nomes são do mesmo estabelecimento.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Avenida José Leonardo Santos (sem número confirmado)",
+  "coordenadas": [
+    -51.60687,
+    -27.35986
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 5 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 3555-2278",
+    "facebook": "https://www.facebook.com/567660959937877"
+  },
+  "situacao": "confirmado",
+  "evidencia": "empresa inscrita no Campeonato Empresarial de junho de 2026",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Padaria DOCE Pecado”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.35986/-51.60687",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – lista de associados (página 10)",
+      "url": "https://www.acirp.org.br/associados.php?pagina=10",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – 55 empresas confirmam presença no Empresarial 2026 (03/06/2026)",
+      "url": "https://capinzalfm.com.br/noticia/capinzal-vive-clima-de-competicao-55-empresas-confirmam-presenca-no-empresarial-2026",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Capinzal – Lei 3.426/2021, Plano Municipal de Cultura (PDF)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "cantina-da-nona",
+  "nome": "Cantina da Nona",
+  "categoria": "sabores",
+  "tipo": "Restaurante",
+  "destaque": 1,
+  "resumo": "Restaurante em Ouro, cidade vizinha, na Rua Felipe Schmidt.",
+  "descricao": [
+    "Restaurante na Rua Felipe Schmidt, em Ouro. A plataforma cardapio.menu o lista com o mesmo telefone e avaliação de junho de 2023.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Ouro",
+  "endereco": "Rua Felipe Schmidt – Ouro",
+  "coordenadas": [
+    -51.60725,
+    -27.33606
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 5 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 3555-1245",
+    "facebook": "https://www.facebook.com/367679323417028"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Cantina da Nona”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.33606/-51.60725",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "cardapio.menu – Cantina da Nona",
+      "url": "https://cardapio.menu/restaurants/ouro-1/cantina-da-nona-4",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

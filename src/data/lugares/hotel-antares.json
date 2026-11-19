@@ -7,11 +7,11 @@
   "resumo": "Hotel no Centro, na Avenida XV de Novembro, listado no Plano Municipal de Cultura de 2021.",
   "descricao": [
     "Hotel no Centro, na Avenida XV de Novembro. O Plano Municipal de Cultura (2021) o descreve com quartos climatizados, Wi-Fi e estacionamento privativo.",
-    "O número do imóvel varia entre as fontes: 485 no documento da Prefeitura e 491 em diretórios. Não encontramos registro de 2025 ou 2026 sobre o funcionamento."
+    "O número 491 aparece na base aberta Overture Maps e em diretórios; o Plano Municipal de Cultura (2021) traz 485. Não encontramos registro de 2025 ou 2026 sobre o funcionamento."
   ],
   "municipio": "Capinzal",
   "localidade": "Centro",
-  "endereco": "Avenida XV de Novembro, 485 ou 491 – Centro",
+  "endereco": "Avenida XV de Novembro, 491 – Centro",
   "coordenadas": [
     -51.60954,
     -27.34554
@@ -20,7 +20,8 @@
   "origemCoordenadas": "Posição do hotel mapeada no OpenStreetMap.",
   "osm": "node/5282726771",
   "contato": {
-    "telefone": "(49) 3555-4044"
+    "telefone": "(49) 3555-4044",
+    "facebook": "https://www.facebook.com/656485664381315"
   },
   "situacao": "a-confirmar",
   "fontes": [
@@ -52,6 +53,12 @@
       "titulo": "OpenStreetMap – Hotel Antares",
       "url": "https://www.openstreetmap.org/node/5282726771",
       "tipo": "mapa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Antares Hotel”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.3456/-51.60953",
+      "tipo": "base",
       "acesso": "2026-11-19"
     }
   ],
