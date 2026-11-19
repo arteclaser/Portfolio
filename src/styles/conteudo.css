@@ -161,3 +161,26 @@
   .lugar__acoes, .mapa-mini, .lateral__links { display: none !important; }
   .lugar__grade { grid-template-columns: 1fr; }
 }
+
+/* ================================================================== camada de cor (páginas de conteúdo) */
+.numeros div { border: 0; background: var(--cat-fundo); box-shadow: inset 0 5px 0 var(--cat-forte); }
+.numeros dd { color: var(--cat); }
+.numeros dd small { color: var(--tinta); }
+.agenda li { border-left: 6px solid var(--marca); }
+.agenda li:nth-child(3n + 2) { border-left-color: var(--sol); }
+.agenda li:nth-child(3n) { border-left-color: var(--coral); }
+.cartao-rota__desenho { background: color-mix(in srgb, var(--cor-rota) 13%, var(--superficie)); }
+.cartao-rota { box-shadow: inset 0 -5px 0 var(--cor-rota); }
+.cartao-rota:hover { box-shadow: inset 0 -5px 0 var(--cor-rota), var(--sombra-2); }
+.ficha { border-top: 5px solid var(--cat-forte, var(--marca)); }
+.sem-foto {
+  background:
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--cat-forte) 30%, transparent), transparent 55%),
+    radial-gradient(circle at 88% 85%, color-mix(in srgb, var(--sol) 28%, transparent), transparent 50%),
+    var(--cat-fundo);
+}
+.aviso--neutro { background: var(--marca-suave); }
+.numeros { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 719px) { .numeros { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 419px) { .numeros { grid-template-columns: 1fr; } }
+.numeros a { color: var(--tinta); }

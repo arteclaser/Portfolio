@@ -530,3 +530,40 @@
   .mapa .maplibregl-ctrl-top-right .maplibregl-ctrl { margin: 8px 10px 0 0; }
   .maplibregl-ctrl-scale { display: none; }
 }
+
+/* ================================================================== camada de cor (tela de mapa) */
+.painel__topo, .painel__nav, .painel__titulo { background: var(--degrade-h); color: #FFFFFF; }
+.painel__topo .marca, .painel__topo .marca:hover, .painel__topo .marca__sub { color: #FFFFFF; }
+.painel__topo .botao-icone { background: rgba(255, 255, 255, .16); border-color: rgba(255, 255, 255, .4); color: #FFFFFF; }
+.painel__topo .botao-icone:hover { background: rgba(255, 255, 255, .28); color: #FFFFFF; }
+.painel__topo :focus-visible, .painel__nav :focus-visible { outline-color: #FFFFFF; }
+.painel__nav a { color: #FFFFFF; }
+.painel__nav a:hover { background: rgba(255, 255, 255, .16); }
+.painel__nav a[aria-current="page"] { background: #FFFFFF; color: #0B5C56; }
+.painel__nav { padding-bottom: 12px; }
+.painel__titulo { padding: 6px 16px 40px; }
+.painel__titulo h1 { color: #FFFFFF; }
+.painel__titulo p { color: #FFFFFF; }
+/* A busca "flutua" sobre a borda da faixa colorida. */
+.painel__titulo + .busca { margin-top: -26px; }
+.painel__titulo + .busca input { border-color: transparent; box-shadow: var(--sombra-2); }
+.painel__rolagem { background-image: var(--aurora); background-repeat: no-repeat; background-size: 100% 420px; }
+
+.pino.cat-historia { --cat: #BE123C; }
+.pino.cat-fe { --cat: #7C3AED; }
+.pino.cat-natureza { --cat: #15803D; }
+.pino.cat-sabores { --cat: #C2410C; }
+.pino.cat-hospedagem { --cat: #1D4ED8; }
+.pino.cat-apoio { --cat: #0E7490; }
+.grupo { background: var(--degrade); box-shadow: 0 0 0 5px rgba(15, 118, 110, .22), 0 3px 10px rgba(0, 0, 0, .3); }
+.alternar-visao { background: var(--degrade-h); color: #FFFFFF; }
+.legenda-rotas { border-color: transparent; box-shadow: var(--sombra-2); }
+.rota-numeros div:nth-child(1) { background: #DBEAFE; }
+.rota-numeros div:nth-child(2) { background: #FEF3C7; }
+.rota-numeros div:nth-child(3) { background: #DCFCE7; }
+.rota-numeros dt { color: #3B4A45; }
+.rota-numeros dd { color: #14211D; }
+
+@media (max-width: 899px) {
+  .painel__rolagem { background-image: none; }
+}

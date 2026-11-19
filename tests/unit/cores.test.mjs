@@ -5,8 +5,8 @@ import { test } from 'node:test';
 import { contraste } from '../../scripts/contraste.mjs';
 import { categorias } from '../../src/data/categorias.ts';
 
-const FUNDO_CLARO = '#FAF7F0';
-const FUNDO_ESCURO = '#0E1513';
+const FUNDO_CLARO = '#FFFBF5';
+const FUNDO_ESCURO = '#0C1412';
 
 test('contraste de referência: preto sobre branco é 21:1', () => {
   assert.equal(Math.round(contraste('#000000', '#FFFFFF')), 21);

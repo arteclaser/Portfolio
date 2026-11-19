@@ -310,7 +310,8 @@ if lftp_comandos "cls -1a \"$APP_ANTIGO\"" > "$TRABALHO/antigo.txt" 2>/dev/null 
   # Antes de qualquer coisa: a pasta do código antigo (onde fica o .env) precisa estar bloqueada para a internet.
   for caminho in "$APP_ANTIGO/.env" "$APP_ANTIGO/artisan" "$APP_ANTIGO/composer.json"; do
     codigo=$(curl -s -o /dev/null --max-time 20 -w '%{http_code}' "$SITE_URL/$caminho" || true)
-    case "$codigo" in 403|404) ;; *) erro "A pasta do aplicativo anterior ficou acessível pela internet (/$caminho respondeu HTTP $codigo). Apague-a pelo Gerenciador de arquivos e troque as senhas do .env." ;; esac
+    # 406: o firewall da hospedagem (ModSecurity) recusa pedidos a arquivos .env; também conta como bloqueado.
+    case "$codigo" in 403|404|406) ;; *) erro "A pasta do aplicativo anterior ficou acessível pela internet (/$caminho respondeu HTTP $codigo). Apague-a pelo Gerenciador de arquivos e troque as senhas do .env." ;; esac
   done
   nomes=$(sed -E 's#/$##; s#.*/##' "$TRABALHO/antigo.txt")
   if [ "$REMOVER_APP_ANTIGO" = nao ]; then
