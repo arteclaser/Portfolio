@@ -25,12 +25,14 @@
 | `npm run test:navegador` (Playwright + axe-core 4.x, Chromium) | 28 de 28 verificações: computador, celular (Pixel 7), tema escuro, teclado, alvos de toque, axe sem violações WCAG A/AA em todos os tipos de página, nenhum erro de console, nenhum bloqueio de CSP, nenhum pedido a terceiros, modo sem internet |
 | Apache 2.4.58 com o `.htaccess` do projeto | Aprovado (ver [IMPLANTACAO.md](IMPLANTACAO.md)) |
 | Ensaio da implantação por FTPS | Aprovado em 7 cenários (ver [IMPLANTACAO.md](IMPLANTACAO.md)) |
+| GitHub Actions, fluxo *Testes* (dados, testes unitários, montagem e navegador nos servidores do GitHub) | Aprovado na execução nº 27 (commit `3ad5731`) |
 
 ## Não testado
 
 - **Implantação na HostGator real**, incluindo a exclusão da pasta do aplicativo anterior.
-- **Fluxos do GitHub Actions**: escritos, mas ainda não executados. A ação `actions/setup-node` está
-  referenciada pela versão (`v6`), não por um código fixo como a `actions/checkout`.
+- **Fluxo de implantação no GitHub Actions**: só roda no branch `main` e ainda não foi executado. A ação
+  `actions/setup-node` está referenciada pela versão (`v6`), não por um código fixo como a
+  `actions/checkout`.
 - **Aparelhos reais**: os testes usaram o Chromium em modo de emulação. Safari (iPhone) e Firefox não
   foram testados; a instalação como aplicativo e o botão "onde estou" precisam de conferência em um
   celular de verdade.
