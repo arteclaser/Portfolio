@@ -1,0 +1,75 @@
+{
+  "id": "estacao-ferroviaria",
+  "nome": "Estação Ferroviária de Capinzal",
+  "nomeCurto": "Estação Ferroviária",
+  "outrosNomes": [
+    "Estação Rio Capinzal",
+    "Caixa d'água da ferrovia"
+  ],
+  "categoria": "historia",
+  "tipo": "Antiga estação de trem",
+  "destaque": 2,
+  "resumo": "Antiga estação da Estrada de Ferro São Paulo–Rio Grande, aberta em 1910 com o nome de Rio Capinzal.",
+  "descricao": [
+    "A estação foi inaugurada em outubro de 1910, com o nome de Rio Capinzal, na linha Itararé–Uruguai da Estrada de Ferro São Paulo–Rio Grande. Os trens de passageiros pararam aqui até 1983, segundo o site Estações Ferroviárias do Brasil.",
+    "O prédio que existe hoje não é o original, de madeira. A Rádio Capinzal registra que uma nova estação foi construída na gestão do prefeito Carlos Alberto dos Santos (1970–1972).",
+    "Junto à estação fica a caixa d’água que abastecia as locomotivas. O jornal O Tempo, citando livro de Vitor Almeida, a descreve como importada da Inglaterra e instalada em 1910.",
+    "O Plano Municipal de Cultura (2021) prevê a revitalização da estação e da caixa d’água. Em junho de 2026, o município obteve a cessão de uso da antiga área ferroviária e anunciou o projeto de um Parque Linear às margens do Rio do Peixe, ainda em fase de planejamento."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Ernesto Hachmann – Centro",
+  "coordenadas": [
+    -51.61423,
+    -27.34307
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (via 546659017, prédio mapeado como estação ferroviária).",
+  "osm": "way/546659017",
+  "aviso": "Não encontramos informação sobre o uso atual do prédio nem sobre visita interna. Considere uma parada para ver o conjunto por fora.",
+  "fontes": [
+    {
+      "titulo": "Lei nº 3.426, de 18 de novembro de 2021 – Plano Municipal de Cultura de Capinzal (com mapeamento cultural anexo)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Estação Ferroviária de Capinzal celebra 115 anos com roda de conversa sobre história, memórias e legado da ferrovia\"",
+      "url": "https://www.capinzalfm.com.br/noticia/estacao-ferroviaria-de-capinzal-celebra-115-anos-com-roda-de-conversa-sobre-historia-memorias-e-legado-da-ferrovia",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Capinzal celebra os 115 anos da Ferrovia São Paulo–Rio Grande do Sul com roda de conversa sobre memória e legado\"",
+      "url": "https://www.capinzalfm.com.br/noticia/capinzal-celebra-os-115-anos-da-ferrovia-sao-paulo-rio-grande-do-sul-com-roda-de-conversa-sobre-memoria-e-legado",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Capinzal conquista concessão da antiga área ferroviária e inicia projeto para implantação de Parque Linear\"",
+      "url": "https://capinzalfm.com.br/noticia/capinzal-conquista-concessao-de-area-da-antiga-ferrovia-para-implantacao-de-parque-linear",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "O Tempo – \"Voltando no tempo\" (coluna sobre a caixa d'água da ferrovia)",
+      "url": "https://otempodefato.com.br/artigos/voltando_no_tempo.292136",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Estações Ferroviárias do Brasil (Ralph M. Giesbrecht) – \"Capinzal\"",
+      "url": "http://www.estacoesferroviarias.com.br/pr-tronco/capinzal.htm",
+      "tipo": "outro",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Estação Ferroviária de Capinzal",
+      "url": "https://www.openstreetmap.org/way/546659017",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

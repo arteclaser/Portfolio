@@ -1,0 +1,59 @@
+{
+  "id": "museu-coronetti",
+  "nome": "Museu Histórico Jandir Coronetti",
+  "nomeCurto": "Museu Coronetti",
+  "outrosNomes": [
+    "Museu Histórico Coronetti"
+  ],
+  "categoria": "historia",
+  "tipo": "Museu particular",
+  "destaque": 2,
+  "resumo": "Acervo particular de máquinas, utensílios e objetos do cotidiano das famílias descendentes de italianos, no interior do município.",
+  "descricao": [
+    "O museu particular de Jandir Coronetti fica às margens da SC-150, no interior. Segundo a Prefeitura, reúne um vasto acervo de objetos antigos, como maquinários, utensílios domésticos e peças que retratam o cotidiano das famílias descendentes de italianos.",
+    "As visitas registradas nas fontes foram de grupos organizados: idosos de projetos municipais (julho de 2025) e estudantes (agosto de 2026). Em 2026, o espaço também sediou atividades do curso de turismo para empreendedores."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Empresa Velha",
+  "endereco": "Às margens da SC-150, comunidade de Empresa Velha",
+  "coordenadas": [
+    -51.66671,
+    -27.43628
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição aproximada: centro da comunidade de Empresa Velha no OpenStreetMap. O Plano Municipal de Cultura situa o museu na “SC 150, Km 14, Empresa Velha”; uma notícia da Prefeitura grafa “Estrada Velha”.",
+  "aviso": "As fontes não informam horário, contato nem se é preciso agendar. Consulte a Prefeitura antes de ir.",
+  "fontes": [
+    {
+      "titulo": "Prefeitura de Capinzal – “Idosos do Projeto de Atendimento Integral ao Idoso e Conviva participam de visita ao Museu Histórico Jandir Coronetti”",
+      "url": "https://capinzal.sc.gov.br/idosos-do-projeto-de-atendimento-integral-ao-idoso-e-conviva-participam-de-visita-ao-museu-historico-jandir-coronetti/",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Capinzal – “Filó Estudantil: uma vivência de história, cultura e memória”",
+      "url": "https://capinzal.sc.gov.br/filo-estudantil-uma-vivencia-de-historia-cultura-e-memoria/",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Capinzal – “Prefeitura de Capinzal divulga programação das festividades dos 77 anos do Município”",
+      "url": "https://capinzal.sc.gov.br/prefeitura-de-capinzal-divulga-programacao-das-festividades-dos-77-anos-do-municipio/",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal - Curso de turismo fortalece empreendedorismo e valoriza potencial rural em Capinzal (08/04/2026)",
+      "url": "https://capinzalfm.com.br/noticia/curso-de-turismo-fortalece-empreendedorismo-e-valoriza-potencial-rural-em-capinzal",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Lei nº 3.426, de 18 de novembro de 2021 – Plano Municipal de Cultura de Capinzal (com mapeamento cultural anexo)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

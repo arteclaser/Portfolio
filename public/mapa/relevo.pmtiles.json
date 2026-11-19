@@ -1,0 +1,31 @@
+{
+  "origem": "https://registry.opendata.aws/terrain-tiles/",
+  "codificacao": "terrarium",
+  "regiao": {
+    "bbox": [
+      -52.05,
+      -27.78,
+      -51.2,
+      -27.08
+    ],
+    "zoom": [
+      7,
+      10
+    ]
+  },
+  "detalhe": {
+    "bbox": [
+      -51.8,
+      -27.57,
+      -51.46,
+      -27.27
+    ],
+    "zoom": [
+      11,
+      12
+    ]
+  },
+  "blocos": 55,
+  "bytes": 3117642,
+  "creditos": "Mapzen Terrain Tiles (AWS Open Data). Na região, os dados derivam do SRTM (NASA/USGS)."
+}

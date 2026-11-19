@@ -1,0 +1,50 @@
+{
+  "id": "padaria-novo-sabor",
+  "nome": "Padaria Novo Sabor",
+  "categoria": "sabores",
+  "tipo": "Padaria e confeitaria",
+  "destaque": 1,
+  "resumo": "Padaria e confeitaria no Acesso Cidade Alta.",
+  "descricao": [
+    "Padaria e confeitaria no Acesso Cidade Alta, que as plataformas listam também como pizzaria e restaurante."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Acesso Cidade Alta, 1298",
+  "coordenadas": [
+    -51.60146,
+    -27.35847
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição estimada pela numeração da via; pode haver diferença de cerca de 100 metros.",
+  "contato": {
+    "telefone": "(49) 3555-4680"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "cardapio.menu – Padaria Novo Sabor",
+      "url": "https://cardapio.menu/restaurants/capinzal/padaria-novo-sabor-2",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Restaurant Guru – restaurantes em Capinzal",
+      "url": "https://restaurantguru.com/Capinzal",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – lista de associados (página 10)",
+      "url": "https://www.acirp.org.br/associados.php?pagina=10",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – Núcleo de Gastronomia",
+      "url": "https://www.acirp.org.br/nucleo-setorial.php?url=nucleo-de-gastronomia",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

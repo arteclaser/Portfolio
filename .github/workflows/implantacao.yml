@@ -1,6 +1,6 @@
-# Implantação automática na HostGator (cPanel) a cada atualização do branch "main",
+# Publica o site na HostGator (cPanel) a cada atualização do branch "main",
 # por FTP com criptografia (FTPS), sem precisar de SSH.
-# Passo a passo de configuração: docs/IMPLANTACAO-AUTOMATICA.md
+# Passo a passo de configuração: docs/IMPLANTACAO.md
 name: Implantação na HostGator
 
 on:
@@ -17,28 +17,11 @@ permissions:
   contents: read
 
 jobs:
-  testes:
-    name: Testes
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2
-        with:
-          php-version: '8.3'
-          extensions: dom, curl, gd, mbstring, zip, pdo, sqlite, pdo_sqlite, fileinfo, intl
-          coverage: none
-      - run: composer install --prefer-dist --no-interaction --no-progress
-      - run: cp .env.example .env && php artisan key:generate
-      - run: php artisan test
-
   implantar:
-    name: Enviar para a HostGator
-    needs: testes
+    name: Testar, montar e enviar
     runs-on: ubuntu-latest
-    # A primeira implantação envia todos os arquivos e pode demorar; as seguintes enviam só o que mudou.
-    timeout-minutes: 180
+    # A primeira implantação também apaga a pasta do aplicativo anterior, o que pode demorar.
+    timeout-minutes: 90
     environment:
       name: producao
       url: ${{ vars.SITE_URL || 'https://mostraqui.net' }}
@@ -47,43 +30,38 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2
+      - uses: actions/setup-node@v6
         with:
-          php-version: '8.3'
-          extensions: dom, curl, gd, mbstring, zip, fileinfo, intl
-          coverage: none
+          node-version: '22'
+          cache: npm
 
-      - name: Instalar dependências de produção
-        run: composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-progress
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Conferir os dados e rodar os testes unitários
+        run: npm test
+
+      - name: Montar o site
+        run: npm run build
 
       - name: Instalar o cliente FTP (lftp, do Ubuntu)
         run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
 
-      - name: Enviar por FTP e atualizar o banco
+      - name: Enviar por FTP e conferir o site publicado
         env:
           FTP_SERVIDOR: ${{ secrets.FTP_SERVIDOR }}
           FTP_USUARIO: ${{ secrets.FTP_USUARIO }}
           FTP_SENHA: ${{ secrets.FTP_SENHA }}
-          SITE_URL: ${{ vars.SITE_URL }}
+          SITE_URL: ${{ vars.SITE_URL || 'https://mostraqui.net' }}
           FTP_PORTA: ${{ vars.FTP_PORTA || '21' }}
           FTP_CRIPTOGRAFIA: ${{ vars.FTP_CRIPTOGRAFIA || 'obrigatoria' }}
           FTP_CONFERIR_CERTIFICADO: ${{ vars.FTP_CONFERIR_CERTIFICADO || 'sim' }}
           # O FTP da HostGator apresenta o certificado *.hostgator.com.br (conferido em 09/10/2026).
           FTP_DOMINIO_CERTIFICADO: ${{ vars.FTP_DOMINIO_CERTIFICADO || 'hostgator.com.br' }}
           FTP_CONEXOES: ${{ vars.FTP_CONEXOES || '4' }}
-          APP_DIR: ${{ vars.APP_DIR || 'mostraqui-app' }}
           # Vazio: a implantação descobre sozinha a pasta pública de SITE_URL.
           PUBLIC_DIR: ${{ vars.PUBLIC_DIR }}
+          # Pasta do aplicativo anterior (Laravel). Com "sim", ela é apagada depois que o site novo está no ar.
+          APP_ANTIGO: ${{ vars.APP_DIR || 'mostraqui-app' }}
+          REMOVER_APP_ANTIGO: ${{ vars.REMOVER_APP_ANTIGO || 'sim' }}
         run: bash deploy/implantar-ftp.sh
-
-      - name: Conferir se o site responde
-        env:
-          SITE_URL: ${{ vars.SITE_URL }}
-        run: |
-          for i in 1 2 3 4 5; do
-            code=$(curl -sL -o /dev/null -w '%{http_code}' "${SITE_URL%/}/up" || true)
-            [ "$code" = "200" ] && { echo "Site no ar (HTTP 200)."; exit 0; }
-            sleep 5
-          done
-          echo "::error::O site não respondeu com HTTP 200 em ${SITE_URL%/}/up (último código: $code)."
-          exit 1

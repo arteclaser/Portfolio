@@ -1,0 +1,28 @@
+---
+import { dataCurta } from '../lib/dados';
+import type { Fonte } from '../lib/tipos';
+
+interface Props { fontes: Fonte[]; titulo?: string; id?: string }
+const { fontes, titulo = 'Fontes', id = 'fontes' } = Astro.props;
+const rotulo: Record<Fonte['tipo'], string> = {
+  oficial: 'fonte oficial',
+  imprensa: 'imprensa',
+  enciclopedia: 'enciclopédia',
+  mapa: 'mapa colaborativo',
+  proprio: 'canal do próprio lugar',
+  plataforma: 'plataforma ou diretório',
+  acervo: 'acervo',
+  outro: 'outra fonte',
+};
+---
+<section class="fontes" aria-labelledby={`${id}-titulo`}>
+  <h2 id={`${id}-titulo`}>{titulo}</h2>
+  <ol>
+    {fontes.map((fonte) => (
+      <li>
+        <a href={fonte.url} rel="noopener nofollow">{fonte.titulo}</a>
+        <span class="fontes__tipo"> · {rotulo[fonte.tipo]} · consulta em {dataCurta(fonte.acesso)}</span>
+      </li>
+    ))}
+  </ol>
+</section>

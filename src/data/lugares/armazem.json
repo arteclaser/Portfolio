@@ -1,0 +1,53 @@
+{
+  "id": "armazem",
+  "nome": "Lanchonete e Pizzaria Armazém",
+  "nomeCurto": "Armazém",
+  "categoria": "sabores",
+  "tipo": "Pizzaria e lanchonete",
+  "destaque": 1,
+  "resumo": "Lanchonete e pizzaria no bairro São Cristóvão, com entrega e retirada.",
+  "descricao": [
+    "Lanchonete e pizzaria no bairro São Cristóvão, no Acesso Cidade Alta, com cardápio de pizzas, porções e pastéis e pedidos para entrega ou retirada."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "São Cristóvão",
+  "endereco": "Acesso Cidade Alta, 1810 – São Cristóvão",
+  "coordenadas": [
+    -51.60155,
+    -27.3629
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição estimada pela numeração da via; pode haver diferença de cerca de 100 metros.",
+  "contato": {
+    "site": "https://pedir.delivery/app/lanchonetepizzariaarmazem/menu"
+  },
+  "situacao": "confirmado",
+  "evidencia": "notícia de julho de 2025",
+  "fontes": [
+    {
+      "titulo": "Rádio Capinzal – Segunda noite do tríduo à 61ª Festa de São Cristóvão (18/07/2025)",
+      "url": "https://www.capinzalfm.com.br/noticia/segunda-noite-do-triduo-a-61a-festa-de-sao-cristovao-destaca-a-paz-em-capinzal",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "pedir.delivery – Lanchonete e Pizzaria Armazém (página de pedidos)",
+      "url": "https://pedir.delivery/app/lanchonetepizzariaarmazem/menu",
+      "tipo": "proprio",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Restaurant Guru – restaurantes em Capinzal",
+      "url": "https://restaurantguru.com/Capinzal",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Pizza Perto de Mim – pizza em Capinzal",
+      "url": "https://pizzapertodemim.com.br/cidade/pizza-em-capinzal-sc",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

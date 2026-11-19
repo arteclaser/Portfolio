@@ -1,0 +1,48 @@
+{
+  "id": "hotel-tradicao",
+  "nome": "Hotel Tradição",
+  "outrosNomes": [
+    "Hotel e Pousada Tradição"
+  ],
+  "categoria": "hospedagem",
+  "tipo": "Hotel",
+  "destaque": 1,
+  "resumo": "Hospedagem no Acesso Cidade Alta, listada em diretórios como hotel e pousada.",
+  "descricao": [
+    "Hospedagem no Acesso Cidade Alta, no bairro São Cristóvão, listada em diretórios como hotel e pousada."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "São Cristóvão",
+  "endereco": "Acesso Cidade Alta, 4975 – São Cristóvão",
+  "coordenadas": [
+    -51.58274,
+    -27.38146
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição estimada pela numeração da via; pode haver diferença de cerca de 200 metros.",
+  "contato": {
+    "telefone": "(49) 3555-6068"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Apontador – Bares e Restaurantes em Capinzal (ficha Lanchonete e Hotel Tradicao)",
+      "url": "https://www.apontador.com.br/em/capinzal-sc/bares-e-restaurantes",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Apontador – Hotel e Pousada Tradição",
+      "url": "https://www.apontador.com.br/local/sc/capinzal/pousada/C4079842292F4S2F4B/hotel_e_pousada_tradicao.html",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Hotel in Site – hotéis em Capinzal",
+      "url": "https://www.hotelinsite.com.br/cidades.php?id=1188&cid=capinzal-",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

@@ -1,0 +1,60 @@
+{
+  "id": "centro-educacional-celso-farina",
+  "nome": "Centro Educacional Prefeito Celso Farina e Biblioteca Pública Municipal",
+  "nomeCurto": "Centro Educacional e Biblioteca",
+  "outrosNomes": [
+    "Biblioteca Pública Municipal Vereador Rolindo Casagrande"
+  ],
+  "categoria": "historia",
+  "tipo": "Centro cultural e biblioteca",
+  "destaque": 1,
+  "resumo": "Principal palco de eventos de Capinzal. No térreo funciona a Biblioteca Pública Municipal Vereador Rolindo Casagrande.",
+  "descricao": [
+    "Inaugurado em 3 de setembro de 1988, o prédio é considerado pelo Plano Municipal de Cultura o principal palco de eventos do município e aparece nas listas de espaços turísticos e de construções históricas.",
+    "No térreo funcionam a Secretaria Municipal de Educação, Cultura e Esportes e a Biblioteca Pública Municipal Vereador Rolindo Casagrande, fundada em 11 de junho de 1951. Em junho de 2025, a biblioteca tinha cerca de 21.602 livros."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Ernesto Hachmann, 1655 – Centro",
+  "coordenadas": [
+    -51.61524,
+    -27.34418
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (via 131342954).",
+  "osm": "way/131342954",
+  "horario": "Biblioteca: segunda a sexta, das 7h às 18h, sem fechar ao meio-dia (informação de junho de 2025)",
+  "aviso": "O número do endereço da biblioteca aparece de formas diferentes nas fontes (550, 505 e 1655), sempre na Rua Ernesto Hachmann.",
+  "imagens": [
+    {
+      "arquivo": "celso-farina-6.jpg",
+      "alt": "Centro Educacional Prefeito Celso Farina, em Capinzal.",
+      "autor": "DAR7 (Wikimedia Commons)",
+      "licenca": "CC0 1.0 (domínio público)",
+      "origem": "https://commons.wikimedia.org/wiki/File:Capinzal_SC_Brasil_Centro_Educacional_Prefeito_Celso_Farina_(6).jpg",
+      "ano": "2015",
+      "legenda": "O prédio em 2015"
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Lei nº 3.426, de 18 de novembro de 2021 – Plano Municipal de Cultura de Capinzal (com mapeamento cultural anexo)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Biblioteca Pública Municipal Vereador Rolindo Casagrande completa 74 anos de fundação\"",
+      "url": "https://www.capinzalfm.com.br/noticia/biblioteca-publica-municipal-vereador-rolindo-casagrande-completa-74-anos-de-fundacao",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Centro Educacional Celso Farina",
+      "url": "https://www.openstreetmap.org/way/131342954",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

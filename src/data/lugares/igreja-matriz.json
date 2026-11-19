@@ -1,0 +1,101 @@
+{
+  "id": "igreja-matriz",
+  "nome": "Igreja Matriz São Paulo Apóstolo",
+  "nomeCurto": "Igreja Matriz",
+  "categoria": "fe",
+  "tipo": "Igreja matriz",
+  "destaque": 3,
+  "resumo": "Cartão-postal de Capinzal, na parte alta do centro, com arquitetura associada à Basílica de São Pedro.",
+  "descricao": [
+    "A igreja matriz da Paróquia São Paulo Apóstolo fica na parte alta do centro e é apresentada pelo portal municipal de turismo como o cartão-postal da cidade.",
+    "Os textos oficiais a descrevem como réplica da Basílica de São Pedro, no Vaticano. Há variações: um trecho do Plano Municipal de Cultura e o jornal O Tempo dizem que a réplica é a abóbada, e a Wikipédia fala em igreja “inspirada” na basílica.",
+    "Segundo a Diocese de Joaçaba, a paróquia foi criada por decreto de 1931 e é atendida por freis capuchinhos desde 1936. O jornal O Tempo, com base no historiador Vitor Almeida, registra que o templo foi projetado em 1938, levou cerca de dez anos para ser construído e foi inaugurado em 1950, no dia do padroeiro.",
+    "Uma escadaria liga a Rua Carmelo Zocolli à igreja."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Dr. Vilson Bordin, 11 – Centro",
+  "coordenadas": [
+    -51.61255,
+    -27.34425
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (via 120104996).",
+  "osm": "way/120104996",
+  "contato": {
+    "telefone": "(49) 3555-1139"
+  },
+  "aviso": "Horários de missa e de visitação não foram encontrados em fonte oficial. Consulte a secretaria paroquial.",
+  "imagens": [
+    {
+      "arquivo": "igreja-matriz-2008.jpg",
+      "alt": "Igreja Matriz São Paulo Apóstolo vista da rua, com a cúpula branca e a escadaria de acesso.",
+      "autor": "Deyvid Setti e Eloy Olindo Setti",
+      "licenca": "Domínio público",
+      "origem": "https://commons.wikimedia.org/wiki/File:Igreja_Matriz_Capinzal_Santa_Catarina_Brasil.JPG",
+      "ano": "2008",
+      "legenda": "A matriz em 2008"
+    },
+    {
+      "arquivo": "igreja-matriz-8.jpg",
+      "alt": "Fachada da Igreja Matriz São Paulo Apóstolo, em Capinzal.",
+      "autor": "DAR7 (Wikimedia Commons)",
+      "licenca": "CC0 1.0 (domínio público)",
+      "origem": "https://commons.wikimedia.org/wiki/File%3ACapinzal_SC_Brasil_Igreja_Matriz_de_S%C3%A3o_Paulo_Ap%C3%B3stolo_%288%29.jpg",
+      "ano": "2015"
+    },
+    {
+      "arquivo": "igreja-matriz-3.jpg",
+      "alt": "Igreja Matriz São Paulo Apóstolo, em Capinzal.",
+      "autor": "DAR7 (Wikimedia Commons)",
+      "licenca": "CC0 1.0 (domínio público)",
+      "origem": "https://commons.wikimedia.org/wiki/File:Capinzal_SC_Brasil_Igreja_Matriz_de_S%C3%A3o_Paulo_Ap%C3%B3stolo_(3).jpg",
+      "ano": "2015"
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Dicas sobre turismo / O que fazer – Portal Municipal de Turismo de Capinzal",
+      "url": "https://turismo.capinzal.sc.gov.br/o-que-fazer/",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Lei nº 3.426, de 18 de novembro de 2021 – Plano Municipal de Cultura de Capinzal (com mapeamento cultural anexo)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Diocese de Joaçaba – \"Paróquia São Paulo Apóstolo\"",
+      "url": "https://diocesedejoacaba.org.br/paroquia-sao-paulo-apostolo/",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "O Tempo – \"Município de Capinzal 73 anos de emancipação\" (textos de Evani Marichen Lamb Riffel, com base em Vitor Almeida, 2004)",
+      "url": "https://otempodefato.com.br/artigos/municipio_de_capinzal_73_anos_de_emancipacao.284475",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Reunião avalia resultados da festa do Padroeiro São Paulo Apóstolo\"",
+      "url": "https://capinzalfm.com.br/noticia/conselho-administrativo-da-paroquia-sao-paulo-apostolo-realiza-reuniao-para-avaliacao-da-festa-do-padroeiro",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Wikipédia em português – \"Capinzal\"",
+      "url": "https://pt.wikipedia.org/wiki/Capinzal",
+      "tipo": "enciclopedia",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Paróquia São Paulo Apóstolo",
+      "url": "https://www.openstreetmap.org/way/120104996",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

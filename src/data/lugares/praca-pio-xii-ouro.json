@@ -1,0 +1,63 @@
+{
+  "id": "praca-pio-xii-ouro",
+  "nome": "Praça Pio XII (Ouro)",
+  "nomeCurto": "Praça Pio XII",
+  "categoria": "natureza",
+  "tipo": "Praça em obras",
+  "destaque": 1,
+  "resumo": "Praça central de Ouro, do outro lado da Ponte Pênsil, em revitalização desde abril de 2026.",
+  "descricao": [
+    "A Praça Pio XII é a praça central de Ouro, palco das comemorações do município vizinho. Nela fica a imagem de Nossa Senhora dos Navegantes.",
+    "A ordem de serviço da revitalização foi assinada em 7 de abril de 2026, com investimento de R$ 2,14 milhões e prazo de oito meses. O projeto inclui uma Rua Coberta, novo palco e a reorganização do parque infantil."
+  ],
+  "municipio": "Ouro",
+  "localidade": "Centro de Ouro",
+  "endereco": "Centro de Ouro (SC)",
+  "coordenadas": [
+    -51.61672,
+    -27.34215
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (via 546664579).",
+  "osm": "way/546664579",
+  "aviso": "Praça em obras. As intervenções já causaram interdições no acesso à Ponte Pênsil.",
+  "fontes": [
+    {
+      "titulo": "Prefeitura de Ouro – Plano Municipal de Cultura de Ouro 2023/2033 (seção \"Atrativos turísticos e culturais\")",
+      "url": "https://ouro.sc.gov.br/uploads/sites/376/2025/06/3-Plano-municipal-de-Cultura-completo.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Ouro celebra 63 anos com Ato Cívico e assinatura de ordem de serviço para revitalização da Praça Pio XII\"",
+      "url": "https://capinzalfm.com.br/noticia/ouro-celebra-63-anos-com-ato-civico-e-assinatura-de-ordem-de-servico-para-revitalizacao-da-praca-pio-xii",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Obras de revitalização da Praça Pio XII e construção da rua coberta estão em andamento em Ouro\"",
+      "url": "https://capinzalfm.com.br/noticia/obras-de-revitalizacao-da-praca-pio-xii-e-construcao-da-rua-coberta-estao-em-andamento-em-ouro",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Ponte Pênsil entre Capinzal e Ouro é interditada temporariamente por obras na Praça Pio XII\"",
+      "url": "https://capinzalfm.com.br/noticia/ponte-pensil-entre-capinzal-e-ouro-e-interditada-temporariamente-por-obras-na-praca-pio-xii",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Acesso à Ponte Pênsil tem interdição parcial para obras da Rua Coberta em Ouro\"",
+      "url": "https://capinzalfm.com.br/noticia/acesso-a-ponte-pensil-tem-interdicao-parcial-para-obras-da-rua-coberta-em-ouro",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Praça Pio XII",
+      "url": "https://www.openstreetmap.org/way/546664579",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

@@ -1,0 +1,65 @@
+{
+  "id": "prefeitura",
+  "nome": "Prefeitura de Capinzal",
+  "nomeCurto": "Prefeitura",
+  "categoria": "apoio",
+  "tipo": "Prefeitura",
+  "destaque": 1,
+  "resumo": "Sede do governo municipal, no centro. O turismo é atribuição da Secretaria de Desenvolvimento Econômico, Inovação e Turismo.",
+  "descricao": [
+    "A Prefeitura fica na Rua Carmelo Zocolli, no centro. O órgão municipal responsável pelo turismo aparece nas notícias oficiais de 2025 e 2026 como Secretaria de Desenvolvimento Econômico, Inovação e Turismo.",
+    "Não encontramos registro de um Centro de Atendimento ao Turista em Capinzal. O município mantém o Portal Municipal de Turismo na internet."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Carmelo Zocolli, 155 – Centro",
+  "coordenadas": [
+    -51.6122,
+    -27.3437
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (via 131342956).",
+  "osm": "way/131342956",
+  "contato": {
+    "telefone": "(49) 3555-8700",
+    "site": "https://capinzal.sc.gov.br"
+  },
+  "aviso": "O telefone vem do portal de turismo (página de 2023) e pode estar desatualizado.",
+  "imagens": [
+    {
+      "arquivo": "prefeitura-2025.jpg",
+      "alt": "Prédio da Prefeitura de Capinzal.",
+      "autor": "DAR7 (Wikimedia Commons)",
+      "licenca": "CC0 1.0 (domínio público)",
+      "origem": "https://commons.wikimedia.org/wiki/File:Capinzal_SC_Brasil_Prefeitura_2025.jpg",
+      "ano": "2025"
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Prefeitura de Capinzal – “Histórias de Natal 2025” (programação com o endereço da Prefeitura)",
+      "url": "https://capinzal.sc.gov.br/historias-de-natal-2025-capinzal-acende-a-magia-de-19-de-novembro-a-23-de-dezembro/",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Portal Municipal de Turismo de Capinzal – página “Capinzal”",
+      "url": "https://turismo.capinzal.sc.gov.br/pagina-94/",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Capinzal – Serviços: Turismo",
+      "url": "https://capinzal.sc.gov.br/servicos-turismo/",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Prefeitura Municipal de Capinzal",
+      "url": "https://www.openstreetmap.org/way/131342956",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

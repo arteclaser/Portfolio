@@ -1,0 +1,34 @@
+---
+import { Picture } from 'astro:assets';
+import { imagem } from '../lib/dados';
+import type { Imagem } from '../lib/tipos';
+
+interface Props {
+  foto: Imagem;
+  /** Larguras geradas (px). */
+  larguras?: number[];
+  tamanhos?: string;
+  prioridade?: boolean;
+  class?: string;
+}
+const { foto, larguras = [480, 800, 1200, 1600], tamanhos = '(min-width: 1100px) 1040px, 100vw', prioridade = false, class: classe } = Astro.props;
+const origem = imagem(foto.arquivo);
+const disponiveis = larguras.filter((l) => l <= origem.width);
+---
+<figure class:list={['foto', classe]}>
+  <Picture
+    src={origem}
+    alt={foto.alt}
+    formats={['avif', 'webp']}
+    widths={disponiveis.length ? disponiveis : [origem.width]}
+    sizes={tamanhos}
+    quality={70}
+    loading={prioridade ? 'eager' : 'lazy'}
+    fetchpriority={prioridade ? 'high' : undefined}
+    decoding="async"
+  />
+  <figcaption>
+    {foto.legenda && <span class="foto__legenda">{foto.legenda} · </span>}
+    Foto: {foto.autor}{foto.ano && `, ${foto.ano}`} · <a href={foto.origem} rel="noopener">{foto.licenca}</a>
+  </figcaption>
+</figure>

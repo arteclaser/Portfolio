@@ -1,0 +1,57 @@
+{
+  "igreja-matriz": [
+    {
+      "arquivo": "igreja-matriz-2008.jpg",
+      "titulo": "File:Igreja Matriz Capinzal Santa Catarina Brasil.JPG",
+      "alt": "Igreja Matriz São Paulo Apóstolo vista da rua, com a cúpula branca e a escadaria de acesso.",
+      "legenda": "A matriz em 2008"
+    },
+    {
+      "arquivo": "igreja-matriz-8.jpg",
+      "titulo": "File:Capinzal SC Brasil Igreja Matriz de São Paulo Apóstolo (8).jpg",
+      "alt": "Fachada da Igreja Matriz São Paulo Apóstolo, em Capinzal."
+    },
+    {
+      "arquivo": "igreja-matriz-3.jpg",
+      "titulo": "File:Capinzal SC Brasil Igreja Matriz de São Paulo Apóstolo (3).jpg",
+      "alt": "Igreja Matriz São Paulo Apóstolo, em Capinzal."
+    }
+  ],
+  "ponte-pensil": [
+    {
+      "arquivo": "ponte-pensil-2008.jpg",
+      "titulo": "File:Ponte Pênsil Capinzal Santa Catarina Brasil.JPG",
+      "alt": "Trecho do Rio do Peixe com a ponte pênsil ao centro, na divisa entre Capinzal e Ouro.",
+      "legenda": "A ponte em 2008, antes da reforma de 2018"
+    }
+  ],
+  "museu-vitor-almeida": [
+    {
+      "arquivo": "museu-vitor-almeida.jpg",
+      "titulo": "File:Museu Histórico Municipal Vitor Almeida em Capinzal.jpg",
+      "alt": "Fachada do Museu Histórico Municipal Vitor Almeida, em Capinzal."
+    }
+  ],
+  "terminal-rodoviario": [
+    {
+      "arquivo": "terminal-rodoviario.jpg",
+      "titulo": "File:Capinzal SC Brasil Terminal Rodoviário.jpg",
+      "alt": "Terminal Rodoviário de Capinzal."
+    }
+  ],
+  "centro-educacional-celso-farina": [
+    {
+      "arquivo": "celso-farina-6.jpg",
+      "titulo": "File:Capinzal SC Brasil Centro Educacional Prefeito Celso Farina (6).jpg",
+      "alt": "Centro Educacional Prefeito Celso Farina, em Capinzal.",
+      "legenda": "O prédio em 2015"
+    }
+  ],
+  "prefeitura": [
+    {
+      "arquivo": "prefeitura-2025.jpg",
+      "titulo": "File:Capinzal SC Brasil Prefeitura 2025.jpg",
+      "alt": "Prédio da Prefeitura de Capinzal."
+    }
+  ]
+}

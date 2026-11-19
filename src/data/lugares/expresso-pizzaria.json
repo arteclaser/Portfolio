@@ -1,0 +1,47 @@
+{
+  "id": "expresso-pizzaria",
+  "nome": "Expresso Pizzaria e Lanches",
+  "nomeCurto": "Expresso",
+  "categoria": "sabores",
+  "tipo": "Pizzaria e lanchonete",
+  "destaque": 1,
+  "resumo": "Pizzaria e lanchonete no centro de Capinzal.",
+  "descricao": [
+    "Pizzaria e lanchonete no centro de Capinzal, listada em plataformas e diretórios e mapeada no OpenStreetMap como Lanchonete Expresso."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Ernesto Hachmann, 40 – Centro",
+  "coordenadas": [
+    -51.61632,
+    -27.34394
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (via 546671404, “Lanchonete Expresso”).",
+  "osm": "way/546671404",
+  "contato": {
+    "telefone": "(49) 3555-1968"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "cardapio.menu – Expresso Pizzaria Lanches",
+      "url": "https://cardapio.menu/restaurants/capinzal/expresso-pizzaria-lanches",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Apontador – Bares e Restaurantes em Capinzal",
+      "url": "https://www.apontador.com.br/em/capinzal-sc/bares-e-restaurantes",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Lanchonete Expresso",
+      "url": "https://www.openstreetmap.org/way/546671404",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

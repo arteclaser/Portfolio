@@ -1,0 +1,56 @@
+{
+  "id": "ponte-irineu-bornhausen",
+  "nome": "Ponte Irineu Bornhausen",
+  "categoria": "historia",
+  "tipo": "Ponte",
+  "destaque": 1,
+  "resumo": "Ponte de concreto que concentra o trânsito de veículos entre Capinzal e Ouro, com passarela para pedestres.",
+  "descricao": [
+    "A ponte de concreto armado sobre o Rio do Peixe liga Capinzal a Ouro e concentra o tráfego de veículos entre as duas cidades. Foi construída pelo Estado de Santa Catarina no governo de Irineu Bornhausen e tem passarela para pedestres.",
+    "A Prefeitura de Ouro e o jornal O Tempo (2024) registram a inauguração em 6 de janeiro de 1956. Outras fontes citam 5 de janeiro de 1956 ou 6 de janeiro de 1955.",
+    "É daqui que sai a procissão motorizada da Festa de São Cristóvão, que termina na capela do bairro São Cristóvão."
+  ],
+  "municipio": "Capinzal e Ouro",
+  "localidade": "Centro",
+  "endereco": "Sobre o Rio do Peixe, entre os centros de Capinzal e Ouro",
+  "coordenadas": [
+    -51.61193,
+    -27.34067
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (via 88439426), coerente com as coordenadas publicadas pela Prefeitura de Ouro.",
+  "osm": "way/88439426",
+  "fontes": [
+    {
+      "titulo": "Prefeitura de Ouro – \"Levantamento de Obras de Arte Especiais (OAE) no Município de Ouro\"",
+      "url": "https://ouro.sc.gov.br/uploads/sites/376/2023/07/Levantamento_de_Pontes_Municipio_de_Ouro-1.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "O Tempo – \"Voltando no tempo – travessia da balsa Rio do Peixe, limite de Capinzal e Ouro\"",
+      "url": "https://www.otempodefato.com.br/geral/_voltando_no_tempo_travessia_da_balsa_rio_do_peixe_limite_de_capinzal_e_ouro.620187",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – \"Capela São Cristóvão conclui tríduo e se prepara para a 62ª Festa do Padroeiro\"",
+      "url": "https://capinzalfm.com.br/noticia/capela-sao-cristovao-conclui-triduo-e-se-prepara-para-a-62a-festa-do-padroeiro",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Formaio, A. L. et al. \"Avaliação das manifestações patológicas da Ponte Pênsil Padre Mathias Michelizza localizada entre os municípios de Capinzal e Ouro, em Santa Catarina\". Conhecimento em Construção (Unoesc), v. 10, p. 53-82, 2023. DOI 10.18593/cc.v10.32658",
+      "url": "https://periodicos.unoesc.edu.br/conhecconstr/article/download/32658/18543/113822",
+      "tipo": "outro",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Ponte Irineu Bornhausen",
+      "url": "https://www.openstreetmap.org/way/88439426",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

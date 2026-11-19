@@ -1,0 +1,51 @@
+{
+  "id": "dalli-trattoria",
+  "nome": "Dall’i Trattoria",
+  "categoria": "sabores",
+  "tipo": "Restaurante e pizzaria",
+  "destaque": 1,
+  "resumo": "Restaurante e pizzaria no calçadão da Rua Carmelo Zocolli.",
+  "descricao": [
+    "Restaurante e pizzaria no calçadão da Rua Carmelo Zocolli, com atendimento noturno e entrega. A empresa aparece na coordenação do Núcleo de Gastronomia da associação empresarial (ACIRP)."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Carmelo Zocolli, 85 (Calçadão) – Centro",
+  "coordenadas": [
+    -51.6116,
+    -27.34291
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição estimada pela numeração da via; pode haver diferença de cerca de 100 metros.",
+  "contato": {
+    "telefone": "(49) 99914-7064"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "cardapio.menu – Dall'i Trattoria",
+      "url": "https://cardapio.menu/restaurants/capinzal/dalli-trattoria",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Restaurant Guru – restaurantes em Capinzal",
+      "url": "https://restaurantguru.com/Capinzal",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – Núcleo de Gastronomia",
+      "url": "https://www.acirp.org.br/nucleo-setorial.php?url=nucleo-de-gastronomia",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – lista de associados (página 1)",
+      "url": "https://www.acirp.org.br/associados.php?pagina=1",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

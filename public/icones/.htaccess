@@ -1,0 +1,4 @@
+# Ícones do aplicativo mudam pouco: um dia de cache no navegador.
+<IfModule mod_headers.c>
+    Header set Cache-Control "public, max-age=86400"
+</IfModule>

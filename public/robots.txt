@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /offline/
+
+Sitemap: https://mostraqui.net/sitemap.xml

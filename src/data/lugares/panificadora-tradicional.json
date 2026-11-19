@@ -1,0 +1,44 @@
+{
+  "id": "panificadora-tradicional",
+  "nome": "Panificadora Tradicional",
+  "categoria": "sabores",
+  "tipo": "Padaria",
+  "destaque": 1,
+  "resumo": "Padaria na Rua Dona Linda Santos, com café e salgados.",
+  "descricao": [
+    "Padaria na Rua Dona Linda Santos, com café e salgados, segundo a ficha da plataforma."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Rua Dona Linda Santos, 177",
+  "coordenadas": [
+    -51.60936,
+    -27.34532
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição aproximada: a rua foi localizada, o número do imóvel não.",
+  "contato": {
+    "telefone": "(49) 3555-5602"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "cardapio.menu – Panificadora Tradicional",
+      "url": "https://cardapio.menu/restaurants/capinzal/panificadora-tradicional",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – lista de associados (página 10)",
+      "url": "https://www.acirp.org.br/associados.php?pagina=10",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – Integração entre Núcleo de Gastronomia de Capinzal e Curitibanos (01/09/2017)",
+      "url": "https://www.acirp.org.br/novidade.php?id=52&url=integracao-entre-nucleo-de-gastronomia-de-capinzal-e-curitibanos-",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

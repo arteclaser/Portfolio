@@ -1,0 +1,45 @@
+{
+  "id": "thermas-de-ouro",
+  "nome": "Balneário Thermas de Ouro",
+  "nomeCurto": "Thermas de Ouro",
+  "categoria": "natureza",
+  "tipo": "Balneário de águas termais",
+  "destaque": 2,
+  "resumo": "Balneário de águas termais na cidade vizinha de Ouro, inaugurado em 2009.",
+  "descricao": [
+    "O balneário foi inaugurado em outubro de 2009. Em documento de 2015, a Prefeitura de Ouro o descreve como o grande gerador de fluxo turístico do município, com piscinas, camping, restaurante e área de lazer.",
+    "Aparece entre os atrativos turísticos e culturais do Plano Municipal de Cultura de Ouro 2023/2033."
+  ],
+  "municipio": "Ouro",
+  "localidade": "Nossa Senhora da Saúde",
+  "endereco": "SC-467, nº 1.200 – Nossa Senhora da Saúde, Ouro (SC)",
+  "coordenadas": [
+    -51.62157,
+    -27.31118
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (via 546666347).",
+  "osm": "way/546666347",
+  "aviso": "Fica em Ouro. A descrição da estrutura é de 2015: funcionamento, horários e preços atuais não foram verificados.",
+  "fontes": [
+    {
+      "titulo": "Prefeitura de Ouro – Plano Municipal de Educação 2015–2025 (seção 6.1 \"Principais pontos turísticos\")",
+      "url": "https://ouro.sc.gov.br/uploads/sites/376/2021/12/556026_PME___2015___plano_educacao.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Ouro – Plano Municipal de Cultura de Ouro 2023/2033 (seção \"Atrativos turísticos e culturais\")",
+      "url": "https://ouro.sc.gov.br/uploads/sites/376/2025/06/3-Plano-municipal-de-Cultura-completo.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Balneário Thermas de Ouro",
+      "url": "https://www.openstreetmap.org/way/546666347",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

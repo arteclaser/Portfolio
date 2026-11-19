@@ -1,0 +1,45 @@
+{
+  "id": "hotel-sao-cristovao",
+  "nome": "Hotel São Cristóvão",
+  "categoria": "hospedagem",
+  "tipo": "Hotel",
+  "destaque": 1,
+  "resumo": "Hotel no Acesso Cidade Alta, no bairro São Cristóvão.",
+  "descricao": [
+    "Hotel no Acesso Cidade Alta, no bairro São Cristóvão. A ficha do Trip.com informa 35 quartos."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "São Cristóvão",
+  "endereco": "Acesso Cidade Alta, 3400 – São Cristóvão",
+  "coordenadas": [
+    -51.59243,
+    -27.37432
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição aproximada: mesma altura do nº 3411 da via (Restaurante Tainha, mapeado no OpenStreetMap).",
+  "contato": {
+    "telefone": "(49) 3555-4869"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Trip.com – Hotel Sao Cristovao",
+      "url": "https://br.trip.com/hotels/capinzal-hotel-detail-15113322/hotel-sao-cristovao/",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Melhores Pousadas – Hotel São Cristóvão em Capinzal",
+      "url": "https://melhorespousadas.tur.br/sc/capinzal/hotel-sao-cristovao",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Hotel in Site – hotéis em Capinzal (lista 'HOTEL SÃO CRISTÓVÃO')",
+      "url": "https://www.hotelinsite.com.br/cidades.php?id=1188&cid=capinzal-",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "restaurante-tainha",
+  "nome": "Restaurante Tainha",
+  "outrosNomes": [
+    "Tainha & Magic Pizzas"
+  ],
+  "categoria": "sabores",
+  "tipo": "Restaurante e pizzaria",
+  "destaque": 2,
+  "resumo": "Restaurante com lanchonete e pizzaria no bairro São Cristóvão.",
+  "descricao": [
+    "Restaurante com serviços de lanchonete e pizzaria no bairro São Cristóvão, no Acesso Cidade Alta. Em maio de 2026, a marca abriu uma segunda unidade no Loteamento Novo Horizonte."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "São Cristóvão",
+  "endereco": "Acesso Cidade Alta, 3411 – São Cristóvão",
+  "coordenadas": [
+    -51.5922,
+    -27.37457
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (nó 11608765972, “Restaurante do Tainha”).",
+  "osm": "node/11608765972",
+  "contato": {
+    "telefone": "(49) 3555-2610"
+  },
+  "situacao": "confirmado",
+  "evidencia": "notícia de maio de 2026",
+  "fontes": [
+    {
+      "titulo": "O Tempo – Inaugurado o Restaurante Tainha 2 no Loteamento Novo Horizonte (18/05/2026)",
+      "url": "https://otempodefato.com.br/geral/inaugurado-o-restaurante-tainha-2-no-loteamento-novo-horizonte-em-capinzal.15472569",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – Segunda noite do tríduo à 61ª Festa de São Cristóvão (18/07/2025)",
+      "url": "https://www.capinzalfm.com.br/noticia/segunda-noite-do-triduo-a-61a-festa-de-sao-cristovao-destaca-a-paz-em-capinzal",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "cardapio.menu – Tainha",
+      "url": "https://cardapio.menu/restaurants/capinzal/tainha-3",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – lista de associados (páginas 5 e 6)",
+      "url": "https://www.acirp.org.br/associados.php?pagina=5",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Restaurante do Tainha",
+      "url": "https://www.openstreetmap.org/node/11608765972",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

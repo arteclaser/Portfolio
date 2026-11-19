@@ -1,0 +1,4 @@
+# Arquivos desta pasta têm o conteúdo no nome (ex.: app.K3jnc8kT.js): podem ficar guardados por um ano.
+<IfModule mod_headers.c>
+    Header set Cache-Control "public, max-age=31536000, immutable"
+</IfModule>

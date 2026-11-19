@@ -1,0 +1,41 @@
+{
+  "id": "igreja-engenho-novo",
+  "nome": "Igreja da comunidade de Engenho Novo",
+  "nomeCurto": "Igreja de Engenho Novo",
+  "outrosNomes": [
+    "Capela da Sagrada Família"
+  ],
+  "categoria": "fe",
+  "tipo": "Igreja de comunidade",
+  "destaque": 1,
+  "resumo": "Igreja da comunidade rural de Engenho Novo, que tem a Sagrada Família como padroeira.",
+  "descricao": [
+    "O Plano Municipal de Cultura lista a igreja da comunidade de Engenho Novo com a Sagrada Família como padroeira. No OpenStreetMap, a capela aparece com esse nome, perto do Parque de Exposições Domingos Pellizzaro."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Engenho Novo",
+  "endereco": "Comunidade de Engenho Novo, interior de Capinzal",
+  "coordenadas": [
+    -51.62303,
+    -27.40557
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "OpenStreetMap (nó 8627136091, “Capela da Sagrada Família”).",
+  "osm": "node/8627136091",
+  "aviso": "Não encontramos horários de celebração nem de visita.",
+  "fontes": [
+    {
+      "titulo": "Lei nº 3.426, de 18 de novembro de 2021 – Plano Municipal de Cultura de Capinzal (com mapeamento cultural anexo)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Capela da Sagrada Família (Engenho Novo)",
+      "url": "https://www.openstreetmap.org/node/8627136091",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

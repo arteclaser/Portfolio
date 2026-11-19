@@ -1,0 +1,55 @@
+---
+import '../../styles/conteudo.css';
+import DesenhoRota from '../../components/DesenhoRota.astro';
+import Icone from '../../components/Icone.astro';
+import { rotas, urlRota } from '../../lib/dados';
+import { formatarDistancia, formatarDuracao } from '../../lib/geo';
+import Base from '../../layouts/Base.astro';
+
+const modo = { 'a-pe': { rotulo: 'a pé', icone: 'footprints' }, carro: { rotulo: 'de carro', icone: 'car' }, bicicleta: { rotulo: 'de bicicleta', icone: 'bike' } } as const;
+---
+<Base titulo="Roteiros" descricao="Roteiros por Capinzal traçados pelas ruas reais, com distância, tempo estimado e perfil de altitude." atual="rotas">
+  <div class="conteiner">
+    <header class="cabeca-pagina">
+      <p class="sobrelinha"><Icone nome="route" tamanho={16} />Roteiros</p>
+      <h1>Caminhos para conhecer Capinzal</h1>
+      <p>
+        Cada roteiro segue as ruas e estradas mapeadas no OpenStreetMap, com distância, tempo estimado e perfil de altitude.
+        São sugestões deste guia: até a data da pesquisa, não encontramos um roteiro turístico oficial em operação no município.
+      </p>
+    </header>
+
+    <div class="grade-rotas">
+      {rotas.map((rota) => (
+        <article class="cartao-rota" style={`--cor-rota:${rota.cor}`}>
+          <DesenhoRota rota={rota} />
+          <div class="cartao-rota__corpo">
+            <h2><a href={urlRota(rota.id)}>{rota.nome}</a></h2>
+            <p>{rota.resumo}</p>
+            <ul class="dados-rota">
+              <li><Icone nome={modo[rota.modo].icone} tamanho={16} />{formatarDistancia(rota.distanciaM)} {modo[rota.modo].rotulo}</li>
+              <li><Icone nome="clock" tamanho={16} />{formatarDuracao(rota.duracaoS)}</li>
+              <li><Icone nome="map-pin" tamanho={16} />{rota.paradas.length} paradas</li>
+              <li><Icone nome="mountain" tamanho={16} />{rota.subidaM} m de subida</li>
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <section class="secao estreito" style="margin-inline:0" aria-labelledby="como">
+      <h2 id="como">Como os roteiros foram traçados</h2>
+      <div class="prosa">
+        <p>
+          O traçado, a distância e o tempo foram calculados com o OSRM, um programa aberto de rotas, sobre os dados do OpenStreetMap.
+          O tempo considera só o deslocamento, sem as paradas. A altitude vem do modelo de relevo SRTM, com cerca de 30 metros de resolução:
+          por isso, a subida acumulada é uma estimativa.
+        </p>
+        <p>
+          Ruas mudam, pontes fecham para obras e estradas do interior podem estar sem pavimento. Use os roteiros como ponto de partida e
+          confirme as condições no local.
+        </p>
+      </div>
+    </section>
+  </div>
+</Base>

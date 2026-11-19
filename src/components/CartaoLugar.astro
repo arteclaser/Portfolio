@@ -1,0 +1,74 @@
+---
+import { getImage } from 'astro:assets';
+import { categoriaPorId } from '../data/categorias';
+import { imagem, linkGoogleMaps, urlLugar } from '../lib/dados';
+import type { Lugar } from '../lib/tipos';
+import Icone from './Icone.astro';
+
+interface Props {
+  lugar: Lugar;
+  /** Número da parada (em um roteiro). */
+  numero?: number;
+  /** Texto extra na linha de baixo (ex.: distância). */
+  nota?: string;
+  /** Inclui os dados que o mapa interativo lê (posição, categoria, foto maior). */
+  paraMapa?: boolean;
+  nivelTitulo?: 'h2' | 'h3';
+}
+
+const { lugar, numero, nota, paraMapa = false, nivelTitulo: Titulo = 'h3' } = Astro.props;
+const categoria = categoriaPorId[lugar.categoria];
+const foto = lugar.imagens?.[0];
+const miniatura = foto ? await getImage({ src: imagem(foto.arquivo), width: 176, height: 176, fit: 'cover', format: 'webp', quality: 70 }) : null;
+const media = foto && paraMapa ? await getImage({ src: imagem(foto.arquivo), width: 640, height: 360, fit: 'cover', format: 'webp', quality: 72 }) : null;
+const onde = lugar.localidade ?? lugar.municipio;
+
+const dados = paraMapa
+  ? {
+      'data-lugar': lugar.id,
+      'data-lon': lugar.coordenadas[0],
+      'data-lat': lugar.coordenadas[1],
+      'data-categoria': lugar.categoria,
+      'data-icone': categoria.icone,
+      'data-destaque': lugar.destaque,
+      'data-nome': lugar.nome,
+      'data-curto': lugar.nomeCurto ?? lugar.nome,
+      'data-tipo': lugar.tipo,
+      'data-resumo': lugar.resumo,
+      'data-onde': onde,
+      'data-precisao': lugar.precisao,
+      'data-url': urlLugar(lugar.id),
+      'data-como-chegar': linkGoogleMaps(lugar),
+      'data-foto': media?.src,
+      'data-busca': [lugar.nome, lugar.nomeCurto, lugar.tipo, categoria.nome, lugar.localidade, lugar.municipio, lugar.endereco].filter(Boolean).join(' '),
+    }
+  : { 'data-lugar': lugar.id };
+---
+<li class="item-lugar" {...dados}>
+  <article class:list={['cartao', `cat-${lugar.categoria}`]}>
+    {numero !== undefined && <span class="cartao__numero" aria-hidden="true">{numero}</span>}
+    {miniatura ? (
+      <div class="cartao__foto">
+        <img src={miniatura.src} width="88" height="88" alt="" loading="lazy" decoding="async" />
+      </div>
+    ) : (
+      <div class="cartao__foto cartao__foto--vazia">
+        <Icone nome={categoria.icone} tamanho={34} />
+      </div>
+    )}
+    <div class="cartao__corpo">
+      <span class="cartao__tipo"><Icone nome={categoria.icone} tamanho={14} />{lugar.tipo}</span>
+      <Titulo class="cartao__nome">
+        <a href={urlLugar(lugar.id)}>
+          {numero !== undefined && <span class="oculto-visual">Parada {numero}: </span>}
+          {lugar.nome}
+        </a>
+      </Titulo>
+      <p class="cartao__meta">
+        <span>{onde}</span>
+        {nota && <span>{nota}</span>}
+        <span data-distancia hidden></span>
+      </p>
+    </div>
+  </article>
+</li>

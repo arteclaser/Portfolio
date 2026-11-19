@@ -1,0 +1,107 @@
+---
+import '../styles/mapa.css';
+import CartaoLugar from '../components/CartaoLugar.astro';
+import Icone from '../components/Icone.astro';
+import Simbolo from '../components/Simbolo.astro';
+import { categorias } from '../data/categorias';
+import { navegacao, site } from '../data/site';
+import { lugares, rotas, urlRota } from '../lib/dados';
+import { formatarDistancia } from '../lib/geo';
+import Base from '../layouts/Base.astro';
+
+const usadas = categorias.filter((c) => lugares.some((l) => l.categoria === c.id));
+const quantos = (id: string) => lugares.filter((l) => l.categoria === id).length;
+const rotuloModo = { 'a-pe': 'a pé', carro: 'de carro', bicicleta: 'de bicicleta' } as const;
+---
+<Base atual="mapa" formato="app" descricao={site.descricao}>
+  <div class="app" data-app data-modo="explorar" data-visao="mapa">
+    <section class="painel" aria-labelledby="titulo-painel">
+      <header class="painel__topo">
+        <a class="marca" href="/">
+          <Simbolo class="marca__simbolo" />
+          <span class="marca__texto">
+            <span>Mostraqui</span>
+            <span class="marca__sub">Capinzal · SC</span>
+          </span>
+        </a>
+        <button type="button" class="botao-icone" data-alternar-tema aria-label="Mudar para o tema escuro">
+          <span data-tema-icone="escuro"><Icone nome="moon" /></span>
+          <span data-tema-icone="claro" hidden><Icone nome="sun" /></span>
+        </button>
+      </header>
+      <nav class="painel__nav" aria-label="Navegação principal">
+        <ul role="list">
+          {navegacao.map((item) => (
+            <li><a href={item.url} aria-current={item.id === 'mapa' ? 'page' : undefined}>{item.rotulo}</a></li>
+          ))}
+        </ul>
+      </nav>
+      <div class="painel__titulo">
+        <h1 id="titulo-painel">O que ver em Capinzal</h1>
+        <p>{lugares.length} lugares no mapa, com endereço, fontes e roteiros traçados pelas ruas.</p>
+      </div>
+
+      <div class="busca" role="search">
+        <label class="oculto-visual" for="busca">Buscar lugares em Capinzal</label>
+        <Icone nome="search" />
+        <input id="busca" type="search" placeholder="Buscar em Capinzal" autocomplete="off" enterkeyhint="search" data-busca />
+        <button type="button" class="busca__limpar" data-limpar hidden aria-label="Limpar a busca"><Icone nome="x" tamanho={18} /></button>
+      </div>
+
+      <div class="filtros" role="group" aria-label="Filtrar por categoria">
+        {usadas.map((c) => (
+          <button type="button" class:list={['chip', `cat-${c.id}`]} data-filtro={c.id} aria-pressed="false">
+            <Icone nome={c.icone} tamanho={17} />
+            {c.nome}
+            <span class="chip__n" aria-hidden="true">{quantos(c.id)}</span>
+            <span class="oculto-visual">({quantos(c.id)} lugares)</span>
+          </button>
+        ))}
+      </div>
+
+      <p class="painel__contagem">
+        <span role="status" aria-live="polite" data-contagem>{lugares.length} lugares</span>
+        <button type="button" data-ordenar hidden>Ordenar por distância</button>
+      </p>
+
+      <ul class="lista" role="list" data-lista aria-label="Lugares">
+        {lugares.map((lugar) => <CartaoLugar lugar={lugar} paraMapa nivelTitulo="h2" />)}
+      </ul>
+      <p class="lista__vazia" data-vazio hidden>Nenhum lugar encontrado. Tente outra palavra ou desmarque os filtros.</p>
+    </section>
+
+    <div class="mapa" data-estado="carregando">
+      <div class="mapa__tela" id="mapa" role="region" aria-label="Mapa interativo de Capinzal. A lista de lugares traz as mesmas informações."></div>
+      <div class="mapa__aviso">
+        <span class="mapa__carregando" aria-hidden="true"></span>
+        <p>Carregando o mapa…</p>
+        <noscript><p>O mapa interativo precisa de JavaScript. A <a href="/lugares/">lista de lugares</a> funciona sem ele.</p></noscript>
+      </div>
+
+      {rotas.length > 0 && (
+        <nav class="legenda-rotas" aria-label="Roteiros desenhados no mapa">
+          <span class="legenda-rotas__titulo"><Icone nome="route" tamanho={15} />Roteiros</span>
+          {rotas.map((rota) => (
+            <a href={urlRota(rota.id)} style={`--cor-rota:${rota.cor}`} title={`${rota.nome}: ${formatarDistancia(rota.distanciaM)} ${rotuloModo[rota.modo]}`}>
+              <span class="legenda-rotas__traco"></span>{rota.nomeCurto}
+            </a>
+          ))}
+        </nav>
+      )}
+
+      <button type="button" class="alternar-visao" data-alternar-visao aria-pressed="false">
+        <span data-icone="lista"><Icone nome="list" tamanho={18} /></span>
+        <span data-icone="mapa" hidden><Icone nome="map" tamanho={18} /></span>
+        <span data-rotulo>Ver em lista</span>
+      </button>
+    </div>
+  </div>
+
+  <template id="icones-do-mapa">
+    {usadas.map((c) => <span data-icone={c.icone}><Icone nome={c.icone} tamanho={17} /></span>)}
+  </template>
+
+  <script>
+    import '../scripts/mapa/app.ts';
+  </script>
+</Base>

@@ -1,0 +1,125 @@
+---
+import '../styles/conteudo.css';
+import Icone from '../components/Icone.astro';
+import creditos from '../data/creditos-imagens.json';
+import { site } from '../data/site';
+import { dataPorExtenso, lugares, rotas } from '../lib/dados';
+import Base from '../layouts/Base.astro';
+
+const exatos = lugares.filter((l) => l.precisao === 'exata').length;
+const aConfirmar = lugares.filter((l) => l.situacao === 'a-confirmar').length;
+const fontesDistintas = new Set(lugares.flatMap((l) => l.fontes.map((f) => f.url))).size;
+const levantamento = lugares.map((l) => l.conferidoEm).sort().at(-1)!;
+const unicos = [...new Map((creditos as { arquivo: string; autor: string; licenca: string; origem: string; alt: string }[]).map((c) => [c.arquivo, c])).values()];
+---
+<Base titulo="Sobre o guia" descricao="Como o Mostraqui Capinzal foi feito: método de pesquisa, fontes, licenças dos dados, privacidade e acessibilidade." atual="sobre">
+  <div class="estreito">
+    <header class="cabeca-pagina">
+      <p class="sobrelinha"><Icone nome="info" tamanho={16} />Sobre</p>
+      <h1>Um mapa turístico que mostra de onde vem cada informação</h1>
+      <p>
+        O Mostraqui Capinzal reúne em um mapa os lugares para visitar, comer e se hospedar em Capinzal (SC), com roteiros traçados pelas
+        ruas. Funciona no celular, pode ser instalado como aplicativo e abre mesmo sem internet.
+      </p>
+    </header>
+
+    <div class="prosa">
+      <h2 id="quem-faz">Quem faz</h2>
+      <p>
+        Este guia é uma iniciativa particular e independente. <strong>Não é um canal oficial da Prefeitura de Capinzal</strong> nem de
+        outro órgão público, e não usa os símbolos do município. As informações vêm de fontes públicas, citadas em cada página.
+        Para falar com o guia: <a href={`mailto:${site.contato}`}>{site.contato}</a>.
+      </p>
+
+      <h2 id="dados">Dados e fontes</h2>
+      <p>
+        O guia tem {lugares.length} lugares e {rotas.length} roteiros, apoiados em {fontesDistintas} fontes diferentes. O levantamento foi feito
+        em {dataPorExtenso(levantamento)}, com apoio de inteligência artificial na busca e na organização das informações. Cada página
+        mostra as fontes usadas, para que qualquer pessoa possa conferir.
+      </p>
+      <h3>Como as informações foram levantadas</h3>
+      <ul>
+        <li><strong>Fontes oficiais primeiro:</strong> Prefeitura de Capinzal e Portal Municipal de Turismo, Plano Municipal de Cultura (Lei 3.426/2021), IBGE, Ministério do Turismo, Assembleia Legislativa, Prefeitura de Ouro e Diocese de Joaçaba.</li>
+        <li><strong>Imprensa local</strong> (Rádio Capinzal e jornal O Tempo) para datas, reformas e funcionamento recente.</li>
+        <li><strong>Nada foi deduzido:</strong> quando uma fonte não informa horário, preço ou endereço, o campo fica em branco e a página avisa.</li>
+        <li><strong>Divergências aparecem no texto:</strong> quando as fontes discordam (o ano da Ponte Pênsil, por exemplo), o guia mostra as versões em vez de escolher uma.</li>
+      </ul>
+      <h3>Restaurantes e hospedagem</h3>
+      <p>
+        Comércio abre e fecha. Por isso, cada estabelecimento tem uma de duas marcas. <strong>Em funcionamento</strong>: há registro público
+        datado de 2025 ou 2026 (notícia ou publicação) que mostra o lugar em atividade. <strong>Funcionamento a confirmar</strong>: o lugar
+        consta em duas ou mais fontes, mas sem registro recente; são {aConfirmar} casos. Estabelecimentos com uma só fonte, endereço
+        conflitante ou indício de fechamento ficaram de fora. O guia não publica notas nem avaliações e não cobra pela inclusão.
+      </p>
+      <h3>Posição no mapa</h3>
+      <p>
+        {exatos} dos {lugares.length} lugares usam um ponto já mapeado no OpenStreetMap. Os demais têm posição <strong>aproximada</strong>,
+        estimada pela rua ou pela numeração da via, e isso está escrito na página do lugar. Nesses casos, o botão “Como chegar” envia o nome
+        e o endereço ao aplicativo de mapas, que costuma localizar o imóvel com mais precisão.
+      </p>
+      <h3>O que ficou de fora</h3>
+      <p>
+        Não encontramos fonte verificável para cascatas, mirantes, trilhas, balneários, pesque-pagues ou propriedades rurais com visitação
+        regular em Capinzal. Esses lugares podem existir: só entram no guia quando houver uma fonte pública ou a confirmação de quem
+        conhece o local.
+      </p>
+
+      <h2 id="licencas">Mapa, dados abertos e licenças</h2>
+      <ul>
+        <li><strong>Mapa-base:</strong> © colaboradores do <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>, sob a licença ODbL, no formato do projeto <a href="https://protomaps.com" rel="noopener">Protomaps</a>. O mapa da região fica guardado no próprio site.</li>
+        <li><strong>Relevo:</strong> modelo SRTM (NASA/USGS), distribuído como Mapzen Terrain Tiles no programa de dados abertos da AWS.</li>
+        <li><strong>Limite do município:</strong> relação 296724 do OpenStreetMap.</li>
+        <li><strong>Roteiros:</strong> calculados com o OSRM (servidor da FOSSGIS) sobre os dados do OpenStreetMap.</li>
+        <li><strong>Programas:</strong> MapLibre GL JS e PMTiles (licença BSD), Astro (MIT), ícones Lucide (ISC), fontes Figtree, Bricolage Grotesque e Noto Sans (SIL Open Font License).</li>
+      </ul>
+      <h3>Fotos</h3>
+      <p>
+        O guia só publica fotos de uso livre, com autoria e licença registradas. Fotos de buscadores e de aplicativos de mapas pertencem a
+        quem as publicou e não são copiadas: quando não há foto livre de um lugar, a página traz um link para ver as fotos no Google Maps.
+      </p>
+      {unicos.length > 0 && (
+        <ul class="lista-creditos">
+          {unicos.map((c) => <li>{c.alt} Foto de {c.autor}, <a href={c.origem} rel="noopener">{c.licenca}, via Wikimedia Commons</a>.</li>)}
+        </ul>
+      )}
+
+      <h2 id="privacidade">Privacidade</h2>
+      <ul>
+        <li><strong>Sem cadastro, sem cookies e sem rastreamento.</strong> O site não usa ferramentas de estatística nem publicidade.</li>
+        <li><strong>Nenhum serviço externo é consultado para mostrar o mapa.</strong> Mapa, fontes e imagens saem do próprio site.</li>
+        <li><strong>Sua localização não sai do aparelho.</strong> O botão “onde estou” só funciona se você permitir, e a posição é usada no seu navegador para calcular distâncias.</li>
+        <li><strong>O que fica guardado no aparelho:</strong> o tema escolhido (claro ou escuro), a posição do mapa durante a visita e os arquivos do modo sem internet.</li>
+        <li><strong>Links externos</strong> (Google Maps, Waze, sites de estabelecimentos) só abrem quando você toca neles e seguem as regras de cada serviço.</li>
+      </ul>
+
+      <h2 id="offline">Usar sem internet</h2>
+      <p>
+        Depois da primeira visita, o navegador guarda as páginas e o mapa da região. Assim, o guia abre mesmo sem sinal, o que ajuda no
+        interior do município. Para ter um ícone na tela inicial, use a opção “Instalar aplicativo” ou “Adicionar à tela de início” do
+        navegador. Os links de rota para outros aplicativos continuam precisando de internet.
+      </p>
+
+      <h2 id="acessibilidade">Acessibilidade</h2>
+      <p>
+        O guia foi construído com base nas Diretrizes de Acessibilidade para Conteúdo Web (WCAG) 2.2, nível AA, do W3C.
+      </p>
+      <ul>
+        <li>Tudo o que está no mapa também está em lista: o mapa nunca é o único caminho para uma informação.</li>
+        <li>As páginas podem ser usadas só com o teclado, têm link para pular ao conteúdo e indicam onde está o foco.</li>
+        <li>As cores foram escolhidas com contraste calculado, e cada categoria tem um ícone além da cor.</li>
+        <li>Há tema claro e escuro, e as animações diminuem quando o aparelho pede menos movimento.</li>
+      </ul>
+      <p>
+        Limites conhecidos: os marcadores dentro do mapa não são alcançados pelo teclado (a lista ao lado cumpre esse papel), e parte das
+        fotos de terceiros tem descrição curta.
+      </p>
+
+      <h2 id="correcoes">Correções</h2>
+      <p>
+        Um guia como este envelhece: lugares fecham, mudam de nome ou de horário. Cada página informa a data da última conferência.
+        Quem conhece Capinzal é a melhor fonte para corrigir e completar estas informações: escreva para
+        <a href={`mailto:${site.contato}`}>{site.contato}</a>, se possível com o endereço de uma página que confirme a mudança.
+      </p>
+    </div>
+  </div>
+</Base>

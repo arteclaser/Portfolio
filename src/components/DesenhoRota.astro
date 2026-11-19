@@ -1,0 +1,49 @@
+---
+// Miniatura do traçado de um roteiro, desenhada em SVG a partir da geometria calculada.
+import limite from '../data/geo/limite-capinzal-osm.json';
+import type { Rota } from '../lib/tipos';
+
+interface Props { rota: Rota }
+const { rota } = Astro.props;
+
+const L = 320;
+const A = 180;
+const margem = 22;
+// Roteiros longos aparecem dentro do contorno do município; os curtos, ampliados.
+const comContorno = rota.distanciaM > 8000;
+const contorno = ((limite as any).features[0].geometry.coordinates[0] as [number, number][]).filter((_, i) => i % 5 === 0);
+const referencia = comContorno ? contorno : rota.geometria;
+
+const lons = referencia.map((p) => p[0]);
+const lats = referencia.map((p) => p[1]);
+const [oeste, leste, sul, norte] = [Math.min(...lons), Math.max(...lons), Math.min(...lats), Math.max(...lats)];
+const kx = Math.cos((((sul + norte) / 2) * Math.PI) / 180);
+const escala = Math.min((L - 2 * margem) / ((leste - oeste) * kx || 1e-9), (A - 2 * margem) / (norte - sul || 1e-9));
+const dx = (L - (leste - oeste) * kx * escala) / 2;
+const dy = (A - (norte - sul) * escala) / 2;
+const proj = (p: readonly [number, number]) => `${(dx + (p[0] - oeste) * kx * escala).toFixed(1)},${(dy + (norte - p[1]) * escala).toFixed(1)}`;
+
+const linha = `M${rota.geometria.map(proj).join('L')}`;
+const borda = comContorno ? `M${contorno.map(proj).join('L')}Z` : null;
+
+function pontoEm(d: number): [number, number] {
+  let acumulado = 0;
+  const g = rota.geometria;
+  for (let i = 0; i < g.length - 1; i++) {
+    const trecho = Math.hypot((g[i + 1][0] - g[i][0]) * kx, g[i + 1][1] - g[i][1]) * 111320;
+    if (acumulado + trecho >= d) {
+      const t = trecho ? (d - acumulado) / trecho : 0;
+      return [g[i][0] + t * (g[i + 1][0] - g[i][0]), g[i][1] + t * (g[i + 1][1] - g[i][1])];
+    }
+    acumulado += trecho;
+  }
+  return g[g.length - 1];
+}
+const paradas = rota.paradasEm.map((d) => proj(pontoEm(d)).split(','));
+---
+<svg class="cartao-rota__desenho" viewBox={`0 0 ${L} ${A}`} aria-hidden="true" focusable="false">
+  {borda && <path class="limite" d={borda} stroke-width="1.2" stroke-dasharray="3 3" />}
+  <path class="traco-fundo" d={linha} fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  <path class="traco" d={linha} fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  {paradas.map(([cx, cy]) => <circle class="ponto" cx={cx} cy={cy} r="5" stroke-width="2.5" />)}
+</svg>

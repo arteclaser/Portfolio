@@ -1,93 +1,107 @@
-# Portfólios institucionais — mostraqui.net
+# Mostraqui Capinzal — mapa turístico interativo
 
-Portfólio institucional da **Secretaria de Desenvolvimento Econômico, Inovação e Turismo de
-Capinzal**, publicado direto em **mostraqui.net**. O site público é consultável sem cadastro e tem
-estilo de revista institucional. Um painel com autenticação permite à equipe manter o conteúdo sem
-editar código.
+Aplicativo web com o mapa turístico de **Capinzal (SC)**: lugares para visitar, onde comer, onde ficar e
+roteiros traçados pelas ruas reais. Publicado em **mostraqui.net**. Funciona no celular, pode ser
+instalado como aplicativo e abre **mesmo sem internet**.
 
-![Página inicial](docs/img/inicio-computador.jpg)
+![Mapa com os lugares e os roteiros de Capinzal](docs/img/inicio-computador.jpg)
 
-> As imagens acima são do **ambiente de demonstração**: ilustrações abstratas geradas pelo sistema e
-> textos fictícios, sem registro de eventos, pessoas ou lugares reais.
+| Roteiro com paradas numeradas e perfil de altitude | No celular |
+| --- | --- |
+| ![Página de roteiro](docs/img/roteiro-computador.jpg) | ![Mapa no celular](docs/img/inicio-celular.jpg) |
 
-## Principais recursos
+## O que o aplicativo tem
 
-- **Portfólio único no domínio:** Capinzal em `mostraqui.net` (padrão). Se outros órgãos forem
-  atendidos no futuro, a mesma instalação hospeda vários portfólios isolados, por caminho
-  (`mostraqui.net/capinzal`) ou subdomínio, com a troca de uma linha no `.env` e sem quebrar os
-  endereços já divulgados. Ver [docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md](docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md).
-- **Implantação automática por FTP:** cada aprovação no branch `main` é testada e enviada à
-  HostGator por FTPS, sem SSH, e o banco é atualizado sozinho. Ver [docs/IMPLANTACAO-AUTOMATICA.md](docs/IMPLANTACAO-AUTOMATICA.md).
-- **Público:** destaque principal e secundários, filtros por área, busca por nome, área, período,
-  tipo e situação, página própria de cada ação com galeria acessível, vídeos e reportagens, equipe,
-  parceiros, resultados documentados, tema escuro e compartilhamento com título, resumo e capa.
-- **Painel:** perfis Master, Editor e Colaborador com permissões por área verificadas no servidor;
-  ações com rascunho, revisão, devolução, publicação e versões; páginas montadas por blocos com
-  prévia e publicação; campos adicionais; equipe; parceiros; biblioteca de mídias; usuários por
-  convite; registro de atividades.
-- **Integridade:** indicadores só aparecem com fonte, unidades diferentes não se somam,
-  participações não são apresentadas como pessoas únicas, e uma ação ligada a duas áreas conta uma
-  vez.
-- **Segurança e privacidade:** páginas públicas sem cookies, arquivos privados até a publicação,
-  remoção de metadados GPS das fotos, proteção contra SSRF, conteúdo de terceiros só após o clique.
+- **Mapa próprio da região**, guardado no próprio site: nenhum pedido a serviços de mapas de terceiros,
+  sem chave de API e sem custo por acesso. Tem relevo sombreado, vista em 3D e tema claro e escuro.
+- **33 lugares**, cada um com página própria: descrição, endereço, contato, posição no mapa (com aviso
+  quando é aproximada), botão "Como chegar" e **as fontes de cada informação**.
+- **3 roteiros** calculados sobre as ruas do OpenStreetMap, com distância, tempo, paradas numeradas e
+  perfil de altitude: centro histórico a pé, volta das duas pontes e interior de carro.
+- **Busca e filtros** por categoria, botão "onde estou" com a distância até cada lugar.
+- **Página da cidade** com dados do IBGE, história, acessos e calendário de eventos, tudo com fonte.
+- **Modo sem internet:** depois da primeira visita, as páginas e o mapa ficam guardados no aparelho.
+- **Privacidade:** sem cadastro, sem cookies e sem rastreamento.
+- **Guia independente:** iniciativa particular, sem vínculo oficial com a Prefeitura. Correções:
+  `contato@mostraqui.net`.
+- **Acessibilidade:** meta WCAG 2.2 nível AA, com lista equivalente ao mapa, uso por teclado e
+  contrastes calculados.
+
+## Regra de ouro dos dados
+
+Nenhuma informação entra sem fonte. O comando `npm run conferir` (executado antes de cada montagem)
+recusa lugares sem fonte, fotos sem licença, posições fora do município e roteiros que não passam
+pelas paradas. Restaurantes e hotéis sem registro público recente aparecem como **"funcionamento a
+confirmar"**. Detalhes em [docs/DADOS.md](docs/DADOS.md); o que ainda precisa de validação local está
+em [docs/PENDENCIAS.md](docs/PENDENCIAS.md).
 
 ## Tecnologia
 
-Laravel 13 (PHP **8.3+**), MySQL/MariaDB, HTML gerado no servidor, CSS e JavaScript sem etapa de
-compilação e fontes locais (Source Serif 4 e Inter, SIL OFL). Feito para hospedagem compartilhada
-com cPanel (HostGator).
+Site estático gerado com [Astro](https://astro.build) (Node 22). Mapa com
+[MapLibre GL JS](https://maplibre.org) e [PMTiles](https://protomaps.com) sobre dados do
+[OpenStreetMap](https://www.openstreetmap.org/copyright). Não há banco de dados nem código no
+servidor: a hospedagem só entrega arquivos.
 
-## Rodar localmente
+## Rodar no computador
 
 ```bash
-composer install
-cp .env.example .env            # ajuste: APP_ENV=local, APP_DEBUG=true, APP_URL=http://localhost:8000,
-                                # DB_CONNECTION=sqlite (ou MySQL), MAIL_MAILER=log, SESSION_SECURE_COOKIE=false
-php artisan key:generate
-touch database/database.sqlite  # se usar SQLite
-php artisan migrate
-php artisan mostraqui:instalar  # portfólio de Capinzal + conta de administração (senha digitada de forma oculta)
-php artisan mostraqui:demo      # opcional: conteúdo de demonstração (recusado em produção)
-php artisan serve               # http://localhost:8000 (portfólio) e http://localhost:8000/painel
+npm install
+npm run dev        # http://localhost:4321, com atualização automática
+```
+
+```bash
+npm run build      # confere os dados e monta o site em dist/
+npm run preview    # serve dist/ em http://localhost:4321
 ```
 
 ## Comandos
 
 | Comando | Para quê |
 | --- | --- |
-| `php artisan mostraqui:instalar [--convite]` | Primeira instalação: portfólio e conta de administração |
-| `php artisan mostraqui:novo-portfolio "Nome" --endereco=x [--master-email=...]` | Novo portfólio (aparece no site nos modos `path` e `subdomain`), com convite do Master |
-| `php artisan mostraqui:criar-master ENDERECO` | Outro Administrador Master de um portfólio (convite) |
-| `php artisan mostraqui:admin-plataforma [--convite]` | Outra conta de administração da plataforma |
-| `php artisan mostraqui:backup [--manter=14]` | Cópia completa (banco + arquivos) em `storage/app/backups` |
-| `php artisan mostraqui:restaurar ARQUIVO.zip` | Restaura uma cópia (substitui os dados atuais) |
-| `php artisan mostraqui:demo [--portfolio=x]` | Conteúdo de demonstração, só fora de produção |
-| `./scripts/empacotar.sh` | Gera os pacotes para enviar ao cPanel à mão |
-| `bash deploy/implantar-ftp.sh` | Implantação por FTPS (usada pelo GitHub Actions; variáveis em `docs/IMPLANTACAO-AUTOMATICA.md`) |
+| `npm run conferir` | Confere a integridade dos dados (fontes, posições, fotos, roteiros) |
+| `npm test` | Confere os dados e roda os testes unitários |
+| `npm run build` | Monta o site em `dist/`, com o modo sem internet e o sitemap |
+| `npm run test:navegador` | Testa o site montado no navegador: mapa, celular, teclado, acessibilidade, CSP e modo sem internet (exige Playwright) |
+| `npm run mapa:rotas` | Recalcula o traçado dos roteiros depois de mudar as paradas |
+| `npm run mapa:estilo` | Gera de novo as cores do mapa (claro e escuro) |
+| `npm run fotos` | Baixa do Wikimedia Commons as fotos livres de `scripts/fotos/lista.json` |
+| `npm run icones` | Gera os ícones do aplicativo |
+| `python3 scripts/geo/extrair-mapa-base.py AAAAMMDD` | Atualiza o mapa-base com uma compilação mais nova do OpenStreetMap |
+| `bash deploy/implantar-ftp.sh` | Publica `dist/` por FTPS (usado pelo GitHub Actions) |
 
-## Testes
+## Onde fica cada coisa
 
-```bash
-php artisan test                              # 62 testes (aceite, segurança, integridade, implantação, modos de endereço e unitários)
-# Contra MySQL/MariaDB: DB_CONNECTION=mariadb DB_DATABASE=... DB_USERNAME=... DB_PASSWORD=... php artisan test
-BASE_URL=http://127.0.0.1:8000 node tests/browser/verificar.cjs   # celular, teclado e axe-core (exige playwright e axe-core)
-```
+| Pasta | Conteúdo |
+| --- | --- |
+| `src/data/lugares/` | Um arquivo por lugar (texto, endereço, posição, fontes, fotos) |
+| `src/data/rotas/` | Definição dos roteiros (paradas e textos) |
+| `src/data/rotas-geradas/` | Traçados calculados (não editar à mão) |
+| `src/data/capinzal.ts` | Dados, história, acessos e eventos da página da cidade |
+| `src/pages/` | Páginas do site |
+| `src/scripts/mapa/` | Mapa interativo |
+| `public/mapa/` | Mapa-base, relevo, fontes e estilos do mapa |
+| `scripts/` | Conferência dos dados, pós-montagem e ferramentas de mapa |
+| `deploy/` | Implantação por FTPS |
+| `tests/` | Testes unitários e no navegador |
 
 ## Documentação
 
 | Documento | Conteúdo |
 | --- | --- |
-| [docs/PLANO.md](docs/PLANO.md) | Decisões, modelo de dados, permissões, fluxo editorial, fases e pendências |
-| [docs/IMPLANTACAO-AUTOMATICA.md](docs/IMPLANTACAO-AUTOMATICA.md) | **Implantação automática GitHub → HostGator** por FTP com criptografia (sem SSH), passo a passo |
-| [docs/IMPLANTACAO-HOSTGATOR.md](docs/IMPLANTACAO-HOSTGATOR.md) | Passo a passo de instalação manual no cPanel, sem terminal |
-| [docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md](docs/MULTIPORTFOLIO-E-SUBDOMINIOS.md) | Portfólio único (atual), por caminho ou por subdomínio: como mudar no futuro |
-| [docs/MANUAL-DA-EQUIPE.md](docs/MANUAL-DA-EQUIPE.md) | Como usar o painel |
-| [docs/BACKUP-E-RESTAURACAO.md](docs/BACKUP-E-RESTAURACAO.md) | Cópias de segurança e restauração |
-| [docs/SEGURANCA-E-PRIVACIDADE.md](docs/SEGURANCA-E-PRIVACIDADE.md) | Proteções, LGPD e credenciais necessárias |
-| [docs/ACESSIBILIDADE.md](docs/ACESSIBILIDADE.md) | Meta WCAG 2.2 AA, contrastes calculados e resultados dos testes |
-| [docs/ESTADO-DA-ENTREGA.md](docs/ESTADO-DA-ENTREGA.md) | O que funciona, o que foi testado, o que depende de configuração e o que ainda não existe |
+| [docs/DADOS.md](docs/DADOS.md) | Como incluir e corrigir lugares, roteiros e fotos; critérios usados |
+| [docs/PENDENCIAS.md](docs/PENDENCIAS.md) | O que precisa de validação de quem conhece Capinzal |
+| [docs/IMPLANTACAO.md](docs/IMPLANTACAO.md) | Publicação automática GitHub → HostGator e a troca do aplicativo anterior |
+| [docs/ESTADO-DA-ENTREGA.md](docs/ESTADO-DA-ENTREGA.md) | O que funciona, o que foi testado e o que ainda não existe |
+
+## Aplicativo anterior
+
+Este repositório hospedava um portfólio institucional em Laravel. Ele foi substituído por este
+aplicativo e continua disponível no histórico do Git (último commit: `d53576d`).
 
 ## Licenças de terceiros
 
-Laravel (MIT), Intervention Image (MIT), league/commonmark (BSD-3-Clause), fontes Source Serif 4 e
-Inter (SIL Open Font License 1.1; arquivos de licença em `public/assets/fonts`).
+Dados do mapa: © colaboradores do OpenStreetMap (ODbL 1.0), no formato Protomaps Basemaps. Relevo:
+SRTM (NASA/USGS), via Mapzen Terrain Tiles. MapLibre GL JS, PMTiles e Protomaps Basemaps
+(BSD-3-Clause), Astro (MIT), supercluster e ícones Lucide (ISC), fontes Figtree, Bricolage Grotesque
+e Noto Sans (SIL Open Font License 1.1). As fotos têm autoria e licença registradas em
+`src/data/creditos-imagens.json` e na página "Sobre".

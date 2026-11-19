@@ -1,0 +1,47 @@
+{
+  "id": "american-bus-glamping",
+  "nome": "American Bus Glamping",
+  "categoria": "hospedagem",
+  "tipo": "Glamping rural",
+  "destaque": 2,
+  "resumo": "Hospedagem em um ônibus escolar americano adaptado, em propriedade rural, com piscina aquecida privativa.",
+  "descricao": [
+    "Hospedagem de uma única unidade em um ônibus escolar americano adaptado, em propriedade rural afastada do centro, com cozinha, banheiro e piscina aquecida privativa. A reserva é feita por plataformas de temporada."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Barro Preto",
+  "endereco": "Comunidade de Barro Preto, interior de Capinzal",
+  "coordenadas": [
+    -51.6592,
+    -27.46583
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição aproximada: as fontes informam apenas a comunidade (Barro Preto). O ponto marca o centro da comunidade.",
+  "contato": {
+    "site": "https://natiz.com.br/experiencia/american-bus-glamping/"
+  },
+  "situacao": "confirmado",
+  "evidencia": "artigo de outubro de 2025",
+  "aviso": "Peça a localização exata ao anfitrião ao reservar.",
+  "fontes": [
+    {
+      "titulo": "Multipacotes – Onde ficar em Capinzal (SC): glamping em ônibus americano (14/10/2025)",
+      "url": "https://multipacotes.com/interior/onde-ficar-em-capinzal-sc-glamping-em-onibus-americano-com-piscina-aquecida-e-cachoeira/",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Airbnb – American Bus Glamping - Capinzal/SC",
+      "url": "https://www.airbnb.com/rooms/855587972446511163",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Natíz – American Bus Glamping",
+      "url": "https://natiz.com.br/experiencia/american-bus-glamping/",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

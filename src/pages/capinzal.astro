@@ -1,0 +1,143 @@
+---
+import '../styles/conteudo.css';
+import Icone from '../components/Icone.astro';
+import { comoChegar, eventos, fontes, historia, numeros, type ChaveFonte } from '../data/capinzal';
+import { dataCurta, lugarPorId, urlLugar } from '../lib/dados';
+import Base from '../layouts/Base.astro';
+
+// As fontes são numeradas na ordem em que aparecem na página.
+const ordem: ChaveFonte[] = [];
+const n = (chave: ChaveFonte) => {
+  if (!ordem.includes(chave)) ordem.push(chave);
+  return ordem.indexOf(chave) + 1;
+};
+const blocos = {
+  numeros: numeros.map((item) => ({ ...item, ref: n(item.fonte) })),
+  historia: historia.map((item) => ({ ...item, refs: item.fontes.map(n) })),
+  comoChegar: comoChegar.map((item) => ({ ...item, refs: item.fontes.map(n) })),
+  eventos: eventos.map((item) => ({ ...item, ref: n(item.fonte), local: item.lugar ? lugarPorId.get(item.lugar) : undefined })),
+  regiao: [n('mapaTurismo'), n('portalTurismo')],
+  rota: [n('rotaPlanejada'), n('cursoTurismo')],
+  expovale: n('expovale'),
+};
+const levantamento = '2026-11-19';
+---
+<Base
+  titulo="Conheça Capinzal"
+  descricao="Capinzal (SC) em números, história, como chegar e calendário de eventos, com a fonte de cada informação."
+  atual="capinzal"
+>
+  <div class="conteiner">
+    <header class="cabeca-pagina">
+      <p class="sobrelinha"><Icone nome="book-open" tamanho={16} />A cidade</p>
+      <h1>Conheça Capinzal</h1>
+      <p>
+        Capinzal fica no Meio-Oeste de Santa Catarina, às margens do Rio do Peixe, que a separa da vizinha Ouro.
+        Aqui estão os números, a história, os acessos e as festas do ano, com a fonte de cada informação.
+      </p>
+    </header>
+
+    <section aria-labelledby="t-numeros">
+      <h2 id="t-numeros" class="oculto-visual">Capinzal em números</h2>
+      <dl class="numeros">
+        {blocos.numeros.map((item) => (
+          <div>
+            <dt>{item.rotulo}</dt>
+            <dd>
+              {item.valor}
+              <small>{item.nota} <sup><a href={`#fonte-${item.ref}`} aria-label={`Fonte ${item.ref}`}>[{item.ref}]</a></sup></small>
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <div class="duas-colunas secao">
+      <section aria-labelledby="t-historia">
+        <h2 id="t-historia">Um pouco de história</h2>
+        <div class="prosa">
+          {blocos.historia.map((item) => (
+            <p>
+              {item.texto}
+              {item.refs.map((ref) => <sup><a href={`#fonte-${ref}`} aria-label={`Fonte ${ref}`}>[{ref}]</a></sup>)}
+            </p>
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="t-chegar">
+        <h2 id="t-chegar">Como chegar</h2>
+        <div class="prosa">
+          {blocos.comoChegar.map((item) => (
+            <>
+              <h3><Icone nome={item.icone} tamanho={18} /> {item.titulo}</h3>
+              <p>
+                {item.texto}
+                {item.refs.map((ref) => <sup><a href={`#fonte-${ref}`} aria-label={`Fonte ${ref}`}>[{ref}]</a></sup>)}
+              </p>
+            </>
+          ))}
+          <p><a href={urlLugar('terminal-rodoviario')}>Ver o terminal rodoviário no guia</a></p>
+        </div>
+
+        <h2 style="margin-top:1.8em">O turismo no município</h2>
+        <div class="prosa">
+          <p>
+            No Mapa do Turismo Brasileiro de 2026, Capinzal integra a região turística Vale dos Imigrantes, na categoria
+            “município com oferta turística complementar”. O portal municipal ainda cita a região Vale do Contestado.
+            {blocos.regiao.map((ref) => <sup><a href={`#fonte-${ref}`} aria-label={`Fonte ${ref}`}>[{ref}]</a></sup>)}
+          </p>
+          <p>
+            Não encontramos um roteiro turístico oficial em operação. Em 2023, a Prefeitura, o conselho INCOTUR e o Sebrae anunciaram o
+            planejamento de uma rota que integre espaços rurais e urbanos; em 2026, a Epagri e a Prefeitura concluíram um curso de turismo
+            para produtores e empreendedores.
+            {blocos.rota.map((ref) => <sup><a href={`#fonte-${ref}`} aria-label={`Fonte ${ref}`}>[{ref}]</a></sup>)}
+            Os <a href="/rotas/">roteiros deste guia</a> são sugestões nossas.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <section class="secao" aria-labelledby="t-eventos">
+      <div class="secao__cabeca">
+        <h2 id="t-eventos">O ano em Capinzal</h2>
+        <p>Festas e eventos com edição recente confirmada. As datas mudam a cada ano.</p>
+      </div>
+      <ol class="agenda">
+        {blocos.eventos.map((evento) => (
+          <li>
+            <span class="agenda__quando">{evento.quando}</span>
+            <div>
+              <h3>{evento.nome}</h3>
+              <p>{evento.texto}</p>
+              <p class="edicao">
+                {evento.edicao} <sup><a href={`#fonte-${evento.ref}`} aria-label={`Fonte ${evento.ref}`}>[{evento.ref}]</a></sup>
+                {evento.local && <> · <a href={urlLugar(evento.local.id)}>{evento.local.nomeCurto ?? evento.local.nome}</a></>}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <div class="aviso aviso--neutro" role="note" style="margin-top:16px">
+        <Icone nome="info" />
+        <p>
+          A feira Expovale teve a última edição em 2019; a de 2023 foi cancelada
+          <sup><a href={`#fonte-${blocos.expovale}`} aria-label={`Fonte ${blocos.expovale}`}>[{blocos.expovale}]</a></sup>.
+          Antes de viajar para um evento, confirme a data com os organizadores.
+        </p>
+      </div>
+    </section>
+
+    <section class="secao estreito fontes" style="margin-inline:0" aria-labelledby="t-fontes">
+      <h2 id="t-fontes">Fontes desta página</h2>
+      <ol>
+        {ordem.map((chave, i) => (
+          <li id={`fonte-${i + 1}`}>
+            <a href={fontes[chave].url} rel="noopener nofollow">{fontes[chave].titulo}</a>
+            <span class="fontes__tipo"> · consulta em {dataCurta(levantamento)}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+  </div>
+</Base>

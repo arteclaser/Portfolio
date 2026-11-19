@@ -1,0 +1,163 @@
+/* Páginas de conteúdo: lugar, listas, roteiros, cidade e "sobre". */
+
+/* ---------- Trilha de navegação ---------- */
+.trilha { padding-top: 18px; font-size: .9rem; color: var(--tinta-suave); }
+.trilha ol { display: flex; flex-wrap: wrap; gap: 4px 6px; margin: 0; padding: 0; list-style: none; }
+.trilha li + li::before { content: "/"; margin-right: 6px; opacity: .6; }
+.trilha a { color: var(--tinta-suave); }
+.trilha a:hover { color: var(--marca); }
+
+/* ---------- Página de lugar ---------- */
+.lugar__cabeca { padding: clamp(16px, 3vw, 28px) 0 clamp(18px, 3vw, 28px); }
+.lugar__selos { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.lugar__cabeca h1 { max-width: 20ch; margin-bottom: .3em; }
+.lugar__resumo { max-width: 60ch; margin: 0; color: var(--tinta-suave); font-size: clamp(1.1rem, 1rem + .5vw, 1.3rem); line-height: 1.45; }
+.lugar__acoes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.selo--alerta { background: var(--alerta-fundo); color: var(--alerta); }
+.selo--ok { background: var(--marca-suave); color: var(--marca-forte); }
+
+.foto { margin: 0; }
+.foto img { width: 100%; height: auto; border-radius: var(--raio-g); background: var(--superficie-2); }
+.foto figcaption { margin-top: 8px; color: var(--tinta-suave); font-size: .84rem; }
+.foto figcaption a { color: inherit; }
+.foto--capa img { aspect-ratio: 16 / 9; object-fit: cover; max-height: 560px; }
+
+.sem-foto {
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  aspect-ratio: 16 / 6;
+  min-height: 180px;
+  border-radius: var(--raio-g);
+  background:
+    radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--cat) 16%, transparent), transparent 55%),
+    radial-gradient(circle at 85% 80%, color-mix(in srgb, var(--cat) 12%, transparent), transparent 50%),
+    var(--cat-fundo);
+  color: var(--cat);
+  text-align: center;
+}
+.sem-foto p { margin: 0; font-size: .9rem; font-weight: 600; }
+.sem-foto p + p { margin-top: 6px; }
+.sem-foto a { display: inline-block; padding: 4px 0; color: inherit; }
+
+.lugar__grade {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: start;
+  margin-top: clamp(28px, 4vw, 48px);
+}
+.ficha {
+  display: grid;
+  gap: 0;
+  padding: 6px 20px;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-g);
+  background: var(--superficie);
+}
+.ficha__item { position: relative; padding: 14px 0 14px 34px; }
+.ficha__item + .ficha__item { border-top: 1px solid var(--linha); }
+.ficha dt { color: var(--tinta-suave); font-size: .76rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.ficha dt .icone { position: absolute; left: 0; top: 16px; color: var(--cat); }
+.ficha dd { margin: 2px 0 0; font-size: 1rem; line-height: 1.45; }
+.ficha dd small { display: block; margin-top: 3px; color: var(--tinta-suave); font-size: .86rem; line-height: 1.4; }
+.ficha dd a { display: inline-block; padding: 2px 0; font-weight: 600; }
+.lateral { display: grid; gap: 16px; position: sticky; top: 84px; }
+.lateral .mapa-mini { height: 260px; }
+.lateral__links { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .92rem; }
+
+.galeria { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); margin-top: 28px; }
+.galeria .foto img { aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--raio); }
+
+.conferido { display: flex; align-items: flex-start; gap: .5em; margin: 0; color: var(--tinta-suave); font-size: .92rem; }
+.conferido .icone { color: var(--marca); }
+
+/* ---------- Cartões de roteiro ---------- */
+.grade-rotas { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+.cartao-rota {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-g);
+  background: var(--superficie);
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+.cartao-rota:hover { border-color: var(--cor-rota); box-shadow: var(--sombra-2); transform: translateY(-2px); }
+.cartao-rota__desenho { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: var(--superficie-2); }
+.cartao-rota__desenho .traco-fundo { stroke: var(--superficie); }
+.cartao-rota__desenho .traco { stroke: var(--cor-rota); }
+.cartao-rota__desenho .ponto { fill: var(--superficie); stroke: var(--cor-rota); }
+.cartao-rota__desenho .limite { fill: color-mix(in srgb, var(--cor-rota) 7%, var(--superficie)); stroke: var(--linha-forte); }
+.cartao-rota__corpo { display: grid; gap: 8px; align-content: start; padding: 18px 20px 20px; }
+.cartao-rota h2, .cartao-rota h3 { margin: 0; font-size: 1.3rem; }
+.cartao-rota h2 a, .cartao-rota h3 a { color: var(--tinta); text-decoration: none; }
+.cartao-rota h2 a::after, .cartao-rota h3 a::after { content: ""; position: absolute; inset: 0; }
+.cartao-rota p { margin: 0; color: var(--tinta-suave); font-size: .98rem; line-height: 1.45; }
+.dados-rota { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 4px 0 0; padding: 0; list-style: none; font-size: .92rem; font-weight: 650; }
+.dados-rota li { display: inline-flex; align-items: center; gap: .4em; }
+.dados-rota .icone { color: var(--cor-rota); }
+
+/* ---------- Perfil de altitude ---------- */
+.perfil { margin: 4px 0 10px; }
+.perfil svg { display: block; width: 100%; height: auto; overflow: visible; }
+.perfil .area { fill: color-mix(in srgb, var(--cor-rota) 18%, transparent); }
+.perfil .linha { fill: none; stroke: var(--cor-rota); stroke-width: 2.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.perfil .base { stroke: var(--linha); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.perfil .parada { fill: var(--superficie); stroke: var(--cor-rota); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.perfil text { fill: var(--tinta-suave); font-family: var(--fonte-texto); font-size: 11px; font-weight: 600; }
+.perfil .n { fill: var(--tinta); font-weight: 800; }
+.perfil figcaption { margin-top: 2px; color: var(--tinta-suave); font-size: .82rem; }
+
+/* ---------- Página da cidade ---------- */
+.numeros { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); margin: 0; }
+.numeros div { padding: 18px 20px; border: 1px solid var(--linha); border-radius: var(--raio); background: var(--superficie); }
+.numeros dt { color: var(--tinta-suave); font-size: .78rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.numeros dd { margin: 4px 0 0; font-family: var(--fonte-titulo); font-size: 1.7rem; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; }
+.numeros dd small { display: block; margin-top: 6px; color: var(--tinta-suave); font-family: var(--fonte-texto); font-size: .84rem; font-weight: 500; letter-spacing: 0; line-height: 1.35; }
+
+.agenda { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.agenda li {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: 4px 20px;
+  padding: 16px 20px;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background: var(--superficie);
+}
+.agenda__quando { color: var(--marca); font-size: .82rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding-top: 3px; }
+.agenda h3 { margin: 0 0 .25em; font-size: 1.12rem; }
+.agenda p { margin: 0; color: var(--tinta-suave); font-size: .97rem; line-height: 1.5; }
+.agenda .edicao { margin-top: .4em; color: var(--tinta); font-size: .88rem; font-weight: 600; }
+
+.duas-colunas { display: grid; gap: clamp(20px, 4vw, 48px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); align-items: start; }
+
+.lista-creditos { margin: 0; padding-left: 1.3em; font-size: .93rem; }
+.lista-creditos li + li { margin-top: .4em; }
+
+.pular-secoes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+
+/* ---------- Painel de roteiro com rolagem própria ---------- */
+.painel__rolagem { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.painel__rolagem .lista { flex: none; overflow: visible; }
+.rota-texto { padding: 6px 18px 28px; font-size: .97rem; }
+.rota-texto h2 { margin-top: 1.2em; font-size: 1.1rem; }
+.rota-texto .aviso { margin-top: 14px; }
+
+@media (max-width: 899px) {
+  .lugar__grade { grid-template-columns: 1fr; }
+  .lateral { position: static; }
+  .agenda li { grid-template-columns: 1fr; }
+  .app[data-visao="mapa"] .painel__rolagem { display: contents; }
+  .app[data-visao="mapa"] .rota-texto { display: none; }
+  .app[data-visao="mapa"] .painel__rolagem .lista { overflow-x: auto; overflow-y: hidden; }
+  .app[data-visao="lista"] .painel__rolagem { padding-bottom: 84px; }
+  .app[data-visao="lista"] .painel__rolagem .lista { padding-bottom: 8px; }
+}
+
+@media print {
+  .lugar__acoes, .mapa-mini, .lateral__links { display: none !important; }
+  .lugar__grade { grid-template-columns: 1fr; }
+}
