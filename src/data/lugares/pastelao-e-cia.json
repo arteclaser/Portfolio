@@ -1,0 +1,51 @@
+{
+  "id": "pastelao-e-cia",
+  "nome": "Pastelão e Cia",
+  "outrosNomes": [
+    "Pastelão Restaurante"
+  ],
+  "categoria": "sabores",
+  "tipo": "Restaurante",
+  "destaque": 1,
+  "resumo": "Restaurante na Avenida José Leonardo Santos, associado à ACIRP e participante do Passaporte Gastronômico de 2023.",
+  "descricao": [
+    "Estabelecimento na Avenida José Leonardo Santos, listado para almoço na plataforma cardapio.menu, associado à ACIRP e participante do Passaporte Gastronômico de 2023.",
+    "As fontes trazem uma faixa de numeração (1716 a 1896), não o número do imóvel, e telefones diferentes; por isso o telefone não foi publicado. A avaliação mais recente na plataforma é de janeiro de 2024."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Avenida José Leonardo Santos, entre os números 1716 e 1896",
+  "coordenadas": [
+    -51.60696,
+    -27.35995
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição publicada na ficha da plataforma cardapio.menu, a cerca de 15 metros da avenida no mapa. Não foi conferida no local.",
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "cardapio.menu – Pastelão e Cia",
+      "url": "https://cardapio.menu/restaurants/capinzal/pastelao-e-cia-2",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – lista de associados (página 10)",
+      "url": "https://www.acirp.org.br/associados.php?pagina=10",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – Lançamento: Passaporte Gastronômico (07/06/2023)",
+      "url": "https://www.acirp.org.br/novidade.php?id=237&url=lancamento-passaporte-gastronomico-",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Restaurant Guru – restaurantes em Capinzal",
+      "url": "https://restaurantguru.com/Capinzal",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

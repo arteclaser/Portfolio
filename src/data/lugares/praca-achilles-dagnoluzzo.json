@@ -1,0 +1,51 @@
+{
+  "id": "praca-achilles-dagnoluzzo",
+  "nome": "Praça Achilles D'Agnoluzzo",
+  "categoria": "natureza",
+  "tipo": "Praça",
+  "destaque": 1,
+  "resumo": "Praça pública no Centro, na esquina das ruas Presidente Nereu Ramos e Luiz Dorini.",
+  "descricao": [
+    "Praça pública no Centro, na esquina das ruas Presidente Nereu Ramos e Luiz Dorini. Um documento da Prefeitura de dezembro de 2021 estima a área em 570 m².",
+    "Em julho de 2026, a Rádio Capinzal noticiou o início da construção de um novo ponto de embarque e desembarque de passageiros na praça."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Esquina das ruas Presidente Nereu Ramos e Luiz Dorini – Centro",
+  "coordenadas": [
+    -51.60636,
+    -27.34656
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "Posição da praça mapeada no OpenStreetMap.",
+  "osm": "way/546659029",
+  "entrada": "Livre",
+  "aviso": "Em julho de 2026 começou na praça a obra de um ponto de passageiros; parte do espaço pode estar em obras.",
+  "fontes": [
+    {
+      "titulo": "Prefeitura de Capinzal – Projeto básico: serviços de limpeza urbana e zeladoria (dez. 2021, PDF)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2022/05/2304347_Projeto_basico___Servicos_de_limpeza_urbana_e_zeladoria.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Capinzal – Decreto 087/2015, adoção de equipamentos públicos (PDF)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2023/06/561076_DECRETO_0872015___REGULAMENTA_LEI_ADOCAO_DE_EQUIPAMENTOS_PUBLICOS.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – Obras do novo ponto de passageiros começam na Praça Achilles D'Agnoluzzo (14/07/2026)",
+      "url": "https://capinzalfm.com.br/noticia/obras-do-novo-ponto-de-passageiros-comecam-na-praca-achilles-d-agnoluzzo-em-capinzal",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Praça Achilles D'Agnoluzzo",
+      "url": "https://www.openstreetmap.org/way/546659029",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

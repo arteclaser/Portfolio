@@ -8,8 +8,8 @@ export const site = {
   url: 'https://mostraqui.net',
   // Canal para correções e sugestões.
   contato: 'contato@mostraqui.net',
-  corTema: '#0F6B5C',
-  corFundo: '#FAF7F0',
+  corTema: '#0F766E',
+  corFundo: '#FFFBF5',
   // Centro da cidade e área coberta pelo mapa próprio.
   centro: [-51.6110, -27.3441] as [number, number],
   areaDoMapa: [-51.80, -27.57, -51.46, -27.27] as [number, number, number, number],

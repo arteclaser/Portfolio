@@ -1,0 +1,39 @@
+{
+  "id": "disk-pizza-sabor-do-sul",
+  "nome": "Disk Pizza Sabor do Sul",
+  "categoria": "sabores",
+  "tipo": "Pizzaria (entrega e retirada)",
+  "destaque": 1,
+  "resumo": "Pizzaria com entrega e retirada na Rua Anselmo Toaldo.",
+  "descricao": [
+    "Pizzaria com entrega e retirada na Rua Anselmo Toaldo, 62, sala 2. Participou do Passaporte Gastronômico da ACIRP em 2023.",
+    "O registro mais recente que encontramos é uma avaliação de cliente de março de 2025 na plataforma cardapio.menu."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Rua Anselmo Toaldo, 62, sala 2",
+  "coordenadas": [
+    -51.60953,
+    -27.35879
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição publicada na ficha da plataforma cardapio.menu, a cerca de 20 metros da rua no mapa. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99822-4202"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "cardapio.menu – Disk Pizza Sabor do Sul",
+      "url": "https://cardapio.menu/restaurants/capinzal/disk-pizza-sabor-do-sul",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – Lançamento: Passaporte Gastronômico (07/06/2023)",
+      "url": "https://www.acirp.org.br/novidade.php?id=237&url=lancamento-passaporte-gastronomico-",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

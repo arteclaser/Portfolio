@@ -1,0 +1,37 @@
+{
+  "id": "campo-barro-preto",
+  "nome": "Campo da comunidade de Barro Preto",
+  "nomeCurto": "Campo de Barro Preto",
+  "categoria": "natureza",
+  "tipo": "Campo de futebol",
+  "destaque": 1,
+  "resumo": "Campo de futebol da comunidade rural de Barro Preto, que recebeu jogos das finais do Campeonato Municipal em julho de 2026.",
+  "descricao": [
+    "Campo de futebol da comunidade rural de Barro Preto. Em 19 de julho de 2026, recebeu os jogos de ida das finais do Campeonato Municipal de Futebol, segundo a Rádio Capinzal.",
+    "O OpenStreetMap mostra ao lado um clube esportivo e um ginásio; não encontramos outra fonte sobre eles."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Barro Preto",
+  "coordenadas": [
+    -51.65882,
+    -27.46749
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Campo de futebol mapeado no OpenStreetMap na comunidade de Barro Preto; a notícia não traz endereço.",
+  "osm": "way/518089989",
+  "fontes": [
+    {
+      "titulo": "Rádio Capinzal – Finais do Municipal de Capinzal terminam sem gols e decisão fica para o Campo do Vasco (19/07/2026)",
+      "url": "https://capinzalfm.com.br/noticia/tudo-em-aberto-finais-do-municipal-de-capinzal-terminam-sem-gols-e-decisao-fica-para-o-campo-do-vasco",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – campo de futebol em Barro Preto",
+      "url": "https://www.openstreetmap.org/way/518089989",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

@@ -244,7 +244,7 @@ function exigir(condicao, mensagem) {
     await pe.goto(`${base}/`);
     await mapaPronto(pe);
     const fundo = await pe.evaluate(() => getComputedStyle(document.body).backgroundColor);
-    exigir(fundo === 'rgb(14, 21, 19)', `fundo: ${fundo}`);
+    exigir(fundo === 'rgb(12, 20, 18)', `fundo: ${fundo}`);
     await pe.screenshot({ path: path.join(CAPTURAS, 'inicio-escuro.png') });
     return axe(pe, 'início escuro');
   });

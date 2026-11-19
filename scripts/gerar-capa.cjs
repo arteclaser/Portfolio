@@ -15,19 +15,19 @@ const html = `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><sty
   @font-face { font-family: "Figtree"; font-weight: 300 900; src: url(${figtree}) format("woff2"); }
   @font-face { font-family: "Bricolage Grotesque"; font-weight: 200 800; src: url(${bricolage}) format("woff2"); }
   * { box-sizing: border-box; margin: 0; }
-  body { width: 1200px; height: 630px; display: grid; grid-template-columns: 520px 1fr; background: #0F6B5C; color: #FAF7F0; font-family: "Figtree", sans-serif; overflow: hidden; }
+  body { width: 1200px; height: 630px; display: grid; grid-template-columns: 520px 1fr; background: linear-gradient(120deg, #0F766E 0%, #15803D 60%, #0E7490 100%); color: #FFFBF5; font-family: "Figtree", sans-serif; overflow: hidden; }
   .texto { padding: 64px 0 64px 64px; display: flex; flex-direction: column; justify-content: space-between; }
   .marca { display: flex; align-items: center; gap: 16px; font-family: "Bricolage Grotesque"; font-size: 34px; font-weight: 700; letter-spacing: -.02em; }
   .marca svg { width: 64px; height: 64px; }
   h1 { font-family: "Bricolage Grotesque"; font-size: 68px; font-weight: 700; line-height: 1.02; letter-spacing: -.025em; }
-  p { margin-top: 22px; font-size: 27px; line-height: 1.35; color: #CFE6DF; max-width: 420px; }
-  .rodape { font-size: 22px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #F0A630; }
+  p { margin-top: 22px; font-size: 27px; line-height: 1.35; color: #F0FDF8; max-width: 420px; }
+  .rodape { font-size: 22px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #FDE68A; }
   .mapa { position: relative; margin: 44px -40px 44px 44px; border-radius: 28px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.35); background: #EDE7D9; }
   .mapa img { position: absolute; left: -430px; top: -120px; width: 1366px; }
 </style></head><body>
   <div class="texto">
     <div class="marca">
-      <svg viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="#FAF7F0"/><path d="M24 7.500c-5.800 0-10.500 4.600-10.500 10.300 0 6.900 7.400 13.900 9.600 15.800a1.400 1.400 0 0 0 1.800 0c2.200-1.900 9.600-8.900 9.600-15.800C34.500 12.100 29.800 7.500 24 7.500z" fill="#0F6B5C"/><circle cx="24" cy="17.800" r="4.400" fill="#F0A630"/><path d="M8.500 40.500c3.900-2.700 7.300-2.700 10.300 0 3 2.700 6.400 2.700 10.400 0 3.900-2.700 7.300-2.700 10.300 0" fill="none" stroke="#5FA9BB" stroke-width="2.800" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="#FFFBF5"/><path d="M24 7.500c-5.800 0-10.500 4.600-10.500 10.300 0 6.900 7.400 13.900 9.600 15.800a1.400 1.400 0 0 0 1.800 0c2.200-1.900 9.600-8.900 9.600-15.800C34.500 12.100 29.800 7.500 24 7.500z" fill="#0F766E"/><circle cx="24" cy="17.800" r="4.400" fill="#F0A630"/><path d="M8.500 40.500c3.900-2.700 7.300-2.700 10.300 0 3 2.700 6.400 2.700 10.400 0 3.900-2.700 7.300-2.700 10.300 0" fill="none" stroke="#5FA9BB" stroke-width="2.800" stroke-linecap="round"/></svg>
       Mostraqui
     </div>
     <div>

@@ -1,0 +1,53 @@
+{
+  "id": "estadio-vilson-bordin",
+  "nome": "Estádio Dr. Vilson Bordin",
+  "nomeCurto": "Estádio Vilson Bordin",
+  "outrosNomes": [
+    "Campo do Vasco",
+    "Campo do Vasco da Gama"
+  ],
+  "categoria": "natureza",
+  "tipo": "Estádio de futebol",
+  "destaque": 1,
+  "resumo": "Estádio da Associação Esportiva Vasco da Gama, o Campo do Vasco, palco de finais do Campeonato Municipal de Futebol.",
+  "descricao": [
+    "Estádio da Associação Esportiva Vasco da Gama, clube fundado em 9 de fevereiro de 1955. É conhecido como Campo do Vasco.",
+    "Recebeu as finais do Campeonato Municipal de Futebol em setembro de 2025 e foi o local marcado para a decisão de 26 de julho de 2026, segundo a Rádio Capinzal.",
+    "O estádio pertence ao clube, não ao município: fora dos dias de jogo, o acesso depende do clube."
+  ],
+  "municipio": "Capinzal",
+  "coordenadas": [
+    -51.59939,
+    -27.34455
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "Posição do estádio mapeado no OpenStreetMap.",
+  "osm": "way/546661978",
+  "fontes": [
+    {
+      "titulo": "O Tempo – Nos 71 anos, Vasco celebra título da LEOC e conquistas municipais (30/03/2026)",
+      "url": "https://otempodefato.com.br/esportes/nos-71-anos-vasco-celebra-titulo-da-leoc-e-conquistas-municipais.15467401",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – São Cristóvão e June/São Cristóvão conquistam títulos no Municipal de Futebol (29/09/2025)",
+      "url": "https://www.capinzalfm.com.br/noticia/sao-cristovao-e-june-sao-cristovao-conquistam-titulos-no-municipal-de-futebol-de-capinzal",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – Finais do Municipal de Capinzal terminam sem gols e decisão fica para o Campo do Vasco (19/07/2026)",
+      "url": "https://capinzalfm.com.br/noticia/tudo-em-aberto-finais-do-municipal-de-capinzal-terminam-sem-gols-e-decisao-fica-para-o-campo-do-vasco",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Estádio Vilson Bordin",
+      "url": "https://www.openstreetmap.org/way/546661978",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

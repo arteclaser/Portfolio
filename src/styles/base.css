@@ -1,8 +1,9 @@
 /*
  * Mostraqui Capinzal — estilos de base.
  * Contrastes calculados (WCAG 2.2, 1.4.3 e 1.4.11) com scripts/contraste.mjs:
- *   claro:  #17231F/#FAF7F0 15,1:1 · #4F5D57/#FAF7F0 6,5:1 · #0F6B5C/#FAF7F0 6,0:1 · #FFFFFF/#0F6B5C 6,4:1
- *   escuro: #E9F0EC/#0E1513 16,0:1 · #A7B5AF/#151F1C 7,9:1 · #49CDB0/#0E1513 9,4:1 · #062019/#49CDB0 8,7:1
+ *   claro:  #14211D/#FFFBF5 16:1 · #4B5B56/#FFFBF5 6,9:1 · #0F766E/#FFFBF5 5,3:1 · #FFFFFF/#0F766E 5,5:1
+ *   escuro: #EAF3EF/#0C1412 16:1 · #A9B9B3/#13201C 8:1 · #2DD4BF/#0C1412 10:1
+ *   As cores vivas das categorias passam de 4,5:1 com texto branco (ver tests/unit/cores.test.mjs).
  */
 
 @font-face {
@@ -21,25 +22,33 @@
 }
 
 :root {
-  --fundo: #FAF7F0;
+  --fundo: #FFFBF5;
   --superficie: #FFFFFF;
-  --superficie-2: #F2EEE4;
-  --superficie-3: #E9E3D6;
-  --tinta: #17231F;
-  --tinta-suave: #4F5D57;
-  --linha: #E2DCCD;
-  --linha-forte: #8A948E;
-  --marca: #0F6B5C;
-  --marca-forte: #0B5548;
-  --marca-suave: #E0F0EB;
+  --superficie-2: #F3F7F4;
+  --superficie-3: #E3ECE7;
+  --tinta: #14211D;
+  --tinta-suave: #4B5B56;
+  --linha: #E3E6DC;
+  --linha-forte: #84928C;
+  --marca: #0F766E;
+  --marca-forte: #0B5C56;
+  --marca-suave: #D5F5EE;
   --sobre-marca: #FFFFFF;
-  --sol: #F0A630;
-  --alerta: #8A4B00;
-  --alerta-fundo: #FDF1DA;
-  --foco: #0B5548;
-  --vidro: rgba(250, 247, 240, .9);
-  --sombra-1: 0 1px 2px rgba(23, 35, 31, .06), 0 2px 8px rgba(23, 35, 31, .06);
-  --sombra-2: 0 2px 6px rgba(23, 35, 31, .08), 0 12px 32px rgba(23, 35, 31, .14);
+  --sol: #F59E0B;
+  --coral: #F4623A;
+  --ceu: #38BDF8;
+  --alerta: #92400E;
+  --alerta-fundo: #FEF3C7;
+  --foco: #0B5C56;
+  --vidro: rgba(255, 251, 245, .9);
+  /* Faixa colorida do topo: todos os tons têm contraste ≥ 5:1 com texto branco. */
+  --degrade: linear-gradient(120deg, #0F766E 0%, #15803D 55%, #0E7490 100%);
+  --aurora:
+    radial-gradient(60% 80% at 0% 0%, rgba(245, 158, 11, .20), transparent 60%),
+    radial-gradient(50% 70% at 100% 0%, rgba(56, 189, 248, .22), transparent 60%),
+    radial-gradient(40% 55% at 55% 0%, rgba(244, 98, 58, .12), transparent 65%);
+  --sombra-1: 0 1px 2px rgba(20, 33, 29, .06), 0 2px 8px rgba(20, 33, 29, .07);
+  --sombra-2: 0 2px 6px rgba(20, 33, 29, .08), 0 14px 34px rgba(15, 118, 110, .16);
 
   --fonte-titulo: "Bricolage Grotesque", "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --fonte-texto: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -55,72 +64,86 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-tema="claro"]) {
-    --fundo: #0E1513;
-    --superficie: #151F1C;
-    --superficie-2: #1C2925;
-    --superficie-3: #25352F;
-    --tinta: #E9F0EC;
-    --tinta-suave: #A7B5AF;
-    --linha: #2A3833;
-    --linha-forte: #7C8B85;
-    --marca: #49CDB0;
-    --marca-forte: #7BE0C9;
-    --marca-suave: #143029;
-    --sobre-marca: #062019;
-    --sol: #F5B955;
-    --alerta: #F5C56B;
-    --alerta-fundo: #33270E;
-    --foco: #7BE0C9;
-    --vidro: rgba(14, 21, 19, .88);
+    --fundo: #0C1412;
+    --superficie: #13201C;
+    --superficie-2: #1A2B26;
+    --superficie-3: #243A33;
+    --tinta: #EAF3EF;
+    --tinta-suave: #A9B9B3;
+    --linha: #27382F;
+    --linha-forte: #7C8E87;
+    --marca: #2DD4BF;
+    --marca-forte: #7FE9DA;
+    --marca-suave: #0F332E;
+    --sobre-marca: #04211D;
+    --sol: #FBBF24;
+    --coral: #FB8B6A;
+    --ceu: #7DD3FC;
+    --alerta: #FCD34D;
+    --alerta-fundo: #3A2A0B;
+    --foco: #7FE9DA;
+    --vidro: rgba(12, 20, 18, .88);
+    --degrade: linear-gradient(120deg, #0B4F4A 0%, #0F5132 55%, #0B4A5C 100%);
+    --aurora:
+      radial-gradient(60% 80% at 0% 0%, rgba(245, 158, 11, .14), transparent 60%),
+      radial-gradient(50% 70% at 100% 0%, rgba(56, 189, 248, .14), transparent 60%),
+      radial-gradient(40% 55% at 55% 0%, rgba(244, 98, 58, .10), transparent 65%);
     --sombra-1: 0 1px 2px rgba(0, 0, 0, .3), 0 2px 8px rgba(0, 0, 0, .25);
     --sombra-2: 0 2px 6px rgba(0, 0, 0, .35), 0 12px 32px rgba(0, 0, 0, .45);
     color-scheme: dark;
   }
 }
 :root[data-tema="escuro"] {
-  --fundo: #0E1513;
-  --superficie: #151F1C;
-  --superficie-2: #1C2925;
-  --superficie-3: #25352F;
-  --tinta: #E9F0EC;
-  --tinta-suave: #A7B5AF;
-  --linha: #2A3833;
-  --linha-forte: #7C8B85;
-  --marca: #49CDB0;
-  --marca-forte: #7BE0C9;
-  --marca-suave: #143029;
-  --sobre-marca: #062019;
-  --sol: #F5B955;
-  --alerta: #F5C56B;
-  --alerta-fundo: #33270E;
-  --foco: #7BE0C9;
-  --vidro: rgba(14, 21, 19, .88);
+  --fundo: #0C1412;
+  --superficie: #13201C;
+  --superficie-2: #1A2B26;
+  --superficie-3: #243A33;
+  --tinta: #EAF3EF;
+  --tinta-suave: #A9B9B3;
+  --linha: #27382F;
+  --linha-forte: #7C8E87;
+  --marca: #2DD4BF;
+  --marca-forte: #7FE9DA;
+  --marca-suave: #0F332E;
+  --sobre-marca: #04211D;
+  --sol: #FBBF24;
+  --coral: #FB8B6A;
+  --ceu: #7DD3FC;
+  --alerta: #FCD34D;
+  --alerta-fundo: #3A2A0B;
+  --foco: #7FE9DA;
+  --vidro: rgba(12, 20, 18, .88);
+  --degrade: linear-gradient(120deg, #0B4F4A 0%, #0F5132 55%, #0B4A5C 100%);
+  --aurora:
+    radial-gradient(60% 80% at 0% 0%, rgba(245, 158, 11, .14), transparent 60%),
+    radial-gradient(50% 70% at 100% 0%, rgba(56, 189, 248, .14), transparent 60%),
+    radial-gradient(40% 55% at 55% 0%, rgba(244, 98, 58, .10), transparent 65%);
   --sombra-1: 0 1px 2px rgba(0, 0, 0, .3), 0 2px 8px rgba(0, 0, 0, .25);
   --sombra-2: 0 2px 6px rgba(0, 0, 0, .35), 0 12px 32px rgba(0, 0, 0, .45);
   color-scheme: dark;
 }
 
 /* Cor de cada categoria (claro e escuro). */
-.cat-historia { --cat: #A2452A; --cat-fundo: #F8E7E0; }
-.cat-fe { --cat: #6A4BA6; --cat-fundo: #EDE6F8; }
-.cat-natureza { --cat: #2C7438; --cat-fundo: #E1F0E2; }
-.cat-sabores { --cat: #A85400; --cat-fundo: #FBEBD6; }
-.cat-hospedagem { --cat: #1E5FAF; --cat-fundo: #E0ECFA; }
-.cat-apoio { --cat: #4A5A63; --cat-fundo: #E8EDEF; }
+.cat-historia { --cat: #BE123C; --cat-fundo: #FFE4E6; --cat-forte: #BE123C; }
+.cat-fe { --cat: #7C3AED; --cat-fundo: #EDE9FE; --cat-forte: #7C3AED; }
+.cat-natureza { --cat: #15803D; --cat-fundo: #DCFCE7; --cat-forte: #15803D; }
+.cat-sabores { --cat: #C2410C; --cat-fundo: #FFEDD5; --cat-forte: #C2410C; }
+.cat-hospedagem { --cat: #1D4ED8; --cat-fundo: #DBEAFE; --cat-forte: #1D4ED8; }
+.cat-apoio { --cat: #0E7490; --cat-fundo: #CFFAFE; --cat-forte: #0E7490; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-tema="claro"]) .cat-historia { --cat: #F2987A; --cat-fundo: #3A2018; }
-  :root:not([data-tema="claro"]) .cat-fe { --cat: #BDA8F0; --cat-fundo: #2A2140; }
-  :root:not([data-tema="claro"]) .cat-natureza { --cat: #7FCB8A; --cat-fundo: #17301C; }
-  :root:not([data-tema="claro"]) .cat-sabores { --cat: #F2B15C; --cat-fundo: #37260F; }
-  :root:not([data-tema="claro"]) .cat-hospedagem { --cat: #8BB9F3; --cat-fundo: #14283F; }
-  :root:not([data-tema="claro"]) .cat-apoio { --cat: #B3C2CA; --cat-fundo: #222C31; }
+  :root:not([data-tema="claro"]) .cat-historia { --cat: #FDA4AF; --cat-fundo: #4A1220; --cat-forte: #BE123C; }
+  :root:not([data-tema="claro"]) .cat-fe { --cat: #C4B5FD; --cat-fundo: #2E1F5E; --cat-forte: #7C3AED; }
+  :root:not([data-tema="claro"]) .cat-natureza { --cat: #86EFAC; --cat-fundo: #12351F; --cat-forte: #15803D; }
+  :root:not([data-tema="claro"]) .cat-sabores { --cat: #FDBA74; --cat-fundo: #45200C; --cat-forte: #C2410C; }
+  :root:not([data-tema="claro"]) .cat-hospedagem { --cat: #93C5FD; --cat-fundo: #172B5C; --cat-forte: #1D4ED8; }
+  :root:not([data-tema="claro"]) .cat-apoio { --cat: #67E8F9; --cat-fundo: #0F3540; --cat-forte: #0E7490; }
 }
-:root[data-tema="escuro"] .cat-historia { --cat: #F2987A; --cat-fundo: #3A2018; }
-:root[data-tema="escuro"] .cat-fe { --cat: #BDA8F0; --cat-fundo: #2A2140; }
-:root[data-tema="escuro"] .cat-natureza { --cat: #7FCB8A; --cat-fundo: #17301C; }
-:root[data-tema="escuro"] .cat-sabores { --cat: #F2B15C; --cat-fundo: #37260F; }
-:root[data-tema="escuro"] .cat-hospedagem { --cat: #8BB9F3; --cat-fundo: #14283F; }
-:root[data-tema="escuro"] .cat-apoio { --cat: #B3C2CA; --cat-fundo: #222C31; }
+:root[data-tema="escuro"] .cat-historia { --cat: #FDA4AF; --cat-fundo: #4A1220; --cat-forte: #BE123C; }
+:root[data-tema="escuro"] .cat-fe { --cat: #C4B5FD; --cat-fundo: #2E1F5E; --cat-forte: #7C3AED; }
+:root[data-tema="escuro"] .cat-natureza { --cat: #86EFAC; --cat-fundo: #12351F; --cat-forte: #15803D; }
+:root[data-tema="escuro"] .cat-sabores { --cat: #FDBA74; --cat-fundo: #45200C; --cat-forte: #C2410C; }
+:root[data-tema="escuro"] .cat-hospedagem { --cat: #93C5FD; --cat-fundo: #172B5C; --cat-forte: #1D4ED8; }
+:root[data-tema="escuro"] .cat-apoio { --cat: #67E8F9; --cat-fundo: #0F3540; --cat-forte: #0E7490; }
 
 *, *::before, *::after { box-sizing: border-box; }
 html {
@@ -531,4 +554,56 @@ hr { border: 0; border-top: 1px solid var(--linha); margin: 2rem 0; }
   .topo, .abas, .rodape, .nao-imprimir { display: none !important; }
   body { background: #fff; color: #000; font-size: 11pt; }
   a { color: inherit; }
+}
+
+/* ================================================================== camada de cor
+   Faixas em degradê (sempre com texto branco, contraste ≥ 5:1), filtros e cartões tingidos pela
+   cor da categoria e um fundo com manchas suaves de cor nas páginas de conteúdo. */
+:root {
+  --degrade-h: linear-gradient(90deg, #0F766E 0%, #15803D 60%, #0E7490 100%);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) { --degrade-h: linear-gradient(90deg, #0B4F4A 0%, #0F5132 60%, #0B4A5C 100%); }
+}
+:root[data-tema="escuro"] { --degrade-h: linear-gradient(90deg, #0B4F4A 0%, #0F5132 60%, #0B4A5C 100%); }
+
+.formato-conteudo { background-image: var(--aurora); background-repeat: no-repeat; background-size: 100% 640px; }
+
+/* Cabeçalho e rodapé em faixa colorida */
+.topo { background: var(--degrade-h); border-bottom: 0; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: 0 2px 14px rgba(15, 118, 110, .22); }
+.topo .marca, .topo .marca:hover, .topo .marca__sub { color: #FFFFFF; }
+.topo .nav a { color: #FFFFFF; }
+.topo .nav a:hover { background: rgba(255, 255, 255, .16); }
+.topo .nav a[aria-current="page"] { background: #FFFFFF; color: #0B5C56; }
+.topo .botao-icone { background: rgba(255, 255, 255, .16); border-color: rgba(255, 255, 255, .4); color: #FFFFFF; }
+.topo .botao-icone:hover { background: rgba(255, 255, 255, .28); color: #FFFFFF; }
+.topo :focus-visible, .rodape :focus-visible { outline-color: #FFFFFF; }
+
+.rodape { background: var(--degrade-h); border-top: 0; color: #FFFFFF; }
+.rodape h2, .rodape a, .rodape .marca, .rodape .marca__sub { color: #FFFFFF; }
+.rodape a:hover { color: #FFFFFF; text-decoration-thickness: .14em; }
+.rodape__nota { border-top-color: rgba(255, 255, 255, .3); }
+
+/* Botões e destaques */
+.botao { background: var(--degrade-h); color: #FFFFFF; box-shadow: 0 6px 16px rgba(15, 118, 110, .25); }
+.botao:hover { background: var(--degrade-h); color: #FFFFFF; filter: brightness(1.1); }
+.botao--claro { background: var(--superficie); color: var(--tinta); box-shadow: none; border-color: var(--marca); }
+.botao--claro:hover { background: var(--marca-suave); color: var(--tinta); filter: none; }
+.botao--fantasma { background: transparent; color: var(--marca); box-shadow: none; }
+.botao--fantasma:hover { background: var(--marca-suave); color: var(--marca-forte); filter: none; }
+.sobrelinha, .cabeca-pagina .sobrelinha { padding: .4em 1em .4em .8em; border-radius: 999px; background: var(--degrade-h); color: #FFFFFF; font-size: .82rem; letter-spacing: .07em; }
+
+/* Filtros e cartões com a cor da categoria */
+.chip { background: var(--cat-fundo, var(--superficie)); border-color: transparent; }
+.chip:hover { border-color: var(--cat); }
+.cartao { box-shadow: inset 5px 0 0 var(--cat-forte, var(--marca)); padding-left: 14px; }
+.cartao:hover { box-shadow: inset 5px 0 0 var(--cat-forte, var(--marca)), var(--sombra-2); transform: translateY(-1px); }
+.cartao[aria-current="true"] { box-shadow: inset 5px 0 0 var(--cat-forte, var(--marca)), 0 0 0 2px var(--cat), var(--sombra-1); }
+.cartao__foto--vazia {
+  background: linear-gradient(140deg, color-mix(in srgb, var(--cat-forte, var(--marca)) 72%, #FFFFFF), var(--cat-forte, var(--marca)));
+  color: #FFFFFF;
+}
+
+@media (max-width: 899px) {
+  .abas a[aria-current="page"] .abas__icone { background: var(--degrade-h); color: #FFFFFF; }
 }

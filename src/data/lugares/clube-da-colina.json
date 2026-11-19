@@ -1,0 +1,60 @@
+{
+  "id": "clube-da-colina",
+  "nome": "Clube da Colina",
+  "categoria": "natureza",
+  "tipo": "Clube social",
+  "destaque": 1,
+  "resumo": "Clube social de associados fundado em 1964, com sede e salão social no Acesso Cidade Alta.",
+  "descricao": [
+    "Clube social fundado em 1964, com sede e salão social no Acesso Cidade Alta, no bairro São Cristóvão.",
+    "Em 2025, recebeu as atividades práticas do Projeto Golfinho. Em 2026, sediou a assembleia que elegeu a diretoria da gestão 2026/2028, segundo a Rádio Capinzal.",
+    "O telefone é o publicado no Plano Municipal de Cultura, de 2021."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "São Cristóvão",
+  "endereco": "Acesso Cidade Alta – São Cristóvão",
+  "coordenadas": [
+    -51.60046,
+    -27.36543
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "Posição do clube mapeado no OpenStreetMap.",
+  "osm": "way/546671400",
+  "contato": {
+    "telefone": "(49) 3555-1244"
+  },
+  "aviso": "Clube de associados: as fontes não informam se há acesso para visitantes. Consulte o clube antes de ir.",
+  "fontes": [
+    {
+      "titulo": "Rádio Capinzal – Clube da Colina elege nova diretoria para a gestão 2026/2028 (09/06/2026)",
+      "url": "https://capinzalfm.com.br/noticia/clube-da-colina-elege-nova-diretoria-para-a-gestao-2026-2028",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – Clube da Colina realiza assembleia de prestação de contas e eleição (15/06/2023)",
+      "url": "https://capinzalfm.com.br/noticia/clube-da-colina-realiza-assembleia-de-prestacao-de-contas-e-eleicao-da-nova-diretoria-nesta-sexta-feira",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – Projeto Golfinho 2025 iniciou nesta manhã em Capinzal (31/03/2025)",
+      "url": "https://www.capinzalfm.com.br/noticia/projeto-golfinho-2025-iniciou-nesta-manha-em-capinzal",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Capinzal – Lei 3.426/2021, Plano Municipal de Cultura (PDF)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Clube da Colina",
+      "url": "https://www.openstreetmap.org/way/546671400",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

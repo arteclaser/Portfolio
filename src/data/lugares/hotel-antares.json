@@ -1,0 +1,59 @@
+{
+  "id": "hotel-antares",
+  "nome": "Hotel Antares",
+  "categoria": "hospedagem",
+  "tipo": "Hotel",
+  "destaque": 1,
+  "resumo": "Hotel no Centro, na Avenida XV de Novembro, listado no Plano Municipal de Cultura de 2021.",
+  "descricao": [
+    "Hotel no Centro, na Avenida XV de Novembro. O Plano Municipal de Cultura (2021) o descreve com quartos climatizados, Wi-Fi e estacionamento privativo.",
+    "O número do imóvel varia entre as fontes: 485 no documento da Prefeitura e 491 em diretórios. Não encontramos registro de 2025 ou 2026 sobre o funcionamento."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Avenida XV de Novembro, 485 ou 491 – Centro",
+  "coordenadas": [
+    -51.60954,
+    -27.34554
+  ],
+  "precisao": "exata",
+  "origemCoordenadas": "Posição do hotel mapeada no OpenStreetMap.",
+  "osm": "node/5282726771",
+  "contato": {
+    "telefone": "(49) 3555-4044"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Prefeitura de Capinzal – Lei 3.426/2021, Plano Municipal de Cultura (PDF)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – lista de associados (página 4)",
+      "url": "https://www.acirp.org.br/associados.php?pagina=4",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Apontador – Hospedagem e Turismo em Capinzal",
+      "url": "https://www.apontador.com.br/em/capinzal-sc/hospedagem-e-turismo",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Hotel.com.br – hotéis em Capinzal",
+      "url": "https://www.hotel.com.br/hoteis-em-capinzal.html",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "OpenStreetMap – Hotel Antares",
+      "url": "https://www.openstreetmap.org/node/5282726771",
+      "tipo": "mapa",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

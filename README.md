@@ -14,7 +14,7 @@ instalado como aplicativo e abre **mesmo sem internet**.
 
 - **Mapa próprio da região**, guardado no próprio site: nenhum pedido a serviços de mapas de terceiros,
   sem chave de API e sem custo por acesso. Tem relevo sombreado, vista em 3D e tema claro e escuro.
-- **33 lugares**, cada um com página própria: descrição, endereço, contato, posição no mapa (com aviso
+- **49 lugares**, cada um com página própria: descrição, endereço, contato, posição no mapa (com aviso
   quando é aproximada), botão "Como chegar" e **as fontes de cada informação**.
 - **3 roteiros** calculados sobre as ruas do OpenStreetMap, com distância, tempo, paradas numeradas e
   perfil de altitude: centro histórico a pé, volta das duas pontes e interior de carro.

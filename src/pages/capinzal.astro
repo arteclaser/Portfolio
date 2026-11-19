@@ -40,8 +40,8 @@ const levantamento = '2026-11-19';
     <section aria-labelledby="t-numeros">
       <h2 id="t-numeros" class="oculto-visual">Capinzal em números</h2>
       <dl class="numeros">
-        {blocos.numeros.map((item) => (
-          <div>
+        {blocos.numeros.map((item, i) => (
+          <div class={['cat-natureza', 'cat-hospedagem', 'cat-sabores', 'cat-historia', 'cat-fe', 'cat-apoio'][i % 6]}>
             <dt>{item.rotulo}</dt>
             <dd>
               {item.valor}

@@ -1,13 +1,13 @@
 // Categorias do guia. Cada uma tem cor e ícone próprios: a cor nunca é o único sinal.
-// Contrastes (WCAG 2.2, 1.4.3): texto branco sobre "cor" ≥ 5,3:1; "corEscuro" sobre o fundo escuro ≥ 8,4:1.
+// Contrastes (WCAG 2.2, 1.4.3): texto branco sobre "cor" ≥ 5,0:1; "corEscuro" sobre o fundo escuro ≥ 9,8:1.
 export const categorias = [
   {
     id: 'historia',
     nome: 'História e cultura',
     curto: 'História',
     icone: 'landmark',
-    cor: '#A2452A',
-    corEscuro: '#F2987A',
+    cor: '#BE123C',
+    corEscuro: '#FDA4AF',
     descricao: 'Patrimônio, memória, museus, pontes e prédios que contam a história do município.',
   },
   {
@@ -15,8 +15,8 @@ export const categorias = [
     nome: 'Fé e devoção',
     curto: 'Fé',
     icone: 'church',
-    cor: '#6A4BA6',
-    corEscuro: '#BDA8F0',
+    cor: '#7C3AED',
+    corEscuro: '#C4B5FD',
     descricao: 'Igrejas, capelas e lugares de devoção na cidade e no interior.',
   },
   {
@@ -24,8 +24,8 @@ export const categorias = [
     nome: 'Natureza e lazer',
     curto: 'Natureza',
     icone: 'trees',
-    cor: '#2C7438',
-    corEscuro: '#7FCB8A',
+    cor: '#15803D',
+    corEscuro: '#86EFAC',
     descricao: 'Rio do Peixe, praças, áreas de lazer, paisagens e espaços ao ar livre.',
   },
   {
@@ -33,8 +33,8 @@ export const categorias = [
     nome: 'Onde comer',
     curto: 'Comer',
     icone: 'utensils',
-    cor: '#A85400',
-    corEscuro: '#F2B15C',
+    cor: '#C2410C',
+    corEscuro: '#FDBA74',
     descricao: 'Restaurantes, cafés, padarias e produtos locais.',
   },
   {
@@ -42,8 +42,8 @@ export const categorias = [
     nome: 'Onde ficar',
     curto: 'Ficar',
     icone: 'bed-double',
-    cor: '#1E5FAF',
-    corEscuro: '#8BB9F3',
+    cor: '#1D4ED8',
+    corEscuro: '#93C5FD',
     descricao: 'Hotéis e pousadas.',
   },
   {
@@ -51,8 +51,8 @@ export const categorias = [
     nome: 'Apoio ao visitante',
     curto: 'Apoio',
     icone: 'info',
-    cor: '#4A5A63',
-    corEscuro: '#B3C2CA',
+    cor: '#0E7490',
+    corEscuro: '#67E8F9',
     descricao: 'Rodoviária, serviços públicos e pontos de referência para quem chega.',
   },
 ] as const;
