@@ -196,6 +196,13 @@ function exigir(condicao, mensagem) {
     await p.waitForSelector('[data-mini-mapa] .maplibregl-canvas', { timeout: 30000 });
     return axe(p, 'lugar');
   });
+  await conferir('lugar sem foto oferece o link para as fotos no Google Maps e o canal de correção', async () => {
+    await p.goto(`${base}/lugares/area-de-lazer/`);
+    exigir((await p.locator('.sem-foto a[href*="google.com/maps/search"]').count()) === 1, 'sem link para fotos');
+    exigir((await p.locator('a[href^="mailto:contato@mostraqui.net"]').count()) >= 2, 'sem canal de correção');
+    exigir(await p.getByText('Não é um canal oficial da Prefeitura').first().isVisible(), 'sem o aviso de guia independente');
+    return axe(p, 'lugar sem foto');
+  });
   await conferir('estabelecimento "a confirmar" mostra o aviso', async () => {
     await p.goto(`${base}/lugares/corujao-lanches/`);
     exigir(await p.getByText('Funcionamento a confirmar').first().isVisible(), 'aviso ausente');

@@ -109,12 +109,37 @@ async function paginaDaRedeOuGuardada(pedido) {
 async function guardadoOuRede(pedido, nomeDoCache) {
   const guardado = await caches.match(pedido);
   if (guardado) return guardado;
-  const resposta = await fetch(pedido);
-  if (resposta.ok && resposta.status === 200) {
-    const cache = await caches.open(nomeDoCache);
-    cache.put(pedido, resposta.clone());
+  try {
+    const resposta = await fetch(pedido);
+    if (resposta.ok && resposta.status === 200) {
+      const cache = await caches.open(nomeDoCache);
+      cache.put(pedido, resposta.clone());
+    }
+    return resposta;
+  } catch (erro) {
+    // Sem internet e sem esta versão da foto: usa outra versão da mesma foto que já esteja guardada.
+    if (pedido.destination === 'image') {
+      const substituta = await outraVersaoDaFoto(new URL(pedido.url).pathname);
+      if (substituta) return substituta;
+    }
+    throw erro;
   }
-  return resposta;
+}
+
+/** As versões de uma foto têm o mesmo começo no nome: "ponte.AbC123_" + variante + extensão. */
+async function outraVersaoDaFoto(caminho) {
+  const prefixo = caminho.slice(0, caminho.lastIndexOf('_') + 1);
+  if (!prefixo.startsWith('/assets/') || prefixo === '/assets/') return null;
+  let melhor = null;
+  for (const nome of [CACHE_VISITADOS, CACHE_APP]) {
+    const cache = await caches.open(nome);
+    for (const chave of await cache.keys()) {
+      if (!new URL(chave.url).pathname.startsWith(prefixo)) continue;
+      const dados = await (await cache.match(chave)).blob();
+      if (!melhor || dados.size > melhor.size) melhor = dados;
+    }
+  }
+  return melhor ? new Response(melhor, { headers: { 'Content-Type': melhor.type || 'image/webp' } }) : null;
 }
 
 async function guardadoEAtualiza(pedido) {

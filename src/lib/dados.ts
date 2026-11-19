@@ -71,6 +71,12 @@ export function linkGoogleMaps(lugar: Lugar): string {
   return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destino)}`;
 }
 
+/** Busca do lugar no Google Maps, onde ficam as fotos publicadas por visitantes (o guia não as copia). */
+export function linkFotosGoogle(lugar: Lugar): string {
+  const cidade = lugar.municipio.includes('Capinzal') ? 'Capinzal' : lugar.municipio;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${lugar.nome}, ${cidade} SC`)}`;
+}
+
 export function linkWaze(lugar: Lugar): string {
   const [lon, lat] = lugar.coordenadas;
   return `https://waze.com/ul?ll=${lat},${lon}&navigate=yes`;

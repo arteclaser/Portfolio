@@ -23,6 +23,17 @@
   "origemCoordenadas": "OpenStreetMap (via 546636154), coerente com as coordenadas publicadas pela Prefeitura de Ouro.",
   "osm": "way/546636154",
   "aviso": "Em 22 de outubro de 2026, a Prefeitura de Ouro informou interdição parcial do acesso pelo lado de Ouro, por causa das obras da Rua Coberta na Praça Pio XII. Confirme se a travessia está liberada.",
+  "imagens": [
+    {
+      "arquivo": "ponte-pensil-2008.jpg",
+      "alt": "Trecho do Rio do Peixe com a ponte pênsil ao centro, na divisa entre Capinzal e Ouro.",
+      "autor": "Deyvid Setti e Eloy Olindo Setti",
+      "licenca": "Domínio público",
+      "origem": "https://commons.wikimedia.org/wiki/File:Ponte_P%C3%AAnsil_Capinzal_Santa_Catarina_Brasil.JPG",
+      "ano": "2008",
+      "legenda": "A ponte em 2008, antes da reforma de 2018"
+    }
+  ],
   "fontes": [
     {
       "titulo": "Dicas sobre turismo / O que fazer – Portal Municipal de Turismo de Capinzal",

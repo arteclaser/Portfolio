@@ -8,7 +8,7 @@ import Foto from '../../components/Foto.astro';
 import Icone from '../../components/Icone.astro';
 import { categoriaPorId } from '../../data/categorias';
 import { site } from '../../data/site';
-import { dataPorExtenso, imagem, linkGoogleMaps, linkOpenStreetMap, linkWaze, lugares, rotasDoLugar, urlLugar, urlRota, vizinhos } from '../../lib/dados';
+import { dataPorExtenso, imagem, linkFotosGoogle, linkGoogleMaps, linkOpenStreetMap, linkWaze, lugares, rotasDoLugar, urlLugar, urlRota, vizinhos } from '../../lib/dados';
 import { formatarDistancia, formatarDuracao } from '../../lib/geo';
 import type { Lugar } from '../../lib/tipos';
 import Base from '../../layouts/Base.astro';
@@ -86,6 +86,7 @@ const estruturado = {
           <div>
             <Icone nome={categoria.icone} tamanho={44} />
             <p>Ainda não temos foto de uso livre deste lugar.</p>
+            <p><a href={linkFotosGoogle(lugar)} target="_blank" rel="noopener">Ver fotos no Google Maps</a></p>
           </div>
         </div>
       )}
@@ -171,6 +172,7 @@ const estruturado = {
             <template><Icone nome={categoria.icone} tamanho={17} /></template>
           </div>
           <p class="lateral__links nao-imprimir">
+            <a href={linkFotosGoogle(lugar)} target="_blank" rel="noopener">Fotos no Google Maps</a>
             <a href={linkWaze(lugar)} target="_blank" rel="noopener">Abrir no Waze</a>
             <a href={linkOpenStreetMap(lugar)} target="_blank" rel="noopener">Ver no OpenStreetMap</a>
           </p>
@@ -207,7 +209,13 @@ const estruturado = {
 
       <div class="secao estreito" style="margin-inline:0">
         <Fontes fontes={lugar.fontes} titulo="De onde vêm estas informações" />
-        <p class="conferido" style="margin-top:18px"><Icone nome="shield-check" tamanho={18} />Informações conferidas em {dataPorExtenso(lugar.conferidoEm)}.</p>
+        <p class="conferido" style="margin-top:18px">
+          <Icone nome="shield-check" tamanho={18} />
+          <span>
+            Informações conferidas em {dataPorExtenso(lugar.conferidoEm)}.
+            Algo mudou? <a href={`mailto:${site.contato}?subject=${encodeURIComponent(`Correção: ${lugar.nome}`)}`}>Envie uma correção</a>.
+          </span>
+        </p>
       </div>
     </div>
   </article>

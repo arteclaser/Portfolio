@@ -76,21 +76,23 @@ se há atrativos listados só ali:
 
 ## 5. Fotos
 
-Só a Igreja Matriz tem foto publicada. As demais fotos livres já escolhidas (Ponte Pênsil, Museu Vitor
-Almeida, Terminal Rodoviário, Centro Educacional, Prefeitura) não puderam ser baixadas no dia do
-levantamento, porque o Wikimedia Commons limitou os acessos. Para baixá-las:
+Seis lugares têm foto de uso livre, do Wikimedia Commons: Igreja Matriz, Ponte Pênsil, Museu Vitor
+Almeida, Terminal Rodoviário, Centro Educacional e Prefeitura. A foto da Ponte Pênsil é de 2008,
+anterior à reforma de 2018.
 
-```bash
-npm run fotos
-```
+Para os outros lugares não há foto de uso livre. Caminhos possíveis: fotografar os lugares (fotos
+próprias podem ser usadas à vontade), pedir fotos a moradores e estabelecimentos com autorização por
+escrito, ou publicar fotos no Wikimedia Commons com licença livre. Enquanto isso, cada página tem o
+link "Fotos no Google Maps".
 
-Para os outros lugares não há foto de uso livre. A Secretaria pode ceder fotos próprias (com
-autorização por escrito do autor) ou publicar fotos no Wikimedia Commons com licença livre.
+## 6. Decisões já tomadas (19/11/2026)
 
-## 6. Decisões de quem responde pelo guia
-
-- **Canal para correções:** definir um e-mail ou formulário e incluir na página "Sobre".
-- **Identificação institucional:** o site não usa brasão nem se apresenta como canal oficial da
-  Prefeitura. Se for adotado oficialmente, incluir a identificação e os créditos.
+- **Canal para correções:** `contato@mostraqui.net`, publicado no rodapé, na página "Sobre" e em cada
+  lugar. **Conferir se essa caixa de e-mail existe na hospedagem** (cPanel → Contas de e-mail); sem
+  ela, as mensagens voltam.
+- **Identificação:** o guia é uma iniciativa particular e independente, não oficial. O rodapé e a
+  página "Sobre" dizem isso, e o site não usa brasão nem símbolos do município.
+- **Fotos do Google:** não são copiadas para o site, porque pertencem a quem as publicou. Cada lugar
+  tem o link "Fotos no Google Maps", que abre a ficha do lugar no aplicativo do Google.
 - **Roteiros:** os três roteiros são sugestões do guia. Quando o município definir a rota oficial
-  (em planejamento desde 2023, com INCOTUR e Sebrae), substituir ou marcar como oficial.
+  (em planejamento desde 2023, com INCOTUR e Sebrae), vale incluí-la e marcá-la como oficial.

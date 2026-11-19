@@ -25,6 +25,16 @@
     "site": "https://capinzal.sc.gov.br"
   },
   "aviso": "O telefone vem do portal de turismo (página de 2023) e pode estar desatualizado.",
+  "imagens": [
+    {
+      "arquivo": "prefeitura-2025.jpg",
+      "alt": "Prédio da Prefeitura de Capinzal.",
+      "autor": "DAR7 (Wikimedia Commons)",
+      "licenca": "CC0 1.0 (domínio público)",
+      "origem": "https://commons.wikimedia.org/wiki/File:Capinzal_SC_Brasil_Prefeitura_2025.jpg",
+      "ano": "2025"
+    }
+  ],
   "fontes": [
     {
       "titulo": "Prefeitura de Capinzal – “Histórias de Natal 2025” (programação com o endereço da Prefeitura)",

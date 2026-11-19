@@ -2,6 +2,7 @@
 import '../styles/conteudo.css';
 import Icone from '../components/Icone.astro';
 import creditos from '../data/creditos-imagens.json';
+import { site } from '../data/site';
 import { dataPorExtenso, lugares, rotas } from '../lib/dados';
 import Base from '../layouts/Base.astro';
 
@@ -23,6 +24,13 @@ const unicos = [...new Map((creditos as { arquivo: string; autor: string; licenc
     </header>
 
     <div class="prosa">
+      <h2 id="quem-faz">Quem faz</h2>
+      <p>
+        Este guia é uma iniciativa particular e independente. <strong>Não é um canal oficial da Prefeitura de Capinzal</strong> nem de
+        outro órgão público, e não usa os símbolos do município. As informações vêm de fontes públicas, citadas em cada página.
+        Para falar com o guia: <a href={`mailto:${site.contato}`}>{site.contato}</a>.
+      </p>
+
       <h2 id="dados">Dados e fontes</h2>
       <p>
         O guia tem {lugares.length} lugares e {rotas.length} roteiros, apoiados em {fontesDistintas} fontes diferentes. O levantamento foi feito
@@ -66,8 +74,8 @@ const unicos = [...new Map((creditos as { arquivo: string; autor: string; licenc
       </ul>
       <h3>Fotos</h3>
       <p>
-        O guia só usa fotos de uso livre, com autoria e licença registradas. Quando não há foto livre de um lugar, a página mostra um
-        aviso em vez de uma imagem genérica.
+        O guia só publica fotos de uso livre, com autoria e licença registradas. Fotos de buscadores e de aplicativos de mapas pertencem a
+        quem as publicou e não são copiadas: quando não há foto livre de um lugar, a página traz um link para ver as fotos no Google Maps.
       </p>
       {unicos.length > 0 && (
         <ul class="lista-creditos">
@@ -109,7 +117,8 @@ const unicos = [...new Map((creditos as { arquivo: string; autor: string; licenc
       <h2 id="correcoes">Correções</h2>
       <p>
         Um guia como este envelhece: lugares fecham, mudam de nome ou de horário. Cada página informa a data da última conferência.
-        Quem conhece Capinzal é a melhor fonte para corrigir e completar estas informações.
+        Quem conhece Capinzal é a melhor fonte para corrigir e completar estas informações: escreva para
+        <a href={`mailto:${site.contato}`}>{site.contato}</a>, se possível com o endereço de uma página que confirme a mudança.
       </p>
     </div>
   </div>

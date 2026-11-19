@@ -20,6 +20,16 @@
   "origemCoordenadas": "OpenStreetMap (via 131354770).",
   "osm": "way/131354770",
   "aviso": "Linhas e horários de ônibus não foram verificados. Consulte as empresas de transporte.",
+  "imagens": [
+    {
+      "arquivo": "terminal-rodoviario.jpg",
+      "alt": "Terminal Rodoviário de Capinzal.",
+      "autor": "DAR7 (Wikimedia Commons)",
+      "licenca": "CC0 1.0 (domínio público)",
+      "origem": "https://commons.wikimedia.org/wiki/File:Capinzal_SC_Brasil_Terminal_Rodovi%C3%A1rio.jpg",
+      "ano": "2025"
+    }
+  ],
   "fontes": [
     {
       "titulo": "O Tempo – \"É preciso transformar Capinzal num município turístico\"",

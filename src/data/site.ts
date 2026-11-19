@@ -6,6 +6,8 @@ export const site = {
   descricao:
     'Mapa turístico interativo de Capinzal (SC): lugares para visitar, onde comer, onde ficar e roteiros traçados pelas ruas. Funciona no celular, inclusive sem internet.',
   url: 'https://mostraqui.net',
+  // Canal para correções e sugestões.
+  contato: 'contato@mostraqui.net',
   corTema: '#0F6B5C',
   corFundo: '#FAF7F0',
   // Centro da cidade e área coberta pelo mapa próprio.

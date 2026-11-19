@@ -27,6 +27,16 @@
     "email": "cultura@capinzal.sc.gov.br"
   },
   "aviso": "O horário é de 2021 e não foi reconfirmado. Ligue antes de ir.",
+  "imagens": [
+    {
+      "arquivo": "museu-vitor-almeida.jpg",
+      "alt": "Fachada do Museu Histórico Municipal Vitor Almeida, em Capinzal.",
+      "autor": "DAR7 (Wikimedia Commons)",
+      "licenca": "CC0 1.0 (domínio público)",
+      "origem": "https://commons.wikimedia.org/wiki/File:Museu_Hist%C3%B3rico_Municipal_Vitor_Almeida_em_Capinzal.jpg",
+      "ano": "2026"
+    }
+  ],
   "fontes": [
     {
       "titulo": "Lei nº 3.426, de 18 de novembro de 2021 – Plano Municipal de Cultura de Capinzal (com mapeamento cultural anexo)",

@@ -20,9 +20,9 @@
 
 | Verificação | Resultado |
 | --- | --- |
-| `npm run conferir` | 33 lugares, 3 roteiros, 105 fontes distintas, sem erros |
+| `npm run conferir` | 33 lugares, 3 roteiros, 105 fontes distintas, 8 fotos com licença registrada, sem erros |
 | `npm test` | 15 testes unitários aprovados (distâncias, formatação, busca sem acentos, contraste das cores) |
-| `npm run test:navegador` (Playwright + axe-core 4.x, Chromium) | 28 de 28 verificações: computador, celular (Pixel 7), tema escuro, teclado, alvos de toque, axe sem violações WCAG A/AA em todos os tipos de página, nenhum erro de console, nenhum bloqueio de CSP, nenhum pedido a terceiros, modo sem internet |
+| `npm run test:navegador` (Playwright + axe-core 4.x, Chromium) | 29 de 29 verificações: computador, celular (Pixel 7), tema escuro, teclado, alvos de toque, axe sem violações WCAG A/AA em todos os tipos de página, nenhum erro de console, nenhum bloqueio de CSP, nenhum pedido a terceiros, modo sem internet |
 | Apache 2.4.58 com o `.htaccess` do projeto | Aprovado (ver [IMPLANTACAO.md](IMPLANTACAO.md)) |
 | Ensaio da implantação por FTPS | Aprovado em 7 cenários (ver [IMPLANTACAO.md](IMPLANTACAO.md)) |
 | GitHub Actions, fluxo *Testes* (dados, testes unitários, montagem e navegador nos servidores do GitHub) | Aprovado na execução nº 27 (commit `3ad5731`) |
@@ -41,8 +41,8 @@
 
 ## Limitações conhecidas
 
-- **Fotos:** só 1 dos 33 lugares tem foto. Há fotos livres escolhidas para mais 5, que não puderam ser
-  baixadas no dia (limite de acessos do Wikimedia Commons). Ver [PENDENCIAS.md](PENDENCIAS.md).
+- **Fotos:** 6 dos 33 lugares têm foto de uso livre (8 fotos do Wikimedia Commons). Os demais mostram um
+  aviso e o link "Fotos no Google Maps". Ver [PENDENCIAS.md](PENDENCIAS.md).
 - **10 estabelecimentos "a confirmar"** e 14 posições aproximadas, todas sinalizadas no site.
 - **Poucos atrativos de natureza e do interior:** não há fonte pública para cascatas, mirantes, trilhas
   ou propriedades com visitação.

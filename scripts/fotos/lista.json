@@ -1,6 +1,12 @@
 {
   "igreja-matriz": [
     {
+      "arquivo": "igreja-matriz-2008.jpg",
+      "titulo": "File:Igreja Matriz Capinzal Santa Catarina Brasil.JPG",
+      "alt": "Igreja Matriz São Paulo Apóstolo vista da rua, com a cúpula branca e a escadaria de acesso.",
+      "legenda": "A matriz em 2008"
+    },
+    {
       "arquivo": "igreja-matriz-8.jpg",
       "titulo": "File:Capinzal SC Brasil Igreja Matriz de São Paulo Apóstolo (8).jpg",
       "alt": "Fachada da Igreja Matriz São Paulo Apóstolo, em Capinzal."
@@ -9,11 +15,6 @@
       "arquivo": "igreja-matriz-3.jpg",
       "titulo": "File:Capinzal SC Brasil Igreja Matriz de São Paulo Apóstolo (3).jpg",
       "alt": "Igreja Matriz São Paulo Apóstolo, em Capinzal."
-    },
-    {
-      "arquivo": "igreja-matriz-2008.jpg",
-      "titulo": "File:Igreja Matriz Capinzal Santa Catarina Brasil.JPG",
-      "alt": "Igreja Matriz São Paulo Apóstolo em 2008."
     }
   ],
   "ponte-pensil": [
@@ -44,11 +45,6 @@
       "titulo": "File:Capinzal SC Brasil Centro Educacional Prefeito Celso Farina (6).jpg",
       "alt": "Centro Educacional Prefeito Celso Farina, em Capinzal.",
       "legenda": "O prédio em 2015"
-    },
-    {
-      "arquivo": "celso-farina-2.jpg",
-      "titulo": "File:Capinzal SC Brasil Centro Educacional Prefeito Celso Farina (2).jpg",
-      "alt": "Outra vista do Centro Educacional Prefeito Celso Farina."
     }
   ],
   "prefeitura": [

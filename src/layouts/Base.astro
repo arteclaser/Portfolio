@@ -110,7 +110,8 @@ const abas = navegacao.filter((item) => item.id !== 'sobre');
                 </span>
               </a>
               <p class="rodape__lema">
-                Mapa turístico de Capinzal, feito com dados abertos e com as fontes citadas em cada página.
+                Guia independente de turismo de Capinzal, feito com dados abertos e com as fontes citadas em cada página.
+                Não é um canal oficial da Prefeitura.
               </p>
             </div>
             <div>
@@ -129,6 +130,7 @@ const abas = navegacao.filter((item) => item.id !== 'sobre');
                 <li><a href="/sobre/#dados">Dados e fontes</a></li>
                 <li><a href="/sobre/#privacidade">Privacidade</a></li>
                 <li><a href="/sobre/#acessibilidade">Acessibilidade</a></li>
+                <li><a href={`mailto:${site.contato}`}>{site.contato}</a></li>
               </ul>
             </div>
           </div>

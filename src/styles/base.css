@@ -359,7 +359,7 @@ hr { border: 0; border-top: 1px solid var(--linha); margin: 2rem 0; }
 .rodape li + li { margin-top: .2em; }
 .rodape a { color: var(--tinta); }
 .rodape li a { display: inline-block; padding: 3px 0; }
-.rodape__lema { margin: 14px 0 0; max-width: 38ch; }
+.rodape__lema { margin: 14px 0 0; max-width: 40ch; }
 .rodape__nota { margin: 28px 0 0; padding-top: 20px; border-top: 1px solid var(--linha); font-size: .88rem; }
 
 /* Barra de abas no celular (como em um aplicativo). */

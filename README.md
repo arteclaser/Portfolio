@@ -22,6 +22,8 @@ instalado como aplicativo e abre **mesmo sem internet**.
 - **Página da cidade** com dados do IBGE, história, acessos e calendário de eventos, tudo com fonte.
 - **Modo sem internet:** depois da primeira visita, as páginas e o mapa ficam guardados no aparelho.
 - **Privacidade:** sem cadastro, sem cookies e sem rastreamento.
+- **Guia independente:** iniciativa particular, sem vínculo oficial com a Prefeitura. Correções:
+  `contato@mostraqui.net`.
 - **Acessibilidade:** meta WCAG 2.2 nível AA, com lista equivalente ao mapa, uso por teclado e
   contrastes calculados.
 

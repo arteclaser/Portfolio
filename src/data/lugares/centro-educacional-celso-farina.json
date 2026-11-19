@@ -25,6 +25,17 @@
   "osm": "way/131342954",
   "horario": "Biblioteca: segunda a sexta, das 7h às 18h, sem fechar ao meio-dia (informação de junho de 2025)",
   "aviso": "O número do endereço da biblioteca aparece de formas diferentes nas fontes (550, 505 e 1655), sempre na Rua Ernesto Hachmann.",
+  "imagens": [
+    {
+      "arquivo": "celso-farina-6.jpg",
+      "alt": "Centro Educacional Prefeito Celso Farina, em Capinzal.",
+      "autor": "DAR7 (Wikimedia Commons)",
+      "licenca": "CC0 1.0 (domínio público)",
+      "origem": "https://commons.wikimedia.org/wiki/File:Capinzal_SC_Brasil_Centro_Educacional_Prefeito_Celso_Farina_(6).jpg",
+      "ano": "2015",
+      "legenda": "O prédio em 2015"
+    }
+  ],
   "fontes": [
     {
       "titulo": "Lei nº 3.426, de 18 de novembro de 2021 – Plano Municipal de Cultura de Capinzal (com mapeamento cultural anexo)",
