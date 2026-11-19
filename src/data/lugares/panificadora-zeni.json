@@ -4,13 +4,14 @@
   "categoria": "sabores",
   "tipo": "Padaria e café",
   "destaque": 1,
-  "resumo": "Padaria e café no Centro, mapeada no OpenStreetMap e associada à ACIRP.",
+  "resumo": "Padaria e café no Centro, na Rua Ernesto Hachmann, associada à ACIRP.",
   "descricao": [
-    "Padaria e café no Centro, mapeada no OpenStreetMap e listada entre os associados da ACIRP.",
-    "O jornal O Tempo cita, em julho de 2025 e em fevereiro de 2026, o “Zeni Aroma e Sabores” como ponto de encontro para o café da manhã em Capinzal. Nenhuma fonte confirma que se trata do mesmo estabelecimento."
+    "Padaria e café no Centro, mapeada no OpenStreetMap, listada entre os associados da ACIRP e registrada na base aberta Overture Maps na Rua Ernesto Hachmann, 75.",
+    "O café Zeni Aroma e Sabores, na Rua Dona Linda Santos, aparece na mesma base com o mesmo telefone."
   ],
   "municipio": "Capinzal",
   "localidade": "Centro",
+  "endereco": "Rua Ernesto Hachmann, 75 – Centro",
   "coordenadas": [
     -51.612,
     -27.34193
@@ -19,7 +20,8 @@
   "origemCoordenadas": "Posição do prédio mapeado no OpenStreetMap.",
   "osm": "way/588355354",
   "contato": {
-    "telefone": "(49) 3555-1999"
+    "telefone": "(49) 3555-1999",
+    "facebook": "https://www.facebook.com/1060905910675941"
   },
   "situacao": "a-confirmar",
   "fontes": [
@@ -36,15 +38,9 @@
       "acesso": "2026-11-19"
     },
     {
-      "titulo": "O Tempo – Reencontro de Barbieri e Enio no Zeni Aroma e Sabores (22/07/2025)",
-      "url": "https://www.otempodefato.com.br/geral/amizade-que-resiste-ao-tempo-reencontro-de-barbieri-e-enio-no-zeni-aroma-e-sabores.15439296",
-      "tipo": "imprensa",
-      "acesso": "2026-11-19"
-    },
-    {
-      "titulo": "O Tempo – Amizade que o tempo não apaga em Capinzal e Ouro (06/02/2026)",
-      "url": "https://otempodefato.com.br/geral/amizade-que-o-tempo-nao-apaga-em-capinzal-e-ouro.15462180",
-      "tipo": "imprensa",
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Panificadora Zeni”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.34345/-51.61209",
+      "tipo": "base",
       "acesso": "2026-11-19"
     }
   ],

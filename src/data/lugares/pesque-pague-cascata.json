@@ -2,6 +2,7 @@
   "id": "pesque-pague-cascata",
   "nome": "Pesque e Pague Cascata",
   "outrosNomes": [
+    "Pesque Pague Vale das Águas",
     "Restaurante e Lanchonete Cascata",
     "Pesque e Pague Parizzotto",
     "Pesque-pague Cascata"
@@ -9,25 +10,27 @@
   "categoria": "natureza",
   "tipo": "Pesque-pague e restaurante",
   "destaque": 1,
-  "resumo": "Pesque-pague com restaurante e lanchonete no acesso a Zortéa. O registro mais recente que encontramos é de dezembro de 2022.",
+  "resumo": "Pesque-pague com restaurante e lanchonete no acesso a Zortéa, também registrado como Pesque Pague Vale das Águas.",
   "descricao": [
     "Pesque-pague com restaurante e lanchonete, apresentado pelo jornal O Tempo em dezembro de 2022 como instalado no antigo Pesque e Pague Parizzotto, no acesso de Capinzal a Zortéa, antes do loteamento Recanto dos Pássaros.",
-    "Na época, o jornal informou serviço de almoço e porções e atendimento das 9h às 22h. Não encontramos registro de 2025 ou 2026 que confirme o funcionamento, o horário ou o telefone."
+    "Na época, o jornal informou serviço de almoço e porções e atendimento das 9h às 22h. Não encontramos registro de 2025 ou 2026 que confirme o funcionamento ou o horário.",
+    "A base aberta Overture Maps registra, com o mesmo telefone, o “Pesque Pague Vale das Águas” (dados da página no Facebook atualizados em 14/09/2026, com índice de confiança baixo: 0,53). A posição no mapa vem desse registro."
   ],
   "municipio": "Capinzal",
   "localidade": "Acesso a Zortéa",
   "endereco": "Acesso Capinzal–Zortéa, antes do loteamento Recanto dos Pássaros",
   "coordenadas": [
-    -51.57382,
-    -27.39433
+    -51.57085,
+    -27.3896
   ],
   "precisao": "aproximada",
-  "origemCoordenadas": "Posição aproximada: ponto da rodovia mais próximo do loteamento Recanto dos Pássaros, que o jornal usa como referência. O local exato não foi encontrado em mapa; pode haver diferença de até 1 km.",
+  "origemCoordenadas": "Posição do registro “Pesque Pague Vale das Águas” na base aberta Overture Maps, que traz o mesmo telefone publicado pelo jornal em 2022. Não foi conferida no local.",
   "contato": {
-    "telefone": "(49) 99930-3728"
+    "telefone": "(49) 99930-3728",
+    "facebook": "https://www.facebook.com/103135876072348"
   },
   "situacao": "a-confirmar",
-  "aviso": "A posição no mapa é aproximada: peça a localização por telefone antes de sair.",
+  "aviso": "A posição no mapa vem de uma base aberta e não foi conferida: peça a localização por telefone antes de sair.",
   "fontes": [
     {
       "titulo": "O Tempo – Agora sim, Capinzal tem o Restaurante e Lanchonete Cascata (13/12/2022)",
@@ -39,6 +42,12 @@
       "titulo": "O Tempo – Ligeirinho (15/12/2022)",
       "url": "https://otempodefato.com.br/geral/ligeirinho.368627",
       "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Pesque Pague  Vale das Águas”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.3896/-51.57085",
+      "tipo": "base",
       "acesso": "2026-11-19"
     }
   ],

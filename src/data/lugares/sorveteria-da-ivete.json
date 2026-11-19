@@ -1,0 +1,34 @@
+{
+  "id": "sorveteria-da-ivete",
+  "nome": "Sorveteria da Ivete",
+  "categoria": "sabores",
+  "tipo": "Sorveteria",
+  "destaque": 1,
+  "resumo": "Sorveteria em Ouro, cidade vizinha, perto da Praça Pio XII.",
+  "descricao": [
+    "Sorveteria na Rua Governador Jorge Lacerda, em Ouro.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Ouro",
+  "endereco": "Rua Governador Jorge Lacerda, 1273 – Ouro",
+  "coordenadas": [
+    -51.61738,
+    -27.34232
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 10 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 3555-1252",
+    "facebook": "https://www.facebook.com/1146105472066759"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Sorveteria Da Ivete”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.34232/-51.61738",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

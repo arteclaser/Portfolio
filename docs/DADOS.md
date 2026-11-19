@@ -44,8 +44,18 @@ Comércio abre e fecha. Por isso há dois níveis:
 
 - `"situacao": "confirmado"` com `"evidencia"`: existe registro público **datado de 2025 ou 2026**
   mostrando o lugar em atividade (notícia, publicação do próprio estabelecimento).
-- `"situacao": "a-confirmar"`: o lugar consta em **duas ou mais fontes**, mas sem registro recente.
-  A página mostra o selo "Funcionamento a confirmar".
+- `"situacao": "a-confirmar"`: o lugar consta em **duas ou mais fontes**, ou em uma fonte oficial ou
+  base de dados aberta (fonte do tipo `base`), mas sem registro recente. A página mostra o selo
+  "Funcionamento a confirmar".
+
+**Base de dados aberta (tipo `base`).** O guia usa a base *Places* da Overture Maps Foundation
+(licença CDLA Permissive 2.0), que reúne registros de estabelecimentos com nome, endereço, telefone,
+posição e um índice de confiança de 0 a 1. Em Capinzal, quase todos os registros vêm da página do
+próprio estabelecimento no Facebook. Regras: só entra sozinho o registro com confiança de 0,77 ou mais;
+abaixo disso, é preciso uma segunda fonte. A posição é sempre marcada como aproximada, e o endereço
+do registro é comparado com a rua no mapa. Para refazer a extração:
+`overturemaps download --bbox=-51.76,-27.54,-51.50,-27.30 -f geojson --type=place`.
+A situação das empresas na Receita Federal é consultada pelo CNPJ (por exemplo, pela BrasilAPI).
 
 Ficam de fora: lugares com uma só fonte de diretório, endereço conflitante ou indício de fechamento.
 O guia não publica notas nem avaliações. Horários de agregadores sem data não são publicados.

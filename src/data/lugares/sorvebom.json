@@ -1,0 +1,35 @@
+{
+  "id": "sorvebom",
+  "nome": "Sorvebom",
+  "categoria": "sabores",
+  "tipo": "Sorveteria",
+  "destaque": 1,
+  "resumo": "Sorveteria no Acesso Cidade Alta, no bairro São Cristóvão.",
+  "descricao": [
+    "Sorveteria no Acesso Cidade Alta, no bairro São Cristóvão.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "São Cristóvão",
+  "endereco": "Acesso Cidade Alta, 3450 – São Cristóvão",
+  "coordenadas": [
+    -51.59202,
+    -27.37503
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook). Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99940-1697",
+    "facebook": "https://www.facebook.com/101748214696760"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Sorvebom”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.37503/-51.59202",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

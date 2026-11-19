@@ -1,0 +1,35 @@
+{
+  "id": "padaria-flor-de-trigo",
+  "nome": "Padaria Flor de Trigo",
+  "categoria": "sabores",
+  "tipo": "Padaria e confeitaria",
+  "destaque": 1,
+  "resumo": "Padaria e confeitaria na Vila Sete de Julho.",
+  "descricao": [
+    "Padaria e confeitaria na Rua Aristoclides Baratieri, na Vila Sete de Julho.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Vila Sete de Julho",
+  "endereco": "Rua Aristoclides Baratieri, 7 – Vila Sete de Julho",
+  "coordenadas": [
+    -51.6087,
+    -27.3615
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook). Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99827-5906",
+    "facebook": "https://www.facebook.com/203078143496224"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Padaria Flor De Trigo Confeitaria”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.3615/-51.6087",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

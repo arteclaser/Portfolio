@@ -30,30 +30,34 @@ Constam em duas ou mais fontes, mas sem registro público de 2025 ou 2026. Basta
 
 Perguntas úteis: está aberto? Qual é o nome em uso? Horário? O número do imóvel confere?
 
+Os lugares incluídos no terceiro levantamento a partir da base aberta Overture Maps também levam o selo
+"a confirmar", salvo quando há notícia de 2025 ou 2026. A lista completa aparece no site, com o selo em
+cada página.
+
 ## 2. Lugares que ficaram de fora, e por quê
 
-O segundo levantamento (19/11/2026) procurou pesque-pagues, espaços de lazer e restaurantes. Entraram
-16 lugares; os abaixo ficaram de fora porque falta fonte, endereço ou confirmação.
+O terceiro levantamento (19/11/2026) usou a base aberta *Places* da Overture Maps (cerca de 990
+registros em Capinzal e no centro de Ouro), a Receita Federal (consulta por CNPJ) e a lista de Capinzal
+do Restaurant Guru. Entraram 36 lugares; os abaixo ficaram de fora.
 
 ### Pesque-pagues
 
-Nenhum pesque-pague de Capinzal tem registro público de funcionamento em 2025 ou 2026. O Pesque e Pague
-Cascata entrou no guia como "a confirmar" (reportagem de dezembro de 2022). Os outros nomes encontrados:
-
-| Lugar | O que as fontes dizem | O que falta |
+| Lugar | O que as fontes dizem | Por que ficou de fora |
 | --- | --- | --- |
-| Pesque Bar | Rod. SC-303, km 12 (Plano de Cultura, 2021, que o classifica só como "bar") | Segunda fonte; confirmar se é pesque-pague |
-| Pesque e Pague Fontana | Fazenda Santo Antônio (O Tempo, 2016) | Registro recente e localização |
-| Pesque e Pague da Família Basei | Linha Gramado (O Tempo, 2006) | Registro recente e localização |
-| Recanto Caxambu (Empresa Velha) | Só cadastro de CNPJ, não aberto | Qualquer fonte aberta |
+| Pesque Pague Fontana | Estrada para a Fazenda Santo Antônio, 600; (49) 3557-0059 | Na Receita Federal, a Pesque Pague Fontana Ltda está **inapta** desde 08/2024 e a A&T Comércio (mesmo nome fantasia) foi **baixada** em 02/2026: indício de fechamento |
+| Pesque Bar | Rod. SC-303, km 12 (Plano de Cultura, 2021, que o classifica só como "bar") | Fonte única; não se sabe se é pesque-pague |
+| Pesque e Pague da Família Basei | Linha Gramado (O Tempo, 2006) | Sem registro recente nem localização |
+
+O **Recanto Caxambu** (Empresa Velha) e o **Pesque e Pague Cascata / Vale das Águas** estão no guia.
+Do Recanto Caxambu falta a posição exata: o guia marca a comunidade de Empresa Velha.
 
 ### Lazer
 
 | Lugar | Motivo |
 | --- | --- |
-| Estádio Municipal São Cristóvão | Em uso em 2026 (notícias), mas nenhuma fonte dá rua ou posição |
-| Estádio da Baixada Rubra / Campo Arabutã | O jornal o situa em Ouro; o ponto do OpenStreetMap precisa ser conferido |
-| SER BRF | Clube de associados; endereço de fonte única e de forma estranha ("Distr. Barro Preto, 7") |
+| Kata-Vento Park & Eventos (Recanto dos Pássaros) | Registro único, com confiança 0,67; não se sabe se é aberto ao público |
+| SER BRF (antiga SERP) | Clube de associados; a base aberta marca um ponto ao sul da cidade, sem endereço |
+| Estádio da Baixada Rubra / Arabutã Futebol Clube | Fica em Ouro (Rua Raimundo Bernardi) |
 | CTG Rancho de Boiadeiro | Endereço de 2021 (Rua Cleto Toaldo, 140) pode ser só o de contato; local dos rodeios não informado |
 | CTG Estância da Querência | Sem sede localizada; o rodeio de 2026 foi no Parque de Exposições |
 | CTG Ermelinda Thomazoni | Fonte única, de 2021 |
@@ -62,46 +66,61 @@ Cascata entrou no guia como "a confirmar" (reportagem de dezembro de 2022). Os o
 | Cancha do Cassino (Linha Gramado) | Sede de torneio de bocha em 11/2026; a fonte não diz que tipo de lugar é |
 | Sítio Costenaro (Vila Anchieta) | Sediou o encerramento do curso de turismo; não há fonte de que receba visitantes |
 | Cavernas do Avaí (Ricardópolis), Morro do Filipini | Menções isoladas na imprensa, sem informação de acesso |
+| Thermas do Tio Carlinhos (Ouro) | Registro único, com confiança 0,57 |
 
-Não encontramos fonte verificável para camping, balneário ou parque aquático em Capinzal, chácaras de
-eventos, trilhas, cascatas ou mirantes.
+Não encontramos fonte verificável para camping, balneário ou parque aquático em Capinzal, trilhas,
+cascatas ou mirantes.
 
 ### Onde comer e onde ficar
 
 | Lugar | Motivo |
 | --- | --- |
-| Padaria Super Pão (Cidade Alta) | Ativa em 10/2026 (notícia), mas sem rua e número |
-| Zeni Aroma e Sabores | Ativo em 2026 (notícias), sem endereço; não se sabe se é a Panificadora Zeni |
-| Padaria Doce Pecado / Padaria e Confeitaria Vargas | Mesmo telefone nas duas; Av. José Leonardo Santos, 1855, no nome "Vargas". Equivalência não confirmada |
-| Bar e Restaurante Bier Platz | Endereços conflitantes (Rua Ernesto Hachmann, 585, ou Rua João Siviero, 8); último registro de 2023 |
-| Via Vêneto Pizzaria | Mesmo número da Dall'i Trattoria (Rua Carmelo Zocolli, 85); não se sabe se coexistem |
-| Restaurante Fino Grill | No mesmo endereço e telefone aparece "Restaurante Ionara"; nome atual incerto |
-| Ice Café Sorveteria e Cafeteria | Aberto em 2019 na Av. XV de Novembro, sem número e sem registro recente |
-| Cozinha da Sil – Restaurante e Café | Aberto em 2025 (notícia), mas o endereço não tem número (Av. José Leonardo Santos, Vila 7 de Julho) |
-| Padaria Pão Doce, Padaria Vetori, Restaurante Amigão, NRK, Confraria 33 | Fonte única ou sem endereço |
-| Top Grill, Mr. Burguer, Das Antigas Bar, Huhupa Pizzaria | Fonte única ou endereço incompleto |
-| Em Ouro: Don Andrade, Dogão do Alemão, Boteco Central, Flor de Sal e Café, Big Burger | Só uma plataforma como fonte |
+| Via Vêneto Pizzaria | Mesmo número da Dall'i Trattoria (Rua Carmelo Zocolli, 85); registro com confiança 0,42 |
+| Restaurante Fino Grill / Restaurante Yonara | Mesmo endereço e telefone; nome atual incerto (confiança 0,30) |
+| Padaria e Confeitaria Vargas | Mesmo telefone da Padaria Doce Pecado (que está no guia); pode ser o nome antigo |
+| Cozinha da Sil – Restaurante e Café | Aberto em 2025 (notícia), mas o endereço não tem número |
+| O Espetinho, Academia do Cheese, Império Hamburgueria, Vila's Bar, Restaurante e Churrascaria da Mãe | Só constam no Restaurant Guru, sem endereço |
+| Restaurante Machado (anexo ao Posto Novo Horizonte) | No mesmo posto o guia já tem o Restaurante Tainha 2, aberto em 05/2026; não se sabe se coexistem |
+| Restaurante Nova Opção, Café Aki, Bourbon Bistrô, Novo Sabor Pizzaria, Artê Gastronomia Afetiva | Registro único com confiança abaixo de 0,77 |
+| Bares e conveniências (MadrugasBeer, Rex Beer, Confraria 33 e outros) | Registro único ou sem informação sobre o que oferecem |
+| Casa do Chocolate Piratuba | Registro sem endereço, em área rural perto da divisa |
+| Em Ouro: Don Andrade, Boteco Central, Flor de Sal e Café, Big Burger, Tokyo Sushi, Padaria Santa Lúcia e outros | Uma só fonte de plataforma, ou confiança abaixo de 0,77 |
 | Hotel Pousada Vale das Águas | Só plataformas de reserva, endereço sem número |
+| Motel Acaso | Fora do escopo do guia |
 | Feira livre (Feira dos Agricultores) | Existe (notícias de 2026), mas nenhuma fonte informa local e horário |
+
+### Divergências a conferir em fichas que já estão no guia
+
+| Lugar | Divergência |
+| --- | --- |
+| Corujão Lanches | O guia traz Av. XV de Novembro, 695; a base aberta traz Rua Dona Linda Santos, 335, com o mesmo telefone |
+| Panificadora Tradicional | O guia traz Rua Dona Linda Santos, 177; a base aberta traz Av. XV de Novembro, 225, com o mesmo telefone |
+| Padaria Novo Sabor | O guia traz Acesso Cidade Alta, 1298; a base aberta traz Rua Auta de Souza, 70 |
+| Mr. Burguer | Duas fontes marcam pontos diferentes da Rua Presidente Nereu Ramos (cerca de 500 m) |
+| American Bus Glamping | A posição passou a ser a do registro aberto (a 2,4 km do centro de Barro Preto) |
+
+### Supermercados
+
+Não entraram: o dono do projeto ficou em dúvida. A base aberta tem os dados (Copercampos, Dorini,
+Líder, Dambros, Padilha, Munari e outros); se quiser, entram na categoria "Apoio ao visitante".
 
 ### Igrejas e capelas
 
 | Lugar | Motivo |
 | --- | --- |
-| Capela São Cristóvão | Sede de festa tradicional (62ª edição em 2026); endereço não consta nas fontes |
-| Capela São Leopoldo Mandic, igrejas do Bairro Santa Maria e de Linha Gramado | Fonte única; posição não confirmada |
+| Capela Senhor Bom Jesus (Alto Alegre), comunidades de Linha Gramado e Linha Sul | Registro único, com confiança abaixo de 0,77 |
+| Igrejas do Bairro Santa Maria e de Linha Gramado | Fonte única; posição não confirmada |
 
 ### Perguntas para quem conhece a cidade
 
-1. Quais pesque-pagues funcionam hoje, e onde ficam?
-2. O Pesque e Pague Cascata e o Hotel Pousada Vale das Águas são vizinhos ou o mesmo lugar?
-3. A Padaria Doce Pecado é a "Padaria e Confeitaria Vargas" (Av. José Leonardo Santos, 1855)?
-4. O "Zeni Aroma e Sabores" é a Panificadora Zeni? Qual é o endereço?
-5. Bier Platz: Rua Ernesto Hachmann, 585, ou Rua João Siviero, 8? Continua aberto?
-6. Onde fica o Estádio Municipal São Cristóvão?
-7. Onde ficam as dependências da SER BRF?
-8. O Hotel Antares está aberto? O número é 485 ou 491?
-9. O Clube da Colina recebe não sócios? O que oferece?
+1. Onde fica exatamente o Recanto Caxambu (um ponto no mapa ou o link do Google Maps)?
+2. O Pesque e Pague Cascata continua aberto? O nome em uso é Cascata ou Vale das Águas?
+3. O Pesque Pague Fontana fechou mesmo? Há outros pesque-pagues em funcionamento?
+4. A Padaria Doce Pecado é a antiga "Padaria e Confeitaria Vargas" (Av. José Leonardo Santos, 1855)?
+5. Onde ficam as dependências da SER BRF?
+6. O Hotel Antares está aberto?
+7. O Clube da Colina recebe não sócios? O que oferece?
+8. Supermercados devem entrar no guia?
 
 ## 3. Páginas oficiais a reabrir no navegador
 

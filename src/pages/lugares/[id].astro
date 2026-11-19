@@ -100,7 +100,7 @@ const estruturado = {
           {lugar.situacao === 'a-confirmar' && (
             <div class="aviso" role="note" style="margin-top:20px">
               <Icone nome="triangle-alert" />
-              <p><strong>Funcionamento a confirmar.</strong> Este lugar consta em mais de uma fonte, mas não encontramos registro público de 2025 ou 2026 que confirme que está aberto. Ligue antes de ir.</p>
+              <p><strong>Funcionamento a confirmar.</strong> {lugar.fontes.length > 1 ? 'Este lugar consta em mais de uma fonte' : 'Este lugar consta em uma base de dados aberta'}, mas não encontramos registro público de 2025 ou 2026 que confirme que está aberto. Ligue antes de ir.</p>
             </div>
           )}
           {lugar.aviso && (
@@ -148,6 +148,8 @@ const estruturado = {
                   {lugar.contato.telefone && <a href={telefoneLink(lugar.contato.telefone)}>{lugar.contato.telefone}</a>}
                   {lugar.contato.email && <small><a href={`mailto:${lugar.contato.email}`}>{lugar.contato.email}</a></small>}
                   {lugar.contato.site && <small><a href={lugar.contato.site} target="_blank" rel="noopener">{new URL(lugar.contato.site).hostname.replace(/^www\./, '')}</a></small>}
+                  {lugar.contato.instagram && <small><a href={lugar.contato.instagram} target="_blank" rel="noopener">Instagram</a></small>}
+                  {lugar.contato.facebook && <small><a href={lugar.contato.facebook} target="_blank" rel="noopener">Página no Facebook</a></small>}
                 </dd>
               </div>
             )}

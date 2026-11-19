@@ -1,0 +1,40 @@
+{
+  "id": "capela-sao-leopoldo-mandic",
+  "nome": "Capela São Leopoldo Mandic",
+  "categoria": "fe",
+  "tipo": "Capela",
+  "destaque": 1,
+  "resumo": "Capela do bairro Santa Terezinha, fundada em 1986, com festa do padroeiro no primeiro domingo de agosto.",
+  "descricao": [
+    "Capela católica do bairro Santa Terezinha. O Plano Municipal de Cultura registra a fundação em 3 de agosto de 1986 e a festa do padroeiro no primeiro domingo de agosto, precedida de tríduo.",
+    "O telefone e a posição vêm da base aberta Overture Maps (página da capela no Facebook) e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Santa Terezinha",
+  "endereco": "Rua Emília Barison – Santa Terezinha",
+  "coordenadas": [
+    -51.60168,
+    -27.34779
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 5 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99920-0585",
+    "facebook": "https://www.facebook.com/934068973323039"
+  },
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Capela São Leopoldo Mandic”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.34779/-51.60168",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Capinzal – Lei 3.426/2021, Plano Municipal de Cultura (PDF)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "lamezia-pizza-delivery",
+  "nome": "Lamezia Pizza Delivery",
+  "categoria": "sabores",
+  "tipo": "Pizzaria (entrega)",
+  "destaque": 1,
+  "resumo": "Pizzaria de entrega na Vila Sete de Julho, com pedidos pela internet.",
+  "descricao": [
+    "Pizzaria de entrega na Rua Aristoclides Baratieri, na Vila Sete de Julho, com pedidos pela internet.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Vila Sete de Julho",
+  "endereco": "Rua Aristoclides Baratieri, 87 – Vila Sete de Julho",
+  "coordenadas": [
+    -51.60899,
+    -27.36147
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook). Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99980-1356",
+    "facebook": "https://www.facebook.com/101678495772955"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Lamezia Pizza Delivery”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.36147/-51.60899",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

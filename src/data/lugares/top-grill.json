@@ -1,0 +1,46 @@
+{
+  "id": "top-grill",
+  "nome": "Top Grill Restaurante",
+  "categoria": "sabores",
+  "tipo": "Restaurante",
+  "destaque": 1,
+  "resumo": "Restaurante no Acesso Cidade Alta, associado à ACIRP.",
+  "descricao": [
+    "Restaurante no Acesso Cidade Alta. A plataforma cardapio.menu o lista com avaliação de janeiro de 2024, e a ACIRP tem um associado com o mesmo nome e outro telefone.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 14/09/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Acesso Cidade Alta (sem número nas fontes)",
+  "coordenadas": [
+    -51.58353,
+    -27.37962
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps, igual à publicada pela plataforma cardapio.menu. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99827-3939",
+    "facebook": "https://www.facebook.com/2275756602540457"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Top Grill Restaurante”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.37962/-51.58353",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "cardapio.menu – Top Grill",
+      "url": "https://cardapio.menu/restaurants/capinzal/top-grill-27",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – lista de associados (página 14)",
+      "url": "https://www.acirp.org.br/associados.php?pagina=14",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

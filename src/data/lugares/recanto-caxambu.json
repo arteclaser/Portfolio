@@ -1,0 +1,44 @@
+{
+  "id": "recanto-caxambu",
+  "nome": "Recanto Caxambu",
+  "categoria": "natureza",
+  "tipo": "Pesque-pague e restaurante",
+  "destaque": 2,
+  "resumo": "Pesque-pague com restaurante na comunidade de Empresa Velha, no interior de Capinzal.",
+  "descricao": [
+    "Pesque-pague com restaurante na comunidade de Empresa Velha, indicado pelo responsável por este guia.",
+    "Na Receita Federal, a empresa Recanto Caxambu Ltda está ativa desde 13 de novembro de 2024, com endereço na Linha Empresa Velha. A atividade principal é restaurante; entre as secundárias estão peixaria, bar, bufê para eventos e aluguel de equipamentos recreativos.",
+    "O Restaurant Guru o lista como restaurante de peixes e frutos do mar. O telefone é o do cadastro da Receita Federal, escrito aqui com o nono dígito dos celulares. Não encontramos o horário em fonte que pudéssemos abrir; o perfil no Instagram traz as informações atuais."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Empresa Velha",
+  "endereco": "Linha Empresa Velha, s/n – interior",
+  "coordenadas": [
+    -51.66631,
+    -27.43628
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição aproximada: comunidade de Empresa Velha no OpenStreetMap. O local exato do pesque-pague não consta em fonte aberta; pode haver diferença de alguns quilômetros.",
+  "contato": {
+    "telefone": "(49) 99933-4502",
+    "instagram": "https://www.instagram.com/recanto_caxambu/"
+  },
+  "situacao": "confirmado",
+  "evidencia": "empresa ativa na Receita Federal",
+  "aviso": "A posição no mapa marca a comunidade, não a entrada do pesque-pague. Peça a localização pelo telefone ou pelo Instagram antes de sair.",
+  "fontes": [
+    {
+      "titulo": "Receita Federal – Cadastro Nacional da Pessoa Jurídica, CNPJ 58.087.830/0001-88 (consulta pela BrasilAPI)",
+      "url": "https://brasilapi.com.br/api/cnpj/v1/58087830000188",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Restaurant Guru – restaurantes em Capinzal (lista de novembro de 2026)",
+      "url": "https://restaurantguru.com/Capinzal",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "mega-lanches",
+  "nome": "Mega Lanches",
+  "categoria": "sabores",
+  "tipo": "Lanchonete",
+  "destaque": 1,
+  "resumo": "Lanchonete na Cidade Alta, também listada no Restaurant Guru.",
+  "descricao": [
+    "Lanchonete na Rua Civiriano Lopes de Abreu, na Cidade Alta. Também consta na lista de Capinzal do Restaurant Guru.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "endereco": "Rua Civiriano Lopes de Abreu (sem número nas fontes)",
+  "coordenadas": [
+    -51.58168,
+    -27.38095
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 80 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99942-2381",
+    "facebook": "https://www.facebook.com/212988912526812"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Mega Lanches”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.38095/-51.58168",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Restaurant Guru – restaurantes em Capinzal (lista de novembro de 2026)",
+      "url": "https://restaurantguru.com/Capinzal",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

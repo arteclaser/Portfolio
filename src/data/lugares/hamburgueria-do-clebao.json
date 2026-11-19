@@ -1,0 +1,40 @@
+{
+  "id": "hamburgueria-do-clebao",
+  "nome": "Hamburgueria do Clebão",
+  "categoria": "sabores",
+  "tipo": "Hamburgueria",
+  "destaque": 1,
+  "resumo": "Hamburgueria em Ouro, cidade vizinha, na Rua Felipe Schmidt.",
+  "descricao": [
+    "Hamburgueria na Rua Felipe Schmidt, em Ouro. A plataforma cardapio.menu a lista com o mesmo telefone e avaliação de junho de 2023.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Ouro",
+  "endereco": "Rua Felipe Schmidt – Ouro",
+  "coordenadas": [
+    -51.61239,
+    -27.33942
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 5 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99823-5534",
+    "facebook": "https://www.facebook.com/112723113430463"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “hamburgueria do clebão”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.33942/-51.61239",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "cardapio.menu – Hamburgueria do Clebão",
+      "url": "https://cardapio.menu/restaurants/ouro-1/hamburgueria-do-clebao",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

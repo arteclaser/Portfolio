@@ -1,0 +1,64 @@
+{
+  "id": "bier-platz",
+  "nome": "Bier Platz",
+  "outrosNomes": [
+    "Bar e Restaurante Bier Platz",
+    "Cervejaria Bier Platz"
+  ],
+  "categoria": "sabores",
+  "tipo": "Bar e restaurante",
+  "destaque": 1,
+  "resumo": "Bar e restaurante na Rua João Siviero, participante do Passaporte Gastronômico da ACIRP em 2023.",
+  "descricao": [
+    "Bar e restaurante no Centro. O Plano Municipal de Cultura (2021) o situava na Rua Ernesto Hachmann, 585; a base Overture e a plataforma cardapio.menu trazem a Rua João Siviero, 8, com o mesmo telefone.",
+    "Participou do Passaporte Gastronômico da ACIRP em 2023. A avaliação mais recente na plataforma cardapio.menu é de fevereiro de 2023.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua João Siviero, 8 – Centro",
+  "coordenadas": [
+    -51.61581,
+    -27.34457
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook). Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99995-9678",
+    "facebook": "https://www.facebook.com/705585439553668"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Bar e Restaurante Bier Platz”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.34457/-51.61581",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "cardapio.menu – Bar e Restaurante Bier Platz",
+      "url": "https://cardapio.menu/restaurants/capinzal/bar-e-restaurante-bier-platz",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – Lançamento: Passaporte Gastronômico (07/06/2023)",
+      "url": "https://www.acirp.org.br/novidade.php?id=237&url=lancamento-passaporte-gastronomico-",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Restaurant Guru – restaurantes em Capinzal (lista de novembro de 2026)",
+      "url": "https://restaurantguru.com/Capinzal",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Prefeitura de Capinzal – Lei 3.426/2021, Plano Municipal de Cultura (PDF)",
+      "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/03/Plano-Municipal-de-Cultura-2021-2023.pdf",
+      "tipo": "oficial",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

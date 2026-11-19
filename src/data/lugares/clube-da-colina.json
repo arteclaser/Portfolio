@@ -8,7 +8,7 @@
   "descricao": [
     "Clube social fundado em 1964, com sede e salão social no Acesso Cidade Alta, no bairro São Cristóvão.",
     "Em 2025, recebeu as atividades práticas do Projeto Golfinho. Em 2026, sediou a assembleia que elegeu a diretoria da gestão 2026/2028, segundo a Rádio Capinzal.",
-    "O telefone é o publicado no Plano Municipal de Cultura, de 2021."
+    "O telefone consta no Plano Municipal de Cultura (2021) e na base aberta Overture Maps, que também traz o site do clube."
   ],
   "municipio": "Capinzal",
   "localidade": "São Cristóvão",
@@ -21,7 +21,9 @@
   "origemCoordenadas": "Posição do clube mapeado no OpenStreetMap.",
   "osm": "way/546671400",
   "contato": {
-    "telefone": "(49) 3555-1244"
+    "telefone": "(49) 3555-1244",
+    "site": "http://www.clubedacolina.com.br/",
+    "facebook": "https://www.facebook.com/102212707107859"
   },
   "aviso": "Clube de associados: as fontes não informam se há acesso para visitantes. Consulte o clube antes de ir.",
   "fontes": [
@@ -53,6 +55,12 @@
       "titulo": "OpenStreetMap – Clube da Colina",
       "url": "https://www.openstreetmap.org/way/546671400",
       "tipo": "mapa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Clube da Colina”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.36483/-51.60061",
+      "tipo": "base",
       "acesso": "2026-11-19"
     }
   ],

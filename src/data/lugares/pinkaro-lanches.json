@@ -1,0 +1,36 @@
+{
+  "id": "pinkaro-lanches",
+  "nome": "Pinkaro Lanches",
+  "categoria": "sabores",
+  "tipo": "Lanchonete",
+  "destaque": 1,
+  "resumo": "Lanchonete no Centro, na Rua Dona Linda Santos.",
+  "descricao": [
+    "Lanchonete no Centro, na Rua Dona Linda Santos.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 12/10/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Capinzal",
+  "localidade": "Centro",
+  "endereco": "Rua Dona Linda Santos, 335 – Centro",
+  "coordenadas": [
+    -51.60945,
+    -27.34526
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 5 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 3555-1942",
+    "site": "http://pinkarolanches1.placeweb.site",
+    "facebook": "https://www.facebook.com/240742519443568"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Pinkaro Lanches”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.34526/-51.60945",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}

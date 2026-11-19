@@ -1,0 +1,50 @@
+{
+  "id": "ice-cafe",
+  "nome": "Ice Café",
+  "outrosNomes": [
+    "Ice Café Sorveteria e Cafeteria"
+  ],
+  "categoria": "sabores",
+  "tipo": "Sorveteria e cafeteria",
+  "destaque": 1,
+  "resumo": "Sorveteria e cafeteria na Rua Felipe Schmidt, em Ouro, cidade vizinha.",
+  "descricao": [
+    "Sorveteria e cafeteria. O registro atual a situa na Rua Felipe Schmidt, 1769, em Ouro. Em dezembro de 2019, a Rádio Capinzal noticiou a abertura da Ice Café na Avenida XV de Novembro, em Capinzal, com buffet de sorvete, açaí, lanches, doces e salgados.",
+    "Consta na base aberta Overture Maps, com dados da página do estabelecimento no Facebook atualizados em 02/11/2026. Endereço, telefone e posição vêm desse registro e não foram conferidos no local."
+  ],
+  "municipio": "Ouro",
+  "endereco": "Rua Felipe Schmidt, 1769 – Ouro",
+  "coordenadas": [
+    -51.61301,
+    -27.33983
+  ],
+  "precisao": "aproximada",
+  "origemCoordenadas": "Posição do registro na base Overture Maps (origem: página no Facebook), a cerca de 5 metros da rua informada. Não foi conferida no local.",
+  "contato": {
+    "telefone": "(49) 99968-8966",
+    "site": "http://www.icepaletas.com.br/",
+    "facebook": "https://www.facebook.com/1473837939494475"
+  },
+  "situacao": "a-confirmar",
+  "fontes": [
+    {
+      "titulo": "Overture Maps – base aberta de lugares, versão 2026-11-18 (registro “Ice Café”, origem: página no Facebook)",
+      "url": "https://explore.overturemaps.org/#17/-27.33983/-51.61301",
+      "tipo": "base",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "Rádio Capinzal – Ice Café Sorveteria e Cafeteria abre suas portas em Capinzal (04/12/2019; informe publicitário)",
+      "url": "https://capinzalfm.com.br/noticias/ice-cafe-sorveteria-e-cafeteria-abre-suas-portas-em-capinzal/12256",
+      "tipo": "imprensa",
+      "acesso": "2026-11-19"
+    },
+    {
+      "titulo": "ACIRP – lista de associados (página 4)",
+      "url": "https://www.acirp.org.br/associados.php?pagina=4",
+      "tipo": "plataforma",
+      "acesso": "2026-11-19"
+    }
+  ],
+  "conferidoEm": "2026-11-19"
+}
