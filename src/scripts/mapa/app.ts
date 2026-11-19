@@ -300,21 +300,24 @@ function iniciar(app: HTMLElement) {
   }
 
   function criarPino(item: Item): HTMLButtonElement {
+    // O nome acessível do marcador é o próprio conteúdo: número (nos roteiros) e nome do lugar.
     const botao = document.createElement('button');
     botao.type = 'button';
     botao.tabIndex = -1;
     botao.className = item.numero ? 'pino pino--numero' : `pino pino--${item.destaque} cat-${item.categoria}`;
-    botao.setAttribute('aria-label', item.numero ? `Parada ${item.numero}: ${item.nome}` : `${item.nome} (${item.tipo})`);
-    if (item.numero) botao.textContent = String(item.numero);
-    else {
+    if (item.numero) {
+      const prefixo = document.createElement('span');
+      prefixo.className = 'oculto-visual';
+      prefixo.textContent = 'Parada ';
+      botao.append(prefixo, String(item.numero));
+    } else {
       const svg = icone(item.icone);
       if (svg) botao.append(svg);
     }
     const nome = document.createElement('span');
     nome.className = 'pino__nome';
     nome.textContent = item.curto;
-    nome.setAttribute('aria-hidden', 'true');
-    botao.append(nome);
+    botao.append(' ', nome);
     botao.addEventListener('click', (evento) => {
       evento.stopPropagation();
       selecionar(item.id, { voar: true, rolar: true });

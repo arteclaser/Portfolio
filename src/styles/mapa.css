@@ -499,6 +499,8 @@
   .app[data-visao="lista"] .alternar-visao { position: fixed; bottom: calc(var(--altura-abas) + 16px); }
   .app[data-visao="lista"] .busca input, .app[data-visao="lista"] .filtros .chip { box-shadow: none; }
   .app[data-visao="lista"] .mapa { visibility: hidden; }
+  /* O botão de voltar ao mapa mora dentro do mapa, mas continua visível na lista. */
+  .app[data-visao="lista"] .alternar-visao { visibility: visible; }
 
   /* Página de roteiro: resumo compacto no topo */
   .rota-resumo {

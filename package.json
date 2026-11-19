@@ -10,10 +10,15 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/pos-build.mjs",
+    "build": "node scripts/conferir-dados.mjs && astro build && node scripts/pos-build.mjs",
     "preview": "astro preview",
-    "check": "node scripts/conferir-dados.mjs",
-    "test": "node scripts/conferir-dados.mjs && node --test tests/unit/"
+    "conferir": "node scripts/conferir-dados.mjs",
+    "test": "node scripts/conferir-dados.mjs && node --test \"tests/unit/*.test.mjs\"",
+    "test:navegador": "node tests/navegador/verificar.cjs",
+    "mapa:estilo": "node scripts/geo/gerar-estilo.mjs",
+    "mapa:rotas": "node scripts/geo/calcular-rotas.mjs",
+    "icones": "node scripts/gerar-icones.mjs",
+    "fotos": "node scripts/fotos/baixar-do-commons.mjs"
   },
   "dependencies": {
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",
@@ -24,5 +29,8 @@
     "maplibre-gl": "^6.19.0",
     "pmtiles": "^4.5.0",
     "supercluster": "^9.1.0"
+  },
+  "devDependencies": {
+    "axe-core": "^4.14.1"
   }
 }

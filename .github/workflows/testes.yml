@@ -1,0 +1,41 @@
+# Confere os dados, monta o site e testa no navegador a cada alteração.
+name: Testes
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  site:
+    name: Dados, montagem e navegador
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Conferir os dados e rodar os testes unitários
+        run: npm test
+
+      - name: Montar o site
+        run: npm run build
+
+      - name: Instalar o navegador de teste
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Testar no navegador (celular, teclado, acessibilidade, CSP e modo sem internet)
+        run: npm run test:navegador

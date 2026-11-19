@@ -122,49 +122,40 @@ const estruturado = {
         <aside class="lateral" aria-label="Informações práticas">
           <dl class="ficha">
             <div class="ficha__item">
-              <Icone nome="map-pin" />
-              <div>
-                <dt>Endereço</dt>
-                <dd>
-                  {lugar.endereco ?? `${lugar.localidade ?? ''}`}
-                  <small>{lugar.municipio.includes('Capinzal') && !lugar.municipio.includes('Ouro') ? 'Capinzal' : lugar.municipio} (SC)</small>
-                </dd>
-              </div>
+              <dt><Icone nome="map-pin" />Endereço</dt>
+              <dd>
+                {lugar.endereco ?? `${lugar.localidade ?? ''}`}
+                <small>{lugar.municipio.includes('Capinzal') && !lugar.municipio.includes('Ouro') ? 'Capinzal' : lugar.municipio} (SC)</small>
+              </dd>
             </div>
             {lugar.horario && (
               <div class="ficha__item">
-                <Icone nome="clock" />
-                <div><dt>Horário</dt><dd>{lugar.horario}</dd></div>
+                <dt><Icone nome="clock" />Horário</dt>
+                <dd>{lugar.horario}</dd>
               </div>
             )}
             {lugar.entrada && (
               <div class="ficha__item">
-                <Icone nome="ticket" />
-                <div><dt>Entrada</dt><dd>{lugar.entrada}</dd></div>
+                <dt><Icone nome="ticket" />Entrada</dt>
+                <dd>{lugar.entrada}</dd>
               </div>
             )}
             {lugar.contato && (
               <div class="ficha__item">
-                <Icone nome="phone" />
-                <div>
-                  <dt>Contato</dt>
-                  <dd>
-                    {lugar.contato.telefone && <a href={telefoneLink(lugar.contato.telefone)}>{lugar.contato.telefone}</a>}
-                    {lugar.contato.email && <small><a href={`mailto:${lugar.contato.email}`}>{lugar.contato.email}</a></small>}
-                    {lugar.contato.site && <small><a href={lugar.contato.site} target="_blank" rel="noopener">{new URL(lugar.contato.site).hostname.replace(/^www\./, '')}</a></small>}
-                  </dd>
-                </div>
+                <dt><Icone nome="phone" />Contato</dt>
+                <dd>
+                  {lugar.contato.telefone && <a href={telefoneLink(lugar.contato.telefone)}>{lugar.contato.telefone}</a>}
+                  {lugar.contato.email && <small><a href={`mailto:${lugar.contato.email}`}>{lugar.contato.email}</a></small>}
+                  {lugar.contato.site && <small><a href={lugar.contato.site} target="_blank" rel="noopener">{new URL(lugar.contato.site).hostname.replace(/^www\./, '')}</a></small>}
+                </dd>
               </div>
             )}
             <div class="ficha__item">
-              <Icone nome="locate-fixed" />
-              <div>
-                <dt>Posição no mapa</dt>
-                <dd>
-                  {lugar.precisao === 'exata' ? 'Ponto mapeado' : 'Aproximada'}
-                  <small>{lugar.origemCoordenadas}</small>
-                </dd>
-              </div>
+              <dt><Icone nome="locate-fixed" />Posição no mapa</dt>
+              <dd>
+                {lugar.precisao === 'exata' ? 'Ponto mapeado' : 'Aproximada'}
+                <small>{lugar.origemCoordenadas}</small>
+              </dd>
             </div>
           </dl>
 

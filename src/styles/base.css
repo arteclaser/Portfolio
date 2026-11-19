@@ -356,8 +356,9 @@ hr { border: 0; border-top: 1px solid var(--linha); margin: 2rem 0; }
 }
 .rodape__grade { display: grid; gap: 28px; grid-template-columns: 1.4fr 1fr 1fr; }
 .rodape h2 { font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; color: var(--tinta); font-family: var(--fonte-texto); font-weight: 700; margin-bottom: .9em; }
-.rodape li + li { margin-top: .45em; }
+.rodape li + li { margin-top: .2em; }
 .rodape a { color: var(--tinta); }
+.rodape li a { display: inline-block; padding: 3px 0; }
 .rodape__lema { margin: 14px 0 0; max-width: 38ch; }
 .rodape__nota { margin: 28px 0 0; padding-top: 20px; border-top: 1px solid var(--linha); font-size: .88rem; }
 
